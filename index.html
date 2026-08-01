@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Effective at Life — Run Your Life Like a System</title>
+<meta name="title" content="Effective at Life — Run Your Life Like a System">
+<meta name="description" content="Gil OS: a 7-pillar operating system for running health, relationships, career, growth, finance, joy, and contribution with engineering discipline.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C',
+          'os-surface': '#111827',
+          'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF',
+          'os-secondary': '#9CA3AF',
+          'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF',
+          'accent-teal': '#00C2D1',
+          'accent-purple': '#7B2CBF',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+        keyframes: {
+          fadeInUp: {
+            '0%': { opacity: 0, transform: 'translateY(18px)' },
+            '100%': { opacity: 1, transform: 'translateY(0)' },
+          },
+          scanline: {
+            '0%': { transform: 'translateX(-100%)' },
+            '100%': { transform: 'translateX(100%)' },
+          },
+        },
+        animation: {
+          'fade-in-up': 'fadeInUp 0.7s ease-out both',
+          'scanline': 'scanline 3s linear infinite',
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: #0A0F1C;
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .font-display { font-family: 'Space Grotesk', sans-serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(18px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up {
+    opacity: 0;
+    animation: fadeInUp 0.7s ease-out forwards;
+  }
+
+  ::selection { background: rgba(0,240,255,0.25); color: #FFFFFF; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid #00F0FF;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .fade-up, .animate-scanline { animation: none !important; opacity: 1 !important; }
+  }
+</style>
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="#pillars" class="hover:text-accent-cyan transition-colors">Pillars</a>
+      <a href="#driver-passenger" class="hover:text-accent-cyan transition-colors">Driver / Passenger</a>
+      <a href="#methodology" class="hover:text-accent-cyan transition-colors">Methodology</a>
+      <a href="#loops" class="hover:text-accent-cyan transition-colors">Loops</a>
+    </nav>
+    <a href="#pillars" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">
+      View System
+    </a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="relative pt-40 pb-24 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-accent-purple/10 blur-[120px] pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
+    <div class="lg:col-span-3 fade-up">
+      <p class="font-mono text-xs uppercase tracking-widest text-accent-cyan mb-5">Personal Operating System — v2026</p>
+      <h1 class="font-display font-bold tracking-tight text-5xl sm:text-6xl leading-[1.05] mb-6">
+        Life is an operating<br class="hidden sm:block"> system. <span class="text-os-secondary">Pillars are processes.</span>
+      </h1>
+      <p class="text-os-secondary text-lg leading-relaxed max-w-xl mb-4">
+        Most people consume information and never synthesize it — a book read, forgotten in three weeks, repeated.
+        Gil OS is the alternative: a structured framework for running health, relationships, career, growth, finance,
+        joy, and contribution with the same intentionality you'd apply to running a piece of software.
+      </p>
+      <p class="font-mono text-sm text-os-tertiary max-w-xl mb-10">
+        The vault is persistent memory. Every input compounds against everything already known.
+      </p>
+      <div class="flex flex-wrap items-center gap-4">
+        <a href="#pillars" class="px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
+          Explore the 7 Pillars
+        </a>
+        <a href="#methodology" class="px-5 py-3 rounded-lg border border-[#00F0FF]/50 text-[#00F0FF] font-display font-bold text-sm hover:bg-[#00F0FF]/10 hover:shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all">
+          See the Frameworks
+        </a>
+      </div>
+    </div>
+
+    <!-- Signature element: system status readout -->
+    <div class="lg:col-span-2 fade-up" style="animation-delay: 0.15s">
+      <div class="relative rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 overflow-hidden">
+        <div class="absolute top-0 left-0 h-px w-1/3 bg-gradient-to-r from-transparent via-accent-cyan to-transparent animate-scanline"></div>
+        <div class="flex items-center justify-between mb-5">
+          <span class="font-mono text-xs uppercase tracking-wide text-os-tertiary">gil_os — pillar_status.log</span>
+          <span class="flex items-center gap-1.5 font-mono text-[11px] text-accent-teal">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent-teal"></span>ACTIVE
+          </span>
+        </div>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between font-mono text-xs mb-1.5">
+              <span class="text-os-primary">L1 · MIND &amp; BODY</span>
+              <span class="text-accent-cyan">DRIVER</span>
+            </div>
+            <div class="h-2 rounded-full bg-white/10 overflow-hidden">
+              <div class="h-full w-[78%] rounded-full bg-gradient-to-r from-cyan-400 to-purple-500"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between font-mono text-xs mb-1.5">
+              <span class="text-os-primary">L3 · CAREER / MISSION</span>
+              <span class="text-accent-cyan">DRIVER</span>
+            </div>
+            <div class="h-2 rounded-full bg-white/10 overflow-hidden">
+              <div class="h-full w-[64%] rounded-full bg-gradient-to-r from-cyan-400 to-purple-500"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between font-mono text-xs mb-1.5">
+              <span class="text-os-secondary">L7 · CONTRIBUTE</span>
+              <span class="text-accent-purple">PASSENGER · SAT AM ONLY</span>
+            </div>
+            <div class="h-2 rounded-full bg-white/10 overflow-hidden">
+              <div class="h-full w-[31%] rounded-full bg-gradient-to-r from-purple-500 to-accent-purple"></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-4 gap-2 pt-2">
+            <div class="rounded-lg bg-white/5 border border-white/10 py-2 text-center">
+              <p class="font-mono text-[10px] text-os-tertiary">L2</p>
+              <p class="font-mono text-[10px] text-accent-teal mt-0.5">OK</p>
+            </div>
+            <div class="rounded-lg bg-white/5 border border-white/10 py-2 text-center">
+              <p class="font-mono text-[10px] text-os-tertiary">L4</p>
+              <p class="font-mono text-[10px] text-accent-teal mt-0.5">OK</p>
+            </div>
+            <div class="rounded-lg bg-white/5 border border-white/10 py-2 text-center">
+              <p class="font-mono text-[10px] text-os-tertiary">L5</p>
+              <p class="font-mono text-[10px] text-accent-teal mt-0.5">OK</p>
+            </div>
+            <div class="rounded-lg bg-white/5 border border-white/10 py-2 text-center">
+              <p class="font-mono text-[10px] text-os-tertiary">L6</p>
+              <p class="font-mono text-[10px] text-accent-teal mt-0.5">OK</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="font-mono text-[11px] text-os-tertiary text-center mt-3">Illustrative readout — structure is real, values are representative.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 PILLARS ============ -->
+<section id="pillars" class="px-6 py-24 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-2xl mb-14 fade-up">
+      <p class="font-mono text-xs uppercase tracking-widest text-accent-teal mb-3">Architecture</p>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight mb-4">Seven pillars. One system.</h2>
+      <p class="text-os-secondary leading-relaxed">
+        Every action, project, and goal partitions into one of seven mutually exclusive domains — numbered roughly
+        foundation to contribution. Each pillar carries its own key results, tracked with the same rigor as a
+        product roadmap.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+
+      <article class="group rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-display font-bold text-2xl text-accent-cyan">L1</span>
+          <span class="font-mono text-[10px] px-2 py-1 rounded-full border border-accent-cyan/40 text-accent-cyan">DRIVER</span>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-2">Mind &amp; Physical Body</h3>
+        <p class="text-os-secondary text-sm leading-relaxed mb-4">Physical health is the substrate for every other pillar — energy, sleep, and mental peace come first.</p>
+        <p class="font-mono text-xs text-os-tertiary">e.g. protected sleep window · daily meditation · 3–4 strength sessions / week</p>
+      </article>
+
+      <article class="group rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-display font-bold text-2xl text-accent-teal">L2</span>
+          <span class="font-mono text-[10px] px-2 py-1 rounded-full border border-white/20 text-os-secondary">ACTIVE</span>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-2">Relationships</h3>
+        <p class="text-os-secondary text-sm leading-relaxed mb-4">Invest in people deliberately — partner, family, close friends don't run on autopilot.</p>
+        <p class="font-mono text-xs text-os-tertiary">e.g. weekly dedicated time · scheduled family visits · shared long-term planning</p>
+      </article>
+
+      <article class="group rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-display font-bold text-2xl text-accent-cyan">L3</span>
+          <span class="font-mono text-[10px] px-2 py-1 rounded-full border border-accent-cyan/40 text-accent-cyan">DRIVER</span>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-2">Work / Career / Mission</h3>
+        <p class="text-os-secondary text-sm leading-relaxed mb-4">Deep Work on the right problems, not just more work. Career growth and a bounded side-mission.</p>
+        <p class="font-mono text-xs text-os-tertiary">e.g. 10 hrs/week protected Deep Work · defined promotion path · capped work-week</p>
+      </article>
+
+      <article class="group rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-display font-bold text-2xl text-accent-teal">L4</span>
+          <span class="font-mono text-[10px] px-2 py-1 rounded-full border border-white/20 text-os-secondary">ACTIVE</span>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-2">Personal Growth</h3>
+        <p class="text-os-secondary text-sm leading-relaxed mb-4">Skills compound, so build them deliberately — not whatever crosses your feed this week.</p>
+        <p class="font-mono text-xs text-os-tertiary">e.g. ~8 books / year · 1–2 technical courses · weekly synthesis practice</p>
+      </article>
+
+      <article class="group rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-display font-bold text-2xl text-accent-teal">L5</span>
+          <span class="font-mono text-[10px] px-2 py-1 rounded-full border border-white/20 text-os-secondary">ACTIVE</span>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-2">Finances</h3>
+        <p class="text-os-secondary text-sm leading-relaxed mb-4">Build the floor before reaching for the ceiling — savings rate and cash flow before upside bets.</p>
+        <p class="font-mono text-xs text-os-tertiary">e.g. fixed savings rate · positive cash-flow streak · credit health maintained</p>
+      </article>
+
+      <article class="group rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-display font-bold text-2xl text-accent-teal">L6</span>
+          <span class="font-mono text-[10px] px-2 py-1 rounded-full border border-white/20 text-os-secondary">ACTIVE</span>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-2">Hobbies &amp; Life Celebration</h3>
+        <p class="text-os-secondary text-sm leading-relaxed mb-4">Joy isn't earned after work is done — it's what makes the rest of the system sustainable.</p>
+        <p class="font-mono text-xs text-os-tertiary">e.g. one new hobby commitment · several new-experience trips / year</p>
+      </article>
+
+      <article class="group rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-display font-bold text-2xl text-accent-purple">L7</span>
+          <span class="font-mono text-[10px] px-2 py-1 rounded-full border border-accent-purple/40 text-accent-purple">PASSENGER</span>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-2">Contribute</h3>
+        <p class="text-os-secondary text-sm leading-relaxed mb-4">The system compounds further when it's shared — writing, teaching, publishing what's been learned.</p>
+        <p class="font-mono text-xs text-os-tertiary">e.g. ~1 public post / month · fixed video cadence · weekend-only time budget</p>
+      </article>
+
+      <article class="rounded-2xl bg-gradient-to-br from-accent-purple/15 to-transparent border border-white/10 p-6 flex flex-col justify-center">
+        <p class="font-display font-bold text-3xl tracking-tight mb-2">7<span class="text-os-tertiary text-lg font-body font-normal"> / 7</span></p>
+        <p class="font-mono text-xs text-os-secondary leading-relaxed">Every pillar has a schema, a set of key results, and a weekly check-in question. Nothing runs on vibes.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ DRIVER / PASSENGER ============ -->
+<section id="driver-passenger" class="px-6 py-24 border-t border-white/[0.08] bg-os-surface/40">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-2xl mb-14 fade-up">
+      <p class="font-mono text-xs uppercase tracking-widest text-accent-purple mb-3">Allocation Model</p>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight mb-4">Not every pillar gets equal energy.</h2>
+      <p class="text-os-secondary leading-relaxed">
+        Gil OS assigns strict hierarchies to prevent a side project from expanding into the time budget of the
+        primary mission. Two roles, one hard rule.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+      <div class="rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-8 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]">
+        <span class="font-mono text-[10px] px-2 py-1 rounded-full border border-accent-cyan/40 text-accent-cyan">DRIVER</span>
+        <h3 class="font-display font-semibold text-xl mt-4 mb-3">Primary focus. Gets the majority of time and energy.</h3>
+        <p class="text-os-secondary text-sm leading-relaxed">
+          Currently Health (L1) and Career (L3). When a Driver pillar demands more, every Passenger track pauses —
+          without exception, and without guilt.
+        </p>
+      </div>
+      <div class="rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-8 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-purple-500/50 hover:shadow-[0_8px_30px_rgba(123,44,191,0.15)]">
+        <span class="font-mono text-[10px] px-2 py-1 rounded-full border border-accent-purple/40 text-accent-purple">PASSENGER</span>
+        <h3 class="font-display font-semibold text-xl mt-4 mb-3">Secondary focus. Runs on a fixed, time-boxed window.</h3>
+        <p class="text-os-secondary text-sm leading-relaxed">
+          The Contribute track runs in a single protected weekly window and never competes for time outside it.
+          The constraint is both a ceiling and a protection mechanism.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METHODOLOGY MATRIX ============ -->
+<section id="methodology" class="px-6 py-24 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-2xl mb-14 fade-up">
+      <p class="font-mono text-xs uppercase tracking-widest text-accent-teal mb-3">Foundations</p>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight mb-4">Borrowed frameworks, applied literally.</h2>
+      <p class="text-os-secondary leading-relaxed">
+        Gil OS doesn't invent new theory — it takes proven productivity frameworks and wires each one to a specific
+        mechanism inside the system.
+      </p>
+    </div>
+
+    <div class="rounded-2xl border border-white/10 overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-[640px]">
+          <thead>
+            <tr class="bg-os-surface-light/60">
+              <th class="font-mono text-xs uppercase tracking-wide text-os-tertiary font-medium px-6 py-4">Framework</th>
+              <th class="font-mono text-xs uppercase tracking-wide text-os-tertiary font-medium px-6 py-4">Author</th>
+              <th class="font-mono text-xs uppercase tracking-wide text-os-tertiary font-medium px-6 py-4">Applied in Gil OS</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/[0.08]">
+            <tr class="hover:bg-white/[0.03] transition-colors">
+              <td class="px-6 py-5 font-display font-semibold">Deep Work</td>
+              <td class="px-6 py-5 text-os-secondary text-sm">Cal Newport</td>
+              <td class="px-6 py-5 text-os-secondary text-sm">Protected weekly focus blocks; shallow-work volume actively minimized</td>
+            </tr>
+            <tr class="hover:bg-white/[0.03] transition-colors">
+              <td class="px-6 py-5 font-display font-semibold">Atomic Habits</td>
+              <td class="px-6 py-5 text-os-secondary text-sm">James Clear</td>
+              <td class="px-6 py-5 text-os-secondary text-sm">Identity-based habits; the daily loop measures the atomic action, not the outcome</td>
+            </tr>
+            <tr class="hover:bg-white/[0.03] transition-colors">
+              <td class="px-6 py-5 font-display font-semibold">PARA</td>
+              <td class="px-6 py-5 text-os-secondary text-sm">Tiago Forte</td>
+              <td class="px-6 py-5 text-os-secondary text-sm">The vault's own storage architecture — raw sources synthesized into structured pillar knowledge</td>
+            </tr>
+            <tr class="hover:bg-white/[0.03] transition-colors">
+              <td class="px-6 py-5 font-display font-semibold">Winning the Week</td>
+              <td class="px-6 py-5 text-os-secondary text-sm">Demir &amp; Carey Bentley</td>
+              <td class="px-6 py-5 text-os-secondary text-sm">The Friday Finish ritual — planning deliberately separated from execution</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OPERATIONAL LOOPS ============ -->
+<section id="loops" class="px-6 py-24 border-t border-white/[0.08] bg-os-surface/40">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-2xl mb-14 fade-up">
+      <p class="font-mono text-xs uppercase tracking-widest text-accent-cyan mb-3">Execution</p>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight mb-4">Three nested loops keep it running.</h2>
+      <p class="text-os-secondary leading-relaxed">
+        Strategy sets the direction once a year. Everything else is a cadence that keeps the system honest.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+      <div class="rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-8 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]">
+        <span class="font-mono text-xs text-os-tertiary">ANNUAL</span>
+        <h3 class="font-display font-semibold text-xl mt-2 mb-3">Strategy — OKRs</h3>
+        <p class="text-os-secondary text-sm leading-relaxed">One objective per pillar, set at the start of the year, reviewed quarterly. Every key result ties to a measurable number.</p>
+      </div>
+      <div class="rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-8 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]">
+        <span class="font-mono text-xs text-os-tertiary">WEEKLY</span>
+        <h3 class="font-display font-semibold text-xl mt-2 mb-3">The Friday Finish</h3>
+        <p class="text-os-secondary text-sm leading-relaxed">Review the week's habit data, name the Big Rocks for the next one, and schedule Deep Work before the calendar fills itself in.</p>
+      </div>
+      <div class="rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-8 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]">
+        <span class="font-mono text-xs text-os-tertiary">DAILY</span>
+        <h3 class="font-display font-semibold text-xl mt-2 mb-3">Habit Tracker</h3>
+        <p class="text-os-secondary text-sm leading-relaxed">A lightweight daily capture — sleep, nutrition, exercise, meditation, reading. Objective data instead of end-of-week memory.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">You do not rise to the level of your goals. You fall to the level of your systems.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Built as a system, not a slogan.</p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationDelay = (i % 4) * 0.06 + 's';
+        entry.target.classList.add('fade-up');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('#pillars article, #driver-passenger > div > div, #loops > div > div').forEach((el) => {
+    el.style.opacity = '0';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
