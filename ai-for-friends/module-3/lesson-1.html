@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 3.1: Claude Code Onboarding Guide — AI for Friends</title>
+<meta name="title" content="Lesson 3.1: Claude Code Onboarding Guide">
+<meta name="description" content="For Marketing, HR, and Legal professionals — Windows + VS Code + Claude Pro. Full install, a hands-on tutorial, and the safety habits that keep it scoped.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #0A0F1C; color: #FFFFFF; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+  .font-display { font-family: 'Space Grotesk', sans-serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .bg-grid { background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px); background-size: 44px 44px; }
+  @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(18px); } 100% { opacity: 1; transform: translateY(0); } }
+  .fade-up { opacity: 0; animation: fadeInUp 0.7s ease-out forwards; }
+  ::selection { background: rgba(0,240,255,0.25); color: #FFFFFF; }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid #00F0FF; outline-offset: 3px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .fade-up { animation: none !important; opacity: 1 !important; } }
+
+  .lesson-body h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -0.01em; font-size: 1.7rem; margin-top: 3.5rem; margin-bottom: 0.9rem; }
+  .lesson-body h2 .step-num { display: inline-flex; align-items: center; justify-content: center; width: 2.1rem; height: 2.1rem; border-radius: 9999px; margin-right: 0.75rem; background: rgba(123,44,191,0.12); border: 1px solid rgba(123,44,191,0.4); color: #B18CE0; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 500; vertical-align: middle; }
+  .lesson-body h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1.1rem; margin-top: 2rem; margin-bottom: 0.6rem; color: #FFFFFF; }
+  .lesson-body p { line-height: 1.75; margin-bottom: 1.25em; color: #9CA3AF; }
+  .lesson-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.88rem; }
+  .lesson-body th { text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: #6B7280; padding: 0.7rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .lesson-body td { padding: 0.8rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: #9CA3AF; vertical-align: top; }
+  .lesson-body tr:last-child td { border-bottom: none; }
+  .lesson-body strong { color: #FFFFFF; font-weight: 600; }
+  .lesson-body ol { list-style: decimal; padding-left: 1.25rem; margin-bottom: 1.5rem; }
+  .lesson-body ol li { padding-left: 0.25rem; margin-bottom: 0.6rem; line-height: 1.7; color: #9CA3AF; }
+  .lesson-body ol li::marker { color: #00F0FF; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
+  .lesson-body ul.plain { list-style: disc; padding-left: 1.25rem; margin-bottom: 1.5rem; }
+  .lesson-body ul.plain li { margin-bottom: 0.5rem; line-height: 1.7; color: #9CA3AF; }
+  .lesson-body ul.plain li::marker { color: #00F0FF; }
+
+  .callout { border-radius: 0.75rem; padding: 1.1rem 1.25rem; margin: 1.5rem 0; border: 1px solid; font-size: 0.9rem; line-height: 1.65; }
+  .callout-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.4rem; }
+  .callout-tip { background: rgba(0,240,255,0.06); border-color: rgba(0,240,255,0.25); } .callout-tip .callout-label { color: #00F0FF; }
+  .callout-note { background: rgba(0,194,209,0.06); border-color: rgba(0,194,209,0.25); } .callout-note .callout-label { color: #00C2D1; }
+  .callout-info { background: rgba(123,44,191,0.08); border-color: rgba(123,44,191,0.3); } .callout-info .callout-label { color: #B18CE0; }
+  .callout-warning { background: rgba(251,191,36,0.07); border-color: rgba(251,191,36,0.3); } .callout-warning .callout-label { color: #FBBF24; }
+  .callout p { color: #D1D5DB; margin-bottom: 0; }
+
+  .lesson-body details { border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); margin: 1.5rem 0; overflow: hidden; }
+  .lesson-body summary { cursor: pointer; padding: 1rem 1.25rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.9rem; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .lesson-body summary::-webkit-details-marker { display: none; }
+  .lesson-body summary::after { content: '+'; font-family: 'JetBrains Mono', monospace; color: #00F0FF; font-size: 1.1rem; }
+  .lesson-body details[open] summary::after { content: '\2212'; }
+  .lesson-body details > div { padding: 0 1.25rem 1.25rem; }
+
+  .lesson-body pre { background: #111827; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.6rem; padding: 1rem 1.15rem; overflow-x: auto; margin: 1rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.6; color: #D1D5DB; white-space: pre-wrap; }
+  .checklist-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; }
+  .checklist-box { width: 1.1rem; height: 1.1rem; border-radius: 0.3rem; border: 1.5px solid rgba(0,240,255,0.5); flex-shrink: 0; margin-top: 0.15rem; }
+  .col-2 { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+  @media (min-width: 640px) { .col-2 { grid-template-columns: 1fr 1fr; } }
+
+  .toc-pill { padding: 0.4rem 0.8rem; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.12); font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: #6B7280; }
+</style>
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pillars</a>
+      <a href="../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Course</a>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Module 3</a>
+  </div>
+</header>
+
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a><span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Module 3</a><span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lesson 3.1</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-3">Claude Code Onboarding Guide</h1>
+    <p class="font-mono text-xs text-os-tertiary mb-6">FOR MARKETING, HR, AND LEGAL PROFESSIONALS — WINDOWS + VS CODE + CLAUDE PRO</p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">75–90 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent-purple/40 text-accent-purple">REQUIRED</span>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <span class="toc-pill">0. Before We Start</span>
+      <span class="toc-pill">1. Web vs. Code</span>
+      <span class="toc-pill">2. Installation</span>
+      <span class="toc-pill">3. Extensions</span>
+      <span class="toc-pill">4. Terminal Basics</span>
+      <span class="toc-pill">5. Hands-On Tutorial</span>
+    </div>
+  </div>
+</header>
+
+<article class="px-6 pb-24">
+  <div class="lesson-body max-w-2xl mx-auto text-[16px]">
+
+    <h2><span class="step-num">0</span>Before We Start</h2>
+    <p><strong>What Claude Code is:</strong> an AI assistant that works directly on the files and folders on your computer. You ask in plain English; it reads, drafts, edits, and organizes real documents.</p>
+    <p><strong>What VS Code is:</strong> the window it all happens in. Think Microsoft Word, but built to open a whole <em>folder</em> of files at once instead of one document. VS Code is the office; Claude Code is the assistant sitting in it.</p>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Confidentiality — read this first</span>
+      <p>Claude Pro is a personal subscription with no corporate data agreement, admin oversight, audit logs, or retention controls. Practice on non-sensitive material. Before running real client files, employee records, or privileged material through it, check with your employer's IT/Legal — they may require Claude Team/Enterprise instead of a personal Pro plan.</p>
+    </div>
+
+    <p><strong>Cost:</strong> Claude Pro, ~$20/mo (~$17/mo billed annually). The free tier does not include Claude Code — subscribe before your session. <strong>Time required:</strong> ~75–90 minutes. <strong>What success looks like:</strong> by the end, you'll have pointed Claude at a folder of documents and had it produce a real, saved summary file, without copying or pasting anything.</p>
+
+    <div class="callout callout-note"><span class="callout-label">You Cannot Break Your Computer</span><p>Claude asks permission before it changes anything, and shows you exactly what it plans to change.</p></div>
+
+    <h3>Prerequisites checklist</h3>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Windows 10 (build 1809+) or Windows 11</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">4 GB+ RAM</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Claude Pro plan active (claude.ai)</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Claude login credentials handy</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Ability to install software on the machine</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">A folder of non-confidential practice documents</span></div>
+    </div>
+
+    <h2><span class="step-num">1</span>Web vs. Claude Code — Which Do I Use?</h2>
+    <p>Answer one question: <strong>do you need to work with files and folders, or just ask a question?</strong></p>
+
+    <table>
+      <thead><tr><th>If you...</th><th>Use this</th></tr></thead>
+      <tbody>
+        <tr><td>Have a quick question, no files involved</td><td><strong>claude.ai (web)</strong></td></tr>
+        <tr><td>Need to edit or create ONE Word/Excel/PowerPoint file</td><td><strong>Claude Cowork</strong></td></tr>
+        <tr><td>Need to work across MANY files, or repeat the same task</td><td><strong>Claude Code</strong> (this guide)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-info"><span class="callout-label">The Core Difference, One Sentence</span><p>The web version is a conversation <em>about</em> your documents. Claude Code works <em>on</em> your documents.</p></div>
+
+    <h3>Nine concrete advantages</h3>
+    <ul class="plain">
+      <li><strong>Whole folders, not one upload at a time</strong> — point it at a folder of 40 contracts or 200 résumés</li>
+      <li><strong>Output lands as real, saved files</strong> — no copy-paste from a chat window into Word</li>
+      <li><strong>Bulk work becomes one instruction</strong> — e.g. "extract the termination date from each of these 60 agreements into one table"</li>
+      <li><strong>It remembers your project</strong> — a CLAUDE.md file holds your house style, tone, or defined terms across every session</li>
+      <li><strong>You see exactly what changed</strong> — every edit is a before/after "diff" you approve or reject</li>
+      <li><strong>Repeatable, saved workflows</strong> — turn a recurring task into a reusable process</li>
+      <li><strong>Multi-step work in one pass</strong> — read, compare, flag, and summarize in one request</li>
+      <li><strong>Files stay scoped to what you open</strong> — you control exactly what it can see</li>
+      <li><strong>Works with your existing folder structure</strong> — no parallel filing system</li>
+    </ul>
+
+    <details>
+      <summary>Before / After — by role (Marketing, HR, Legal)</summary>
+      <div>
+        <h3>Marketing</h3>
+        <table><tbody>
+          <tr><td>Repurpose one blog post into 8 channel variants</td><td>8 separate prompts, 8 copy-pastes</td><td>One instruction &rarr; 8 saved files</td></tr>
+          <tr><td>Enforce brand voice across a campaign</td><td>Re-paste the style guide every chat</td><td>CLAUDE.md holds it permanently</td></tr>
+          <tr><td>Audit 50 pieces of copy for consistency</td><td>Impractical</td><td>One pass over the folder</td></tr>
+        </tbody></table>
+        <h3>Human Resources</h3>
+        <table><tbody>
+          <tr><td>Summarize 40 résumés against a job description</td><td>40 uploads, no consolidated output</td><td>One folder &rarr; one ranked summary file</td></tr>
+          <tr><td>Standardize 15 job descriptions to one template</td><td>15 chats, manual reassembly</td><td>Batch rewrite, each saved back</td></tr>
+          <tr><td>Extract dates/terms from offer letters</td><td>Manual, error-prone</td><td>One structured table</td></tr>
+        </tbody></table>
+        <h3>Legal</h3>
+        <table><tbody>
+          <tr><td>Compare clause language across 30 agreements</td><td>Upload-limited, loses thread</td><td>One pass, one comparison table</td></tr>
+          <tr><td>Maintain a defined-terms glossary across a deal</td><td>Re-explain every session</td><td>Persistent in CLAUDE.md</td></tr>
+          <tr><td>Iterate a draft with full change visibility</td><td>Copy-paste, no history</td><td>Diff review on every edit</td></tr>
+        </tbody></table>
+      </div>
+    </details>
+
+    <p><strong>When the web version is actually better:</strong> quick one-off questions with no files, working from your phone, brainstorming out loud, image or screenshot analysis, or when you just don't want to open a terminal today.</p>
+    <div class="callout callout-note"><span class="callout-label">Honest Framing</span><p>Web for thinking. Claude Code for producing. Most people use both. The whole price of Claude Code is a ~30-minute learning curve, being on a computer rather than a phone, and typing a few commands.</p></div>
+
+    <h2><span class="step-num">2</span>Installation</h2>
+    <p>You're installing two free programs (VS Code and Claude Code) and connecting them to your paid Claude Pro account. Every step has a checkpoint so you know you're on track.</p>
+
+    <h3>2.1 Get Claude Pro</h3>
+    <ol><li>Go to claude.ai &rarr; create account &rarr; Settings &rarr; Upgrade to Pro (~$20/mo)</li></ol>
+    <p class="!-mt-4 text-sm">✅ Checkpoint: "Pro" is visible on your account</p>
+
+    <h3>2.2 Install Visual Studio Code</h3>
+    <ol>
+      <li>Download from <strong>code.visualstudio.com</strong> (official site only)</li>
+      <li>Choose <strong>User Installer, 64-bit</strong> (no admin rights required)</li>
+      <li>On the checkbox screen: keep "Add to PATH" checked; check "Open with Code" context menu options</li>
+      <li>First launch: dismiss the welcome tour and orient yourself to Explorer (left), Editor (center), Terminal panel (bottom), Status bar (very bottom)</li>
+    </ol>
+    <p class="!-mt-4 text-sm">✅ Checkpoint: VS Code opens cleanly</p>
+
+    <h3>2.3 Install Git for Windows (recommended)</h3>
+    <ol><li>Download from <strong>git-scm.com/downloads/win</strong> and accept every default</li></ol>
+    <p class="!-mt-4 text-sm">✅ Checkpoint: "Git Bash" appears in the Start menu</p>
+
+    <h3>2.4 Install Claude Code</h3>
+    <ol>
+      <li>Open <strong>Windows PowerShell</strong> (Start menu &rarr; type "PowerShell"). No admin rights needed.</li>
+      <li>Run:</li>
+    </ol>
+    <pre>irm https://claude.ai/install.ps1 | iex</pre>
+    <p>Scrolling text and a download progress bar are normal — that means it's working, not stuck. Close PowerShell and open a brand-new window once it finishes; settings only apply to terminals opened afterward.</p>
+
+    <h3>2.5 First run &amp; login</h3>
+    <ol>
+      <li>Type <span class="font-mono text-os-primary">claude</span>, press Enter</li>
+      <li>Choose Claude.ai account login (not "API key")</li>
+      <li>A browser opens &rarr; log in &rarr; approve &rarr; return to the terminal</li>
+    </ol>
+    <p class="!-mt-4 text-sm">✅ Checkpoint: you're at the Claude Code prompt, no login nag</p>
+
+    <h3>2.6 Verify everything works</h3>
+    <pre>claude --version
+claude doctor
+claude</pre>
+    <p>Type <span class="font-mono text-os-primary">hello</span>. If Claude replies, setup is complete.</p>
+
+    <details>
+      <summary>Troubleshooting</summary>
+      <div>
+        <table><tbody>
+          <tr><td><span class="font-mono">claude</span> not recognized</td><td>Close and reopen the terminal first. Still broken → add <span class="font-mono">%USERPROFILE%\.local\bin</span> to PATH</td></tr>
+          <tr><td>Stuck at login / plan error</td><td>Pro isn't active — check Settings on claude.ai</td></tr>
+          <tr><td>Defender/SmartScreen warning</td><td>Expected for a PowerShell installer — only ever run this for the official claude.ai URL</td></tr>
+          <tr><td>Anything else</td><td>Run <span class="font-mono">claude doctor</span> first, then see code.claude.com/docs/en/troubleshoot-install</td></tr>
+        </tbody></table>
+      </div>
+    </details>
+
+    <h2><span class="step-num">3</span>Recommended VS Code Extensions</h2>
+    <p>Extensions are small add-ons — like apps for your phone. The ones below make VS Code friendlier for document work. Press <span class="font-mono text-os-primary">Ctrl+Shift+X</span> &rarr; search by name &rarr; click Install &rarr; Reload if prompted. Tier 1 is enough to get started.</p>
+
+    <h3>Tier 1 — install these</h3>
+    <table>
+      <thead><tr><th>Extension</th><th>Publisher</th><th>Why you need it</th></tr></thead>
+      <tbody>
+        <tr><td>Claude Code</td><td>Anthropic</td><td>Graphical chat panel inside VS Code — friendlier than the terminal</td></tr>
+        <tr><td>Markdown All in One</td><td>Yu Zhang</td><td>Live preview, auto table-of-contents, easy formatting</td></tr>
+        <tr><td>Code Spell Checker</td><td>Street Side Software</td><td>Catches typos in copy, policies, and drafts as you type</td></tr>
+        <tr><td>Rainbow CSV</td><td>mechatroner</td><td>Makes spreadsheet exports (.csv) readable in columns</td></tr>
+        <tr><td>vscode-pdf</td><td>tomoki1207</td><td>View PDFs inside VS Code</td></tr>
+      </tbody>
+    </table>
+
+    <details>
+      <summary>Tier 2 — add if useful</summary>
+      <div>
+        <table><tbody>
+          <tr><td>Excel Viewer / Data Preview</td><td>HR, Marketing</td><td>Grid view for .xlsx/.csv</td></tr>
+          <tr><td>Markdown PDF</td><td>All</td><td>Export markdown output to polished PDF/HTML</td></tr>
+          <tr><td>Speech</td><td>Anyone</td><td>Dictate prompts instead of typing; runs locally</td></tr>
+          <tr><td>Draw.io Integration</td><td>Marketing</td><td>Diagrams, funnels, org charts</td></tr>
+          <tr><td>Todo Tree</td><td>HR, Legal</td><td>Surfaces open items across a folder</td></tr>
+          <tr><td>Live Share</td><td>Teams</td><td>Real-time collaborative sessions</td></tr>
+          <tr><td>Word Count</td><td>Marketing, Legal</td><td>Live word/character counts</td></tr>
+        </tbody></table>
+        <p class="!mt-4"><strong>Skip:</strong> GitLens, Docker, Python, ESLint, Prettier, language servers, Copilot — these are software-developer tools and add nothing for document work.</p>
+      </div>
+    </details>
+
+    <p><strong>Two settings worth changing:</strong> turn Word Wrap on (Alt+Z) so long paragraphs don't scroll sideways; set your theme and font size via Ctrl+Shift+P &rarr; "Color Theme"; optionally disable the minimap for less visual clutter.</p>
+
+    <h2><span class="step-num">4</span>Terminal Basics</h2>
+    <p>A "terminal" is a text box where you type instructions instead of clicking. You only need <strong>one terminal</strong> and <strong>six commands</strong> for this whole guide.</p>
+
+    <div class="callout callout-tip"><span class="callout-label">Just Use This One</span><p>For everything in this guide, use the <strong>VS Code Integrated Terminal</strong> — open it with <span class="font-mono text-os-primary">Ctrl + `</span> (the backtick key, top-left of your keyboard). You never need to open a separate terminal program.</p></div>
+
+    <details>
+      <summary>Other terminals (optional background)</summary>
+      <div>
+        <table><tbody>
+          <tr><td>Windows PowerShell</td><td>Modern Windows default shell</td><td>Installation (Section 2.4) only</td></tr>
+          <tr><td>Git Bash</td><td>Unix-style shell from Git for Windows</td><td>Optional alternative</td></tr>
+          <tr><td>Command Prompt (cmd.exe)</td><td>Legacy Windows shell</td><td>Avoid</td></tr>
+          <tr><td>Windows Terminal</td><td>Microsoft's tabbed terminal app</td><td>Optional, nicer host for PowerShell</td></tr>
+        </tbody></table>
+      </div>
+    </details>
+
+    <h3>The six commands</h3>
+    <table>
+      <tbody>
+        <tr><td><span class="font-mono text-os-primary">pwd</span></td><td>Where am I?</td></tr>
+        <tr><td><span class="font-mono text-os-primary">dir</span> (PowerShell) / <span class="font-mono text-os-primary">ls</span> (Git Bash)</td><td>What's in this folder?</td></tr>
+        <tr><td><span class="font-mono text-os-primary">cd foldername</span></td><td>Go into a folder</td></tr>
+        <tr><td><span class="font-mono text-os-primary">cd ..</span></td><td>Go back up one</td></tr>
+        <tr><td><span class="font-mono text-os-primary">cls</span> / <span class="font-mono text-os-primary">clear</span></td><td>Tidy the screen</td></tr>
+        <tr><td><span class="font-mono text-os-primary">Ctrl + C</span></td><td>Stop whatever's running</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-note"><span class="callout-label">Survival Tips</span><p>Nothing runs until you press Enter. Up arrow recalls your last command. Tab autocompletes names. A typo just produces an error message — it doesn't damage anything.</p></div>
+
+    <h2><span class="step-num">5</span>Hands-On Tutorial</h2>
+
+    <h3>The one concept: the project folder</h3>
+    <p>Claude can only see and touch files in the folder you open — a safety and confidentiality feature. Create a sandbox folder, e.g. <span class="font-mono text-os-primary">Documents\claude-practice</span>, with 3–5 non-confidential sample documents.</p>
+
+    <h3>Open the folder</h3>
+    <ol>
+      <li>File &rarr; Open Folder &rarr; select claude-practice (or right-click the folder &rarr; "Open with Code")</li>
+      <li>Approve the "Trust the authors" prompt</li>
+      <li>Tour the Explorer sidebar</li>
+      <li>Open the terminal (Ctrl + `)</li>
+    </ol>
+
+    <h3>Working with Word, PDF, and Excel files</h3>
+    <p>Works natively and beautifully: plain text, Markdown (.md), .csv, .txt. Works with caveats: PDFs (readable, not directly editable), .docx (readable but formatting is compressed). Recommended workflow: work in Markdown, export to Word/PDF at the end — ask Claude to convert .docx/PDF content to Markdown as step one of a project.</p>
+
+    <h3>Start Claude Code</h3>
+    <p>Type <span class="font-mono text-os-primary">claude</span>, press Enter. Note the prompt box, model indicator (which AI is answering you), and status line. Say hello and get a reply — your first win, about two minutes in.</p>
+
+    <h3>Exercise 1 — ask a question (read-only, zero risk)</h3>
+    <pre>What documents are in this folder, and what is each one about?</pre>
+    <p>You type normal sentences, not commands. This is the mental unlock.</p>
+
+    <h3>Exercise 2 — have Claude create a file</h3>
+    <pre>Read all the documents in this folder and create a file called summary.md with a one-paragraph summary of each.</pre>
+    <p>The permission prompt: Claude asks before writing. Options are allow-once, allow-always, or deny. This is the most important safety concept in this guide. Watch the new file appear in the Explorer sidebar.</p>
+
+    <h3>Exercise 3 — have Claude edit, and review the diff</h3>
+    <pre>Add a "Key Risks" section to summary.md with three bullets.</pre>
+    <p>Review the diff view — a side-by-side before/after — and approve or reject it. For Legal, this is a redline of the AI's proposed changes. Nothing lands without your approval. Claude proposes; you decide.</p>
+
+    <h3>Exercise 4 — the bulk task (the real payoff)</h3>
+    <pre>For each document in this folder, pull out the title, date, and main topic, and put them all into one table in index.csv.</pre>
+    <p>Open the result with Rainbow CSV. That was one instruction — on the web version, it would have been one upload and one prompt per document.</p>
+
+    <div class="callout callout-info"><span class="callout-label">Plan Mode — Your Best Guardrail</span><p>Claude can only read and think, not change anything, until you approve a written plan. Turn it on with Shift+Tab (twice) or <span class="font-mono">/plan</span>. Recommended as your default starting posture for anything touching real work.</p></div>
+
+    <h3>CLAUDE.md — teach Claude your standards once</h3>
+    <p>A plain-text file in the folder that Claude reads automatically every session:</p>
+    <ul class="plain">
+      <li><strong>Marketing:</strong> brand voice, banned words, approved product naming, reading level</li>
+      <li><strong>HR:</strong> required disclaimers, tone guidance, template structure, inclusive-language rules</li>
+      <li><strong>Legal:</strong> defined terms, citation format, jurisdiction, flags for indemnity/liability language</li>
+    </ul>
+    <p>Try writing a five-line CLAUDE.md and watch the next response change.</p>
+
+    <h3>Essential slash commands</h3>
+    <table>
+      <tbody>
+        <tr><td><span class="font-mono text-os-primary">/help</span></td><td>Everything available</td></tr>
+        <tr><td><span class="font-mono text-os-primary">/clear</span></td><td>Fresh start (also helps stay under usage limits)</td></tr>
+        <tr><td><span class="font-mono text-os-primary">/model</span></td><td>See or switch the AI model</td></tr>
+        <tr><td><span class="font-mono text-os-primary">/plan</span></td><td>Turn on Plan Mode</td></tr>
+        <tr><td><span class="font-mono text-os-primary">/status</span></td><td>Session info</td></tr>
+        <tr><td><span class="font-mono text-os-primary">/doctor</span></td><td>Health check</td></tr>
+        <tr><td><span class="font-mono text-os-primary">/voice</span></td><td>Dictate instead of type</td></tr>
+      </tbody>
+    </table>
+    <p>To exit: <span class="font-mono text-os-primary">/exit</span>, or press Ctrl+C twice.</p>
+
+    <h3>How to talk to Claude effectively</h3>
+    <p>Name the what and the where — name the file. One job at a time. Say what "done" looks like (format, length, audience). Use @filename to point at a specific document. If the result is wrong, just say so in plain English.</p>
+
+    <table>
+      <thead><tr><th>Vague</th><th>Specific</th></tr></thead>
+      <tbody>
+        <tr><td>"Make this better"</td><td>"Shorten this to 150 words, keep the same call to action"</td></tr>
+        <tr><td>"Check these contracts"</td><td>"Flag any indemnity clause that caps liability below $1M"</td></tr>
+        <tr><td>"Fix the résumés"</td><td>"Standardize each résumé's date format to MM/YYYY"</td></tr>
+        <tr><td>"Summarize this"</td><td>"Summarize in 3 bullets, written for a non-technical VP"</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>Example prompts by role</strong> — the kind of one-line requests that show what "specific" looks like in real work:</p>
+    <ul class="plain">
+      <li><strong>HR:</strong> "Read the résumé spreadsheet in this folder and flag any candidate who's been in 'Interview Scheduled' for more than 10 days."</li>
+      <li><strong>Legal:</strong> "Compare the indemnity clause across all contracts in this folder and flag any that cap liability below $1M."</li>
+      <li><strong>Marketing:</strong> "Read the campaign performance CSV and tell me which channel had the highest click-through rate."</li>
+    </ul>
+
+    <h3>Usage limits</h3>
+    <p>Claude Pro has rolling ~5-hour session limits plus weekly caps. Claude Code and claude.ai chat draw from the same usage pool. Use <span class="font-mono">/clear</span> between unrelated tasks, avoid pointing at unnecessarily large folders, and check your usage anytime under Settings &rarr; Usage on claude.ai.</p>
+
+    <h3>Safety, confidentiality, and good habits</h3>
+    <div class="col-2">
+      <div>
+        <p class="!mb-2 text-os-primary font-semibold text-sm">Always</p>
+        <ul class="plain"><li>Read the diff before approving</li><li>Start in Plan Mode for anything real</li><li>Scope tightly — open the specific project folder, never Documents or Desktop root</li><li>Keep a backup before any bulk operation</li></ul>
+      </div>
+      <div>
+        <p class="!mb-2 text-os-primary font-semibold text-sm">Never</p>
+        <ul class="plain"><li>Paste passwords, API keys, or bank details</li><li>Run employee PII, salary data, investigation files, or privileged client material through a personal Pro plan without employer approval</li><li>Approve changes you don't understand — ask Claude to explain instead</li></ul>
+      </div>
+    </div>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-purple/15 to-transparent border border-accent-purple/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-purple mb-2">Course complete</p>
+      <p class="text-sm text-os-secondary">You've pointed an AI assistant at a folder of real documents and gotten a saved file back — without a single copy-paste. That's the whole unlock. From here, the only way to get better is to run it on your own real (non-confidential) work this week.</p>
+    </div>
+
+  </div>
+</article>
+
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="index.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; Module 3</a>
+    <a href="../index.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">Back to Course Home &rarr;</a>
+  </div>
+</nav>
+
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">You do not rise to the level of your goals. You fall to the level of your systems.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Built as a system, not a slogan.</p>
+  </div>
+</footer>
+
+</body>
+</html>

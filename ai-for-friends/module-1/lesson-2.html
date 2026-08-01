@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 1.2: Prompt Engineering vs. Context Engineering — AI for Friends</title>
+<meta name="title" content="Lesson 1.2: Prompt Engineering vs. Context Engineering">
+<meta name="description" content="Master the two levers that determine AI output quality — and learn when to use each one.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #0A0F1C; color: #FFFFFF; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+  .font-display { font-family: 'Space Grotesk', sans-serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .bg-grid {
+    background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(18px); } 100% { opacity: 1; transform: translateY(0); } }
+  .fade-up { opacity: 0; animation: fadeInUp 0.7s ease-out forwards; }
+  ::selection { background: rgba(0,240,255,0.25); color: #FFFFFF; }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid #00F0FF; outline-offset: 3px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .fade-up { animation: none !important; opacity: 1 !important; } }
+
+  .lesson-body h2 {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: -0.01em;
+    font-size: 1.5rem; margin-top: 3rem; margin-bottom: 0.75rem;
+  }
+  .lesson-body h2 .step-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2rem; height: 2rem; border-radius: 9999px; margin-right: 0.75rem;
+    background: rgba(0,240,255,0.1); border: 1px solid rgba(0,240,255,0.4);
+    color: #00F0FF; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 500;
+    vertical-align: middle;
+  }
+  .lesson-body h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1.05rem; margin-top: 1.75rem; margin-bottom: 0.5rem; color: #FFFFFF; }
+  .lesson-body p { line-height: 1.75; margin-bottom: 1.25em; color: #9CA3AF; }
+  .lesson-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+  .lesson-body th { text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: #6B7280; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .lesson-body td { padding: 0.85rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: #9CA3AF; vertical-align: top; }
+  .lesson-body tr:last-child td { border-bottom: none; }
+  .lesson-body strong { color: #FFFFFF; font-weight: 600; }
+
+  .callout { border-radius: 0.75rem; padding: 1.1rem 1.25rem; margin: 1.5rem 0; border: 1px solid; font-size: 0.9rem; line-height: 1.65; }
+  .callout-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.4rem; }
+  .callout-tip { background: rgba(0,240,255,0.06); border-color: rgba(0,240,255,0.25); }
+  .callout-tip .callout-label { color: #00F0FF; }
+  .callout-note { background: rgba(0,194,209,0.06); border-color: rgba(0,194,209,0.25); }
+  .callout-note .callout-label { color: #00C2D1; }
+  .callout-info { background: rgba(123,44,191,0.08); border-color: rgba(123,44,191,0.3); }
+  .callout-info .callout-label { color: #B18CE0; }
+  .callout-warning { background: rgba(251,191,36,0.07); border-color: rgba(251,191,36,0.3); }
+  .callout-warning .callout-label { color: #FBBF24; }
+  .callout p { color: #D1D5DB; margin-bottom: 0; }
+
+  .lesson-body details { border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); margin: 1.5rem 0; overflow: hidden; }
+  .lesson-body summary { cursor: pointer; padding: 1rem 1.25rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.9rem; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .lesson-body summary::-webkit-details-marker { display: none; }
+  .lesson-body summary::after { content: '+'; font-family: 'JetBrains Mono', monospace; color: #00F0FF; font-size: 1.1rem; }
+  .lesson-body details[open] summary::after { content: '\2212'; }
+  .lesson-body details > div { padding: 0 1.25rem 1.25rem; }
+
+  .lesson-body pre { background: #111827; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.6rem; padding: 1rem 1.15rem; overflow-x: auto; margin: 1rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.6; color: #D1D5DB; white-space: pre-wrap; }
+
+  .checklist-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; }
+  .checklist-box { width: 1.1rem; height: 1.1rem; border-radius: 0.3rem; border: 1.5px solid rgba(0,240,255,0.5); flex-shrink: 0; margin-top: 0.15rem; }
+
+  .col-2 { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+  @media (min-width: 640px) { .col-2 { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pillars</a>
+      <a href="../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Course</a>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Module 1</a>
+  </div>
+</header>
+
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a><span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Module 1</a><span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lesson 1.2</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Prompt Engineering vs. Context Engineering</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">Master the two levers that determine AI output quality — and learn when to use each one.</p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">20 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">STEP 2 OF 4</span>
+    </div>
+    <div class="flex flex-wrap gap-2 font-mono text-[10px]">
+      <span class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan">1. Core Distinction</span>
+      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">2. Better Prompts</span>
+      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">3. Five Patterns</span>
+      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">4. Context in Practice</span>
+      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">5. Context Window</span>
+      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">6. Full Formula</span>
+    </div>
+  </div>
+</header>
+
+<article class="px-6 pb-24">
+  <div class="lesson-body max-w-2xl mx-auto text-[16px]">
+
+    <h2><span class="step-num">1</span>The Core Distinction</h2>
+    <p>Two concepts control AI output quality. <strong>Prompt engineering</strong> controls how you ask. <strong>Context engineering</strong> controls what information you give the AI to work with. Most people spend all their time on the first and ignore the second — but the second matters more.</p>
+
+    <table>
+      <thead><tr><th>Dimension</th><th>Prompt Engineering</th><th>Context Engineering</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Focus</strong></td><td>User-facing text (how you ask)</td><td>System-oriented data (what you provide)</td></tr>
+        <tr><td><strong>Nature</strong></td><td>Transient, single-turn</td><td>Persistent, memory-managed</td></tr>
+        <tr><td><strong>Method</strong></td><td>Trial-and-error iteration</td><td>Deterministic, structured pipelines</td></tr>
+        <tr><td><strong>Input</strong></td><td>A single text instruction</td><td>An organized information payload</td></tr>
+        <tr><td><strong>Analogy</strong></td><td>Writing a clear email subject line</td><td>Attaching the right documents to the email</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>Three rules for applying both:</strong> front-load relevant information instead of asking the model to guess from nothing; constrain the scope by being explicit about which sources are authoritative; persist and refine by reusing a conversation with accumulated context for one workstream.</p>
+
+    <div class="callout callout-info"><span class="callout-label">The Key Principle</span><p>Good outcomes depend at least as much on context as on the wording of a single prompt. Stop optimizing your prompt. Start optimizing your context.</p></div>
+    <div class="callout callout-tip"><span class="callout-label">Diagnose Before Fixing</span><p>When the AI gives a wrong or weak answer, ask "Did I give it the right information?" before "Did I phrase my question correctly?" Context problems cause most AI failures.</p></div>
+
+    <h2><span class="step-num">2</span>Better Prompts in Practice</h2>
+    <p>A vague prompt forces the AI to guess, and every guess introduces error. The fix isn't better writing — it's more specificity.</p>
+
+    <div class="col-2">
+      <div>
+        <h3>HR</h3>
+        <pre>❌ Before: "Summarize this."</pre>
+        <p class="!mb-2"><em>Vague. For whom? How long? What format?</em></p>
+        <pre>✅ After: "Summarize this interview transcript as 5 bullet points for the hiring manager. Focus on the candidate's strengths and any concerns raised."</pre>
+      </div>
+      <div>
+        <h3>Marketing</h3>
+        <pre>❌ Before: "What's late?"</pre>
+        <p class="!mb-2"><em>Late compared to what? Which campaign?</em></p>
+        <pre>✅ After: "Which social posts for this launch campaign are more than 2 days past their scheduled date? Show as a table: platform, scheduled date, days late. Sort by days late descending."</pre>
+      </div>
+    </div>
+
+    <details>
+      <summary>More examples — HR and Legal</summary>
+      <div>
+        <h3>HR</h3>
+        <pre>✅ "Write a job description for a Senior Account Manager on the customer success team. Requirements: 5+ years in B2B account management, CRM experience, track record of client retention. Use our standard format: summary, responsibilities, requirements, benefits. Tone: professional but warm."</pre>
+        <h3>Legal</h3>
+        <pre>✅ "Review this NDA for missing standard clauses. Check for: definition of confidential information, term length, return-of-materials, governing law. List each missing or weak clause with a one-line note on the risk it creates."</pre>
+      </div>
+    </details>
+
+    <div class="callout callout-info"><span class="callout-label">The Specificity Rule</span><p>Every vague word in your prompt forces a guess. A prompt with five vague elements has roughly a 3% chance of producing exactly what you want. Five specific elements produce accurate results nearly every time.</p></div>
+
+    <h2><span class="step-num">3</span>Five Prompting Patterns That Cover 90% of Your Work</h2>
+    <p>You don't need dozens of techniques — five patterns cover almost everything you'll do in Claude.</p>
+
+    <table>
+      <thead><tr><th>Pattern</th><th>What It Is</th><th>When to Use It</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1. Zero-Shot</strong></td><td>Ask once with clear instructions, no examples</td><td>Simple, well-defined tasks with an obvious format</td></tr>
+        <tr><td><strong>2. Few-Shot</strong></td><td>Provide 1–3 examples before asking the model to continue the pattern</td><td>Transforming notes, classifying items, consistent formatting</td></tr>
+        <tr><td><strong>3. Role Prompting</strong></td><td>Explicitly assign the AI a role to align tone and depth</td><td>When you need a specific expertise level or style</td></tr>
+        <tr><td><strong>4. Chain-of-Thought</strong></td><td>Ask the model to reason step by step before answering</td><td>Analysis, safety-relevant decisions, complex tradeoffs</td></tr>
+        <tr><td><strong>5. Interview-Style</strong></td><td>Ask the model to ask YOU clarifying questions first</td><td>When you're unsure what you need, or the task is ambiguous</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Pattern 2 example (Few-Shot)</h3>
+    <pre>Convert these raw notes from our campaign retro into formatted action items:
+
+Input: "landing page load time hurt conversions, need dev to fix before next launch"
+Output: Action Item: Fix landing page load time before next launch. Owner: [Your Name]. Source: Campaign retro. Due: Before next launch.
+
+Input: "email open rates dropped, subject lines felt generic"
+Output: Action Item: A/B test more specific email subject lines. Owner: [Your Name]. Source: Campaign retro. Due: Next email send.
+
+Now convert this:
+Input: "paid social spend ran over budget, no one was watching the daily caps"</pre>
+
+    <details>
+      <summary>Pattern 4 example — Chain-of-Thought</summary>
+      <div><pre>I need to decide whether to escalate a vendor contract renewal that is 30 days from expiring. Walk me through the decision step by step:
+(1) What is the current expiration date?
+(2) When does a renewal decision need to be made?
+(3) What is the cost of renewing vs. switching?
+(4) What is the risk of letting it auto-renew?
+(5) Based on these factors, recommend escalate or hold.</pre></div>
+    </details>
+    <details>
+      <summary>Pattern 5 example — Interview-Style</summary>
+      <div><pre>I need to write a business case for a new employee onboarding tool.
+Before you draft anything, ask me 5 clarifying questions about the problem, the audience, the budget, and the timeline.</pre></div>
+    </details>
+
+    <div class="callout callout-note"><span class="callout-label">Combine Patterns for Best Results</span><p>Start with Role Prompting ("You are a senior recruiter..."), add Few-Shot examples, then request Chain-of-Thought reasoning. Stacking patterns produces the highest-quality outputs.</p></div>
+
+    <h2><span class="step-num">4</span>Context Engineering in Practice</h2>
+    <p>A model is only as smart as its context. Without it, AI systems hallucinate — they invent facts. Engineered context fixes this.</p>
+
+    <table>
+      <thead><tr><th>Role</th><th>Bad Context</th><th>Good Context</th></tr></thead>
+      <tbody>
+        <tr><td><strong>HR</strong></td><td>Paste 40 résumés and ask "help me screen these"</td><td>Paste job requirements first, then 3 résumés at a time: "Score each 1–5 on relevant experience, years, leadership indicators. Show as a table."</td></tr>
+        <tr><td><strong>Legal</strong></td><td>Paste a 40-page merger agreement and ask "are there any risks?"</td><td>Extract just Indemnification and Termination: "Which clauses deviate from our standard template? List clause number, deviation, risk level."</td></tr>
+        <tr><td><strong>Marketing</strong></td><td>Ask "how did the campaign do?" with no data attached</td><td>Paste the campaign CSV filtered to last 30 days: "Which channels underperformed target CPA? Show channel, target, actual, gap."</td></tr>
+      </tbody>
+    </table>
+
+    <table>
+      <thead><tr><th>Context Quality</th><th>What Happens</th></tr></thead>
+      <tbody>
+        <tr><td><strong>No context</strong></td><td>AI guesses. High hallucination rate. Output is useless.</td></tr>
+        <tr><td><strong>Partial context</strong></td><td>AI gets some things right and invents others — dangerous because it looks plausible.</td></tr>
+        <tr><td><strong>Full, structured context</strong></td><td>AI delivers accurate, grounded answers. Minimal hallucination.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-warning"><span class="callout-label">Partial Context Is the Most Dangerous State</span><p>It produces output that looks correct but contains invented details. Always verify AI output against source data when you suspect your context was incomplete.</p></div>
+
+    <h2><span class="step-num">5</span>Managing Your Context Window</h2>
+    <p>Every conversation has a limit. As it grows, the AI may forget earlier instructions or mix up old and new tasks. Knowing when to keep going vs. start fresh is a daily skill.</p>
+
+    <div class="col-2">
+      <div>
+        <h3>Reuse the same conversation when</h3>
+        <ul class="list-disc pl-5 space-y-1.5 text-sm text-os-secondary marker:text-accent-cyan"><li>Same workstream — same document, decision, or meeting prep</li><li>Earlier turns are still relevant ("we agreed high risk means X")</li><li>The conversation isn't yet noisy or mixing multiple projects</li></ul>
+      </div>
+      <div>
+        <h3>Start fresh when</h3>
+        <ul class="list-disc pl-5 space-y-1.5 text-sm text-os-secondary marker:text-accent-cyan"><li>The topic has genuinely changed</li><li>The thread is long and messy with dead ends</li><li>The AI starts reusing outdated assumptions from 20 turns ago</li></ul>
+      </div>
+    </div>
+
+    <h3>The summarize-and-reset technique</h3>
+    <p>Ask: <em>"Summarize the key decisions and constraints from this conversation in 5 bullet points."</em> Copy that summary, start a new conversation, and paste it into a CONTEXT block at the top of your first new prompt:</p>
+    <pre>CONTEXT (from previous conversation):
+- Decision 1: [AI-generated bullet]
+- Decision 2: [AI-generated bullet]
+- Decision 3: [AI-generated bullet]
+
+TASK: [Your new question or request]</pre>
+
+    <div class="callout callout-tip"><span class="callout-label">Watch for the Contamination Signal</span><p>If the AI references something from 20 turns ago that's no longer relevant, your context window is contaminated. Start fresh and carry over only what matters.</p></div>
+
+    <h2><span class="step-num">6</span>Putting It All Together</h2>
+    <p><strong>Great AI Output = Clear Prompt + Right Context + Appropriate Pattern.</strong> This is one complete, production-ready prompt combining context, role, task, format, and constraints:</p>
+
+    <pre>CONTEXT:
+[Paste relevant data here — e.g., this week's applicant tracking system update]
+
+ROLE:
+You are a senior HR coordinator writing a weekly hiring pipeline update.
+
+TASK:
+Based on the pipeline data above, draft a weekly status update for the hiring manager.
+
+FORMAT:
+- Group by: Offers Extended, In Interview, New Applicants, Stalled
+- Include candidate name, role, and one-line status for each item
+- Add a "Decisions Needed" section at the bottom
+- Keep total length under 1 page
+
+CONSTRAINTS:
+- Only include candidates with activity in the last 7 days
+- Flag anyone stalled in one stage for more than 10 days
+- Do not include candidates already rejected</pre>
+
+    <table>
+      <thead><tr><th>Section</th><th>What It Controls</th><th>Without It</th></tr></thead>
+      <tbody>
+        <tr><td><strong>CONTEXT</strong></td><td>The data and ground truth to reason from</td><td>AI invents facts or gives generic answers</td></tr>
+        <tr><td><strong>ROLE</strong></td><td>Tone, depth, vocabulary, expertise level</td><td>AI defaults to a generic style</td></tr>
+        <tr><td><strong>TASK</strong></td><td>The core instruction and deliverable</td><td>AI misinterprets what you want</td></tr>
+        <tr><td><strong>FORMAT</strong></td><td>Structure, length, grouping, layout</td><td>AI picks its own format — you reformat later</td></tr>
+        <tr><td><strong>CONSTRAINTS</strong></td><td>What to exclude, flag, or follow</td><td>AI includes irrelevant content, misses edge cases</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-note"><span class="callout-label">You Don't Need All Five Every Time</span><p>Simple tasks need only TASK and FORMAT. Use CONTEXT, ROLE, and CONSTRAINTS when the task is complex, when accuracy matters, or when the output will be shared with others.</p></div>
+
+    <h2 class="!mt-16">Verification</h2>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You can explain the difference between prompt and context engineering in one sentence</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You can name at least three of the five prompting patterns and when to use each</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You know the three context quality levels and which one produces convincing hallucinations</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You know when to reuse a conversation and when to start fresh</span></div>
+    </div>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lesson complete</p>
+      <p class="text-sm text-os-secondary">You now know the two levers that control AI output quality, five patterns that cover 90% of your work, and a formula for any complex request.</p>
+    </div>
+
+  </div>
+</article>
+
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="lesson-1.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 1.1 How AI Models Work</a>
+    <a href="lesson-3.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">Next: Practical Techniques &rarr;</a>
+  </div>
+</nav>
+
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">You do not rise to the level of your goals. You fall to the level of your systems.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Built as a system, not a slogan.</p>
+  </div>
+</footer>
+
+</body>
+</html>

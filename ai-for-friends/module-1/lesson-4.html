@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 1.4: Choosing the Right AI Model — AI for Friends</title>
+<meta name="title" content="Lesson 1.4: Choosing the Right AI Model">
+<meta name="description" content="Haiku, Sonnet, and Opus — which one to use, when to switch, and how to get the best result without overspending.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #0A0F1C; color: #FFFFFF; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+  .font-display { font-family: 'Space Grotesk', sans-serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .bg-grid { background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px); background-size: 44px 44px; }
+  @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(18px); } 100% { opacity: 1; transform: translateY(0); } }
+  .fade-up { opacity: 0; animation: fadeInUp 0.7s ease-out forwards; }
+  ::selection { background: rgba(0,240,255,0.25); color: #FFFFFF; }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid #00F0FF; outline-offset: 3px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .fade-up { animation: none !important; opacity: 1 !important; } }
+
+  .lesson-body h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: -0.01em; font-size: 1.5rem; margin-top: 3rem; margin-bottom: 0.75rem; }
+  .lesson-body h2 .step-num { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 9999px; margin-right: 0.75rem; background: rgba(0,240,255,0.1); border: 1px solid rgba(0,240,255,0.4); color: #00F0FF; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 500; vertical-align: middle; }
+  .lesson-body h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1.05rem; margin-top: 1.75rem; margin-bottom: 0.5rem; color: #FFFFFF; }
+  .lesson-body p { line-height: 1.75; margin-bottom: 1.25em; color: #9CA3AF; }
+  .lesson-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+  .lesson-body th { text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: #6B7280; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .lesson-body td { padding: 0.85rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: #9CA3AF; vertical-align: top; }
+  .lesson-body tr:last-child td { border-bottom: none; }
+  .lesson-body strong { color: #FFFFFF; font-weight: 600; }
+  .callout { border-radius: 0.75rem; padding: 1.1rem 1.25rem; margin: 1.5rem 0; border: 1px solid; font-size: 0.9rem; line-height: 1.65; }
+  .callout-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.4rem; }
+  .callout-tip { background: rgba(0,240,255,0.06); border-color: rgba(0,240,255,0.25); } .callout-tip .callout-label { color: #00F0FF; }
+  .callout-note { background: rgba(0,194,209,0.06); border-color: rgba(0,194,209,0.25); } .callout-note .callout-label { color: #00C2D1; }
+  .callout-info { background: rgba(123,44,191,0.08); border-color: rgba(123,44,191,0.3); } .callout-info .callout-label { color: #B18CE0; }
+  .callout-warning { background: rgba(251,191,36,0.07); border-color: rgba(251,191,36,0.3); } .callout-warning .callout-label { color: #FBBF24; }
+  .callout p { color: #D1D5DB; margin-bottom: 0; }
+  .lesson-body details { border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); margin: 1.5rem 0; overflow: hidden; }
+  .lesson-body summary { cursor: pointer; padding: 1rem 1.25rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.9rem; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .lesson-body summary::-webkit-details-marker { display: none; }
+  .lesson-body summary::after { content: '+'; font-family: 'JetBrains Mono', monospace; color: #00F0FF; font-size: 1.1rem; }
+  .lesson-body details[open] summary::after { content: '\2212'; }
+  .lesson-body details > div { padding: 0 1.25rem 1.25rem; }
+  .lesson-body pre { background: #111827; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.6rem; padding: 1rem 1.15rem; overflow-x: auto; margin: 1rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.6; color: #D1D5DB; white-space: pre-wrap; }
+  .checklist-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; }
+  .checklist-box { width: 1.1rem; height: 1.1rem; border-radius: 0.3rem; border: 1.5px solid rgba(0,240,255,0.5); flex-shrink: 0; margin-top: 0.15rem; }
+  .col-2 { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+  @media (min-width: 640px) { .col-2 { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pillars</a>
+      <a href="../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Course</a>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Module 1</a>
+  </div>
+</header>
+
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a><span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Module 1</a><span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lesson 1.4</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Choosing the Right AI Model</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">Claude gives you access to several models. Learn which one to use, when to switch, and how to get the best result without overspending.</p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">10 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">STEP 4 OF 4</span>
+    </div>
+    <div class="flex flex-wrap gap-2 font-mono text-[10px]">
+      <span class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan">1. Why Models Differ</span>
+      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">2. The Model Family</span>
+      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">3. Choosing by Task</span>
+      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">4. Cost &amp; Mistakes</span>
+    </div>
+  </div>
+</header>
+
+<article class="px-6 pb-24">
+  <div class="lesson-body max-w-2xl mx-auto text-[16px]">
+
+    <h2><span class="step-num">1</span>Why Multiple Models Exist</h2>
+    <p>Think of AI models like hiring for different roles — you wouldn't assign a senior director to answer routine emails, or ask an intern to develop your program strategy. Each model is optimized for a different balance of intelligence, speed, and cost, and those dimensions trade off against each other.</p>
+
+    <div class="callout callout-info"><span class="callout-label">The Golden Rule</span><p>Use the smallest, cheapest model that can do the job well. Upgrade only when the task demands it — this rule alone will cut your AI costs in half.</p></div>
+
+    <h2><span class="step-num">2</span>The Model Family</h2>
+    <p>Claude comes in three models — Haiku, Sonnet, and Opus. They share the same strengths (writing, analysis, reasoning, multi-part instructions) and differ only in the balance of speed, intelligence, and cost.</p>
+
+    <table>
+      <thead><tr><th>Model</th><th>Best For</th><th>Key Specs</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Claude Haiku 4.5</strong></td><td>Quick questions, data formatting, simple classification, bulk repetitive tasks</td><td>Fastest. Lowest cost.</td></tr>
+        <tr><td><strong>Claude Sonnet 4.5</strong></td><td>Reports, data analysis, meeting summaries, email drafting, most daily work</td><td>Balanced speed and quality. Your default.</td></tr>
+        <tr><td><strong>Claude Opus 4.7</strong></td><td>Complex strategy, deep multi-step analysis, important deliverables</td><td>Deepest reasoning. Slower. Premium.</td></tr>
+      </tbody>
+    </table>
+
+    <p>Claude doesn't process video or audio natively and doesn't generate images. For those niche tasks, a purpose-built tool from another provider is the right call — you don't need to learn these in depth, just know they exist.</p>
+
+    <table>
+      <thead><tr><th>Task</th><th>Tool to Use</th></tr></thead>
+      <tbody>
+        <tr><td>Analyze a video or audio recording</td><td>Google Gemini (native video/audio)</td></tr>
+        <tr><td>Generate an image from text</td><td>A dedicated image model (e.g. GPT Image 1 Mini)</td></tr>
+        <tr><td>Transcribe audio to text only</td><td>A dedicated transcription model (e.g. Whisper)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-tip"><span class="callout-label">When in Doubt, Start With Sonnet</span><p>Sonnet is your default for 80% of tasks. Switch to Haiku for simple tasks, Opus for high-stakes reasoning.</p></div>
+
+    <h2><span class="step-num">3</span>Choosing by Task</h2>
+    <p>The fastest way to pick a model is to match your task to a category.</p>
+
+    <table>
+      <thead><tr><th>Your Task</th><th>Use This Model</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Quick lookup or short question</td><td>Haiku 4.5</td><td>Fast and cheap, no reasoning required</td></tr>
+        <tr><td>Reformat data into a table</td><td>Haiku 4.5</td><td>Pattern-matching — Haiku handles it perfectly</td></tr>
+        <tr><td>Summarize meeting notes (1–2 pages)</td><td>Sonnet 4.5</td><td>Balanced quality and speed</td></tr>
+        <tr><td>Draft an email to your director</td><td>Sonnet 4.5</td><td>Strong tone control, follows complex instructions</td></tr>
+        <tr><td>Analyze a spreadsheet or report</td><td>Sonnet 4.5</td><td>Strong analytical capability at moderate cost</td></tr>
+        <tr><td>Complex multi-factor decision analysis</td><td>Opus 4.7</td><td>Deep reasoning required, worth the premium</td></tr>
+        <tr><td>Process a very large document (300+ pages)</td><td>Sonnet 4.5</td><td>Large context window handles it in one pass</td></tr>
+        <tr><td>Process a video or audio recording</td><td>Google Gemini</td><td>Claude doesn't read video or audio</td></tr>
+      </tbody>
+    </table>
+
+    <details>
+      <summary>Full task reference table</summary>
+      <div>
+        <table>
+          <tbody>
+            <tr><td>Write a performance review</td><td>Sonnet 4.5</td><td>Nuanced writing with good structure</td></tr>
+            <tr><td>Write a business case or strategy doc</td><td>Opus 4.7</td><td>Needs sustained coherence over long outputs</td></tr>
+            <tr><td>Analyze images, screenshots, diagrams</td><td>Sonnet 4.5</td><td>Handles images and text together</td></tr>
+            <tr><td>Extract data from many short documents</td><td>Haiku 4.5</td><td>Fast and cheap for repetitive extraction</td></tr>
+            <tr><td>Transcribe audio to text only</td><td>A dedicated transcription tool</td><td>Purpose-built for audio-to-text</td></tr>
+            <tr><td>Generate an image from text</td><td>A dedicated image tool</td><td>Purpose-built for image generation</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <h3>The five-question decision flow</h3>
+    <pre>1. Is the task simple and well-defined? (formatting, lookup, classification)
+   -> Use Haiku 4.5
+
+2. Is the task standard knowledge work? (writing, summarizing, drafting)
+   -> Use Sonnet 4.5 — YOUR DEFAULT
+
+3. Does the task require deep reasoning? (strategy, complex decisions)
+   -> Use Opus 4.7
+
+4. Does the task involve video or audio?
+   -> Video/audio analysis: Google Gemini
+   -> Transcription only: a dedicated transcription tool
+
+5. Does the task involve generating images?
+   -> Use a dedicated image tool</pre>
+
+    <div class="callout callout-tip"><span class="callout-label">80% of Tasks Land on Sonnet</span><p>If you can't clearly answer yes to question 1 or 3–5, use Sonnet. It's the right call for the vast majority of daily knowledge work.</p></div>
+
+    <h2><span class="step-num">4</span>Speed, Cost, and Common Mistakes</h2>
+
+    <table>
+      <thead><tr><th>Model</th><th>Relative Cost</th><th>Best Value For</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Haiku 4.5</strong></td><td>1x (baseline)</td><td>Simple, repetitive, high-volume tasks</td></tr>
+        <tr><td><strong>Sonnet 4.5</strong></td><td>~3x Haiku</td><td>Standard daily knowledge work (your default)</td></tr>
+        <tr><td><strong>Opus 4.7</strong></td><td>~5x Haiku</td><td>High-stakes reasoning only</td></tr>
+      </tbody>
+    </table>
+
+    <pre>1 token = ¾ of a word (about 4 characters)
+1 page = 500 tokens
+10 pages = 5,000 tokens
+1-hour meeting transcript = 10,000–20,000 tokens
+1M tokens = 750,000 words = 1,500 pages</pre>
+
+    <div class="col-2">
+      <div>
+        <h3>Do this</h3>
+        <ul class="list-disc pl-5 space-y-1.5 text-sm text-os-secondary marker:text-accent-cyan"><li>Start with Sonnet for everything; switch only with a specific reason</li><li>Drop to Haiku for repetitive tasks — roughly 3x cheaper, just as accurate</li><li>Reach for Gemini only when you need video or audio</li><li>Check your model picker regularly — Anthropic releases new models periodically</li></ul>
+      </div>
+      <div>
+        <h3>Avoid this</h3>
+        <ul class="list-disc pl-5 space-y-1.5 text-sm text-os-secondary marker:text-accent-cyan"><li>Using Opus for simple questions — 5x the cost, no noticeable quality gain</li><li>Pushing a very long document through Haiku — its smaller context window may truncate it</li><li>Assuming the heaviest model is always best</li><li>Running everything through one model out of habit</li></ul>
+      </div>
+    </div>
+
+    <div class="callout callout-warning"><span class="callout-label">Haiku Has a Smaller Context Window</span><p>For a very long document (over roughly 30 pages), use Sonnet to avoid truncating your content.</p></div>
+
+    <h2 class="!mt-16">Verification</h2>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You can name the three dimensions that differentiate AI models: intelligence, speed, cost</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You know which Claude model to use for simple tasks, standard work, and complex reasoning</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You know which model to use for video and audio content</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You can apply the five-question decision flow to any new task in under 10 seconds</span></div>
+    </div>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Module 1 complete</p>
+      <p class="text-sm text-os-secondary">You now understand how AI models work, how to prompt them well, and how to pick the right one for any task. Open claude.ai, set Sonnet as your default, and run your next real task through the decision flow.</p>
+    </div>
+
+  </div>
+</article>
+
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="lesson-3.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 1.3 Practical Techniques</a>
+    <a href="../module-2/index.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">Next: Module 2 &rarr;</a>
+  </div>
+</nav>
+
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">You do not rise to the level of your goals. You fall to the level of your systems.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Built as a system, not a slogan.</p>
+  </div>
+</footer>
+
+</body>
+</html>

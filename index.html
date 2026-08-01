@@ -103,9 +103,9 @@
     </a>
     <nav class="hidden md:flex items-center gap-8 font-mono text-xs text-os-secondary uppercase tracking-wide">
       <a href="#pillars" class="hover:text-accent-cyan transition-colors">Pillars</a>
-      <a href="#driver-passenger" class="hover:text-accent-cyan transition-colors">Driver / Passenger</a>
       <a href="#methodology" class="hover:text-accent-cyan transition-colors">Methodology</a>
-      <a href="#loops" class="hover:text-accent-cyan transition-colors">Loops</a>
+      <a href="blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="ai-for-friends/index.html" class="hover:text-accent-cyan transition-colors">Course</a>
     </nav>
     <a href="#pillars" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">
       View System
@@ -142,65 +142,39 @@
       </div>
     </div>
 
-    <!-- Signature element: system status readout -->
+    <!-- Signature element: brand thesis, rendered as a diff -->
     <div class="lg:col-span-2 fade-up" style="animation-delay: 0.15s">
       <div class="relative rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 overflow-hidden">
         <div class="absolute top-0 left-0 h-px w-1/3 bg-gradient-to-r from-transparent via-accent-cyan to-transparent animate-scanline"></div>
         <div class="flex items-center justify-between mb-5">
-          <span class="font-mono text-xs uppercase tracking-wide text-os-tertiary">gil_os — pillar_status.log</span>
+          <span class="font-mono text-xs uppercase tracking-wide text-os-tertiary">gil_os — thesis.diff</span>
           <span class="flex items-center gap-1.5 font-mono text-[11px] text-accent-teal">
             <span class="w-1.5 h-1.5 rounded-full bg-accent-teal"></span>ACTIVE
           </span>
         </div>
-        <div class="space-y-4">
-          <div>
-            <div class="flex justify-between font-mono text-xs mb-1.5">
-              <span class="text-os-primary">L1 · MIND &amp; BODY</span>
-              <span class="text-accent-cyan">DRIVER</span>
-            </div>
-            <div class="h-2 rounded-full bg-white/10 overflow-hidden">
-              <div class="h-full w-[78%] rounded-full bg-gradient-to-r from-cyan-400 to-purple-500"></div>
-            </div>
+        <div class="space-y-2">
+          <div class="flex items-start gap-2 rounded-lg bg-white/[0.03] px-3 py-2">
+            <span class="font-mono text-xs text-os-tertiary">-</span>
+            <span class="font-mono text-xs text-os-tertiary">read a book, forget it in 3 weeks</span>
           </div>
-          <div>
-            <div class="flex justify-between font-mono text-xs mb-1.5">
-              <span class="text-os-primary">L3 · CAREER / MISSION</span>
-              <span class="text-accent-cyan">DRIVER</span>
-            </div>
-            <div class="h-2 rounded-full bg-white/10 overflow-hidden">
-              <div class="h-full w-[64%] rounded-full bg-gradient-to-r from-cyan-400 to-purple-500"></div>
-            </div>
+          <div class="flex items-start gap-2 rounded-lg bg-white/[0.03] px-3 py-2">
+            <span class="font-mono text-xs text-os-tertiary">-</span>
+            <span class="font-mono text-xs text-os-tertiary">consume more, retain less</span>
           </div>
-          <div>
-            <div class="flex justify-between font-mono text-xs mb-1.5">
-              <span class="text-os-secondary">L7 · CONTRIBUTE</span>
-              <span class="text-accent-purple">PASSENGER · SAT AM ONLY</span>
-            </div>
-            <div class="h-2 rounded-full bg-white/10 overflow-hidden">
-              <div class="h-full w-[31%] rounded-full bg-gradient-to-r from-purple-500 to-accent-purple"></div>
-            </div>
+          <div class="flex items-start gap-2 rounded-lg bg-accent-cyan/5 border border-accent-cyan/10 px-3 py-2">
+            <span class="font-mono text-xs text-accent-cyan">+</span>
+            <span class="font-mono text-xs text-os-primary">synthesize once, run it on a loop</span>
           </div>
-          <div class="grid grid-cols-4 gap-2 pt-2">
-            <div class="rounded-lg bg-white/5 border border-white/10 py-2 text-center">
-              <p class="font-mono text-[10px] text-os-tertiary">L2</p>
-              <p class="font-mono text-[10px] text-accent-teal mt-0.5">OK</p>
-            </div>
-            <div class="rounded-lg bg-white/5 border border-white/10 py-2 text-center">
-              <p class="font-mono text-[10px] text-os-tertiary">L4</p>
-              <p class="font-mono text-[10px] text-accent-teal mt-0.5">OK</p>
-            </div>
-            <div class="rounded-lg bg-white/5 border border-white/10 py-2 text-center">
-              <p class="font-mono text-[10px] text-os-tertiary">L5</p>
-              <p class="font-mono text-[10px] text-accent-teal mt-0.5">OK</p>
-            </div>
-            <div class="rounded-lg bg-white/5 border border-white/10 py-2 text-center">
-              <p class="font-mono text-[10px] text-os-tertiary">L6</p>
-              <p class="font-mono text-[10px] text-accent-teal mt-0.5">OK</p>
-            </div>
+          <div class="flex items-start gap-2 rounded-lg bg-accent-cyan/5 border border-accent-cyan/10 px-3 py-2">
+            <span class="font-mono text-xs text-accent-cyan">+</span>
+            <span class="font-mono text-xs text-os-primary">every input compounds against the vault</span>
+          </div>
+          <div class="flex items-center justify-between border-t border-white/10 pt-4 mt-1">
+            <span class="font-mono text-[11px] uppercase tracking-wide text-os-tertiary">status</span>
+            <span class="font-mono text-xs font-semibold uppercase tracking-wide text-accent-cyan">synthesis &gt; consumption</span>
           </div>
         </div>
       </div>
-      <p class="font-mono text-[11px] text-os-tertiary text-center mt-3">Illustrative readout — structure is real, values are representative.</p>
     </div>
   </div>
 </section>

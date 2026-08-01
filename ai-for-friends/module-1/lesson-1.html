@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 1.1: How AI Models Work — AI for Friends</title>
+<meta name="title" content="Lesson 1.1: How AI Models Work">
+<meta name="description" content="What AI actually does, the terms you'll see daily, and how the agentic loop works. No technical background required.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #0A0F1C; color: #FFFFFF; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+  .font-display { font-family: 'Space Grotesk', sans-serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .bg-grid {
+    background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(18px); } 100% { opacity: 1; transform: translateY(0); } }
+  .fade-up { opacity: 0; animation: fadeInUp 0.7s ease-out forwards; }
+  ::selection { background: rgba(0,240,255,0.25); color: #FFFFFF; }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid #00F0FF; outline-offset: 3px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .fade-up { animation: none !important; opacity: 1 !important; } }
+
+  /* Lesson body typography */
+  .lesson-body h2 {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: -0.01em;
+    font-size: 1.5rem; margin-top: 3rem; margin-bottom: 0.75rem;
+  }
+  .lesson-body h2 .step-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2rem; height: 2rem; border-radius: 9999px; margin-right: 0.75rem;
+    background: rgba(0,240,255,0.1); border: 1px solid rgba(0,240,255,0.4);
+    color: #00F0FF; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 500;
+    vertical-align: middle;
+  }
+  .lesson-body p { line-height: 1.75; margin-bottom: 1.25em; color: #9CA3AF; }
+  .lesson-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+  .lesson-body th { text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: #6B7280; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .lesson-body td { padding: 0.85rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: #9CA3AF; vertical-align: top; }
+  .lesson-body tr:last-child td { border-bottom: none; }
+  .lesson-body strong { color: #FFFFFF; font-weight: 600; }
+
+  /* Callouts */
+  .callout { border-radius: 0.75rem; padding: 1.1rem 1.25rem; margin: 1.5rem 0; border: 1px solid; font-size: 0.9rem; line-height: 1.65; }
+  .callout-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.4rem; }
+  .callout-tip { background: rgba(0,240,255,0.06); border-color: rgba(0,240,255,0.25); }
+  .callout-tip .callout-label { color: #00F0FF; }
+  .callout-note { background: rgba(0,194,209,0.06); border-color: rgba(0,194,209,0.25); }
+  .callout-note .callout-label { color: #00C2D1; }
+  .callout-info { background: rgba(123,44,191,0.08); border-color: rgba(123,44,191,0.3); }
+  .callout-info .callout-label { color: #B18CE0; }
+  .callout-warning { background: rgba(251,191,36,0.07); border-color: rgba(251,191,36,0.3); }
+  .callout-warning .callout-label { color: #FBBF24; }
+  .callout p { color: #D1D5DB; margin-bottom: 0; }
+
+  /* Expand / details */
+  .lesson-body details { border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); margin: 1.5rem 0; overflow: hidden; }
+  .lesson-body summary { cursor: pointer; padding: 1rem 1.25rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.9rem; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .lesson-body summary::-webkit-details-marker { display: none; }
+  .lesson-body summary::after { content: '+'; font-family: 'JetBrains Mono', monospace; color: #00F0FF; font-size: 1.1rem; }
+  .lesson-body details[open] summary::after { content: '\2212'; }
+  .lesson-body details > div { padding: 0 1.25rem 1.25rem; }
+
+  /* Code / prompt blocks */
+  .lesson-body pre { background: #111827; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.6rem; padding: 1rem 1.15rem; overflow-x: auto; margin: 1rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.6; color: #D1D5DB; }
+
+  /* Checklist */
+  .checklist-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; }
+  .checklist-box { width: 1.1rem; height: 1.1rem; border-radius: 0.3rem; border: 1.5px solid rgba(0,240,255,0.5); flex-shrink: 0; margin-top: 0.15rem; }
+</style>
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pillars</a>
+      <a href="../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Course</a>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">
+      Module 1
+    </a>
+  </div>
+</header>
+
+<!-- ============ LESSON HEADER ============ -->
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a>
+      <span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Module 1</a>
+      <span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lesson 1.1</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">How AI Models Work</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">
+      Learn what AI actually does, how agents take action, and why clear instructions make all the difference.
+    </p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">10 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">STEP 1 OF 5</span>
+    </div>
+    <!-- Progress pills -->
+    <div class="flex flex-wrap gap-2 font-mono text-[10px]">
+      <span class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan">1. What AI Is</span>
+      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">2. Key Terms</span>
+      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">3. Three Stages</span>
+      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">4. Agentic Loop</span>
+      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">5. What It Means</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ LESSON BODY ============ -->
+<article class="px-6 pb-24">
+  <div class="lesson-body max-w-2xl mx-auto text-[16px]">
+
+    <h2><span class="step-num">1</span>What an AI Model Actually Is</h2>
+    <p>AI does not think. It predicts patterns at superhuman speed. That distinction changes how you use it — once you understand what's actually happening, you can give the AI the right inputs to get the right outputs. Pick whichever of these three analogies clicks, and keep it in mind through every lesson that follows.</p>
+
+    <table>
+      <thead><tr><th>Analogy</th><th>What It Means</th><th>What It Tells You</th></tr></thead>
+      <tbody>
+        <tr><td><strong>The well-read intern</strong></td><td>Processed billions of documents, but predicts text rather than understanding it</td><td>Vague instructions produce vague results</td></tr>
+        <tr><td><strong>The limited desk</strong></td><td>The "context window" is its working memory — when it fills up, older information drops off</td><td>Paste only what the AI needs, not everything you have</td></tr>
+        <tr><td><strong>The literal executor</strong></td><td>Follows instructions exactly as written; does not infer what you meant</td><td>Be specific — it won't fill gaps the way a colleague would</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-info">
+      <span class="callout-label">The Core Insight</span>
+      <p>AI does not think. It predicts what text should come next based on patterns. Your job is to give it clear patterns to match against — output quality is directly proportional to input quality.</p>
+    </div>
+    <div class="callout callout-tip">
+      <span class="callout-label">One Sentence Rule</span>
+      <p>If you can state exactly what you want in one specific sentence, your AI output will be twice as good. Vague prompts produce vague answers.</p>
+    </div>
+
+    <h2><span class="step-num">2</span>The Terms You Need to Know</h2>
+    <p>You'll see these words constantly — in Claude, in this course, and in conversations about AI. You don't need to memorize them; you need to recognize them. Start with the four marked below — you'll use these every day.</p>
+
+    <table>
+      <thead><tr><th>Term</th><th>What It Means</th><th>Why You Care</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Prompt *</strong></td><td>The instruction or question you type to the AI</td><td>The quality of your prompt determines the quality of your answer</td></tr>
+        <tr><td><strong>Context window *</strong></td><td>The AI's working memory — how much text it can process in one conversation</td><td>Paste too much and it forgets earlier parts of the conversation</td></tr>
+        <tr><td><strong>Token</strong></td><td>A chunk of text, roughly three-quarters of a word</td><td>Large files cost more tokens and can overflow the context window</td></tr>
+        <tr><td><strong>Model</strong></td><td>The specific AI you're talking to</td><td>Different models have different speeds, costs, and capabilities</td></tr>
+        <tr><td><strong>LLM</strong></td><td>Large Language Model — the technical name for AI like Claude</td><td>The technology running behind Claude and similar tools</td></tr>
+        <tr><td><strong>Generative AI</strong></td><td>AI that creates new content rather than sorting existing data</td><td>Claude is a generative AI tool</td></tr>
+        <tr><td><strong>MCP Server *</strong></td><td>A live connection between your AI assistant and another system</td><td>Lets your agent query real data instead of guessing</td></tr>
+        <tr><td><strong>Agent *</strong></td><td>A pre-configured AI assistant with specific instructions and connections</td><td>The building block behind most real AI workflows</td></tr>
+        <tr><td><strong>Knowledge Base</strong></td><td>A collection of documents the AI can search to answer questions</td><td>Upload your team's SOPs so the AI can answer from them</td></tr>
+        <tr><td><strong>RAG</strong></td><td>Retrieval Augmented Generation — fetch relevant documents first, then answer</td><td>This is how Knowledge Bases work behind the scenes</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-note">
+      <span class="callout-label">Not a Quiz</span>
+      <p>This table is a reference, not something to memorize. Bookmark this lesson — the four starred terms appear in every lesson that follows.</p>
+    </div>
+
+    <h2><span class="step-num">3</span>Three Stages of AI Capability</h2>
+    <p>Not all AI tools behave the same way — there's a spectrum from simple text generation to fully autonomous multi-agent systems. Knowing where a tool sits tells you what you can ask it to do, and what you still need to do yourself.</p>
+
+    <table>
+      <thead><tr><th>Stage 1: AI Assistant</th><th>Stage 2: AI Agent</th><th>Stage 3: Agentic AI System</th></tr></thead>
+      <tbody>
+        <tr><td>Follows rules. Automates simple tasks. You provide all context.</td><td>Achieves goals. Handles multi-step workflows. Pulls live data from connected systems.</td><td>Fully autonomous. Multiple specialized agents work together and consolidate results.</td></tr>
+        <tr><td><em>Example:</em> paste a transcript into Claude, ask it to summarize. It does exactly that and stops.</td><td><em>Example:</em> ask an agent to review 40 résumés against a job description and rank the top candidates. It reads each, compares, and returns a ranked list.</td><td><em>Example:</em> a coordinating agent delegates to separate screening, scheduling, and drafting agents, then delivers one consolidated update.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Where the Tools Are Today</span>
+      <p>Stage 1 and Stage 2 are widely available right now. Stage 3 multi-agent systems are still early and emerging. Use Stage 1 for simple drafting, Stage 2 when you need live data — don't build a complex agent for a task a single clear prompt could handle.</p>
+    </div>
+
+    <h2><span class="step-num">4</span>How Agents Actually Work</h2>
+    <p>When you send a message to an AI agent, more happens than you see. It reasons, selects tools, queries live systems, and loops back to check its own work before answering. This loop is what makes agents powerful — and it's how you debug a wrong answer.</p>
+
+    <ol class="space-y-2 pl-5 list-decimal text-os-secondary marker:text-accent-cyan marker:font-mono">
+      <li><strong>You type a prompt.</strong> "Which candidates have been in 'Interview Scheduled' for more than 10 days?"</li>
+      <li><strong>The agent receives it</strong> and reads its own standing instructions.</li>
+      <li><strong>The agent invokes the model,</strong> which reasons about what to do next.</li>
+      <li><strong>The model selects a tool</strong> — the right source and the right query.</li>
+      <li><strong>The tool executes</strong> against live data and returns results.</li>
+      <li><strong>The agent reasons about the results,</strong> looping back if it needs more.</li>
+      <li><strong>The agent returns the final response</strong> — one consolidated, readable answer.</li>
+    </ol>
+
+    <details>
+      <summary>Troubleshooting: what if the agent gives a wrong answer?</summary>
+      <div>
+        <p><strong>The agent returns outdated or incorrect data.</strong> Cause: a connected tool returned stale data, or the agent picked the wrong one. Fix: ask "Walk me through how you got that answer" — this surfaces which tool it used.</p>
+        <p><strong>The agent says it can't answer.</strong> Cause: the required connection isn't enabled, or you lack permission on that system. Fix: check your AI tool's settings for the relevant connection first.</p>
+      </div>
+    </details>
+
+    <h2><span class="step-num">5</span>What This Means for Your Work</h2>
+    <p>Understanding how AI works changes how you use it. Three principles separate effective AI users from frustrated ones:</p>
+
+    <div class="callout callout-info">
+      <span class="callout-label">The Three Principles</span>
+      <p><strong>1. You are the pilot, not the passenger.</strong> The AI executes. You direct, validate, and decide.<br>
+      <strong>2. Specificity wins.</strong> Named fields, date ranges, and sort order produce usable results.<br>
+      <strong>3. AI accelerates judgment. It does not replace it.</strong> You own the decision.</p>
+    </div>
+
+    <div class="callout callout-tip">
+      <span class="callout-label">Start With One Real Task</span>
+      <p>Open Claude today and apply Principle 2 to something you actually need. The difference in output quality will be immediate.</p>
+    </div>
+
+    <h2 class="!mt-16">Verification</h2>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You can explain what a context window is without technical jargon</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You can name the four most important terms for daily work: Prompt, Context window, Agent, MCP Server</span></div>
+    </div>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lesson complete</p>
+      <p class="text-sm text-os-secondary">You now understand what AI models are, how agents take action using live data, and how to apply that to get better results at work.</p>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ PREV/NEXT ============ -->
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="index.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; Module 1</a>
+    <a href="lesson-2.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
+      Next: Prompt vs. Context Engineering &rarr;
+    </a>
+  </div>
+</nav>
+
+<!-- ============ FOOTER ============ -->
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">You do not rise to the level of your goals. You fall to the level of your systems.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Built as a system, not a slogan.</p>
+  </div>
+</footer>
+
+</body>
+</html>
