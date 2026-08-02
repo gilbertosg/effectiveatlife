@@ -46,7 +46,7 @@
 
   .lesson-body h2 {
     font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: -0.01em;
-    font-size: 1.5rem; margin-top: 3rem; margin-bottom: 0.75rem;
+    font-size: 1.5rem; margin-top: 3rem; margin-bottom: 0.75rem; scroll-margin-top: 6rem;
   }
   .lesson-body h2 .step-num {
     display: inline-flex; align-items: center; justify-content: center;
@@ -99,10 +99,62 @@
       <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
       <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
     </a>
-    <nav class="hidden md:flex items-center gap-8 font-mono text-xs text-os-secondary uppercase tracking-wide">
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
       <a href="../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pillars</a>
       <a href="../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
       <a href="../index.html" class="text-accent-cyan">Course</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menu
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">AI Foundations</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 How AI Models Work</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">1.2 Prompt vs. Context Engineering</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Practical Prompting Techniques</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Choosing the Right AI Model</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Setting Up Your Computer</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPTIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Installing Windows Terminal</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Installing VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navigating in the Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="../module-3/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-3/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Claude Code Onboarding Guide</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Course Home</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <span class="text-accent-cyan font-semibold">EN</span>
+        <span class="text-white/20">/</span>
+        <span class="cursor-default" title="Spanish version — coming soon">ES</span>
+      </div>
     </nav>
     <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Module 1</a>
   </div>
@@ -123,12 +175,12 @@
       <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">STEP 2 OF 4</span>
     </div>
     <div class="flex flex-wrap gap-2 font-mono text-[10px]">
-      <span class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan">1. Core Distinction</span>
-      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">2. Better Prompts</span>
-      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">3. Five Patterns</span>
-      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">4. Context in Practice</span>
-      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">5. Context Window</span>
-      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">6. Full Formula</span>
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Core Distinction</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Better Prompts</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Five Patterns</a>
+      <a href="#step-4" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">4. Context in Practice</a>
+      <a href="#step-5" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">5. Context Window</a>
+      <a href="#step-6" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">6. Full Formula</a>
     </div>
   </div>
 </header>
@@ -136,7 +188,7 @@
 <article class="px-6 pb-24">
   <div class="lesson-body max-w-2xl mx-auto text-[16px]">
 
-    <h2><span class="step-num">1</span>The Core Distinction</h2>
+    <h2 id="step-1"><span class="step-num">1</span>The Core Distinction</h2>
     <p>Two concepts control AI output quality. <strong>Prompt engineering</strong> controls how you ask. <strong>Context engineering</strong> controls what information you give the AI to work with. Most people spend all their time on the first and ignore the second — but the second matters more.</p>
 
     <table>
@@ -155,7 +207,7 @@
     <div class="callout callout-info"><span class="callout-label">The Key Principle</span><p>Good outcomes depend at least as much on context as on the wording of a single prompt. Stop optimizing your prompt. Start optimizing your context.</p></div>
     <div class="callout callout-tip"><span class="callout-label">Diagnose Before Fixing</span><p>When the AI gives a wrong or weak answer, ask "Did I give it the right information?" before "Did I phrase my question correctly?" Context problems cause most AI failures.</p></div>
 
-    <h2><span class="step-num">2</span>Better Prompts in Practice</h2>
+    <h2 id="step-2"><span class="step-num">2</span>Better Prompts in Practice</h2>
     <p>A vague prompt forces the AI to guess, and every guess introduces error. The fix isn't better writing — it's more specificity.</p>
 
     <div class="col-2">
@@ -174,10 +226,14 @@
     </div>
 
     <details>
-      <summary>More examples — HR and Legal</summary>
+      <summary>More examples — HR, Industrial Engineering, and Legal</summary>
       <div>
         <h3>HR</h3>
         <pre>✅ "Write a job description for a Senior Account Manager on the customer success team. Requirements: 5+ years in B2B account management, CRM experience, track record of client retention. Use our standard format: summary, responsibilities, requirements, benefits. Tone: professional but warm."</pre>
+        <h3>Industrial Engineering</h3>
+        <pre>❌ Before: "Check the downtime report."</pre>
+        <p class="!mb-2"><em>Which line? Which shift? What counts as downtime?</em></p>
+        <pre>✅ After: "Which production lines in this week's downtime report exceeded 30 minutes of unplanned downtime? Show as a table: line, date, duration, stated cause. Sort by duration descending."</pre>
         <h3>Legal</h3>
         <pre>✅ "Review this NDA for missing standard clauses. Check for: definition of confidential information, term length, return-of-materials, governing law. List each missing or weak clause with a one-line note on the risk it creates."</pre>
       </div>
@@ -185,7 +241,7 @@
 
     <div class="callout callout-info"><span class="callout-label">The Specificity Rule</span><p>Every vague word in your prompt forces a guess. A prompt with five vague elements has roughly a 3% chance of producing exactly what you want. Five specific elements produce accurate results nearly every time.</p></div>
 
-    <h2><span class="step-num">3</span>Five Prompting Patterns That Cover 90% of Your Work</h2>
+    <h2 id="step-3"><span class="step-num">3</span>Five Prompting Patterns That Cover 90% of Your Work</h2>
     <p>You don't need dozens of techniques — five patterns cover almost everything you'll do in Claude.</p>
 
     <table>
@@ -228,13 +284,14 @@ Before you draft anything, ask me 5 clarifying questions about the problem, the 
 
     <div class="callout callout-note"><span class="callout-label">Combine Patterns for Best Results</span><p>Start with Role Prompting ("You are a senior recruiter..."), add Few-Shot examples, then request Chain-of-Thought reasoning. Stacking patterns produces the highest-quality outputs.</p></div>
 
-    <h2><span class="step-num">4</span>Context Engineering in Practice</h2>
+    <h2 id="step-4"><span class="step-num">4</span>Context Engineering in Practice</h2>
     <p>A model is only as smart as its context. Without it, AI systems hallucinate — they invent facts. Engineered context fixes this.</p>
 
     <table>
       <thead><tr><th>Role</th><th>Bad Context</th><th>Good Context</th></tr></thead>
       <tbody>
         <tr><td><strong>HR</strong></td><td>Paste 40 résumés and ask "help me screen these"</td><td>Paste job requirements first, then 3 résumés at a time: "Score each 1–5 on relevant experience, years, leadership indicators. Show as a table."</td></tr>
+        <tr><td><strong>Industrial Engineering</strong></td><td>Paste an entire month of maintenance logs and ask "what's wrong with the line"</td><td>Extract just this week's entries: "Which failure codes appear more than twice? List code, frequency, and affected line."</td></tr>
         <tr><td><strong>Legal</strong></td><td>Paste a 40-page merger agreement and ask "are there any risks?"</td><td>Extract just Indemnification and Termination: "Which clauses deviate from our standard template? List clause number, deviation, risk level."</td></tr>
         <tr><td><strong>Marketing</strong></td><td>Ask "how did the campaign do?" with no data attached</td><td>Paste the campaign CSV filtered to last 30 days: "Which channels underperformed target CPA? Show channel, target, actual, gap."</td></tr>
       </tbody>
@@ -251,7 +308,7 @@ Before you draft anything, ask me 5 clarifying questions about the problem, the 
 
     <div class="callout callout-warning"><span class="callout-label">Partial Context Is the Most Dangerous State</span><p>It produces output that looks correct but contains invented details. Always verify AI output against source data when you suspect your context was incomplete.</p></div>
 
-    <h2><span class="step-num">5</span>Managing Your Context Window</h2>
+    <h2 id="step-5"><span class="step-num">5</span>Managing Your Context Window</h2>
     <p>Every conversation has a limit. As it grows, the AI may forget earlier instructions or mix up old and new tasks. Knowing when to keep going vs. start fresh is a daily skill.</p>
 
     <div class="col-2">
@@ -276,7 +333,7 @@ TASK: [Your new question or request]</pre>
 
     <div class="callout callout-tip"><span class="callout-label">Watch for the Contamination Signal</span><p>If the AI references something from 20 turns ago that's no longer relevant, your context window is contaminated. Start fresh and carry over only what matters.</p></div>
 
-    <h2><span class="step-num">6</span>Putting It All Together</h2>
+    <h2 id="step-6"><span class="step-num">6</span>Putting It All Together</h2>
     <p><strong>Great AI Output = Clear Prompt + Right Context + Appropriate Pattern.</strong> This is one complete, production-ready prompt combining context, role, task, format, and constraints:</p>
 
     <pre>CONTEXT:
@@ -320,6 +377,13 @@ CONSTRAINTS:
       <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You know when to reuse a conversation and when to start fresh</span></div>
     </div>
 
+    <h2 class="!mt-10 !text-base">Related Resources</h2>
+    <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
+      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — Start a conversation and apply these patterns</li>
+      <li><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">Claude documentation</a> — Official documentation</li>
+      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">Claude support</a> — Help articles and answers to common questions</li>
+    </ul>
+
     <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
       <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lesson complete</p>
       <p class="text-sm text-os-secondary">You now know the two levers that control AI output quality, five patterns that cover 90% of your work, and a formula for any complex request.</p>
@@ -347,6 +411,24 @@ CONSTRAINTS:
     <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Built as a system, not a slogan.</p>
   </div>
 </footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
 
 </body>
 </html>

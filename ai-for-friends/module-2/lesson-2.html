@@ -41,7 +41,7 @@
   a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid #00F0FF; outline-offset: 3px; border-radius: 4px; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .fade-up { animation: none !important; opacity: 1 !important; } }
 
-  .lesson-body h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: -0.01em; font-size: 1.5rem; margin-top: 3rem; margin-bottom: 0.75rem; }
+  .lesson-body h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: -0.01em; font-size: 1.5rem; margin-top: 3rem; margin-bottom: 0.75rem; scroll-margin-top: 6rem; }
   .lesson-body h2 .step-num { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 9999px; margin-right: 0.75rem; background: rgba(0,240,255,0.1); border: 1px solid rgba(0,240,255,0.4); color: #00F0FF; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 500; vertical-align: middle; }
   .lesson-body p { line-height: 1.75; margin-bottom: 1.25em; color: #9CA3AF; }
   .lesson-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
@@ -70,10 +70,62 @@
       <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
       <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
     </a>
-    <nav class="hidden md:flex items-center gap-8 font-mono text-xs text-os-secondary uppercase tracking-wide">
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
       <a href="../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pillars</a>
       <a href="../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
       <a href="../index.html" class="text-accent-cyan">Course</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menu
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="../module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">AI Foundations</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-1/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 How AI Models Work</a>
+              <a href="../module-1/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Prompt vs. Context Engineering</a>
+              <a href="../module-1/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Practical Prompting Techniques</a>
+              <a href="../module-1/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Choosing the Right AI Model</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Setting Up Your Computer</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPTIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Installing Windows Terminal</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">2.2 Installing VS Code</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navigating in the Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="../module-3/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-3/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Claude Code Onboarding Guide</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Course Home</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <span class="text-accent-cyan font-semibold">EN</span>
+        <span class="text-white/20">/</span>
+        <span class="cursor-default" title="Spanish version — coming soon">ES</span>
+      </div>
     </nav>
     <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg border border-white/20 text-os-secondary hover:border-accent-cyan/50 hover:text-accent-cyan transition-colors">Module 2</a>
   </div>
@@ -93,9 +145,13 @@
       <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">5 MIN</span>
       <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">OPTIONAL</span>
     </div>
-    <div class="callout callout-note mt-6">
+    <div class="callout callout-note mt-6 mb-6">
       <span class="callout-label">Module 3 Covers This in Full</span>
       <p>Module 3 walks through this install in more detail. This is a lighter, earlier look — skip it if you'd rather do it once, properly, in Module 3.</p>
+    </div>
+    <div class="flex flex-wrap gap-2 font-mono text-[10px]">
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Download &amp; Install</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Find Extensions</a>
     </div>
   </div>
 </header>
@@ -103,7 +159,7 @@
 <article class="px-6 pb-24">
   <div class="lesson-body max-w-2xl mx-auto text-[16px]">
 
-    <h2><span class="step-num">1</span>Download and Install VS Code</h2>
+    <h2 id="step-1"><span class="step-num">1</span>Download and Install VS Code</h2>
     <p>VS Code comes straight from Microsoft's official site. You download an installer, run it, and accept the defaults — nothing to configure at this stage.</p>
     <ol>
       <li>Go to <span class="font-mono text-os-primary">code.visualstudio.com</span>.</li>
@@ -111,14 +167,28 @@
       <li>Run the installer and accept all default options.</li>
       <li>Open Visual Studio Code once it finishes.</li>
     </ol>
-    <p>You'll see a window with a Welcome tab, a row of icons down the left sidebar, and an empty editor area in the middle.</p>
+
+    <pre>+-----------------------------------------+
+| (icons) | Welcome                       |
+| []      |                               |
+| *       | Start                         |
+| v       | New File...                   |
+| |>      | Open Folder...                |
+| []      |                               |
+|         | (empty editor area)           |
++-----------------------------------------+</pre>
+    <p>A window with a Welcome tab, a row of icons down the left sidebar, and an empty editor area in the middle.</p>
 
     <div class="callout callout-tip">
       <span class="callout-label">Official Site Only</span>
       <p>Download only from code.visualstudio.com — not a third-party download site. The official installer is safe and free.</p>
     </div>
+    <div class="callout callout-note">
+      <span class="callout-label">Defaults Are Fine Here</span>
+      <p>You do not need to change any installer option. Click through with the defaults. Module 3 covers any settings that matter later.</p>
+    </div>
 
-    <h2><span class="step-num">2</span>Find the Extensions Panel</h2>
+    <h2 id="step-2"><span class="step-num">2</span>Find the Extensions Panel</h2>
     <p>Extensions are add-ons that give VS Code new abilities. Don't install any yet — the goal here is just finding the panel so it's familiar in Module 3.</p>
     <ol>
       <li>Look at the left sidebar for the <strong>Extensions</strong> icon (four squares).</li>
@@ -137,6 +207,18 @@
       <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">VS Code opens cleanly to the Welcome tab</span></div>
       <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You can open the Extensions panel and search it</span></div>
     </div>
+
+    <div class="callout callout-tip">
+      <span class="callout-label">Leave It Installed</span>
+      <p>Keep VS Code installed after this lesson. Module 3 picks up right where you left off and installs the extensions you actually need.</p>
+    </div>
+
+    <h2 class="!mt-10 !text-base">Related Resources</h2>
+    <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
+      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — The Claude AI platform</li>
+      <li><a href="https://docs.anthropic.com/claude/docs" class="text-accent-cyan hover:underline">Claude documentation</a> — Official documentation</li>
+      <li><a href="https://support.anthropic.com" class="text-accent-cyan hover:underline">Claude support</a> — Help center and troubleshooting</li>
+    </ul>
 
     <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
       <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lesson complete</p>
@@ -165,6 +247,24 @@
     <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Built as a system, not a slogan.</p>
   </div>
 </footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
 
 </body>
 </html>

@@ -12,6 +12,7 @@ This module is for people who have never opened a terminal or a code editor and 
 
 **Target roles:**
 - HR professionals
+- Industrial engineering professionals
 - Legal professionals
 - Marketing professionals
 

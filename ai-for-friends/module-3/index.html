@@ -44,6 +44,18 @@
   .callout-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.4rem; }
   .callout-warning { background: rgba(251,191,36,0.07); border-color: rgba(251,191,36,0.3); } .callout-warning .callout-label { color: #FBBF24; }
   .callout p { color: #D1D5DB; margin-bottom: 0; }
+
+  .glossary table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .glossary th { text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: #6B7280; padding: 0.7rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .glossary td { padding: 0.8rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: #9CA3AF; vertical-align: top; }
+  .glossary tr:last-child td { border-bottom: none; }
+  .glossary strong { color: #FFFFFF; font-weight: 600; }
+  .glossary details { border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); margin-top: 1rem; overflow: hidden; }
+  .glossary summary { cursor: pointer; padding: 1rem 1.25rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.85rem; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .glossary summary::-webkit-details-marker { display: none; }
+  .glossary summary::after { content: '+'; font-family: 'JetBrains Mono', monospace; color: #00F0FF; font-size: 1.1rem; }
+  .glossary details[open] summary::after { content: '\2212'; }
+  .glossary details > div { padding: 0 1.25rem 1.25rem; }
 </style>
 </head>
 <body class="bg-os-deep text-os-primary font-body antialiased">
@@ -54,10 +66,62 @@
       <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
       <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
     </a>
-    <nav class="hidden md:flex items-center gap-8 font-mono text-xs text-os-secondary uppercase tracking-wide">
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
       <a href="../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pillars</a>
       <a href="../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
       <a href="../index.html" class="text-accent-cyan">Course</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menu
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="../module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">AI Foundations</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-1/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 How AI Models Work</a>
+              <a href="../module-1/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Prompt vs. Context Engineering</a>
+              <a href="../module-1/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Practical Prompting Techniques</a>
+              <a href="../module-1/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Choosing the Right AI Model</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Setting Up Your Computer</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPTIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Installing Windows Terminal</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Installing VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navigating in the Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="../module-3/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Claude Code Onboarding Guide</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Course Home</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <span class="text-accent-cyan font-semibold">EN</span>
+        <span class="text-white/20">/</span>
+        <span class="cursor-default" title="Spanish version — coming soon">ES</span>
+      </div>
     </nav>
     <a href="lesson-1.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Start Module</a>
   </div>
@@ -81,6 +145,20 @@
       <span class="px-3 py-1.5 rounded-full border border-white/15">1 lesson</span>
       <span class="px-3 py-1.5 rounded-full border border-white/15">Windows</span>
       <span class="px-3 py-1.5 rounded-full border border-white/15">Claude Pro required</span>
+      <span class="px-3 py-1.5 rounded-full border border-white/15">HR · Industrial Engineering · Legal · Marketing</span>
+    </div>
+
+    <div class="glossary rounded-2xl border border-white/10 overflow-hidden mb-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-teal px-6 pt-5 pb-1">What This Looks Like in Your Role</p>
+      <table>
+        <thead><tr><th>Role</th><th>What Changes</th></tr></thead>
+        <tbody>
+          <tr><td><strong>HR</strong></td><td>Screen 40 résumés against one job description in a single pass instead of uploading them one by one. Standardize many job descriptions to one template as a batch rewrite, each saved back in place.</td></tr>
+          <tr><td><strong>Industrial Engineering</strong></td><td>Compare cycle-time and downtime data across many shift reports in a single pass instead of exporting each one separately. Standard operating procedures and process terminology (takt time, changeover, OEE) live permanently in a CLAUDE.md file instead of being re-explained each session.</td></tr>
+          <tr><td><strong>Legal</strong></td><td>Compare a clause such as indemnity language across many agreements in one pass with a single comparison table. Every edit arrives as a redline-style diff you approve or reject, and defined terms live permanently in a CLAUDE.md file.</td></tr>
+          <tr><td><strong>Marketing</strong></td><td>Turn one piece of content into several channel variants as separate saved files from one instruction. Your brand voice and banned-words list live in CLAUDE.md and apply to everything drafted in that folder.</td></tr>
+        </tbody>
+      </table>
     </div>
 
     <div class="rounded-2xl bg-white/5 border border-white/10 p-6 mb-6">
@@ -114,6 +192,66 @@
   </div>
 </section>
 
+<!-- ============ KEY CONCEPTS ============ -->
+<section class="px-6 pb-16">
+  <div class="max-w-3xl mx-auto glossary">
+    <p class="font-mono text-xs uppercase tracking-widest text-accent-teal mb-2 fade-up">Key Concepts</p>
+    <p class="text-os-secondary text-sm leading-relaxed mb-6 fade-up">Core terms introduced in this module. The lesson where each term is first defined is listed so you can return to the source explanation.</p>
+    <div class="rounded-2xl border border-white/10 overflow-hidden fade-up">
+      <table>
+        <thead><tr><th>Term</th><th>Defined In</th><th>Plain English Meaning</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Claude Code</strong></td><td>Lesson 3.1</td><td>An AI assistant that reads, drafts, and edits the real files in a folder you open on your computer.</td></tr>
+          <tr><td><strong>VS Code</strong></td><td>Lesson 3.1</td><td>The free Microsoft program Claude Code runs inside. Like Word, but built to open a whole folder of files at once.</td></tr>
+          <tr><td><strong>Project Folder</strong></td><td>Lesson 3.1</td><td>The one folder you open. Claude can only see and touch files inside it, and nothing else.</td></tr>
+          <tr><td><strong>Terminal</strong></td><td>Lesson 3.1</td><td>A text box where you type instructions instead of clicking. You need about six commands total.</td></tr>
+          <tr><td><strong>Diff</strong></td><td>Lesson 3.1</td><td>A side-by-side before/after view of a change Claude proposes, which you approve or reject.</td></tr>
+          <tr><td><strong>CLAUDE.md</strong></td><td>Lesson 3.1</td><td>A plain-text file of standing instructions Claude reads automatically at the start of every session in that folder.</td></tr>
+          <tr><td><strong>Slash Command</strong></td><td>Lesson 3.1</td><td>A saved, reusable prompt you trigger with a short <span class="font-mono">/name</span> instead of retyping a long instruction.</td></tr>
+        </tbody>
+      </table>
+      <details>
+        <summary>Full Key Concepts reference</summary>
+        <div>
+          <table>
+            <tbody>
+              <tr><td><strong>Claude Cowork</strong></td><td>Lesson 3.1</td><td>The option built for editing or creating a single Word, Excel, or PowerPoint file, with no terminal needed.</td></tr>
+              <tr><td><strong>Plan Mode</strong></td><td>Lesson 3.1</td><td>A setting that limits Claude to reading and thinking until you approve a written plan. Your best guardrail.</td></tr>
+              <tr><td><strong>Permission Prompt</strong></td><td>Lesson 3.1</td><td>The ask that appears before Claude writes or edits. Options are allow-once, allow-always, or deny.</td></tr>
+              <tr><td><strong>Integrated Terminal</strong></td><td>Lesson 3.1</td><td>The terminal panel built into VS Code, opened with Ctrl and the backtick key. The only terminal you need.</td></tr>
+              <tr><td><strong>PowerShell</strong></td><td>Lesson 3.1</td><td>A built-in Windows program for typing instructions. Used once, just for the install.</td></tr>
+              <tr><td><strong>PATH</strong></td><td>Lesson 3.1</td><td>The list of places Windows looks for programs. A command must be on it to run from any folder.</td></tr>
+              <tr><td><strong>Extension</strong></td><td>Lesson 3.1</td><td>A small add-on for VS Code, like an app for your phone, that adds features such as PDF viewing or spell check.</td></tr>
+              <tr><td><strong>Markdown (.md)</strong></td><td>Lesson 3.1</td><td>A simple plain-text formatting style. The recommended format to work in, exporting to Word or PDF at the end.</td></tr>
+              <tr><td><strong>Model</strong></td><td>Lesson 3.1</td><td>The specific AI doing the work, such as Sonnet or Opus, shown in the prompt's model indicator.</td></tr>
+              <tr><td><strong>Token</strong></td><td>Lesson 3.1</td><td>A unit of text usage that counts against your plan limit.</td></tr>
+              <tr><td><strong>Usage Limits</strong></td><td>Lesson 3.1</td><td>Claude Pro's rolling roughly 5-hour session caps plus weekly caps. Web chat and Claude Code share one pool.</td></tr>
+              <tr><td><strong>Git for Windows</strong></td><td>Lesson 3.1</td><td>A recommended free install that adds Git Bash, an alternative terminal, to your machine.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUPPORT RESOURCES ============ -->
+<section class="px-6 pb-24">
+  <div class="max-w-3xl mx-auto glossary">
+    <p class="font-mono text-xs uppercase tracking-widest text-accent-cyan mb-4 fade-up">Support Resources</p>
+    <div class="rounded-2xl border border-white/10 overflow-hidden fade-up">
+      <table>
+        <thead><tr><th>Resource</th><th>Link</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>Claude</td><td><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a></td><td>Sign up and use Claude in your browser</td></tr>
+          <tr><td>Claude Docs</td><td><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">code.claude.com/docs</a></td><td>Official documentation</td></tr>
+          <tr><td>Claude Support</td><td><a href="https://support.claude.com" class="text-accent-cyan hover:underline">support.claude.com</a></td><td>Help center and account support</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 <footer class="px-6 py-16 border-t border-white/[0.08]">
   <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
     <div>
@@ -126,6 +264,24 @@
     <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Built as a system, not a slogan.</p>
   </div>
 </footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
 
 </body>
 </html>

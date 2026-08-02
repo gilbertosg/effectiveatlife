@@ -93,11 +93,35 @@ Now classify this:
 
 <!-- /EXPAND -->[cite: 1]
 
+<!-- EXPAND: Few-Shot Example - Industrial Engineering (Downtime Cause Classification) -->
+
+```text
+I need you to classify unplanned downtime events by root-cause category.
+
+Example Input:
+"Line 3 stopped for 45 min, changeover took longer than standard due to missing fixture."
+Example Output:
+SETUP/CHANGEOVER WASTE - Root cause: fixture not staged in advance. Action: pre-stage fixtures 15 minutes before scheduled changeover.
+
+Example Input:
+"Line 1 down 20 min, conveyor sensor misaligned again after last PM."
+Example Output:
+EQUIPMENT/MAINTENANCE - Root cause: sensor alignment not verified during preventive maintenance. Action: add alignment check to PM checklist.
+
+Now classify this:
+"Line 2 idle 30 min waiting on component delivery from receiving."
+```
+
+<!-- /EXPAND -->
+
 ### Role Prompting Examples by Title[cite: 1]
 
 ```text
 HR:
 "You are a senior recruiter with 10 years of experience hiring across technical and professional roles. You understand how to distinguish transferable skills from role-specific ones, and how to write inclusive, accurate job descriptions. Communicate in clear, candidate-friendly language."
+
+Industrial Engineering:
+"You are a senior industrial engineer with 10 years of experience in process optimization and Lean Six Sigma. You understand takt time, OEE, root-cause analysis, and the eight wastes. Communicate in precise, data-driven language appropriate for operations stakeholders."
 
 Legal:
 "You are a senior commercial contracts attorney with 12 years of experience. You understand indemnification, liability caps, termination rights, and auto-renewal terms. Flag risk precisely, quote the exact language at issue, and communicate in plain English for a business audience."

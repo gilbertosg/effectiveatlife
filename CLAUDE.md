@@ -17,7 +17,7 @@ The two documents that govern this project are:
 **Shared shell, copy-paste not includes.** Because pages are single-file, the header/nav/footer, the Tailwind `tailwind.config` block (custom `os-*` and `accent-*` colors, `display`/`body`/`mono` font families), the Google Fonts `<link>` tags, and the base `<style>` block (scroll behavior, `.font-display`/`.font-mono` helpers, the `fade-up` keyframe animation, focus-visible outline, reduced-motion handling) are duplicated across `index.html`, `blog/index.html`, and `blog/weekly-review.html`. When adding a new page, copy this shell from an existing page rather than reinventing it, and if the shell itself needs to change, update it in every page — there is no single source of truth to edit once.
 
 **Directory layout:**
-- `index.html` — landing page (hero, 7-pillar bento grid, Driver/Passenger model, methodology matrix, operational loops).
+- `index.html` — landing page (hero, 7-pillar bento grid, AI-as-foundation section, methodology matrix, operational loops).
 - `blog/index.html` — blog hub (article grid with pillar pill-tags).
 - `blog/*.html` — individual articles. Long-form pages add a `.prose-article` CSS block (in addition to the shared shell) for readable measure/line-height, and follow the Implementation Guide's rule of inserting a static email-capture block roughly halfway through the article body.
 - `ai-for-friends/` — planned 3-module mini-course (Implementation Guide Phase 4); directory exists but is currently empty.

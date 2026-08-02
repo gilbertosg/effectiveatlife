@@ -1,6 +1,6 @@
 # Effective at Life
 
-Source for **effectiveatlife.com** — a static site translating the "Gil OS" personal operating system (seven life pillars, the Driver/Passenger model, weekly and daily review rituals) into public teaching content: a landing page, a blog, and a planned AI-literacy mini-course.
+Source for **effectiveatlife.com** — a static site translating the "Gil OS" personal operating system (seven life pillars, AI as the system's foundation, weekly and daily review rituals) into public teaching content: a landing page, a blog, and an AI-literacy mini-course.
 
 ## Stack
 

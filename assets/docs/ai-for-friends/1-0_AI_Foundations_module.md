@@ -12,6 +12,7 @@ This module targets professionals in non-technical roles who use or will use AI 
 
 **Target roles:**
 - HR professionals
+- Industrial engineering professionals
 - Legal professionals
 - Marketing professionals
 

@@ -47,7 +47,7 @@
   /* Lesson body typography */
   .lesson-body h2 {
     font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: -0.01em;
-    font-size: 1.5rem; margin-top: 3rem; margin-bottom: 0.75rem;
+    font-size: 1.5rem; margin-top: 3rem; margin-bottom: 0.75rem; scroll-margin-top: 6rem;
   }
   .lesson-body h2 .step-num {
     display: inline-flex; align-items: center; justify-content: center;
@@ -101,10 +101,62 @@
       <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
       <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
     </a>
-    <nav class="hidden md:flex items-center gap-8 font-mono text-xs text-os-secondary uppercase tracking-wide">
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
       <a href="../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pillars</a>
       <a href="../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
       <a href="../index.html" class="text-accent-cyan">Course</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menu
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">AI Foundations</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">1.1 How AI Models Work</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Prompt vs. Context Engineering</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Practical Prompting Techniques</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Choosing the Right AI Model</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Setting Up Your Computer</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPTIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Installing Windows Terminal</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Installing VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navigating in the Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="../module-3/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-3/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Claude Code Onboarding Guide</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Course Home</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <span class="text-accent-cyan font-semibold">EN</span>
+        <span class="text-white/20">/</span>
+        <span class="cursor-default" title="Spanish version — coming soon">ES</span>
+      </div>
     </nav>
     <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">
       Module 1
@@ -131,13 +183,13 @@
       <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">10 MIN</span>
       <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">STEP 1 OF 5</span>
     </div>
-    <!-- Progress pills -->
+    <!-- Progress pills (jump to section) -->
     <div class="flex flex-wrap gap-2 font-mono text-[10px]">
-      <span class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan">1. What AI Is</span>
-      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">2. Key Terms</span>
-      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">3. Three Stages</span>
-      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">4. Agentic Loop</span>
-      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">5. What It Means</span>
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. What AI Is</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Key Terms</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Three Stages</a>
+      <a href="#step-4" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">4. Agentic Loop</a>
+      <a href="#step-5" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">5. What It Means</a>
     </div>
   </div>
 </header>
@@ -146,7 +198,7 @@
 <article class="px-6 pb-24">
   <div class="lesson-body max-w-2xl mx-auto text-[16px]">
 
-    <h2><span class="step-num">1</span>What an AI Model Actually Is</h2>
+    <h2 id="step-1"><span class="step-num">1</span>What an AI Model Actually Is</h2>
     <p>AI does not think. It predicts patterns at superhuman speed. That distinction changes how you use it — once you understand what's actually happening, you can give the AI the right inputs to get the right outputs. Pick whichever of these three analogies clicks, and keep it in mind through every lesson that follows.</p>
 
     <table>
@@ -167,7 +219,7 @@
       <p>If you can state exactly what you want in one specific sentence, your AI output will be twice as good. Vague prompts produce vague answers.</p>
     </div>
 
-    <h2><span class="step-num">2</span>The Terms You Need to Know</h2>
+    <h2 id="step-2"><span class="step-num">2</span>The Terms You Need to Know</h2>
     <p>You'll see these words constantly — in Claude, in this course, and in conversations about AI. You don't need to memorize them; you need to recognize them. Start with the four marked below — you'll use these every day.</p>
 
     <table>
@@ -191,7 +243,7 @@
       <p>This table is a reference, not something to memorize. Bookmark this lesson — the four starred terms appear in every lesson that follows.</p>
     </div>
 
-    <h2><span class="step-num">3</span>Three Stages of AI Capability</h2>
+    <h2 id="step-3"><span class="step-num">3</span>Three Stages of AI Capability</h2>
     <p>Not all AI tools behave the same way — there's a spectrum from simple text generation to fully autonomous multi-agent systems. Knowing where a tool sits tells you what you can ask it to do, and what you still need to do yourself.</p>
 
     <table>
@@ -207,7 +259,7 @@
       <p>Stage 1 and Stage 2 are widely available right now. Stage 3 multi-agent systems are still early and emerging. Use Stage 1 for simple drafting, Stage 2 when you need live data — don't build a complex agent for a task a single clear prompt could handle.</p>
     </div>
 
-    <h2><span class="step-num">4</span>How Agents Actually Work</h2>
+    <h2 id="step-4"><span class="step-num">4</span>How Agents Actually Work</h2>
     <p>When you send a message to an AI agent, more happens than you see. It reasons, selects tools, queries live systems, and loops back to check its own work before answering. This loop is what makes agents powerful — and it's how you debug a wrong answer.</p>
 
     <ol class="space-y-2 pl-5 list-decimal text-os-secondary marker:text-accent-cyan marker:font-mono">
@@ -228,7 +280,7 @@
       </div>
     </details>
 
-    <h2><span class="step-num">5</span>What This Means for Your Work</h2>
+    <h2 id="step-5"><span class="step-num">5</span>What This Means for Your Work</h2>
     <p>Understanding how AI works changes how you use it. Three principles separate effective AI users from frustrated ones:</p>
 
     <div class="callout callout-info">
@@ -248,6 +300,13 @@
       <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You can explain what a context window is without technical jargon</span></div>
       <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You can name the four most important terms for daily work: Prompt, Context window, Agent, MCP Server</span></div>
     </div>
+
+    <h2 class="!mt-10 !text-base">Related Resources</h2>
+    <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
+      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — The Claude AI platform</li>
+      <li><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">Claude documentation</a> — Official documentation</li>
+      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">Claude support</a> — Help center and troubleshooting</li>
+    </ul>
 
     <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
       <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lesson complete</p>
@@ -280,6 +339,24 @@
     <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Built as a system, not a slogan.</p>
   </div>
 </footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
 
 </body>
 </html>

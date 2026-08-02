@@ -1,5 +1,5 @@
 # Claude Code Onboarding Guide
-### For Marketing, HR, and Legal Professionals — Windows + VS Code + Claude Pro
+### For Marketing, HR, Legal, and Industrial Engineering Professionals — Windows + VS Code + Claude Pro
 
 ---
 
@@ -101,7 +101,16 @@ Answer one question: **Do you need to work with files and folders, or just ask a
 | First-pass risk review of a document set | One doc at a time | Whole folder, flagged findings file |
 | Iterate a draft with full change visibility | Copy-paste, no history | Diff review on every edit |
 
-### 1.5 When the Web Version Is Actually Better
+### 1.5 Before / After — Industrial Engineering
+
+| Task | Web version | Claude Code |
+|---|---|---|
+| Extract cycle-time and downtime data from 20 shift reports | 20 uploads, no consolidated output | One folder → one table |
+| Compare SOP language across multiple work-cell documents | Upload-limited, loses thread | One pass, one comparison table |
+| Standardize root-cause write-ups (5-Why / fishbone) to one template | Manual reassembly | Batch rewrite, each saved back |
+| Audit a folder of maintenance logs for recurring failure codes | Impractical | One pass over the folder |
+
+### 1.6 When the Web Version Is Actually Better
 - Quick one-off questions with no files involved
 - Working from your phone
 - Brainstorming out loud
@@ -110,7 +119,7 @@ Answer one question: **Do you need to work with files and folders, or just ask a
 
 > **Honest framing:** Web for thinking. Claude Code for producing. Most people use both.
 
-### 1.6 What It Costs You
+### 1.7 What It Costs You
 A ~30-minute learning curve (mostly one-time), being on a computer rather than a phone, and typing a few commands. That's the whole price.
 
 ---
@@ -339,6 +348,7 @@ To exit: /exit, or press Ctrl+C twice.
 **Example prompts by role.** These are the kind of one-line requests that show what "specific" looks like in real work:
 
 - **HR:** "Read the résumé spreadsheet in this folder and flag any candidate who's been in 'Interview Scheduled' for more than 10 days."
+- **Industrial Engineering:** "Read the shift-report folder and flag any production line with more than 30 minutes of unplanned downtime this week."
 - **Legal:** "Compare the indemnity clause across all contracts in this folder and flag any that cap liability below $1M."
 - **Marketing:** "Read the campaign performance CSV and tell me which channel had the highest click-through rate."
 

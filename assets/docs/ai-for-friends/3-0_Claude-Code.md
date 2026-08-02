@@ -12,6 +12,7 @@ This module targets professionals who work across many documents at once. No pro
 
 **Target roles:**
 - HR professionals
+- Industrial engineering professionals
 - Legal professionals
 - Marketing professionals
 
@@ -24,6 +25,7 @@ The web version of Claude is a conversation *about* your documents. Claude Code 
 | Role | What Changes |
 |---|---|
 | **HR** | Screen 40 résumés against one job description in a single pass instead of uploading them one by one. Standardize many job descriptions to one template as a batch rewrite, each saved back in place. |
+| **Industrial Engineering** | Compare cycle-time and downtime data across many shift reports in a single pass instead of exporting each one separately. Standard operating procedures and process terminology (takt time, changeover, OEE) live permanently in a CLAUDE.md file instead of being re-explained each session. |
 | **Legal** | Compare a clause such as indemnity language across many agreements in one pass with a single comparison table. Every edit arrives as a redline-style diff you approve or reject, and defined terms live permanently in a CLAUDE.md file instead of being re-explained each session. |
 | **Marketing** | Turn one piece of content into several channel variants as separate saved files from one instruction. Your brand voice and banned-words list live in CLAUDE.md and apply to everything drafted in that folder instead of being re-pasted into every chat. |
 

@@ -41,7 +41,7 @@
   a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid #00F0FF; outline-offset: 3px; border-radius: 4px; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .fade-up { animation: none !important; opacity: 1 !important; } }
 
-  .lesson-body h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: -0.01em; font-size: 1.5rem; margin-top: 3rem; margin-bottom: 0.75rem; }
+  .lesson-body h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: -0.01em; font-size: 1.5rem; margin-top: 3rem; margin-bottom: 0.75rem; scroll-margin-top: 6rem; }
   .lesson-body h2 .step-num { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 9999px; margin-right: 0.75rem; background: rgba(0,240,255,0.1); border: 1px solid rgba(0,240,255,0.4); color: #00F0FF; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 500; vertical-align: middle; }
   .lesson-body h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1.05rem; margin-top: 1.75rem; margin-bottom: 0.5rem; color: #FFFFFF; }
   .lesson-body p { line-height: 1.75; margin-bottom: 1.25em; color: #9CA3AF; }
@@ -80,10 +80,62 @@
       <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
       <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
     </a>
-    <nav class="hidden md:flex items-center gap-8 font-mono text-xs text-os-secondary uppercase tracking-wide">
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
       <a href="../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pillars</a>
       <a href="../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
       <a href="../index.html" class="text-accent-cyan">Course</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menu
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">AI Foundations</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 How AI Models Work</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Prompt vs. Context Engineering</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">1.3 Practical Prompting Techniques</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Choosing the Right AI Model</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Setting Up Your Computer</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPTIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Installing Windows Terminal</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Installing VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navigating in the Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="../module-3/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-3/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Claude Code Onboarding Guide</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Course Home</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <span class="text-accent-cyan font-semibold">EN</span>
+        <span class="text-white/20">/</span>
+        <span class="cursor-default" title="Spanish version — coming soon">ES</span>
+      </div>
     </nav>
     <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Module 1</a>
   </div>
@@ -104,11 +156,11 @@
       <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">STEP 3 OF 4</span>
     </div>
     <div class="flex flex-wrap gap-2 font-mono text-[10px]">
-      <span class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan">1. Four Techniques</span>
-      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">2. COSTARS</span>
-      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">3. Interview-Style</span>
-      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">4. Validation Habits</span>
-      <span class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary">5. Action Plan</span>
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Four Techniques</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. COSTARS</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Interview-Style</a>
+      <a href="#step-4" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">4. Validation Habits</a>
+      <a href="#step-5" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">5. Action Plan</a>
     </div>
   </div>
 </header>
@@ -116,7 +168,7 @@
 <article class="px-6 pb-24">
   <div class="lesson-body max-w-2xl mx-auto text-[16px]">
 
-    <h2><span class="step-num">1</span>Four Core Prompting Techniques</h2>
+    <h2 id="step-1"><span class="step-num">1</span>Four Core Prompting Techniques</h2>
     <p>Four techniques cover 90% of what you'll do with Claude. Each solves a different problem — knowing which to reach for is the skill.</p>
 
     <table>
@@ -158,8 +210,24 @@ Now classify this:
 "The Provider's total liability under this agreement shall not exceed $10,000 in any circumstance, including gross negligence."</pre></div>
     </details>
 
+    <details>
+      <summary>Few-shot example — Industrial Engineering (downtime cause classification)</summary>
+      <div><pre>I need you to classify unplanned downtime events by root-cause category.
+
+Example Input: "Line 3 stopped for 45 min, changeover took longer than standard due to missing fixture."
+Example Output: SETUP/CHANGEOVER WASTE — Root cause: fixture not staged in advance. Action: pre-stage fixtures 15 minutes before scheduled changeover.
+
+Example Input: "Line 1 down 20 min, conveyor sensor misaligned again after last PM."
+Example Output: EQUIPMENT/MAINTENANCE — Root cause: sensor alignment not verified during preventive maintenance. Action: add alignment check to PM checklist.
+
+Now classify this:
+"Line 2 idle 30 min waiting on component delivery from receiving."</pre></div>
+    </details>
+
     <h3>Role prompting by title</h3>
     <pre>HR: "You are a senior recruiter with 10 years of experience hiring across technical and professional roles. You understand how to distinguish transferable skills from role-specific ones, and how to write inclusive, accurate job descriptions. Communicate in clear, candidate-friendly language."
+
+Industrial Engineering: "You are a senior industrial engineer with 10 years of experience in process optimization and Lean Six Sigma. You understand takt time, OEE, root-cause analysis, and the eight wastes. Communicate in precise, data-driven language appropriate for operations stakeholders."
 
 Legal: "You are a senior commercial contracts attorney with 12 years of experience. You understand indemnification, liability caps, termination rights, and auto-renewal terms. Flag risk precisely, quote the exact language at issue, and communicate in plain English for a business audience."
 
@@ -209,7 +277,7 @@ Write that prompt for me.</pre>
 
     <div class="callout callout-tip"><span class="callout-label">Combine Techniques for Best Results</span><p>Start every complex prompt with Role Prompting to set the foundation. Add Few-Shot examples for formatting. Add Chain-of-Thought for analysis.</p></div>
 
-    <h2><span class="step-num">2</span>The COSTARS Framework</h2>
+    <h2 id="step-2"><span class="step-num">2</span>The COSTARS Framework</h2>
     <p>When a task is complex and multi-dimensional, a single sentence isn't enough. COSTARS gives you a seven-component structure that eliminates guessing across every dimension of a prompt.</p>
 
     <table>
@@ -243,7 +311,7 @@ Scope: Focus on my specific role. Do not recommend tools that require IT install
 
     <div class="callout callout-tip"><span class="callout-label">This Is Your AI Launchpad</span><p>Run this prompt with your own role details — it produces a personalized AI adoption roadmap in under 2 minutes. Save the output.</p></div>
 
-    <h2><span class="step-num">3</span>Interview-Style Prompting for Exploratory Tasks</h2>
+    <h2 id="step-3"><span class="step-num">3</span>Interview-Style Prompting for Exploratory Tasks</h2>
     <p>Sometimes you don't know exactly what you need. Interview-style prompting flips the dynamic: instead of crafting the perfect prompt, you ask the AI to interview you.</p>
 
     <pre>You are an experienced AI transformation consultant who specializes in helping professionals across industries identify problems they can solve using AI. You have deep expertise in human-AI collaboration, process improvement, and understanding where AI adds massive value versus where human judgment remains critical.
@@ -266,7 +334,7 @@ My goal: identify 2-3 concrete opportunities where AI could amplify my capabilit
 
     <div class="callout callout-info"><span class="callout-label">Start Here If This Is Your First Session</span><p>Interview-style prompting takes less upfront effort and produces more personalized results. Run it before the COSTARS prompt if you're unsure what to ask for.</p></div>
 
-    <h2><span class="step-num">4</span>Responsible Validation Habits</h2>
+    <h2 id="step-4"><span class="step-num">4</span>Responsible Validation Habits</h2>
     <p>AI is powerful, not infallible — it generates confident-sounding text even when wrong. Every output requires human validation before it becomes a decision, a communication, or a deliverable.</p>
 
     <table>
@@ -302,7 +370,7 @@ Claude: "1. I ranked candidates only on years of experience. Relevant skills and
 
     <div class="callout callout-warning"><span class="callout-label">Partial Validation Is Not Validation</span><p>"It looks right" is not a validation method. Apply Source Check and Plausibility Scan to every AI output before sharing it.</p></div>
 
-    <h2><span class="step-num">5</span>Your Action Plan</h2>
+    <h2 id="step-5"><span class="step-num">5</span>Your Action Plan</h2>
     <p>Techniques only become skills through practice.</p>
 
     <table>
@@ -327,6 +395,13 @@ Claude: "1. I ranked candidates only on years of experience. Relevant skills and
       <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You can explain what each letter in COSTARS stands for</span></div>
       <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You can apply self-critique and name at least three validation habits</span></div>
     </div>
+
+    <h2 class="!mt-10 !text-base">Related Resources</h2>
+    <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
+      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — Run every prompt in this lesson</li>
+      <li><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">Claude documentation</a> — Official product and feature documentation</li>
+      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">Claude support</a> — Help center and account support</li>
+    </ul>
 
     <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
       <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lesson complete</p>
@@ -355,6 +430,24 @@ Claude: "1. I ranked candidates only on years of experience. Relevant skills and
     <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Built as a system, not a slogan.</p>
   </div>
 </footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
 
 </body>
 </html>

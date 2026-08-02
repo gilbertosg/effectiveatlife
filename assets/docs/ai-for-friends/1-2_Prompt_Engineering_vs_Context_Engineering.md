@@ -126,7 +126,7 @@ You will compare weak prompts to strong prompts across three roles. You will ide
 
 <!-- /COLUMNS -->[cite: 5]
 
-<!-- EXPAND: More Examples - HR and Legal -->[cite: 5]
+<!-- EXPAND: More Examples - HR, Industrial Engineering, and Legal -->[cite: 5]
 
 **HR:**[cite: 5]
 
@@ -154,6 +154,20 @@ You will compare weak prompts to strong prompts across three roles. You will ide
 ```text
 ✅ After:
 "Review this NDA for missing standard clauses. Check for: definition of confidential information, term length, return-of-materials, and governing law. List each missing or weak clause with a one-line note on the risk it creates."
+```
+
+**Industrial Engineering:**
+
+```text
+❌ Before:
+"Check the downtime report."
+```
+
+*Which line? Which shift? What counts as downtime?*
+
+```text
+✅ After:
+"Which production lines in this week's downtime report exceeded 30 minutes of unplanned downtime? Show as a table: line, date, duration, stated cause. Sort by duration descending."
 ```
 
 <!-- /EXPAND -->[cite: 5]
@@ -258,6 +272,7 @@ You will compare low-quality context to high-quality context across three roles 
 | Role | Bad Context | Good Context |[cite: 6]
 |---|---|---|[cite: 6]
 | **HR** | Paste 40 résumés and ask "help me screen these" | Paste the job requirements first, then 3 résumés at a time, and ask: "Score each 1-5 on relevant experience, years of experience, and leadership indicators. Show as a table." |[cite: 6]
+| **Industrial Engineering** | Paste an entire month of maintenance logs and ask "what's wrong with the line" | Extract just this week's entries and ask: "Which failure codes appear more than twice? List code, frequency, and affected line." |
 | **Legal** | Paste an entire 40-page merger agreement and ask "are there any risks?" | Extract just the Indemnification and Termination sections and ask: "Which clauses deviate from our standard template? List clause number, deviation, and risk level." |[cite: 6]
 | **Marketing** | Ask "how did the campaign do?" with no data attached | Paste the campaign performance CSV filtered to last 30 days and ask: "Which channels underperformed their target CPA? Show channel, target, actual, and gap." |[cite: 6]
 
