@@ -10,7 +10,7 @@ Pure static HTML, CSS, and vanilla JavaScript. No backend, no build step, no pac
 - **Fonts:** Space Grotesk (headings), Inter (body/long-form), JetBrains Mono (tags, metadata, technical labels) — via Google Fonts.
 - Every page is a single self-contained `.html` file: markup, styles, and scripts all live in that one file. Nothing is bundled or compiled.
 
-The visual system (colors, type, layout, component rules) is fully specified in [`assets/docs/Design-System-Guide.md`](assets/docs/Design-System-Guide.md). The build plan is in [`assets/docs/Effective-at-Life-Implementation-Guide-V1.md`](assets/docs/Effective-at-Life-Implementation-Guide-V1.md).
+The visual system (colors, type, layout, component rules) is fully specified in [`assets/docs/Design-System-Guide.md`](assets/docs/Design-System-Guide.md). The build plan is in [`assets/docs/Effective-at-Life-Implementation-Guide-V1.md`](assets/docs/Effective-at-Life-Implementation-Guide-V1.md). Reusable page templates for new content live in [`assets/docs/Article-Template.md`](assets/docs/Article-Template.md) and [`assets/docs/Lesson-Template.md`](assets/docs/Lesson-Template.md).
 
 ## Structure
 
@@ -21,9 +21,13 @@ effectiveatlife/
 ├── blog/
 │   ├── index.html              # Blog hub
 │   └── weekly-review.html      # "The Friday Finish" article
-├── ai-for-friends/             # AI-literacy mini-course (planned, not yet built)
+├── ai-for-friends/              # AI-literacy mini-course (3 modules, built)
+│   ├── index.html               # Course hub
+│   ├── module-1/                # AI Foundations — hub + 4 lessons
+│   ├── module-2/                # Setting Up Your Computer (optional) — hub + 3 lessons
+│   └── module-3/                # Claude Code — hub + 1 lesson
 ├── assets/
-│   ├── docs/                   # Design system + implementation guide
+│   ├── docs/                   # Design system, implementation guide, page templates
 │   ├── css/ js/ images/        # Reserved for shared assets if ever needed
 └── .github/workflows/main.yml  # Deploy workflow
 ```
@@ -46,5 +50,6 @@ Then open `http://localhost:8934/index.html`. Opening files directly via `file:/
 
 - ✅ Global design system + landing page
 - ✅ Blog hub + first article ("The Friday Finish")
+- ✅ AI for Friends mini-course (3 modules, 12 pages)
 - ⏳ Remaining blog articles (efficiency vs. effectiveness, context engineering)
-- ⏳ AI for Friends mini-course (3 modules)
+- ⏳ Spanish translation (`es/` mirror — see `CLAUDE.md` for the planned convention; language-pill UI already scaffolded)

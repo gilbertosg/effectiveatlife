@@ -1,14 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Effective at Life</title>
-    <meta name="title" content="Effective at Life">
-    <meta name="description" content="...">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Route Not Found | Effective at Life</title>
+<meta name="title" content="404 — Route Not Found | Effective at Life">
+<meta name="description" content="This page isn't wired into Gil OS. Return to the homepage or find your way through the blog and course.">
 
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C',
+          'os-surface': '#111827',
+          'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF',
+          'os-secondary': '#9CA3AF',
+          'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF',
+          'accent-teal': '#00C2D1',
+          'accent-purple': '#7B2CBF',
+          'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+        keyframes: {
+          fadeInUp: {
+            '0%': { opacity: 0, transform: 'translateY(18px)' },
+            '100%': { opacity: 1, transform: 'translateY(0)' },
+          },
+          scanline: {
+            '0%': { transform: 'translateX(-100%)' },
+            '100%': { transform: 'translateX(100%)' },
+          },
+        },
+        animation: {
+          'fade-in-up': 'fadeInUp 0.7s ease-out both',
+          'scanline': 'scanline 3s linear infinite',
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: #0A0F1C;
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .font-display { font-family: 'Space Grotesk', sans-serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(18px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up {
+    opacity: 0;
+    animation: fadeInUp 0.7s ease-out forwards;
+  }
+
+  ::selection { background: rgba(0,240,255,0.25); color: #FFFFFF; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid #00F0FF;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .fade-up, .animate-scanline { animation: none !important; opacity: 1 !important; }
+  }
+</style>
 </head>
-<body>
-    ...
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="index.html#pillars" class="hover:text-accent-cyan transition-colors">Pillars</a>
+      <a href="index.html#ai" class="hover:text-accent-cyan transition-colors">AI</a>
+      <a href="index.html#methodology" class="hover:text-accent-cyan transition-colors">Inspiration</a>
+      <a href="blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="ai-for-friends/index.html" class="hover:text-accent-cyan transition-colors">Course</a>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">
+      Return Home
+    </a>
+  </div>
+</header>
+
+<!-- ============ 404 ============ -->
+<main class="relative min-h-screen flex items-center pt-32 pb-20 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-accent-purple/10 blur-[120px] pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-10 items-center w-full">
+
+    <div class="lg:col-span-3 fade-up">
+      <p class="font-mono text-xs uppercase tracking-widest text-accent-cyan mb-5">System Exception — Exit Code 404</p>
+      <h1 class="font-display font-bold tracking-tight text-5xl sm:text-6xl leading-[1.05] mb-6">
+        This route isn't wired<br class="hidden sm:block"> into the system. <span class="text-os-secondary">Yet.</span>
+      </h1>
+      <p class="text-os-secondary text-lg leading-relaxed max-w-xl mb-10">
+        The page you're after doesn't exist at this path — it may have moved, been renamed, or never
+        shipped. Nothing broke; the router just came up empty.
+      </p>
+      <div class="flex flex-wrap items-center gap-4">
+        <a href="index.html" class="px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
+          Return Home
+        </a>
+        <a href="blog/index.html" class="px-5 py-3 rounded-lg border border-[#00F0FF]/50 text-[#00F0FF] font-display font-bold text-sm hover:bg-[#00F0FF]/10 hover:shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all">
+          Browse the Blog
+        </a>
+        <a href="ai-for-friends/index.html" class="px-5 py-3 rounded-lg border border-white/15 text-os-secondary font-display font-bold text-sm hover:border-white/30 hover:text-os-primary transition-all">
+          Open the Course
+        </a>
+      </div>
+    </div>
+
+    <!-- Signature element: system crash readout -->
+    <div class="lg:col-span-2 fade-up" style="animation-delay: 0.15s">
+      <div class="relative rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 overflow-hidden">
+        <div class="absolute top-0 left-0 h-px w-1/3 bg-gradient-to-r from-transparent via-accent-amber to-transparent animate-scanline"></div>
+        <div class="flex items-center justify-between mb-5">
+          <span class="font-mono text-xs uppercase tracking-wide text-os-tertiary">gil_os — router.log</span>
+          <span class="flex items-center gap-1.5 font-mono text-[11px] text-[#FBBF24]">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#FBBF24]"></span>EXIT 404
+          </span>
+        </div>
+        <div class="space-y-2">
+          <p id="route-query" class="font-mono text-xs text-os-secondary px-3">
+            $ gil_os resolve --path "/…"
+          </p>
+          <div class="flex items-start gap-2 rounded-lg bg-white/[0.03] px-3 py-2">
+            <span class="font-mono text-xs text-os-tertiary">-</span>
+            <span class="font-mono text-xs text-os-tertiary">searched pillar map, blog index, course index</span>
+          </div>
+          <div class="flex items-start gap-2 rounded-lg bg-white/[0.03] px-3 py-2">
+            <span class="font-mono text-xs text-os-tertiary">-</span>
+            <span class="font-mono text-xs text-os-tertiary">no matching route in system table</span>
+          </div>
+          <div class="flex items-start gap-2 rounded-lg bg-accent-cyan/5 border border-accent-cyan/10 px-3 py-2">
+            <span class="font-mono text-xs text-accent-cyan">+</span>
+            <span class="font-mono text-xs text-os-primary">resolve to a known-good route: home</span>
+          </div>
+          <div class="flex items-center justify-between border-t border-white/10 pt-4 mt-1">
+            <span class="font-mono text-[11px] uppercase tracking-wide text-os-tertiary">status</span>
+            <span class="font-mono text-xs font-semibold uppercase tracking-wide text-[#FBBF24]">route unresolved</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">You do not rise to the level of your goals. You fall to the level of your systems.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Built as a system, not a slogan.</p>
+  </div>
+</footer>
+
+<script>
+  const path = window.location.pathname.split('/').filter(Boolean).pop() || 'unknown';
+  document.getElementById('route-query').textContent = '$ gil_os resolve --path "/' + path + '"';
+</script>
+
 </body>
 </html>
