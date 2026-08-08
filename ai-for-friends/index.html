@@ -38,38 +38,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-<style>
-  html { scroll-behavior: smooth; }
-  body {
-    background-color: #0A0F1C;
-    color: #FFFFFF;
-    font-family: 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-  .font-display { font-family: 'Space Grotesk', sans-serif; }
-  .font-mono { font-family: 'JetBrains Mono', monospace; }
-
-  .bg-grid {
-    background-image:
-      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-    background-size: 44px 44px;
-  }
-
-  @keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(18px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-  .fade-up { opacity: 0; animation: fadeInUp 0.7s ease-out forwards; }
-
-  ::selection { background: rgba(0,240,255,0.25); color: #FFFFFF; }
-  a:focus-visible, button:focus-visible { outline: 2px solid #00F0FF; outline-offset: 3px; border-radius: 4px; }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .fade-up { animation: none !important; opacity: 1 !important; }
-  }
-</style>
+<link rel="stylesheet" href="../assets/css/custom.css">
 </head>
 <body class="bg-os-deep text-os-primary font-body antialiased">
 
@@ -117,13 +86,44 @@
             </div>
           </div>
           <div class="border-t border-white/10 my-1"></div>
-          <div>
+          <div class="mb-1">
             <a href="module-3/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
               <span class="font-mono text-xs text-accent-purple">03</span>
               <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
             </a>
             <div class="ml-8 space-y-0.5 pb-2">
               <a href="module-3/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Claude Code Onboarding Guide</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="module-4/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-teal">04</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Building Your AI Personal Assistant</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="module-4/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 What Is a Claude Project?</a>
+              <a href="module-4/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Creating Your First Project</a>
+              <a href="module-4/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 Giving Your Project Reference Material</a>
+              <a href="module-4/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 Keeping Your Standing Instructions Current</a>
+              <a href="module-4/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Using Your Project to Design More Projects</a>
+              <a href="module-4/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Worked Examples by Role</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="module-5/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">05</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Automating Workflows with Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="module-5/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.1 Your Claude Code Daily Habits</a>
+              <a href="module-5/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.2 Installing Anthropic Skills</a>
+              <a href="module-5/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.3 International Relations: Automating the Agreements Workflow</a>
+              <a href="module-5/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.4 What Is an MCP Server?</a>
+              <a href="module-5/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.5 Daily Briefing from Email and Calendar</a>
+              <a href="module-5/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.6 Staying Informed: A Market-Awareness Digest</a>
+              <a href="module-5/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.7 From Sources to Story</a>
             </div>
           </div>
           <div class="border-t border-white/10 my-2"></div>
@@ -154,13 +154,14 @@
       A no-jargon crash course<br class="hidden sm:block"> in using AI <span class="text-os-secondary">at work.</span>
     </h1>
     <p class="text-os-secondary text-lg leading-relaxed mb-8">
-      Written for HR, Industrial Engineering, Legal, and Marketing professionals with zero technical background.
-      Three modules, one straight line: understand how AI actually works, prompt it well, then point it at your own files.
+      Written for HR, Industrial Engineering, International Relations, Legal, and Marketing professionals with zero
+      technical background. Five modules, one straight line: understand how AI actually works, prompt it well, point
+      it at your own files, build a claude.ai Project, then automate a recurring workflow.
     </p>
     <div class="flex flex-wrap items-center gap-4 font-mono text-xs text-os-tertiary">
-      <span class="px-3 py-1.5 rounded-full border border-white/15">3 modules</span>
-      <span class="px-3 py-1.5 rounded-full border border-white/15">8 core lessons</span>
-      <span class="px-3 py-1.5 rounded-full border border-white/15">~3 hours total</span>
+      <span class="px-3 py-1.5 rounded-full border border-white/15">5 modules</span>
+      <span class="px-3 py-1.5 rounded-full border border-white/15">21 core lessons</span>
+      <span class="px-3 py-1.5 rounded-full border border-white/15">~6.5 hours total</span>
       <span class="px-3 py-1.5 rounded-full border border-white/15">No coding required</span>
     </div>
   </div>
@@ -207,12 +208,44 @@
       <div class="flex-1">
         <div class="flex items-center gap-2 mb-2">
           <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent-purple/40 text-accent-purple">REQUIRED</span>
-          <span class="font-mono text-[10px] text-os-tertiary">75–90 min · 1 lesson · Windows</span>
+          <span class="font-mono text-[10px] text-os-tertiary">35–45 min · 1 lesson · Windows</span>
         </div>
         <h2 class="font-display font-semibold text-xl mb-2 group-hover:text-accent-cyan transition-colors">Claude Code — AI on Your Own Files</h2>
         <p class="text-os-secondary text-sm leading-relaxed">
           Point an AI assistant at a folder of your real documents and have it draft, edit, and organize them.
           Full install, a hands-on tutorial, and the safety habits that keep it scoped.
+        </p>
+      </div>
+      <div class="font-mono text-xs text-accent-cyan shrink-0">Start &rarr;</div>
+    </a>
+
+    <a href="module-4/index.html" class="group fade-up rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-8 flex flex-col md:flex-row md:items-center gap-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.3s">
+      <div class="font-display font-bold text-4xl text-accent-teal shrink-0">04</div>
+      <div class="flex-1">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent-teal/40 text-accent-teal">REQUIRED</span>
+          <span class="font-mono text-[10px] text-os-tertiary">65 min · 6 lessons</span>
+        </div>
+        <h2 class="font-display font-semibold text-xl mb-2 group-hover:text-accent-cyan transition-colors">Building Your AI Personal Assistant</h2>
+        <p class="text-os-secondary text-sm leading-relaxed">
+          Build a Claude Project — a reusable workspace on claude.ai that knows your role, follows your standing
+          instructions, and draws on your own reference documents.
+        </p>
+      </div>
+      <div class="font-mono text-xs text-accent-cyan shrink-0">Start &rarr;</div>
+    </a>
+
+    <a href="module-5/index.html" class="group fade-up rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-8 flex flex-col md:flex-row md:items-center gap-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.4s">
+      <div class="font-display font-bold text-4xl text-os-primary shrink-0">05</div>
+      <div class="flex-1">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/40 text-os-primary">REQUIRED</span>
+          <span class="font-mono text-[10px] text-os-tertiary">3–3.5 hours · 7 lessons</span>
+        </div>
+        <h2 class="font-display font-semibold text-xl mb-2 group-hover:text-accent-cyan transition-colors">Automating Workflows with Claude Code</h2>
+        <p class="text-os-secondary text-sm leading-relaxed">
+          Teach Claude Code to read and write native Office files, connect to live systems, and chain several steps
+          into one repeatable, automated workflow.
         </p>
       </div>
       <div class="font-mono text-xs text-accent-cyan shrink-0">Start &rarr;</div>
@@ -225,10 +258,11 @@
 <section class="px-6 pb-24">
   <div class="max-w-5xl mx-auto rounded-2xl bg-os-surface/60 border border-white/10 p-8">
     <p class="font-mono text-xs uppercase tracking-widest text-accent-teal mb-4">How to Use This Course</p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-os-secondary leading-relaxed">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-os-secondary leading-relaxed">
       <p><strong class="text-os-primary">Go in order.</strong> Module 1 defines terms every later lesson assumes you know. Don't skip it.</p>
       <p><strong class="text-os-primary">Module 2 is optional.</strong> It's a warm-up for the terminal and VS Code. If both already feel familiar, jump straight to Module 3.</p>
       <p><strong class="text-os-primary">Practice as you go.</strong> Every lesson includes prompts you can run immediately in Claude. Open <span class="font-mono text-os-primary">claude.ai</span> and actually run them.</p>
+      <p><strong class="text-os-primary">Modules 4 and 5 go further.</strong> Once Claude Code (Module 3) feels comfortable, build a claude.ai Project (Module 4) and automate one recurring workflow (Module 5).</p>
     </div>
   </div>
 </section>

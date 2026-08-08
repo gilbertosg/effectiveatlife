@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 5.6: Staying Informed — A Market-Awareness Digest — AI for Friends</title>
+<meta name="title" content="Lesson 5.6: Staying Informed — A Market-Awareness Digest">
+<meta name="description" content="Monitor several sources, report only what's new, and get an email that keeps you current without checking anything by hand.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../assets/css/custom.css">
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pillars</a>
+      <a href="../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Course</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menu
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="../module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">AI Foundations</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-1/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 How AI Models Work</a>
+              <a href="../module-1/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Prompt vs. Context Engineering</a>
+              <a href="../module-1/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Practical Prompting Techniques</a>
+              <a href="../module-1/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Choosing the Right AI Model</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Setting Up Your Computer</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPTIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Installing Windows Terminal</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Installing VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navigating in the Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-3/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-3/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Claude Code Onboarding Guide</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-4/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-teal">04</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Building Your AI Personal Assistant</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-4/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 What Is a Claude Project?</a>
+              <a href="../module-4/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Creating Your First Project</a>
+              <a href="../module-4/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 Giving Your Project Reference Material</a>
+              <a href="../module-4/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 Keeping Your Standing Instructions Current</a>
+              <a href="../module-4/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Using Your Project to Design More Projects</a>
+              <a href="../module-4/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Worked Examples by Role</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">05</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Automating Workflows with Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.1 Your Claude Code Daily Habits</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.2 Installing Anthropic Skills</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.3 International Relations: Automating the Agreements Workflow</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.4 What Is an MCP Server?</a>
+              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.5 Daily Briefing from Email and Calendar</a>
+              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">5.6 Staying Informed: A Market-Awareness Digest</a>
+              <a href="lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.7 From Sources to Story</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Course Home</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <span class="text-accent-cyan font-semibold">EN</span>
+        <span class="text-white/20">/</span>
+        <span class="cursor-default" title="Spanish version — coming soon">ES</span>
+      </div>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Module 5</a>
+  </div>
+</header>
+
+<!-- ============ LESSON HEADER ============ -->
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a>
+      <span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Module 5</a>
+      <span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lesson 5.6</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Staying Informed: A Market-Awareness Digest</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">
+      Monitor several sources, report only what's new, and get an email that keeps you current without checking anything by hand.
+    </p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">25–30 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/40 text-os-primary">REQUIRED</span>
+    </div>
+    <div class="flex flex-wrap gap-2 font-mono text-[10px]">
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Choose Your Sources</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Dictate the Workflow</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Build the Plugin</a>
+      <a href="#step-4" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">4. Optional Scheduling</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ LESSON BODY ============ -->
+<article class="px-6 pb-24">
+  <div class="lesson-body max-w-2xl mx-auto text-[16px]">
+
+    <p>This lesson builds a market-awareness workflow: a short list of websites or public feeds gets checked regularly, only what's genuinely new gets summarized — with real context about what's already been seen — and a digest email lands in your inbox. This is the same check-something-new shape as Lesson 5.3, now aimed at staying current for content generation and market awareness, which is exactly why Marketing teams reach for this pattern most often. If Legal, HR, or Industrial Engineering is your role, this same shape fits a docket check, a compliance-portal sweep, or a nonconformance scan equally well — the "sources" are just different.</p>
+    <p>Staying informed usually means checking the same handful of sites over and over, most of the time finding nothing new. A digest that only reports genuine changes — and remembers what it already told you — turns that daily chore into a five-minute read that shows up on its own.</p>
+
+    <h2 id="step-1"><span class="step-num">1</span>Choose Your Sources</h2>
+    <p>Before building anything, pick what you're actually going to watch.</p>
+
+    <ol>
+      <li>List 3 to 6 sources that matter to your work: a competitor's press or product page, an industry news site, a regulator's announcement page, a public feed.</li>
+      <li>Prefer pages with a stable, predictable structure (a press-release list, a blog index) over ones that change layout constantly.</li>
+      <li>Read the callout below before assuming this lesson covers every social platform.</li>
+    </ol>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">About X/Twitter Specifically</span>
+      <p>This lesson's hands-on example uses public websites and feeds, reached with Claude Code's built-in WebFetch — the same tool proven in Lesson 5.3. Live X/Twitter content specifically is not reliably reachable this way: it requires either the paid X API or a dedicated MCP connector, which most readers won't have set up. If you have that access, the same two-skill shape below applies to X as a source — just swap the fetch step for the X tool you've connected, using the pattern from Lesson 5.4. Everyone else: the websites-and-feeds version below gets you the same outcome.</p>
+    </div>
+    <div class="callout callout-tip">
+      <span class="callout-label">A Feed Beats a Page When One Exists</span>
+      <p>If a source publishes an RSS or Atom feed, fetching that is more reliable than fetching the human-facing webpage — feeds rarely change structure the way a redesigned page does.</p>
+    </div>
+
+    <h2 id="step-2"><span class="step-num">2</span>Dictate the Workflow</h2>
+    <p>Describe the whole digest in one message, the same dictate-to-setup pattern from Lesson 5.3.</p>
+
+    <ol>
+      <li>Create a new folder, for example <span class="font-mono text-os-primary">market-digest</span>, and open it in Claude Code.</li>
+      <li>Adapt and send the example dictation below.</li>
+      <li>Answer any clarifying questions.</li>
+      <li>Review the proposed CLAUDE.md before approving.</li>
+    </ol>
+
+    <pre>I want to monitor a short list of websites for anything new that
+matters to our marketing team. Here are the sources: [list your 3-6
+URLs]. I care about mentions of these topics: our top three
+competitors by name, pricing changes, and new product announcements
+in our category. Ignore anything that doesn't touch one of those
+topics. When something new shows up, I want it summarized with
+context — if this is the second or third time a competitor has done
+something similar recently, say so, don't just report it in
+isolation. Once a batch of new items is ready, send me an email digest
+with a short summary of each item, why it matters, and a link back to
+the source. Set this up as a project with a README and a CLAUDE.md
+capturing my topics and sources, and ask me anything you need first.</pre>
+
+    <p>What Claude Code should produce:</p>
+    <pre>market-digest/
+├── README.md              Explains the workflow
+├── CLAUDE.md               Standing rules: sources, topics,
+│                           digest tone and length
+├── data/
+│   └── knowledge-log.md   Everything already seen and reported
+└── drafts/
+    └── digest-drafts/     Saved digests, in case email isn't set up</pre>
+
+    <h2 id="step-3"><span class="step-num">3</span>Build the Two-Skill Plugin</h2>
+    <p>Two skills: one that watches, one that reports. This reuses the exact plugin file structure from Lesson 5.3 — .claude-plugin/marketplace.json, plugins/&lt;name&gt;/.claude-plugin/plugin.json, skills/&lt;name&gt;/SKILL.md — so this step focuses on what's different: the two skills themselves.</p>
+
+    <ol>
+      <li>Ask Claude Code to build /scan-sources first, using the description below.</li>
+      <li>Review its SKILL.md, then ask for /send-digest.</li>
+      <li>Run /scan-sources, then /send-digest, and check the resulting email or draft.</li>
+    </ol>
+
+    <p>Skill 1 — /scan-sources. What to tell Claude Code to build:</p>
+    <pre>Build a skill called scan-sources. Its job: fetch each website listed
+in CLAUDE.md, extract anything published or updated since the last
+run, and compare it against data/knowledge-log.md. Keep only items
+matching our topics in CLAUDE.md. For each new, on-topic item, append
+it to the log with its source, date, topic match, and a one-line
+summary, marked "new — not yet digested."</pre>
+
+    <p>What this produces (skills/scan-sources/SKILL.md, abbreviated):</p>
+    <pre>---
+name: scan-sources
+description: Fetch each monitored source, keep only new items matching
+our topics, and log them. Use when the user says "check my sources"
+or "/scan-sources."
+---
+
+# scan-sources
+
+1. Read the source list and topic list from CLAUDE.md.
+2. Fetch each source with WebFetch.
+3. Read data/knowledge-log.md — everything already logged, ever.
+4. Identify content on each source not already in the log.
+5. Keep only new items matching a topic from CLAUDE.md; discard the rest.
+6. Append each kept item to the log: source, date, topic, one-line
+   summary, status "new — not yet digested."
+7. Report how many new, on-topic items were found.</pre>
+
+    <p>Skill 2 — /send-digest. What to tell Claude Code to build:</p>
+    <pre>Build a skill called send-digest. Its job: find every item in
+data/knowledge-log.md still marked "new — not yet digested." For each
+one, check the log for earlier entries on the same topic or
+competitor, and note the pattern if this is a repeat — for example,
+"third pricing mention from this competitor in two weeks." Compose one
+email digest: each item with its summary, its context note if there
+is one, and a link back to the source. Send it using the email
+connector if one is set up, or save it to drafts/digest-drafts/ if
+not. Mark each included item "digested" in the log.</pre>
+
+    <p>What this produces (skills/send-digest/SKILL.md, abbreviated):</p>
+    <pre>---
+name: send-digest
+description: Compile every undigested item into one contextual email
+digest and send it, or save a draft if no email connector exists.
+Use when the user says "send my digest" or "/send-digest."
+---
+
+# send-digest
+
+1. Read data/knowledge-log.md. Find every item marked "new — not yet
+   digested."
+2. For each item, scan the rest of the log for earlier entries on the
+   same topic or competitor. If found, note the pattern (e.g., "third
+   mention this month").
+3. Compose one digest: item summary, context note if any, and source
+   link, grouped by topic.
+4. Send the digest via the connected email tool. If none is connected,
+   save it to drafts/digest-drafts/&lt;date&gt;-digest.md instead.
+5. Mark every included item "digested" in the log.</pre>
+
+    <p>Sample digest:</p>
+    <pre>Subject: Market Digest — Tuesday
+
+Competitor Pricing
+Aria Corp dropped its entry-tier price by 15% (announced today). This
+is the third pricing move from Aria in the last two weeks — worth
+flagging to the pricing team. [source]
+
+New Product Announcements
+Northwind Labs announced a beta for a feature similar to ours,
+launching next month. No prior mentions from Northwind on this topic.
+[source]</pre>
+
+    <div class="callout callout-info">
+      <span class="callout-label">What Made This Fast</span>
+      <p>The digest didn't just list two facts — it flagged that Aria's move was the third in two weeks. That context only exists because scan-sources kept logging every prior mention, not just the newest one.</p>
+    </div>
+    <div class="callout callout-tip">
+      <span class="callout-label">Install It Like 5.3</span>
+      <p>The marketplace-add and plugin-install commands from Lesson 5.3, Step 4 work exactly the same way here — register the project folder as a local marketplace, install the plugin, restart Claude Code.</p>
+    </div>
+
+    <h2 id="step-4"><span class="step-num">4</span>Optional — Run It on a Schedule</h2>
+    <p>Once the two skills work, running them without you is the same pattern from Lessons 5.3 and 5.5.</p>
+
+    <ol>
+      <li>Before proceeding, revisit <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lesson 5.1, Step 4</a> — confirm you trust both skills' output from manual runs first.</li>
+      <li>Open <strong>Windows Task Scheduler</strong>.</li>
+      <li>Create a task that runs both commands in sequence, on whatever cadence fits — daily for fast-moving topics, weekly for slower ones.</li>
+    </ol>
+
+    <pre>claude -p "/scan-sources" --cwd "C:\path\to\market-digest"
+claude -p "/send-digest" --cwd "C:\path\to\market-digest"</pre>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">This Step Is Optional</span>
+      <p>Running both commands yourself, on whatever cadence you choose, already works. Only automate this if you want the digest to show up without you starting it.</p>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">Turning It Off</span>
+      <p>Disable or delete the scheduled task in Windows Task Scheduler, and disable the plugin the same way shown in Lesson 5.3, Step 6, if you want to stop entirely. data/knowledge-log.md stays exactly as it is either way.</p>
+    </div>
+
+    <h2 class="!mt-16">Verification</h2>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">data/knowledge-log.md grows with each /scan-sources run and doesn't re-log the same item twice</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">/send-digest produces a digest that references at least one earlier entry as context, not just the newest item in isolation</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You understand why this lesson uses websites and feeds rather than live X/Twitter content, and what would need to change to add that source</span></div>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">Not Working?</span>
+      <p>If every run reports everything as "new," confirm scan-sources is actually reading and checking against data/knowledge-log.md before appending, not just appending blindly.</p>
+    </div>
+
+    <h2 class="!mt-10 !text-base">Related Resources</h2>
+    <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
+      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — The Claude AI platform</li>
+      <li><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">code.claude.com/docs</a> — Official documentation</li>
+      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">support.claude.com</a> — Help center and troubleshooting</li>
+    </ul>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lesson complete</p>
+      <p class="text-sm text-os-secondary">You built a workflow that doesn't just report facts — it remembers what it already told you and says so. Once this runs for a few weeks, data/knowledge-log.md becomes a searchable history of everything you've tracked — useful on its own, even before the next digest goes out.</p>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ PREV/NEXT ============ -->
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="lesson-5.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 5.5 Daily Briefing from Email and Calendar</a>
+    <a href="lesson-7.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
+      Next: From Sources to Story &rarr;
+    </a>
+  </div>
+</nav>
+
+<!-- ============ FOOTER ============ -->
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">You do not rise to the level of your goals. You fall to the level of your systems.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Built as a system, not a slogan.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
+
+</body>
+</html>

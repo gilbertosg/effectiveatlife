@@ -1,0 +1,116 @@
+/* ============================================================
+   assets/css/custom.css
+   Shared stylesheet for all "AI for Friends" course pages
+   (ai-for-friends/index.html, module-*/index.html, module-*/lesson-*.html).
+
+   Single edit point for the course's shared visual system. Every rule
+   here is safe to load on every page: selectors simply don't match on
+   pages whose markup doesn't use them (e.g. .glossary rules are inert
+   on lesson pages, .lesson-body rules are inert on hub pages).
+
+   Tailwind (CDN) + its inline color/font config, and the course-menu
+   toggle <script>, remain inline per-page — this file covers CSS only.
+   ============================================================ */
+
+/* ---------- Base ---------- */
+html { scroll-behavior: smooth; }
+body { background-color: #0A0F1C; color: #FFFFFF; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+.font-display { font-family: 'Space Grotesk', sans-serif; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.bg-grid {
+  background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+@keyframes fadeInUp { 0% { opacity: 0; transform: translateY(18px); } 100% { opacity: 1; transform: translateY(0); } }
+.fade-up { opacity: 0; animation: fadeInUp 0.7s ease-out forwards; }
+::selection { background: rgba(0,240,255,0.25); color: #FFFFFF; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid #00F0FF; outline-offset: 3px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .fade-up { animation: none !important; opacity: 1 !important; } }
+
+/* ---------- Lesson body typography ---------- */
+.lesson-body h2 {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: -0.01em;
+  font-size: 1.5rem; margin-top: 3rem; margin-bottom: 0.75rem; scroll-margin-top: 6rem;
+}
+.lesson-body h2 .step-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2rem; height: 2rem; border-radius: 9999px; margin-right: 0.75rem;
+  background: rgba(0,240,255,0.1); border: 1px solid rgba(0,240,255,0.4);
+  color: #00F0FF; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 500;
+  vertical-align: middle;
+}
+.lesson-body h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1.05rem; margin-top: 1.75rem; margin-bottom: 0.6rem; color: #FFFFFF; }
+.lesson-body p { line-height: 1.75; margin-bottom: 1.25em; color: #9CA3AF; }
+.lesson-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+.lesson-body th { text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: #6B7280; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.lesson-body td { padding: 0.85rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: #9CA3AF; vertical-align: top; }
+.lesson-body tr:last-child td { border-bottom: none; }
+.lesson-body strong { color: #FFFFFF; font-weight: 600; }
+
+/* Ordered lists — single canonical convention (was previously forked; see state report §7) */
+.lesson-body ol { list-style: decimal; padding-left: 1.25rem; margin-bottom: 1.5rem; }
+.lesson-body ol li { padding-left: 0.25rem; margin-bottom: 0.6rem; line-height: 1.7; color: #9CA3AF; }
+.lesson-body ol li::marker { color: #00F0FF; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
+
+/* Plain bulleted lists (used for "9 concrete advantages"-style content) */
+.lesson-body ul.plain { list-style: disc; padding-left: 1.25rem; margin-bottom: 1.5rem; }
+.lesson-body ul.plain li { margin-bottom: 0.5rem; line-height: 1.7; color: #9CA3AF; }
+.lesson-body ul.plain li::marker { color: #00F0FF; }
+
+/* Flagship-lesson modifier: applied to the outer .lesson-body wrapper on
+   module-3/lesson-1.html only, to preserve its larger, purple-accented
+   step headings (originally a page-local inline override). */
+.lesson-body.lesson-body--lg h2 { font-weight: 700; font-size: 1.7rem; margin-top: 3.5rem; margin-bottom: 0.9rem; }
+.lesson-body.lesson-body--lg h2 .step-num { width: 2.1rem; height: 2.1rem; background: rgba(123,44,191,0.12); border-color: rgba(123,44,191,0.4); color: #B18CE0; }
+
+/* ---------- Callouts (all four variants always defined) ---------- */
+.callout { border-radius: 0.75rem; padding: 1.1rem 1.25rem; margin: 1.5rem 0; border: 1px solid; font-size: 0.9rem; line-height: 1.65; }
+.callout-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.4rem; }
+.callout-tip { background: rgba(0,240,255,0.06); border-color: rgba(0,240,255,0.25); }
+.callout-tip .callout-label { color: #00F0FF; }
+.callout-note { background: rgba(0,194,209,0.06); border-color: rgba(0,194,209,0.25); }
+.callout-note .callout-label { color: #00C2D1; }
+.callout-info { background: rgba(123,44,191,0.08); border-color: rgba(123,44,191,0.3); }
+.callout-info .callout-label { color: #B18CE0; }
+.callout-warning { background: rgba(251,191,36,0.07); border-color: rgba(251,191,36,0.3); }
+.callout-warning .callout-label { color: #FBBF24; }
+.callout p { color: #D1D5DB; margin-bottom: 0; }
+
+/* ---------- Expand / details (lesson pages) ---------- */
+.lesson-body details { border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); margin: 1.5rem 0; overflow: hidden; }
+.lesson-body summary { cursor: pointer; padding: 1rem 1.25rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.9rem; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+.lesson-body summary::-webkit-details-marker { display: none; }
+.lesson-body summary::after { content: '+'; font-family: 'JetBrains Mono', monospace; color: #00F0FF; font-size: 1.1rem; }
+.lesson-body details[open] summary::after { content: '\2212'; }
+.lesson-body details > div { padding: 0 1.25rem 1.25rem; }
+
+/* ---------- Code / prompt blocks ---------- */
+.lesson-body pre { background: #111827; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.6rem; padding: 1rem 1.15rem; overflow-x: auto; margin: 1rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.6; color: #D1D5DB; white-space: pre-wrap; }
+
+/* ---------- Verification checklist ---------- */
+.checklist-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; }
+.checklist-box { width: 1.1rem; height: 1.1rem; border-radius: 0.3rem; border: 1.5px solid rgba(0,240,255,0.5); flex-shrink: 0; margin-top: 0.15rem; }
+
+/* ---------- Two-column comparison blocks ---------- */
+.col-2 { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+@media (min-width: 640px) { .col-2 { grid-template-columns: 1fr 1fr; } }
+.col-2 h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.9rem; color: #FFFFFF; margin-bottom: 0.5rem; }
+.col-2 ul { list-style: disc; padding-left: 1.15rem; }
+.col-2 li { color: #9CA3AF; line-height: 1.7; margin-bottom: 0.4rem; }
+.col-2 li::marker { color: #00F0FF; }
+
+/* ---------- Progress-pill alternate (module-3/lesson-1.html's TOC pills) ---------- */
+.toc-pill { padding: 0.4rem 0.8rem; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.12); font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: #6B7280; }
+
+/* ---------- Module hub: Key Concepts / Support Resources glossary ---------- */
+.glossary table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.glossary th { text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: #6B7280; padding: 0.7rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.glossary td { padding: 0.8rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: #9CA3AF; vertical-align: top; }
+.glossary tr:last-child td { border-bottom: none; }
+.glossary strong { color: #FFFFFF; font-weight: 600; }
+.glossary details { border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); margin-top: 1rem; overflow: hidden; }
+.glossary summary { cursor: pointer; padding: 1rem 1.25rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.85rem; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+.glossary summary::-webkit-details-marker { display: none; }
+.glossary summary::after { content: '+'; font-family: 'JetBrains Mono', monospace; color: #00F0FF; font-size: 1.1rem; }
+.glossary details[open] summary::after { content: '\2212'; }
+.glossary details > div { padding: 0 1.25rem 1.25rem; }
