@@ -291,6 +291,7 @@ Flagged in Email
     <h2 id="step-4"><span class="step-num">4</span>Optional — Run It Automatically Every Morning</h2>
     <p>Everything above still requires opening Claude Code and typing /daily-briefing. This step is optional: it runs the briefing before you sit down.</p>
 
+    <p class="!mb-2 text-os-primary font-semibold text-sm">Windows</p>
     <ol>
       <li>Before proceeding, revisit <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lesson 5.1, Step 4</a> — confirm you trust /daily-briefing's output from several manual runs first.</li>
       <li>Open <strong>Windows Task Scheduler</strong>.</li>
@@ -300,13 +301,27 @@ Flagged in Email
 
     <pre>claude -p "/daily-briefing" --cwd "C:\path\to\daily-briefing"</pre>
 
+    <p class="!mb-2 mt-6 text-os-primary font-semibold text-sm">Mac</p>
+    <ol>
+      <li>Before proceeding, revisit <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lesson 5.1, Step 4</a> — confirm you trust /daily-briefing's output from several manual runs first.</li>
+      <li>Open <strong>Terminal</strong> and run <span class="font-mono text-os-primary">crontab -e</span> (opens in the <span class="font-mono">nano</span> editor by default).</li>
+      <li>Add the line below for a daily 7:00 AM run, then save (<span class="font-mono">Ctrl+O</span>, Enter, <span class="font-mono">Ctrl+X</span> in nano).</li>
+    </ol>
+
+    <pre>0 7 * * * claude -p "/daily-briefing" --cwd "$HOME/daily-briefing"</pre>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Mac: Grant Full Disk Access</span>
+      <p>cron jobs on macOS often fail silently unless the terminal app running them has Full Disk Access. Go to <strong>System Settings &rarr; Privacy &amp; Security &rarr; Full Disk Access</strong> and enable it for Terminal (or your terminal app).</p>
+    </div>
+
     <div class="callout callout-warning">
       <span class="callout-label">This Step Is Optional</span>
       <p>Typing /daily-briefing yourself each morning already works. Only automate this if you specifically want the file waiting for you before you sit down.</p>
     </div>
     <div class="callout callout-note">
       <span class="callout-label">Turning It Off</span>
-      <p>To stop the schedule, open Windows Task Scheduler, find the task by name, and Disable or Delete it — the same two options as Lesson 5.3, Step 6. Your connected MCP server and your CLAUDE.md rules are untouched either way.</p>
+      <p>On Windows: open Windows Task Scheduler, find the task by name, and Disable or Delete it — the same two options as Lesson 5.3, Step 6. On Mac: run <span class="font-mono text-os-primary">crontab -e</span> and delete or comment out the line. Your connected MCP server and your CLAUDE.md rules are untouched either way.</p>
     </div>
 
     <h2 class="!mt-16">Verification</h2>

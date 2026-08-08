@@ -186,24 +186,38 @@ Everything above still requires opening Claude Code and typing `/daily-briefing`
 
 ### What You'll Do
 
-You will schedule the skill to run automatically each morning using Windows Task Scheduler — the same approach from Lesson 5.3.
+You will schedule the skill to run automatically each morning using Windows Task Scheduler (or `cron` on Mac) — the same approach from Lesson 5.3.
 
-### Instructions
+### Instructions — Windows
 
 1. Before proceeding, revisit [Lesson 5.1, Step 4](5-1_Your_Claude_Code_Daily_Habits.md#anchor-step-4) — confirm you trust `/daily-briefing`'s output from several manual runs first.
 2. Open **Windows Task Scheduler**.
 3. Create a basic task set to run daily, for example at 7:00 AM.
 4. Point the action at the command below.
 
-### The Scheduled Command
+### The Scheduled Command — Windows
 
 ```text
 claude -p "/daily-briefing" --cwd "C:\path\to\daily-briefing"
 ```
 
+### Instructions — Mac
+
+1. Before proceeding, revisit [Lesson 5.1, Step 4](5-1_Your_Claude_Code_Daily_Habits.md#anchor-step-4) — confirm you trust `/daily-briefing`'s output from several manual runs first.
+2. Open **Terminal** and run `crontab -e` (opens in the `nano` editor by default).
+3. Add the line below for a daily 7:00 AM run, then save (`Ctrl+O`, Enter, `Ctrl+X` in nano).
+
+### The Scheduled Command — Mac
+
+```text
+0 7 * * * claude -p "/daily-briefing" --cwd "$HOME/daily-briefing"
+```
+
+<!-- WARNING: Mac — Grant Full Disk Access | cron jobs on macOS often fail silently unless the terminal app running them has Full Disk Access. Go to System Settings → Privacy & Security → Full Disk Access and enable it for Terminal (or your terminal app). -->
+
 <!-- WARNING: This Step Is Optional | Typing /daily-briefing yourself each morning already works. Only automate this if you specifically want the file waiting for you before you sit down. -->
 
-<!-- NOTE: Turning It Off | To stop the schedule, open Windows Task Scheduler, find the task by name, and Disable or Delete it — the same two options as Lesson 5.3, Step 6. Your connected MCP server and your CLAUDE.md rules are untouched either way. -->
+<!-- NOTE: Turning It Off | On Windows: open Windows Task Scheduler, find the task by name, and Disable or Delete it — the same two options as Lesson 5.3, Step 6. On Mac: run crontab -e and delete or comment out the line. Your connected MCP server and your CLAUDE.md rules are untouched either way. -->
 
 ---
 

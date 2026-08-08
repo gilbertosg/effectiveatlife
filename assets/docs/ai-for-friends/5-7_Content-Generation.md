@@ -260,25 +260,40 @@ The gather-and-compile steps can run unattended; drafting is worth doing with a 
 
 You will schedule `/gather-articles` and `/compile-digest` to run automatically, leaving `/draft-content` as a manual step you run when you're ready to write.
 
-### Instructions
+### Instructions — Windows
 
 1. Before proceeding, revisit [Lesson 5.1, Step 4](5-1_Your_Claude_Code_Daily_Habits.md#anchor-step-4) — confirm you trust both scheduled skills' output from manual runs first.
 2. Open **Windows Task Scheduler**.
 3. Schedule the two gathering commands to run daily or weekly.
 4. Leave `/draft-content` for you to run by hand, once you've reviewed the digest.
 
-### The Scheduled Commands
+### The Scheduled Commands — Windows
 
 ```text
 claude -p "/gather-articles" --cwd "C:\path\to\content-pipeline"
 claude -p "/compile-digest" --cwd "C:\path\to\content-pipeline"
 ```
 
+### Instructions — Mac
+
+1. Before proceeding, revisit [Lesson 5.1, Step 4](5-1_Your_Claude_Code_Daily_Habits.md#anchor-step-4) — confirm you trust both scheduled skills' output from manual runs first.
+2. Open **Terminal** and run `crontab -e` (opens in the `nano` editor by default).
+3. Add both lines below on a daily or weekly cadence, then save (`Ctrl+O`, Enter, `Ctrl+X` in nano). Leave `/draft-content` for you to run by hand, once you've reviewed the digest.
+
+### The Scheduled Commands — Mac
+
+```text
+0 8 * * * claude -p "/gather-articles" --cwd "$HOME/content-pipeline"
+5 8 * * * claude -p "/compile-digest" --cwd "$HOME/content-pipeline"
+```
+
+<!-- WARNING: Mac — Grant Full Disk Access | cron jobs on macOS often fail silently unless the terminal app running them has Full Disk Access. Go to System Settings → Privacy & Security → Full Disk Access and enable it for Terminal (or your terminal app). -->
+
 <!-- WARNING: This Step Is Optional | Running all three commands yourself already works. Automating only the first two, and keeping the draft step manual, is a deliberate choice — not a requirement. -->
 
 <!-- NOTE: Why Leave Drafting Manual | Automating research is low-risk — worst case, an irrelevant article gets logged. Automating what gets published carries more risk, so this lesson keeps a person deciding when to draft and reviewing before anything goes out. -->
 
-<!-- NOTE: Turning It Off | Disable or delete the two scheduled tasks in Windows Task Scheduler, and disable the plugin the same way shown in Lesson 5.3, Step 6, if you want to stop entirely. Your logged articles and past digests stay exactly as they are either way. -->
+<!-- NOTE: Turning It Off | On Windows: disable or delete the two scheduled tasks in Windows Task Scheduler. On Mac: run crontab -e and delete or comment out both lines. Either way, also disable the plugin the same way shown in Lesson 5.3, Step 6, if you want to stop entirely. Your logged articles and past digests stay exactly as they are either way. -->
 
 ---
 

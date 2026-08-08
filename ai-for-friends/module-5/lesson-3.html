@@ -214,7 +214,7 @@ Claude Code prompt is active in the terminal, scoped to this folder only.</pre>
     </div>
 
     <h2 id="step-2"><span class="step-num">2</span>Dictate the Whole Workflow</h2>
-    <p>This is the unusual part of this lesson: instead of typing a short instruction and iterating, you describe the entire workflow in one long message, as if you were briefing a new staffer on their first day. You can type this, or speak it using your operating system's built-in dictation (Windows: press <strong>Win + H</strong> to start dictating into any text box, including the Claude Code prompt) — either way, the words land in the prompt as plain text and Claude Code treats them exactly the same.</p>
+    <p>This is the unusual part of this lesson: instead of typing a short instruction and iterating, you describe the entire workflow in one long message, as if you were briefing a new staffer on their first day. You can type this, or speak it using your operating system's built-in dictation (Windows: press <strong>Win + H</strong> to start dictating into any text box, including the Claude Code prompt. Mac: open <strong>System Settings &rarr; Keyboard &rarr; Dictation</strong> to turn it on, then press <strong>Fn</strong> twice to start dictating) — either way, the words land in the prompt as plain text and Claude Code treats them exactly the same.</p>
 
     <ol>
       <li>Read the example dictation below. It is written to be spoken aloud — plain sentences, no special syntax.</li>
@@ -487,6 +487,7 @@ user says "update the agreement doc," "add this response," or
     <h2 id="step-5"><span class="step-num">5</span>Optional — Run It Automatically Every Day</h2>
     <p>Everything above still requires you to type three commands each morning. This step is entirely optional: it makes /check-agreements run on its own, on a schedule, with no one at the keyboard.</p>
 
+    <p class="!mb-2 text-os-primary font-semibold text-sm">Windows</p>
     <ol>
       <li>Before proceeding, revisit <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lesson 5.1, Step 4</a> — this step assumes you've run /check-agreements by hand several times already and trust its output.</li>
       <li>Open <strong>Windows Task Scheduler</strong> (search for it in the Start menu).</li>
@@ -496,6 +497,20 @@ user says "update the agreement doc," "add this response," or
     </ol>
 
     <pre>claude -p "/check-agreements" --cwd "C:\path\to\ir-agreements-tracker"</pre>
+
+    <p class="!mb-2 mt-6 text-os-primary font-semibold text-sm">Mac</p>
+    <ol>
+      <li>Before proceeding, revisit <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lesson 5.1, Step 4</a> — this step assumes you've run /check-agreements by hand several times already and trust its output.</li>
+      <li>Open <strong>Terminal</strong> and run <span class="font-mono text-os-primary">crontab -e</span> to open your personal schedule (opens in the <span class="font-mono">nano</span> editor by default).</li>
+      <li>Add one line for a daily 8am run, then save (<span class="font-mono">Ctrl+O</span>, Enter, <span class="font-mono">Ctrl+X</span> in nano):</li>
+    </ol>
+
+    <pre>0 8 * * * claude -p "/check-agreements" --cwd "$HOME/ir-agreements-tracker"</pre>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Mac: Grant Full Disk Access</span>
+      <p>cron jobs on macOS often fail silently unless the terminal app running them has Full Disk Access. Go to <strong>System Settings &rarr; Privacy &amp; Security &rarr; Full Disk Access</strong> and enable it for Terminal (or your terminal app) — this is the most common reason a scheduled Mac task appears to do nothing.</p>
+    </div>
 
     <div class="callout callout-warning">
       <span class="callout-label">This Step Is Optional</span>
@@ -510,7 +525,8 @@ user says "update the agreement doc," "add this response," or
     <p>Anything you can turn on in this lesson, you should know how to turn off — the fourth rule from Lesson 5.1, Step 4.</p>
 
     <ol>
-      <li>To stop the daily schedule: open <strong>Windows Task Scheduler</strong>, find the task by the name you gave it in Step 5, and either <strong>Disable</strong> it (keeps it, stops it running) or <strong>Delete</strong> it (removes it entirely).</li>
+      <li>To stop the daily schedule on <strong>Windows</strong>: open <strong>Windows Task Scheduler</strong>, find the task by the name you gave it in Step 5, and either <strong>Disable</strong> it (keeps it, stops it running) or <strong>Delete</strong> it (removes it entirely).</li>
+      <li>To stop the daily schedule on <strong>Mac</strong>: run <span class="font-mono text-os-primary">crontab -e</span>, delete or comment out (add a <span class="font-mono">#</span> at the start of) the line you added, then save.</li>
       <li>To disable the plugin without removing your files: open your Claude Code settings file and find the enabledPlugins entry for agreements-tracker; set it to false. The plugin's commands stop appearing, but nothing in your project folder is touched.</li>
       <li>To remove the plugin entirely: ask Claude Code, "uninstall the agreements-tracker plugin," and review what it proposes before confirming — it should remove the plugin's registration, not your data/, drafts/, or output/ folders.</li>
     </ol>

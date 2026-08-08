@@ -311,6 +311,7 @@ launching next month. No prior mentions from Northwind on this topic.
     <h2 id="step-4"><span class="step-num">4</span>Optional — Run It on a Schedule</h2>
     <p>Once the two skills work, running them without you is the same pattern from Lessons 5.3 and 5.5.</p>
 
+    <p class="!mb-2 text-os-primary font-semibold text-sm">Windows</p>
     <ol>
       <li>Before proceeding, revisit <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lesson 5.1, Step 4</a> — confirm you trust both skills' output from manual runs first.</li>
       <li>Open <strong>Windows Task Scheduler</strong>.</li>
@@ -320,13 +321,28 @@ launching next month. No prior mentions from Northwind on this topic.
     <pre>claude -p "/scan-sources" --cwd "C:\path\to\market-digest"
 claude -p "/send-digest" --cwd "C:\path\to\market-digest"</pre>
 
+    <p class="!mb-2 mt-6 text-os-primary font-semibold text-sm">Mac</p>
+    <ol>
+      <li>Before proceeding, revisit <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lesson 5.1, Step 4</a> — confirm you trust both skills' output from manual runs first.</li>
+      <li>Open <strong>Terminal</strong> and run <span class="font-mono text-os-primary">crontab -e</span> (opens in the <span class="font-mono">nano</span> editor by default).</li>
+      <li>Add both lines below on the cadence that fits, then save (<span class="font-mono">Ctrl+O</span>, Enter, <span class="font-mono">Ctrl+X</span> in nano).</li>
+    </ol>
+
+    <pre>0 8 * * * claude -p "/scan-sources" --cwd "$HOME/market-digest"
+5 8 * * * claude -p "/send-digest" --cwd "$HOME/market-digest"</pre>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Mac: Grant Full Disk Access</span>
+      <p>cron jobs on macOS often fail silently unless the terminal app running them has Full Disk Access. Go to <strong>System Settings &rarr; Privacy &amp; Security &rarr; Full Disk Access</strong> and enable it for Terminal (or your terminal app).</p>
+    </div>
+
     <div class="callout callout-warning">
       <span class="callout-label">This Step Is Optional</span>
       <p>Running both commands yourself, on whatever cadence you choose, already works. Only automate this if you want the digest to show up without you starting it.</p>
     </div>
     <div class="callout callout-note">
       <span class="callout-label">Turning It Off</span>
-      <p>Disable or delete the scheduled task in Windows Task Scheduler, and disable the plugin the same way shown in Lesson 5.3, Step 6, if you want to stop entirely. data/knowledge-log.md stays exactly as it is either way.</p>
+      <p>On Windows: disable or delete the scheduled task in Windows Task Scheduler. On Mac: run <span class="font-mono text-os-primary">crontab -e</span> and delete or comment out both lines. Either way, also disable the plugin the same way shown in Lesson 5.3, Step 6, if you want to stop entirely. data/knowledge-log.md stays exactly as it is either way.</p>
     </div>
 
     <h2 class="!mt-16">Verification</h2>

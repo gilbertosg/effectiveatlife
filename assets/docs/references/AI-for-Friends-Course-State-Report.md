@@ -33,7 +33,7 @@ These three layers have diverged somewhat over time (see §7) — this report re
 | 1 | 1.3 | `1-3_Practical_Prompting_Techniques.md` | `module-1/lesson-3.html` | Few-shot, role, chain-of-thought, meta prompting; COSTARS framework; interview-style prompting; validation habits |
 | 1 | 1.4 | `1-4_Chossing_AI_Model.md` *(sic, source filename typo)* | `module-1/lesson-4.html` | Choosing between Haiku/Sonnet/Opus; cost/speed tradeoffs |
 | 2 — Setting Up Your Computer *(optional)* | hub | `2-0_Setting_Up_Computer.md` | `module-2/index.html` | Module overview — explicitly optional warm-up, not a Module 3 prerequisite |
-| 2 | 2.1 | `2-1_Installing_Windows_terminal.md` **(empty source file — see §3)** | `module-2/lesson-1.html` | Installing a standalone Windows terminal, setting PowerShell as default |
+| 2 | 2.1 | `2-1_Installing_Windows_terminal.md` | `module-2/lesson-1.html` | Installing a standalone Windows terminal, setting PowerShell as default (Windows-only lesson — Mac readers are directed to skip to 2.2) |
 | 2 | 2.2 | `2-2_Intalling_VS_Code.md` *(sic, source filename typo)* | `module-2/lesson-2.html` | Installing VS Code, finding the Extensions panel |
 | 2 | 2.3 | `2-3_Navigating_Terminal.md` **(has duplicated tail content — see §3)** | `module-2/lesson-3.html` | Four basic terminal commands (`pwd`, `ls`, `cd`, `cd ..`) via a practice exercise |
 | 3 — Claude Code | hub | `3-0_Claude-Code.md` | `module-3/index.html` | Module overview; web Claude vs. Claude Code; role-specific value table |
@@ -107,7 +107,7 @@ The HTML filenames use `lesson-N.html` numbered **within each module** (not glob
 
 ### Known content issues to resolve before/while ingesting
 
-- **`2-1_Installing_Windows_terminal.md` is completely empty (0 bytes).** Lesson 2.1's content does not exist yet, even though `module-2/lesson-1.html` exists as an HTML page and `2-0`/`2-3` both reference it. If touching this lesson, the content needs to be written from scratch — there's no source to convert.
+- ~~**`2-1_Installing_Windows_terminal.md` is completely empty (0 bytes).**~~ **RESOLVED** (see §11) — content was written from scratch to match the existing `module-2/lesson-1.html`, plus a Mac-skip callout, during the Windows/Mac parity pass.
 - **`2-3_Navigating_Terminal.md` has Module 3's entire hub content duplicated at its tail** (after the legitimate lesson content's closing `<!-- CHILDREN -->` around line 161, a second full copy of `3-0_Claude-Code.md`'s content runs through line 281, carrying `[cite: 3]`/`[cite: 4]` markers). Truncate at the genuine `<!-- CHILDREN -->` if re-deriving this file.
 - **Stray `[cite: N]` reference markers** litter nearly every line of `1-1`, `1-2`, `1-3`, `1-4`, and the first ~161 lines of `2-3` — leftover artifacts from whatever tool generated/exported the markdown. Strip these before converting to HTML.
 - **Filename typos**: `1-4_Chossing_AI_Model.md` ("Chossing"), `2-2_Intalling_VS_Code.md` ("Intalling"). Internal cross-links inside other files sometimes reference the *correctly spelled* filename (e.g. a link to `1-4_Choosing_AI_Model.md`), which won't resolve against the actual typo'd filename — a broken-link risk if anyone follows those markdown links programmatically. The HTML output itself spells both correctly, so this is a source-file-only issue.
@@ -498,3 +498,28 @@ Before extraction, a few pages had CSS that genuinely differed from the norm —
 - `grep -rn 'OF 5' ai-for-friends/` and `grep -rn 'list-decimal' ai-for-friends/` both return nothing.
 - `.lesson-body--lg` appears in exactly one file, `module-3/lesson-1.html`.
 - Visual spot-check in a browser (course index, each module hub, `module-1/lesson-1.html`, `module-3/lesson-1.html`, one Module 4 and one Module 5 lesson) confirmed no unstyled-flash or broken layout, all four callout variants render correctly, and the course-menu dropdown still opens/closes/highlights correctly post-extraction.
+
+---
+
+## 11. Windows/Mac Parity (Completed)
+
+The course's setup/install content was originally authored Windows-only. A full-course survey confirmed the scope was Module 2 (entirely Windows-scoped), Module 3 Lesson 1 (dense PowerShell-only install content), and Module 5's four "run it automatically" scheduling steps (Lessons 5.3, 5.5, 5.6, 5.7). Modules 1 and 4 have no OS-specific content and were untouched. This section documents the convention adopted so future lessons stay consistent.
+
+### The convention: labeled subsections, no new UI
+
+Per an explicit user decision, Windows/Mac distinctions use **plain bold-label subsections** — a `<p class="!mb-2 text-os-primary font-semibold text-sm">Windows</p>` / `...Mac</p>` pair, each followed by its own `<ol>`/`<pre>` — rather than a tabs or toggle widget. No new CSS or JS was added; this reuses the existing `.col-2` "Always/Never" label styling already in `custom.css`. In markdown sources, the equivalent is a bold `**Windows**` / `**Mac**` line, or a `### Instructions — Windows` / `### Instructions — Mac` heading split when the step already used a heading.
+
+**When to split vs. inline:** full Windows/Mac subsections are reserved for genuinely multi-step sequences that diverge (installers, the install script, cron vs. Task Scheduler). A single differing keyboard shortcut or path gets an inline parenthetical instead, e.g. `Ctrl+Shift+X (Windows) / Cmd+Shift+X (Mac)`, or `(same on Windows and Mac)` when nothing actually differs — never fabricate a difference where none exists (confirmed identical: `Ctrl+C`, `Shift+Tab`, `Ctrl + `` `` for the integrated terminal, `pwd`/`cd`/`cd ..`).
+
+### What changed, by module
+
+- **Module 2 — "Setting Up Your Computer"**: reframed from Windows-only to Windows-and-Mac. Lesson 2.1 ("Installing Windows Terminal") is the one lesson that stays genuinely Windows-only — Mac ships with Terminal.app pre-installed, so there's nothing to install — and now opens with a callout directing Mac readers straight to Lesson 2.2. Its previously **empty** markdown source (`2-1_Installing_Windows_terminal.md`, flagged in §2/§3 as a known gap) was written from scratch in the same pass, since the lesson had to be touched anyway. Lessons 2.2 (VS Code install) and 2.3 (terminal navigation) got full Windows/Mac subsections and parenthetical path/shortcut equivalents. The hub's Key Concepts glossary was updated to note Windows-vs-Mac distinctions inline rather than deleting the Windows-specific terms.
+- **Module 3, Lesson 3.1** (the required Claude Code onboarding guide): the largest single change. VS Code install, Claude Code install (`irm ... | iex` on Windows vs. `curl -fsSL https://claude.ai/install.sh | bash` on Mac), the Git prerequisite (Git for Windows vs. macOS's Xcode Command Line Tools, triggered by running `git --version`), the troubleshooting table, the "other terminals" table, and the six-commands table all got Mac rows/subsections. The module hub's glossary (PowerShell, PATH, Git for Windows, Integrated Terminal entries) was updated to note the Mac equivalent instead of reading as Windows-only.
+- **Module 5, Lessons 5.3/5.5/5.6/5.7**: each lesson's "Optional — Run It Automatically" step got a parallel **Mac** path using `cron` (`crontab -e`, standard cron syntax, saved via the default `nano` editor) alongside the existing Windows Task Scheduler path, plus a callout about macOS's Privacy & Security → Full Disk Access requirement — cron jobs silently no-op without it, the most common real-world gotcha, called out with the same platform-friction honesty the Windows steps already used for Defender/SmartScreen. Each lesson's "Turning It Off" step got a matching Mac line (delete/comment the crontab entry). Lesson 5.3 additionally got a Mac equivalent for its Windows-dictation mention (`Win+H` → macOS System Settings → Keyboard → Dictation, default trigger is pressing Fn twice).
+- **Site-wide badges**: the course index (`ai-for-friends/index.html`) and Module 3's hub badge pill changed from "Windows" to "Windows & Mac". Module 2's badge and prerequisites were updated the same way as part of its own pass.
+
+### Verification performed
+
+- `grep -rn "Windows only|WINDOWS ONLY|Windows-only" ai-for-friends/ assets/docs/ai-for-friends/` returns only the intentionally-scoped hits: Module 2 Lesson 2.1 (genuinely Windows-only — no Mac install step exists) and the Module 3 troubleshooting table's Defender/SmartScreen row (genuinely Windows-only warning).
+- Every "Optional — Run It Automatically" step in Module 5 (5.3, 5.5, 5.6, 5.7) has both a Windows and a Mac path, each with its own scheduled-command block and a Full Disk Access callout on the Mac side.
+- Every markdown source edited in this pass has its HTML counterpart mirrored 1:1, keeping the manual conversion pipeline (§4) in sync — no source drifted ahead of or behind its rendered page.

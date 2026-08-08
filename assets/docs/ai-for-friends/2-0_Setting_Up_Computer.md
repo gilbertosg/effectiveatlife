@@ -29,7 +29,7 @@ Module 3's install goes easier when the terminal is not also new. Twenty minutes
 
 ### Prerequisites
 
-**None.** A Windows computer and the ability to install software. No prior terminal or editor experience.
+**None.** A Windows or Mac computer and the ability to install software. No prior terminal or editor experience.
 
 ### Time to Complete
 
@@ -45,15 +45,15 @@ Module 3's install goes easier when the terminal is not also new. Twenty minutes
 
 | # | Lesson | Duration | What You Will Learn |
 |---|--------|----------|---------------------|
-| 2.1 | [Installing Windows Terminal](2-1_Installing_Windows_Terminal.md) | 5 min | How to install a standalone terminal from the Microsoft Store and set PowerShell as its default. Optional - Module 3 uses VS Code's built-in terminal instead. |
-| 2.2 | [Installing Visual Studio Code](2-2_Installing_VS_Code.md) | 5 min | How to install VS Code and find the Extensions panel. A lighter, earlier pass at what Module 3 covers in full. |
-| 2.3 | [Navigating in the Terminal](2-3_Navigating_The_Terminal.md) | 15 min | Four commands that let you move between folders, plus a practice exercise that builds a real folder structure. |
+| 2.1 | [Installing Windows Terminal](2-1_Installing_Windows_Terminal.md) | 5 min | How to install a standalone terminal from the Microsoft Store and set PowerShell as its default. Windows-only (Mac already has Terminal built in) — and optional either way, since Module 3 uses VS Code's built-in terminal instead. |
+| 2.2 | [Installing Visual Studio Code](2-2_Installing_VS_Code.md) | 5 min | How to install VS Code and find the Extensions panel, for Windows and Mac. A lighter, earlier pass at what Module 3 covers in full. |
+| 2.3 | [Navigating in the Terminal](2-3_Navigating_The_Terminal.md) | 15 min | Four commands that let you move between folders, plus a practice exercise that builds a real folder structure. Works the same way on Windows and Mac. |
 
 <!-- WARNING: This Entire Module is Optional | Module 3 covers everything you need, including the terminal, and does not depend on anything here. If you're comfortable jumping straight into Module 3's install walkthrough, skip this module entirely. -->
 
 <!-- TIP: If You Only Do One Lesson, Do 2.3 | Lessons 2.1 and 2.2 install software Module 3 also installs. Lesson 2.3 teaches the four terminal commands Module 3 assumes you already know. -->
 
-<!-- NOTE: Windows Only | The commands and installers in this module are written for Windows 10 and 11, matching Module 3's install guide. -->
+<!-- NOTE: Windows and Mac | Lessons 2.2 and 2.3 cover both Windows and Mac. Lesson 2.1 is Windows-only, since Mac already ships with a terminal — Mac readers can skip straight to 2.2. -->
 
 ---
 
@@ -66,8 +66,8 @@ Core terms introduced across this module's three lessons. The lesson where each 
 | Term | Defined In | Plain English Meaning |
 |------|------------|-----------------------|
 | **Terminal** | Lesson 2.1 | A window where you type text commands to your computer instead of clicking. |
-| **PowerShell** | Lesson 2.1 | The specific command language this course uses. The "PS" in the prompt means PowerShell. |
-| **Default Profile** | Lesson 2.1 | The shell a terminal opens by default. This course sets it to PowerShell. |
+| **PowerShell** | Lesson 2.1 | Windows' command language, used throughout this module's Windows steps. The "PS" in the prompt means PowerShell. (Mac's built-in Terminal uses zsh instead — no separate install needed.) |
+| **Default Profile** | Lesson 2.1 | The shell a terminal opens by default. On Windows, this module sets it to PowerShell. |
 | **VS Code** | Lesson 2.2 | Visual Studio Code, the free Microsoft text editor this course uses to view and edit files. |
 | **Extension** | Lesson 2.2 | An add-on that gives VS Code new abilities. Module 3 tells you which ones to install. |
 | **`pwd`** | Lesson 2.3 | Print working directory. Shows which folder you are currently in. |
@@ -77,14 +77,14 @@ Core terms introduced across this module's three lessons. The lesson where each 
 
 | Term | Defined In | Plain English Meaning |
 |------|------------|-----------------------|
-| **Microsoft Store** | Lesson 2.1 | The official Windows app store. The safe place to install Windows Terminal. |
-| **Windows Terminal** | Lesson 2.1 | A standalone terminal app you open on its own, separate from any editor. |
-| **Integrated Terminal** | Lesson 2.1 | The terminal built into VS Code, opened with Ctrl + backtick. Module 3's default. |
-| **Prompt** | Lesson 2.1 | The `PS C:\Users\YourName>` text where you type. It waits until you press Enter. |
-| **Extensions Shortcut** | Lesson 2.2 | `Ctrl + Shift + X`, the keyboard shortcut that opens the Extensions panel in VS Code. |
-| **`ls`** | Lesson 2.3 | List. Shows all files and folders in your current location. |
-| **`mkdir`** | Lesson 2.3 | Make directory. Creates a new folder where you currently are. |
-| **Home Folder** | Lesson 2.3 | Your personal top-level folder, reached with `cd ~`, like `C:\Users\YourName`. |
+| **Microsoft Store** | Lesson 2.1 | The official Windows app store. The safe place to install Windows Terminal. (No Mac equivalent needed — Terminal.app is pre-installed.) |
+| **Windows Terminal** | Lesson 2.1 | A standalone terminal app you open on its own, separate from any editor. Windows-only. |
+| **Integrated Terminal** | Lesson 2.1 | The terminal built into VS Code, opened with Ctrl + backtick (same shortcut on Mac). Module 3's default, on both platforms. |
+| **Prompt** | Lesson 2.1 | The text where you type, e.g. `PS C:\Users\YourName>` on Windows or `yourname@Mac ~ %` on Mac. It waits until you press Enter. |
+| **Extensions Shortcut** | Lesson 2.2 | `Ctrl + Shift + X` on Windows, `Cmd + Shift + X` on Mac — opens the Extensions panel in VS Code. |
+| **`ls`** | Lesson 2.3 | List. Shows all files and folders in your current location. Identical on Windows (Git Bash/PowerShell) and Mac Terminal. |
+| **`mkdir`** | Lesson 2.3 | Make directory. Creates a new folder where you currently are. Identical on Windows and Mac. |
+| **Home Folder** | Lesson 2.3 | Your personal top-level folder, reached with `cd ~` on both platforms — `C:\Users\YourName` on Windows, `/Users/yourname` on Mac. |
 
 <!-- /EXPAND -->
 

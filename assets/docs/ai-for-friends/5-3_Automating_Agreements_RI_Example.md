@@ -94,7 +94,7 @@ Claude Code prompt is active in the terminal, scoped to this folder only.
 
 ## Step 2: Dictate the Whole Workflow
 
-This is the unusual part of this lesson: instead of typing a short instruction and iterating, you describe the entire workflow in one long message, as if you were briefing a new staffer on their first day. You can type this, or speak it using your operating system's built-in dictation (Windows: press **Win + H** to start dictating into any text box, including the Claude Code prompt) — either way, the words land in the prompt as plain text and Claude Code treats them exactly the same.
+This is the unusual part of this lesson: instead of typing a short instruction and iterating, you describe the entire workflow in one long message, as if you were briefing a new staffer on their first day. You can type this, or speak it using your operating system's built-in dictation (Windows: press **Win + H** to start dictating into any text box, including the Claude Code prompt. Mac: open **System Settings → Keyboard → Dictation** to turn it on, then press **Fn** twice to start dictating) — either way, the words land in the prompt as plain text and Claude Code treats them exactly the same.
 
 ### What You'll Do
 
@@ -433,7 +433,7 @@ Everything above still requires you to type three commands each morning. This st
 
 You will learn the realistic, non-developer way to run this daily without opening Claude Code yourself — after confirming you've applied Lesson 5.1's four rules for anything unattended.
 
-### Instructions
+### Instructions — Windows
 
 1. Before proceeding, revisit [Lesson 5.1, Step 4](5-1_Your_Claude_Code_Daily_Habits.md#anchor-step-4) — this step assumes you've run `/check-agreements` by hand several times already and trust its output.
 2. Open **Windows Task Scheduler** (search for it in the Start menu).
@@ -441,11 +441,25 @@ You will learn the realistic, non-developer way to run this daily without openin
 4. Set the action to run a program, pointing at the `claude` command with the check-agreements skill as its instruction.
 5. Save the task.
 
-### The Scheduled Command
+### The Scheduled Command — Windows
 
 ```text
 claude -p "/check-agreements" --cwd "C:\path\to\ir-agreements-tracker"
 ```
+
+### Instructions — Mac
+
+1. Before proceeding, revisit [Lesson 5.1, Step 4](5-1_Your_Claude_Code_Daily_Habits.md#anchor-step-4) — this step assumes you've run `/check-agreements` by hand several times already and trust its output.
+2. Open **Terminal** and run `crontab -e` to open your personal schedule (opens in the `nano` editor by default).
+3. Add one line for a daily 8am run, then save (`Ctrl+O`, Enter, `Ctrl+X` in nano).
+
+### The Scheduled Command — Mac
+
+```text
+0 8 * * * claude -p "/check-agreements" --cwd "$HOME/ir-agreements-tracker"
+```
+
+<!-- WARNING: Mac — Grant Full Disk Access | cron jobs on macOS often fail silently unless the terminal app running them has Full Disk Access. Go to System Settings → Privacy & Security → Full Disk Access and enable it for Terminal (or your terminal app) — this is the most common reason a scheduled Mac task appears to do nothing. -->
 
 <!-- WARNING: This Step Is Optional | Everything in Steps 1 through 4 already works by typing three commands yourself. Only set this up if you specifically want the check to run unattended, with no one watching. -->
 
@@ -465,9 +479,10 @@ You will learn where to disable the scheduled task and how to disable the plugin
 
 ### Instructions
 
-1. To stop the daily schedule: open **Windows Task Scheduler**, find the task by the name you gave it in Step 5, and either **Disable** it (keeps it, stops it running) or **Delete** it (removes it entirely).
-2. To disable the plugin without removing your files: open your Claude Code settings file and find the `enabledPlugins` entry for `agreements-tracker`; set it to `false`. The plugin's commands stop appearing, but nothing in your project folder is touched.
-3. To remove the plugin entirely: ask Claude Code, "uninstall the agreements-tracker plugin," and review what it proposes before confirming — it should remove the plugin's registration, not your `data/`, `drafts/`, or `output/` folders.
+1. To stop the daily schedule on **Windows**: open **Windows Task Scheduler**, find the task by the name you gave it in Step 5, and either **Disable** it (keeps it, stops it running) or **Delete** it (removes it entirely).
+2. To stop the daily schedule on **Mac**: run `crontab -e`, delete or comment out (add a `#` at the start of) the line you added, then save.
+3. To disable the plugin without removing your files: open your Claude Code settings file and find the `enabledPlugins` entry for `agreements-tracker`; set it to `false`. The plugin's commands stop appearing, but nothing in your project folder is touched.
+4. To remove the plugin entirely: ask Claude Code, "uninstall the agreements-tracker plugin," and review what it proposes before confirming — it should remove the plugin's registration, not your `data/`, `drafts/`, or `output/` folders.
 
 <!-- NOTE: Your Data Outlives the Plugin | agreements-log.md and agreements-record.docx are ordinary files in your project folder. Disabling or removing the plugin does not delete them — only the /check-agreements, /draft-followup, and /build-agreement-doc commands stop working until you reinstall. -->
 

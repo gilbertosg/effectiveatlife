@@ -149,7 +149,7 @@
     <div class="flex flex-wrap items-center gap-4 font-mono text-xs text-os-tertiary mb-10">
       <span class="px-3 py-1.5 rounded-full border border-white/15">25 min</span>
       <span class="px-3 py-1.5 rounded-full border border-white/15">3 lessons</span>
-      <span class="px-3 py-1.5 rounded-full border border-white/15">Windows only</span>
+      <span class="px-3 py-1.5 rounded-full border border-white/15">Windows & Mac</span>
       <span class="px-3 py-1.5 rounded-full border border-white/15">HR · Industrial Engineering · Legal · Marketing</span>
     </div>
     <div class="callout callout-warning">
@@ -168,7 +168,7 @@
         <span class="font-mono text-sm text-accent-cyan shrink-0">2.1</span>
         <div class="flex-1">
           <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Installing Windows Terminal</h3>
-          <p class="text-os-secondary text-sm mt-1">A standalone terminal from the Microsoft Store, with PowerShell set as its default.</p>
+          <p class="text-os-secondary text-sm mt-1">A standalone terminal from the Microsoft Store, with PowerShell set as its default. Windows-only — Mac already has Terminal built in.</p>
         </div>
         <span class="font-mono text-[11px] text-os-tertiary shrink-0">5 min</span>
       </a>
@@ -205,8 +205,8 @@
         <thead><tr><th>Term</th><th>Defined In</th><th>Plain English Meaning</th></tr></thead>
         <tbody>
           <tr><td><strong>Terminal</strong></td><td>Lesson 2.1</td><td>A window where you type text commands to your computer instead of clicking.</td></tr>
-          <tr><td><strong>PowerShell</strong></td><td>Lesson 2.1</td><td>The specific command language this course uses. The "PS" in the prompt means PowerShell.</td></tr>
-          <tr><td><strong>Default Profile</strong></td><td>Lesson 2.1</td><td>The shell a terminal opens by default. This course sets it to PowerShell.</td></tr>
+          <tr><td><strong>PowerShell</strong></td><td>Lesson 2.1</td><td>Windows' command language, used throughout this module's Windows steps. The "PS" in the prompt means PowerShell. (Mac's built-in Terminal uses zsh instead — no separate install needed.)</td></tr>
+          <tr><td><strong>Default Profile</strong></td><td>Lesson 2.1</td><td>The shell a terminal opens by default. On Windows, this module sets it to PowerShell.</td></tr>
           <tr><td><strong>VS Code</strong></td><td>Lesson 2.2</td><td>Visual Studio Code, the free Microsoft text editor this course uses to view and edit files.</td></tr>
           <tr><td><strong>Extension</strong></td><td>Lesson 2.2</td><td>An add-on that gives VS Code new abilities. Module 3 tells you which ones to install.</td></tr>
           <tr><td><strong>pwd</strong></td><td>Lesson 2.3</td><td>Print working directory. Shows which folder you are currently in.</td></tr>
@@ -218,14 +218,14 @@
         <div>
           <table>
             <tbody>
-              <tr><td><strong>Microsoft Store</strong></td><td>Lesson 2.1</td><td>The official Windows app store. The safe place to install Windows Terminal.</td></tr>
-              <tr><td><strong>Windows Terminal</strong></td><td>Lesson 2.1</td><td>A standalone terminal app you open on its own, separate from any editor.</td></tr>
-              <tr><td><strong>Integrated Terminal</strong></td><td>Lesson 2.1</td><td>The terminal built into VS Code, opened with Ctrl + backtick. Module 3's default.</td></tr>
-              <tr><td><strong>Prompt</strong></td><td>Lesson 2.1</td><td>The <span class="font-mono">PS C:\Users\YourName&gt;</span> text where you type. It waits until you press Enter.</td></tr>
-              <tr><td><strong>Extensions Shortcut</strong></td><td>Lesson 2.2</td><td><span class="font-mono">Ctrl + Shift + X</span>, the keyboard shortcut that opens the Extensions panel in VS Code.</td></tr>
-              <tr><td><strong>ls</strong></td><td>Lesson 2.3</td><td>List. Shows all files and folders in your current location.</td></tr>
-              <tr><td><strong>mkdir</strong></td><td>Lesson 2.3</td><td>Make directory. Creates a new folder where you currently are.</td></tr>
-              <tr><td><strong>Home Folder</strong></td><td>Lesson 2.3</td><td>Your personal top-level folder, reached with <span class="font-mono">cd ~</span>, like <span class="font-mono">C:\Users\YourName</span>.</td></tr>
+              <tr><td><strong>Microsoft Store</strong></td><td>Lesson 2.1</td><td>The official Windows app store. The safe place to install Windows Terminal. (No Mac equivalent needed — Terminal.app is pre-installed.)</td></tr>
+              <tr><td><strong>Windows Terminal</strong></td><td>Lesson 2.1</td><td>A standalone terminal app you open on its own, separate from any editor. Windows-only.</td></tr>
+              <tr><td><strong>Integrated Terminal</strong></td><td>Lesson 2.1</td><td>The terminal built into VS Code, opened with Ctrl + backtick (same shortcut on Mac). Module 3's default, on both platforms.</td></tr>
+              <tr><td><strong>Prompt</strong></td><td>Lesson 2.1</td><td>The text where you type, e.g. <span class="font-mono">PS C:\Users\YourName&gt;</span> on Windows or <span class="font-mono">yourname@Mac ~ %</span> on Mac. It waits until you press Enter.</td></tr>
+              <tr><td><strong>Extensions Shortcut</strong></td><td>Lesson 2.2</td><td><span class="font-mono">Ctrl + Shift + X</span> on Windows, <span class="font-mono">Cmd + Shift + X</span> on Mac — opens the Extensions panel in VS Code.</td></tr>
+              <tr><td><strong>ls</strong></td><td>Lesson 2.3</td><td>List. Shows all files and folders in your current location. Identical on Windows (Git Bash/PowerShell) and Mac Terminal.</td></tr>
+              <tr><td><strong>mkdir</strong></td><td>Lesson 2.3</td><td>Make directory. Creates a new folder where you currently are. Identical on Windows and Mac.</td></tr>
+              <tr><td><strong>Home Folder</strong></td><td>Lesson 2.3</td><td>Your personal top-level folder, reached with <span class="font-mono">cd ~</span> on both platforms — <span class="font-mono">C:\Users\YourName</span> on Windows, <span class="font-mono">/Users/yourname</span> on Mac.</td></tr>
             </tbody>
           </table>
         </div>

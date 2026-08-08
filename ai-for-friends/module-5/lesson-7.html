@@ -335,6 +335,7 @@ in the format and voice set in CLAUDE.md. Use when the user says
     <h2 id="step-4"><span class="step-num">4</span>Optional — Run It on a Schedule</h2>
     <p>The gather-and-compile steps can run unattended; drafting is worth doing with a person still reviewing the result.</p>
 
+    <p class="!mb-2 text-os-primary font-semibold text-sm">Windows</p>
     <ol>
       <li>Before proceeding, revisit <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lesson 5.1, Step 4</a> — confirm you trust both scheduled skills' output from manual runs first.</li>
       <li>Open <strong>Windows Task Scheduler</strong>.</li>
@@ -344,6 +345,21 @@ in the format and voice set in CLAUDE.md. Use when the user says
 
     <pre>claude -p "/gather-articles" --cwd "C:\path\to\content-pipeline"
 claude -p "/compile-digest" --cwd "C:\path\to\content-pipeline"</pre>
+
+    <p class="!mb-2 mt-6 text-os-primary font-semibold text-sm">Mac</p>
+    <ol>
+      <li>Before proceeding, revisit <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lesson 5.1, Step 4</a> — confirm you trust both scheduled skills' output from manual runs first.</li>
+      <li>Open <strong>Terminal</strong> and run <span class="font-mono text-os-primary">crontab -e</span> (opens in the <span class="font-mono">nano</span> editor by default).</li>
+      <li>Add both lines below on a daily or weekly cadence, then save (<span class="font-mono">Ctrl+O</span>, Enter, <span class="font-mono">Ctrl+X</span> in nano). Leave /draft-content for you to run by hand, once you've reviewed the digest.</li>
+    </ol>
+
+    <pre>0 8 * * * claude -p "/gather-articles" --cwd "$HOME/content-pipeline"
+5 8 * * * claude -p "/compile-digest" --cwd "$HOME/content-pipeline"</pre>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Mac: Grant Full Disk Access</span>
+      <p>cron jobs on macOS often fail silently unless the terminal app running them has Full Disk Access. Go to <strong>System Settings &rarr; Privacy &amp; Security &rarr; Full Disk Access</strong> and enable it for Terminal (or your terminal app).</p>
+    </div>
 
     <div class="callout callout-warning">
       <span class="callout-label">This Step Is Optional</span>
@@ -355,7 +371,7 @@ claude -p "/compile-digest" --cwd "C:\path\to\content-pipeline"</pre>
     </div>
     <div class="callout callout-note">
       <span class="callout-label">Turning It Off</span>
-      <p>Disable or delete the two scheduled tasks in Windows Task Scheduler, and disable the plugin the same way shown in Lesson 5.3, Step 6, if you want to stop entirely. Your logged articles and past digests stay exactly as they are either way.</p>
+      <p>On Windows: disable or delete the two scheduled tasks in Windows Task Scheduler. On Mac: run <span class="font-mono text-os-primary">crontab -e</span> and delete or comment out both lines. Either way, also disable the plugin the same way shown in Lesson 5.3, Step 6, if you want to stop entirely. Your logged articles and past digests stay exactly as they are either way.</p>
     </div>
 
     <h2 class="!mt-16">Verification</h2>

@@ -219,22 +219,37 @@ Once the two skills work, running them without you is the same pattern from Less
 
 You will schedule `/scan-sources` and `/send-digest` to run automatically, back to back.
 
-### Instructions
+### Instructions — Windows
 
 1. Before proceeding, revisit [Lesson 5.1, Step 4](5-1_Your_Claude_Code_Daily_Habits.md#anchor-step-4) — confirm you trust both skills' output from manual runs first.
 2. Open **Windows Task Scheduler**.
 3. Create a task that runs both commands in sequence, on whatever cadence fits — daily for fast-moving topics, weekly for slower ones.
 
-### The Scheduled Commands
+### The Scheduled Commands — Windows
 
 ```text
 claude -p "/scan-sources" --cwd "C:\path\to\market-digest"
 claude -p "/send-digest" --cwd "C:\path\to\market-digest"
 ```
 
+### Instructions — Mac
+
+1. Before proceeding, revisit [Lesson 5.1, Step 4](5-1_Your_Claude_Code_Daily_Habits.md#anchor-step-4) — confirm you trust both skills' output from manual runs first.
+2. Open **Terminal** and run `crontab -e` (opens in the `nano` editor by default).
+3. Add both lines below on the cadence that fits, then save (`Ctrl+O`, Enter, `Ctrl+X` in nano).
+
+### The Scheduled Commands — Mac
+
+```text
+0 8 * * * claude -p "/scan-sources" --cwd "$HOME/market-digest"
+5 8 * * * claude -p "/send-digest" --cwd "$HOME/market-digest"
+```
+
+<!-- WARNING: Mac — Grant Full Disk Access | cron jobs on macOS often fail silently unless the terminal app running them has Full Disk Access. Go to System Settings → Privacy & Security → Full Disk Access and enable it for Terminal (or your terminal app). -->
+
 <!-- WARNING: This Step Is Optional | Running both commands yourself, on whatever cadence you choose, already works. Only automate this if you want the digest to show up without you starting it. -->
 
-<!-- NOTE: Turning It Off | Disable or delete the scheduled task in Windows Task Scheduler, and disable the plugin the same way shown in Lesson 5.3, Step 6, if you want to stop entirely. data/knowledge-log.md stays exactly as it is either way. -->
+<!-- NOTE: Turning It Off | On Windows: disable or delete the scheduled task in Windows Task Scheduler. On Mac: run crontab -e and delete or comment out both lines. Either way, also disable the plugin the same way shown in Lesson 5.3, Step 6, if you want to stop entirely. data/knowledge-log.md stays exactly as it is either way. -->
 
 ---
 

@@ -39,7 +39,7 @@ The web version of Claude is a conversation *about* your documents. Claude Code 
 ### Prerequisites
 
 - Claude Pro plan active (~$20/mo; the free tier does not include Claude Code)
-- Windows 10 (build 1809+) or Windows 11, 4 GB+ RAM, and the ability to install software
+- Windows 10 (build 1809+) or Windows 11, or macOS 12 or later, 4 GB+ RAM, and the ability to install software
 - A folder of non-confidential practice documents
 
 ### Time to Complete
@@ -89,15 +89,15 @@ Core terms introduced in this module. The lesson where each term is first define
 | **Claude Cowork** | Lesson 3.1 | The option built for editing or creating a single Word, Excel, or PowerPoint file, with no terminal needed. |
 | **Plan Mode** | Lesson 3.1 | A setting that limits Claude to reading and thinking until you approve a written plan. Your best guardrail. |
 | **Permission Prompt** | Lesson 3.1 | The ask that appears before Claude writes or edits. Options are allow-once, allow-always, or deny. |
-| **Integrated Terminal** | Lesson 3.1 | The terminal panel built into VS Code, opened with Ctrl and the backtick key. The only terminal you need. |
-| **PowerShell** | Lesson 3.1 | A built-in Windows program for typing instructions. Used once, just for the install. |
-| **PATH** | Lesson 3.1 | The list of places Windows looks for programs. A command must be on it to run from any folder. |
+| **Integrated Terminal** | Lesson 3.1 | The terminal panel built into VS Code, opened with Ctrl and the backtick key (same shortcut on Mac). The only terminal you need. |
+| **PowerShell** | Lesson 3.1 | A built-in Windows program for typing instructions. Used once, just for the install. (Mac uses Terminal with a one-line curl install instead.) |
+| **PATH** | Lesson 3.1 | The list of places your computer looks for programs. A command must be on it to run from any folder — on Windows this lives in environment variables, on Mac in `~/.zshrc`. |
 | **Extension** | Lesson 3.1 | A small add-on for VS Code, like an app for your phone, that adds features such as PDF viewing or spell check. |
 | **Markdown (.md)** | Lesson 3.1 | A simple plain-text formatting style. The recommended format to work in, exporting to Word or PDF at the end. |
 | **Model** | Lesson 3.1 | The specific AI doing the work, such as Sonnet or Opus, shown in the prompt's model indicator. |
 | **Token** | Lesson 3.1 | A unit of text usage that counts against your plan limit. |
 | **Usage Limits** | Lesson 3.1 | Claude Pro's rolling roughly 5-hour session caps plus weekly caps. Web chat and Claude Code share one pool. |
-| **Git for Windows** | Lesson 3.1 | A recommended free install that adds Git Bash, an alternative terminal, to your machine. |
+| **Git for Windows** | Lesson 3.1 | A recommended free install that adds Git Bash, an alternative terminal, to your machine. (On Mac, Git ships via Xcode Command Line Tools — no separate download needed.) |
 
 <!-- /EXPAND -->
 

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lesson 3.1: Claude Code Onboarding Guide — AI for Friends</title>
 <meta name="title" content="Lesson 3.1: Claude Code Onboarding Guide">
-<meta name="description" content="For Marketing, HR, Legal, Industrial Engineering, and International Relations professionals — Windows + VS Code + Claude Pro. Get Claude Code running and have it do real work for you, in about 35–45 minutes.">
+<meta name="description" content="For Marketing, HR, Legal, Industrial Engineering, and International Relations professionals — Windows or Mac + VS Code + Claude Pro. Get Claude Code running and have it do real work for you, in about 35–45 minutes.">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -140,7 +140,7 @@
       <span class="text-os-secondary">Lesson 3.1</span>
     </div>
     <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-3">Claude Code Onboarding Guide</h1>
-    <p class="font-mono text-xs text-os-tertiary mb-6">FOR MARKETING, HR, LEGAL, INDUSTRIAL ENGINEERING, AND INTERNATIONAL RELATIONS PROFESSIONALS — WINDOWS + VS CODE + CLAUDE PRO</p>
+    <p class="font-mono text-xs text-os-tertiary mb-6">FOR MARKETING, HR, LEGAL, INDUSTRIAL ENGINEERING, AND INTERNATIONAL RELATIONS PROFESSIONALS — WINDOWS OR MAC + VS CODE + CLAUDE PRO</p>
     <div class="flex flex-wrap items-center gap-2 mb-8">
       <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">35–45 MIN</span>
       <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent-purple/40 text-accent-purple">REQUIRED</span>
@@ -174,7 +174,7 @@
 
     <h3>Prerequisites checklist</h3>
     <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
-      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Windows 10 (build 1809+) or Windows 11</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Windows 10 (build 1809+) or Windows 11, or macOS 12 or later</span></div>
       <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">4 GB+ RAM</span></div>
       <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Claude Pro plan active (claude.ai)</span></div>
       <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Claude login credentials handy</span></div>
@@ -257,18 +257,26 @@
     <p class="!-mt-4 text-sm">✅ Checkpoint: "Pro" is visible on your account</p>
 
     <h3>2.2 Install Visual Studio Code</h3>
+    <p class="!mb-2 text-os-primary font-semibold text-sm">Windows</p>
     <ol>
       <li>Download from <strong>code.visualstudio.com</strong> (official site only)</li>
       <li>Choose <strong>User Installer, 64-bit</strong> (no admin rights required)</li>
       <li>On the checkbox screen: keep "Add to PATH" checked; check "Open with Code" context menu options</li>
       <li>First launch: dismiss the welcome tour and orient yourself to Explorer (left), Editor (center), Terminal panel (bottom), Status bar (very bottom)</li>
     </ol>
+    <p class="!mb-2 mt-4 text-os-primary font-semibold text-sm">Mac</p>
+    <ol>
+      <li>Download from <strong>code.visualstudio.com</strong> (official site only) — choose the Mac build</li>
+      <li>Open the downloaded file and drag <strong>Visual Studio Code</strong> into your <strong>Applications</strong> folder</li>
+      <li>Open it from Applications (or Spotlight — Cmd+Space, then type "Visual Studio Code"). The first time, macOS may ask you to confirm you trust it — click <strong>Open</strong></li>
+      <li>First launch: dismiss the welcome tour and orient yourself to Explorer (left), Editor (center), Terminal panel (bottom), Status bar (very bottom) — identical layout to Windows</li>
+    </ol>
     <p class="!-mt-4 text-sm">✅ Checkpoint: VS Code opens cleanly</p>
 
     <details>
       <summary>Optional: recommended VS Code extensions</summary>
       <div>
-        <p>Extensions are small add-ons — like apps for your phone. You don't need any of these to finish this lesson; come back once Claude Code is running. Press <span class="font-mono text-os-primary">Ctrl+Shift+X</span> &rarr; search by name &rarr; click Install &rarr; Reload if prompted.</p>
+        <p>Extensions are small add-ons — like apps for your phone. You don't need any of these to finish this lesson; come back once Claude Code is running. Press <span class="font-mono text-os-primary">Ctrl+Shift+X</span> (Windows) / <span class="font-mono text-os-primary">Cmd+Shift+X</span> (Mac) &rarr; search by name &rarr; click Install &rarr; Reload if prompted.</p>
         <h3>Worth installing</h3>
         <table>
           <thead><tr><th>Extension</th><th>Publisher</th><th>Why you need it</th></tr></thead>
@@ -281,11 +289,12 @@
           </tbody>
         </table>
         <p><strong>Add later if useful:</strong> Excel Viewer / Data Preview (grid view for spreadsheets), Markdown PDF (export to polished PDF/HTML), Speech (dictate prompts), Word Count. <strong>Skip:</strong> GitLens, Docker, Python, ESLint, Prettier, language servers, Copilot — developer tools that add nothing for document work.</p>
-        <p><strong>Two settings worth changing:</strong> turn Word Wrap on (Alt+Z) so long paragraphs don't scroll sideways, and optionally disable the minimap for less visual clutter.</p>
+        <p><strong>Two settings worth changing:</strong> turn Word Wrap on (Alt+Z on Windows, Option+Z on Mac) so long paragraphs don't scroll sideways, and optionally disable the minimap for less visual clutter.</p>
       </div>
     </details>
 
     <h3>2.3 Install Claude Code</h3>
+    <p class="!mb-2 text-os-primary font-semibold text-sm">Windows</p>
     <ol>
       <li>Open <strong>Windows PowerShell</strong> (Start menu &rarr; type "PowerShell"). No admin rights needed.</li>
       <li>Run:</li>
@@ -293,12 +302,25 @@
     <pre>irm https://claude.ai/install.ps1 | iex</pre>
     <p>Scrolling text and a download progress bar are normal — that means it's working, not stuck. Close PowerShell and open a brand-new window once it finishes; settings only apply to terminals opened afterward.</p>
 
+    <p class="!mb-2 mt-4 text-os-primary font-semibold text-sm">Mac</p>
+    <ol>
+      <li>Open <strong>Terminal</strong> (Cmd+Space, type "Terminal"). No admin rights needed.</li>
+      <li>Run:</li>
+    </ol>
+    <pre>curl -fsSL https://claude.ai/install.sh | bash</pre>
+    <p>Scrolling text and a download progress bar are normal — that means it's working, not stuck. Close Terminal and open a brand-new window once it finishes; settings only apply to terminals opened afterward.</p>
+
     <details>
-      <summary>Optional: also install Git for Windows</summary>
+      <summary>Optional: also install Git</summary>
       <div>
-        <p>Not required for this lesson. Adds Git Bash, an alternative terminal, to your machine.</p>
+        <p>Not required for this lesson.</p>
+        <p class="!mb-2 text-os-primary font-semibold text-sm">Windows</p>
+        <p>Git for Windows adds Git Bash, an alternative terminal, to your machine.</p>
         <ol><li>Download from <strong>git-scm.com/downloads/win</strong> and accept every default</li></ol>
         <p class="!-mt-4 text-sm">✅ Checkpoint: "Git Bash" appears in the Start menu</p>
+        <p class="!mb-2 mt-4 text-os-primary font-semibold text-sm">Mac</p>
+        <p>Git ships via Xcode Command Line Tools, not a separate download. Run <span class="font-mono text-os-primary">git --version</span> in Terminal — if it's not already installed, macOS prompts you to install the Command Line Tools automatically.</p>
+        <p class="!-mt-4 text-sm">✅ Checkpoint: <span class="font-mono">git --version</span> prints a version number</p>
       </div>
     </details>
 
@@ -319,9 +341,10 @@
       <summary>Troubleshooting</summary>
       <div>
         <table><tbody>
-          <tr><td><span class="font-mono">claude</span> not recognized</td><td>Close and reopen the terminal first. Still broken → add <span class="font-mono">%USERPROFILE%\.local\bin</span> to PATH</td></tr>
+          <tr><td><span class="font-mono">claude</span> not recognized (Windows)</td><td>Close and reopen the terminal first. Still broken → add <span class="font-mono">%USERPROFILE%\.local\bin</span> to PATH</td></tr>
+          <tr><td><span class="font-mono">claude</span> not recognized (Mac)</td><td>Close and reopen the terminal first. Still broken → add <span class="font-mono">export PATH="$HOME/.local/bin:$PATH"</span> to <span class="font-mono">~/.zshrc</span> (or <span class="font-mono">~/.bash_profile</span>), then restart the terminal</td></tr>
           <tr><td>Stuck at login / plan error</td><td>Pro isn't active — check Settings on claude.ai</td></tr>
-          <tr><td>Defender/SmartScreen warning</td><td>Expected for a PowerShell installer — only ever run this for the official claude.ai URL</td></tr>
+          <tr><td>Defender/SmartScreen warning (Windows only)</td><td>Expected for a PowerShell installer — only ever run this for the official claude.ai URL</td></tr>
           <tr><td>Anything else</td><td>Run <span class="font-mono">claude doctor</span> first, then see code.claude.com/docs/en/troubleshoot-install</td></tr>
         </tbody></table>
       </div>
@@ -338,6 +361,7 @@
           <tr><td>Git Bash</td><td>Unix-style shell from Git for Windows</td><td>Optional alternative</td></tr>
           <tr><td>Command Prompt (cmd.exe)</td><td>Legacy Windows shell</td><td>Avoid</td></tr>
           <tr><td>Windows Terminal</td><td>Microsoft's tabbed terminal app</td><td>Optional, nicer host for PowerShell</td></tr>
+          <tr><td>Terminal.app (Mac)</td><td>macOS's built-in shell (zsh)</td><td>Pre-installed, nothing to add</td></tr>
         </tbody></table>
       </div>
     </details>
@@ -345,12 +369,12 @@
     <h3>The six commands</h3>
     <table>
       <tbody>
-        <tr><td><span class="font-mono text-os-primary">pwd</span></td><td>Where am I?</td></tr>
-        <tr><td><span class="font-mono text-os-primary">dir</span> (PowerShell) / <span class="font-mono text-os-primary">ls</span> (Git Bash)</td><td>What's in this folder?</td></tr>
-        <tr><td><span class="font-mono text-os-primary">cd foldername</span></td><td>Go into a folder</td></tr>
-        <tr><td><span class="font-mono text-os-primary">cd ..</span></td><td>Go back up one</td></tr>
-        <tr><td><span class="font-mono text-os-primary">cls</span> / <span class="font-mono text-os-primary">clear</span></td><td>Tidy the screen</td></tr>
-        <tr><td><span class="font-mono text-os-primary">Ctrl + C</span></td><td>Stop whatever's running</td></tr>
+        <tr><td><span class="font-mono text-os-primary">pwd</span></td><td>Where am I? (same on Windows and Mac)</td></tr>
+        <tr><td><span class="font-mono text-os-primary">dir</span> (PowerShell) / <span class="font-mono text-os-primary">ls</span> (Git Bash and Mac Terminal)</td><td>What's in this folder?</td></tr>
+        <tr><td><span class="font-mono text-os-primary">cd foldername</span></td><td>Go into a folder (same on Windows and Mac)</td></tr>
+        <tr><td><span class="font-mono text-os-primary">cd ..</span></td><td>Go back up one (same on Windows and Mac)</td></tr>
+        <tr><td><span class="font-mono text-os-primary">cls</span> (PowerShell) / <span class="font-mono text-os-primary">clear</span> (Git Bash and Mac Terminal)</td><td>Tidy the screen</td></tr>
+        <tr><td><span class="font-mono text-os-primary">Ctrl + C</span></td><td>Stop whatever's running (same on Windows and Mac)</td></tr>
       </tbody>
     </table>
 
@@ -359,7 +383,7 @@
     <h2 id="step-4"><span class="step-num">4</span>Your First Task</h2>
 
     <h3>The one concept: the project folder</h3>
-    <p>Claude can only see and touch files in the folder you open — a safety and confidentiality feature. Create a sandbox folder, e.g. <span class="font-mono text-os-primary">Documents\claude-practice</span>, with 3–5 non-confidential sample documents.</p>
+    <p>Claude can only see and touch files in the folder you open — a safety and confidentiality feature. Create a sandbox folder, e.g. <span class="font-mono text-os-primary">Documents\claude-practice</span> on Windows or <span class="font-mono text-os-primary">~/Documents/claude-practice</span> on Mac, with 3–5 non-confidential sample documents.</p>
 
     <h3>Open the folder</h3>
     <ol>
@@ -396,7 +420,7 @@
         <pre>For each document in this folder, pull out the title, date, and main topic, and put them all into one table in index.csv.</pre>
         <p>Open the result with a spreadsheet viewer. That was one instruction — on the web version, it would have been one upload and one prompt per document.</p>
 
-        <p><strong>Plan Mode — your best guardrail:</strong> Claude can only read and think, not change anything, until you approve a written plan. Turn it on with Shift+Tab (twice) or <span class="font-mono">/plan</span>. Recommended as your default starting posture for anything touching real work.</p>
+        <p><strong>Plan Mode — your best guardrail:</strong> Claude can only read and think, not change anything, until you approve a written plan. Turn it on with Shift+Tab (twice, same on Windows and Mac) or <span class="font-mono">/plan</span>. Recommended as your default starting posture for anything touching real work.</p>
       </div>
     </details>
 
@@ -425,7 +449,7 @@
         <tr><td><span class="font-mono text-os-primary">/voice</span></td><td>Dictate instead of type</td></tr>
       </tbody>
     </table>
-    <p>To exit: <span class="font-mono text-os-primary">/exit</span>, or press Ctrl+C twice.</p>
+    <p>To exit: <span class="font-mono text-os-primary">/exit</span>, or press Ctrl+C twice (same on Windows and Mac).</p>
 
     <h3>How to talk to Claude effectively</h3>
     <p>Name the what and the where — name the file. One job at a time. Say what "done" looks like (format, length, audience). Use @filename to point at a specific document. If the result is wrong, just say so in plain English.</p>

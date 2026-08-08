@@ -38,12 +38,19 @@ VS Code comes straight from Microsoft's official site. You download an installer
 
 You will download VS Code from the official site and install it with the default options.
 
-### Instructions
+### Instructions — Windows
 
 1. Go to [code.visualstudio.com](https://code.visualstudio.com).
 2. Click the download button for Windows.
 3. Run the installer and accept all default options.
 4. Open Visual Studio Code once it finishes.
+
+### Instructions — Mac
+
+1. Go to [code.visualstudio.com](https://code.visualstudio.com).
+2. Click the download button for Mac.
+3. Open the downloaded file and drag Visual Studio Code into your Applications folder.
+4. Open it from Applications (or Spotlight — Cmd + Space, then type "Visual Studio Code"). The first time, macOS may ask you to confirm you trust it — click Open.
 
 ### What You Should See
 
@@ -59,7 +66,7 @@ You will download VS Code from the official site and install it with the default
 +-----------------------------------------+
 ```
 
-A window with a Welcome tab, a row of icons down the left sidebar, and an empty editor area in the middle.
+A window with a Welcome tab, a row of icons down the left sidebar, and an empty editor area in the middle — identical on Windows and Mac.
 
 <!-- TIP: Official Site Only | Download only from code.visualstudio.com. Do not use a third-party download site. The official installer is safe and free. -->
 
@@ -80,7 +87,7 @@ You will open the Extensions panel and use its search box to browse. You will in
 ### Instructions
 
 1. Look at the left sidebar for the **Extensions** icon (four squares).
-2. Click it, or press **Ctrl + Shift + X** to open the panel.
+2. Click it, or press **Ctrl + Shift + X** (Windows) / **Cmd + Shift + X** (Mac) to open the panel.
 3. Type a name in the search box to see how results appear.
 4. Browse the list. Do not click Install on anything.
 
@@ -88,7 +95,7 @@ You will open the Extensions panel and use its search box to browse. You will in
 
 | What | How to Open It | What It Does |
 |---|---|---|
-| Extensions panel | Extensions icon in the left sidebar (four squares) or Ctrl + Shift + X | Lists add-ons you can install |
+| Extensions panel | Extensions icon in the left sidebar (four squares), or Ctrl+Shift+X (Windows) / Cmd+Shift+X (Mac) | Lists add-ons you can install |
 | Search box | Type a name | Finds an extension by name |
 
 <!-- NOTE: Install Nothing Yet | Module 3 tells you exactly which extensions to add. Installing them now, out of order, only creates confusion. Just look. -->
@@ -106,7 +113,7 @@ You have completed both steps. Confirm your setup by checking each item below:
 - [ ] VS Code opens cleanly to the Welcome tab
 - [ ] You can open the Extensions panel and search it
 
-<!-- NOTE: Not Working? | If the Extensions panel will not open, revisit Step 2 and try the keyboard shortcut Ctrl + Shift + X instead of the sidebar icon. -->
+<!-- NOTE: Not Working? | If the Extensions panel will not open, revisit Step 2 and try the keyboard shortcut (Ctrl+Shift+X on Windows, Cmd+Shift+X on Mac) instead of the sidebar icon. -->
 
 ---
 
@@ -118,8 +125,8 @@ You have completed both steps. Confirm your setup by checking each item below:
 
 **Related Resources**
 - [claude.ai](https://claude.ai) - The Claude AI platform
-- [Claude documentation](https://docs.anthropic.com/claude/docs) - Official documentation
-- [Claude support](https://support.anthropic.com) - Help center and troubleshooting
+- [Claude documentation](https://code.claude.com/docs) - Official documentation
+- [Claude support](https://support.claude.com) - Help center and troubleshooting
 
 <!-- TIP: Leave It Installed | Keep VS Code installed after this lesson. Module 3 picks up right where you left off and installs the extensions you actually need. -->
 

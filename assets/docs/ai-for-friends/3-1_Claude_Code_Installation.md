@@ -1,5 +1,5 @@
 # Claude Code Onboarding Guide
-### For Marketing, HR, Legal, Industrial Engineering, and International Relations Professionals — Windows + VS Code + Claude Pro
+### For Marketing, HR, Legal, Industrial Engineering, and International Relations Professionals — Windows or Mac + VS Code + Claude Pro
 
 ---
 
@@ -25,7 +25,7 @@
 > 💬 **In Plain English:** This guide gets an AI assistant running on your computer and has it do one real thing for you in a folder of real files — safely, and only with your permission at every step.
 
 ### Prerequisites Checklist
-- [ ] Windows 10 (build 1809+) or Windows 11
+- [ ] Windows 10 (build 1809+) or Windows 11, or macOS 12 or later
 - [ ] 4 GB+ RAM
 - [ ] Claude Pro plan active (claude.ai)
 - [ ] Claude login credentials handy
@@ -133,6 +133,8 @@ Answer one question: **Do you need to work with files and folders, or just ask a
 ### 2.2 Install Visual Studio Code
 > 🗣️ **Plain English — what is VS Code?** A free program from Microsoft for viewing and editing files. Think of it as a more powerful File Explorer window that Claude Code lives inside.
 
+**Windows**
+
 1. Download from **code.visualstudio.com** (official site only)
 2. Choose **User Installer, 64-bit** (no admin rights required)
 3. On the checkbox screen: keep **"Add to PATH"** checked; check **"Open with Code"** context menu options
@@ -141,11 +143,19 @@ Answer one question: **Do you need to work with files and folders, or just ask a
 - **Editor** (center) — where documents open
 - **Terminal panel** (bottom) — where you type commands (more on this in Section 3)
 - **Status bar** (very bottom)
+
+**Mac**
+
+1. Download from **code.visualstudio.com** (official site only) — choose the Mac build
+2. Open the downloaded file and drag **Visual Studio Code** into your **Applications** folder
+3. Open it from Applications (or Spotlight — Cmd+Space, then type "Visual Studio Code"). The first time, macOS may ask you to confirm you trust it — click **Open**
+4. First launch: dismiss the welcome tour and orient yourself to Explorer (left), Editor (center), Terminal panel (bottom), Status bar (very bottom) — identical layout to Windows
+
 5. ✅ Checkpoint: VS Code opens cleanly
 
 <!-- EXPAND: Optional: recommended VS Code extensions -->
 
-Extensions are small add-ons — like apps for your phone. You don't need any of these to finish this lesson; come back once Claude Code is running. Press Ctrl+Shift+X → search by name → click Install → Reload if prompted.
+Extensions are small add-ons — like apps for your phone. You don't need any of these to finish this lesson; come back once Claude Code is running. Press Ctrl+Shift+X (Windows) / Cmd+Shift+X (Mac) → search by name → click Install → Reload if prompted.
 
 **Worth installing:**
 
@@ -159,12 +169,14 @@ Extensions are small add-ons — like apps for your phone. You don't need any of
 
 **Add later if useful:** Excel Viewer / Data Preview (grid view for spreadsheets), Markdown PDF (export to polished PDF/HTML), Speech (dictate prompts), Word Count. **Skip:** GitLens, Docker, Python, ESLint, Prettier, language servers, Copilot — developer tools that add nothing for document work.
 
-**Two settings worth changing:** turn Word Wrap on (Alt+Z) so long paragraphs don't scroll sideways, and optionally disable the minimap for less visual clutter.
+**Two settings worth changing:** turn Word Wrap on (Alt+Z on Windows, Option+Z on Mac) so long paragraphs don't scroll sideways, and optionally disable the minimap for less visual clutter.
 
 <!-- /EXPAND -->
 
 ### 2.3 Install Claude Code
-> 🗣️ **Plain English — what is PowerShell?** A built-in Windows program where you type instructions instead of clicking icons. You'll use it once, just for this install.
+> 🗣️ **Plain English — what is PowerShell?** A built-in Windows program where you type instructions instead of clicking icons. You'll use it once, just for this install. (On Mac, the equivalent is Terminal.)
+
+**Windows**
 
 1. Open **Windows PowerShell** (Start menu → type "PowerShell"). No admin rights needed.
 2. Run:
@@ -174,12 +186,32 @@ irm https://claude.ai/install.ps1 | iex
 3. Scrolling text and a download progress bar are normal — this means it's working, not stuck.
 4. ⚠️ Close PowerShell and open a brand-new window once it finishes — settings only apply to terminals opened afterward.
 
-<!-- EXPAND: Optional: also install Git for Windows -->
+**Mac**
 
-Not required for this lesson. Adds Git Bash, an alternative terminal, to your machine.
+1. Open **Terminal** (Cmd+Space, type "Terminal"). No admin rights needed.
+2. Run:
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+3. Scrolling text and a download progress bar are normal — this means it's working, not stuck.
+4. ⚠️ Close Terminal and open a brand-new window once it finishes — settings only apply to terminals opened afterward.
+
+<!-- EXPAND: Optional: also install Git -->
+
+Not required for this lesson.
+
+**Windows**
+
+Git for Windows adds Git Bash, an alternative terminal, to your machine.
 
 1. Download from **git-scm.com/downloads/win** and accept every default
 2. ✅ Checkpoint: "Git Bash" appears in the Start menu
+
+**Mac**
+
+Git ships via Xcode Command Line Tools, not a separate download. Run `git --version` in Terminal — if it's not already installed, macOS prompts you to install the Command Line Tools automatically.
+
+✅ Checkpoint: `git --version` prints a version number
 
 <!-- /EXPAND -->
 
@@ -195,9 +227,10 @@ Not required for this lesson. Adds Git Bash, an alternative terminal, to your ma
 
 | Symptom | Fix |
 |---|---|
-| `claude` not recognized | Close and reopen the terminal first. Still broken → add `%USERPROFILE%\.local\bin` to PATH |
+| `claude` not recognized (Windows) | Close and reopen the terminal first. Still broken → add `%USERPROFILE%\.local\bin` to PATH |
+| `claude` not recognized (Mac) | Close and reopen the terminal first. Still broken → add `export PATH="$HOME/.local/bin:$PATH"` to `~/.zshrc` (or `~/.bash_profile`), then restart the terminal |
 | Stuck at login / plan error | Pro isn't active — check Settings on claude.ai |
-| Defender/SmartScreen warning | Expected for a PowerShell installer; only ever run this for the official claude.ai URL |
+| Defender/SmartScreen warning (Windows only) | Expected for a PowerShell installer; only ever run this for the official claude.ai URL |
 | Anything else | Run `claude doctor` first, then see code.claude.com/docs/en/troubleshoot-install |
 
 ---
@@ -214,14 +247,15 @@ Not required for this lesson. Adds Git Bash, an alternative terminal, to your ma
 | Git Bash | Unix-style shell from Git for Windows | Optional alternative |
 | Command Prompt (cmd.exe) | Legacy Windows shell | Avoid |
 | Windows Terminal | Microsoft's tabbed terminal app | Optional, nicer host for PowerShell |
+| Terminal.app (Mac) | macOS's built-in shell (zsh) | Pre-installed, nothing to add |
 
 ### 3.2 The Six Commands
-1. `pwd` — where am I?
-2. `dir` (PowerShell) / `ls` (Git Bash) — what's in this folder?
-3. `cd foldername` — go into a folder
-4. `cd ..` — go back up one
-5. `cls` / `clear` — tidy the screen
-6. `Ctrl + C` — stop whatever's running
+1. `pwd` — where am I? (same on Windows and Mac)
+2. `dir` (PowerShell) / `ls` (Git Bash and Mac Terminal) — what's in this folder?
+3. `cd foldername` — go into a folder (same on Windows and Mac)
+4. `cd ..` — go back up one (same on Windows and Mac)
+5. `cls` (PowerShell) / `clear` (Git Bash and Mac Terminal) — tidy the screen
+6. `Ctrl + C` — stop whatever's running (same on Windows and Mac)
 
 ### 3.3 Survival Tips
 Nothing runs until you press Enter. Up arrow recalls your last command. Tab autocompletes names. Right-click to paste in some terminals. A typo just produces an error message — it doesn't damage anything.
@@ -233,7 +267,7 @@ Nothing runs until you press Enter. Up arrow recalls your last command. Tab auto
 ### 4.1 The One Concept: The Project Folder
 Claude can only see and touch files in the folder you open. This is a safety and confidentiality feature — you control exactly what it can access.
 
-Create a sandbox folder: `Documents\claude-practice`, with 3–5 non-confidential sample documents.
+Create a sandbox folder: `Documents\claude-practice` on Windows, or `~/Documents/claude-practice` on Mac, with 3–5 non-confidential sample documents.
 
 > 💬 **In Plain English:** Claude is boxed into the one folder you open. It cannot see your whole computer, your email, or any other folder unless you open that folder too.
 
@@ -275,7 +309,7 @@ Review the diff view — a side-by-side before/after — and approve or reject i
 
 Open the result with a spreadsheet viewer. That was one instruction. On the web version, it would have been one upload and one prompt per document.
 
-**Plan Mode — your best guardrail:** Claude can only read and think — not change anything — until you approve a written plan. Turn it on with Shift+Tab (twice) or /plan. Recommended as your default starting posture for anything touching real work.
+**Plan Mode — your best guardrail:** Claude can only read and think — not change anything — until you approve a written plan. Turn it on with Shift+Tab (twice, same on Windows and Mac) or /plan. Recommended as your default starting posture for anything touching real work.
 
 <!-- /EXPAND -->
 
@@ -306,7 +340,7 @@ Try writing a five-line CLAUDE.md and watch the next response change.
 | /doctor | Health check |
 | /voice | Dictate instead of type |
 
-To exit: /exit, or press Ctrl+C twice.
+To exit: /exit, or press Ctrl+C twice (same on Windows and Mac).
 
 ### 5.3 How to Talk to Claude Effectively
 - Name the what and the where — name the file

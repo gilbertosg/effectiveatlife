@@ -52,6 +52,8 @@ You will read a four-command table and understand what each one does before you 
 | `cd FolderName` | Moves you INTO a folder | `cd Documents` |
 | `cd ..` | Moves you UP one folder level | `cd ..` |
 
+<!-- NOTE: Same on Mac | These four commands work identically in Mac's built-in Terminal app — no changes needed. Every example below uses the same syntax on Windows and Mac. -->
+
 <!-- INFO: Nothing Runs Until You Press Enter | Typing a command does nothing on its own. The terminal waits for you to press Enter before it acts. This means you can always fix a typo before running it. -->
 
 <!-- TIP: A Typo Just Produces an Error | If you mistype a command, the terminal prints an error and does nothing harmful. Read the error, retype the command, and try again. You cannot break anything this way. -->
@@ -77,7 +79,9 @@ You will type seven commands one at a time, pressing Enter after each and readin
 
 ### The Practice Block
 
-```powershell
+These lines are identical in PowerShell (Windows) and Terminal (Mac):
+
+```text
 cd ~
 pwd
 mkdir ai-practice
@@ -85,6 +89,7 @@ cd ai-practice
 mkdir shared
 mkdir candidate-review
 ls
+```
 
 <!-- ANCHOR: anchor-step-3 -->[cite: 1]
 
@@ -100,7 +105,7 @@ You will review what each command did and picture the folder structure now on yo
 
 1. Read the table below, matching each command to its effect.[cite: 1]
 2. Look at the folder tree that follows it.[cite: 1]
-3. Open File Explorer and find the `ai-practice` folder to see the same thing visually.[cite: 1]
+3. Open File Explorer (Finder, on Mac) and find the `ai-practice` folder to see the same thing visually.[cite: 1]
 
 ### What Each Command Did[cite: 1]
 
@@ -116,7 +121,7 @@ You will review what each command did and picture the folder structure now on yo
 
 ### The Structure You Now Have[cite: 1]
 
-C:\Users\YourName
+Your home folder — `C:\Users\YourName` on Windows, `/Users/yourname` on Mac:
 
 |_ ai-practice
 
@@ -125,7 +130,7 @@ C:\Users\YourName
 |_ candidate-review\
 
 
-<!-- TIP: Cross-Check With File Explorer | Open File Explorer, go to your home folder, and find ai-practice. Seeing the same folders you made in the terminal proves the commands did exactly what you typed. -->[cite: 2]
+<!-- TIP: Cross-Check With File Explorer | Open File Explorer (Finder, on Mac), go to your home folder, and find ai-practice. Seeing the same folders you made in the terminal proves the commands did exactly what you typed. -->[cite: 2]
 
 <!-- INFO: That's the Whole Skill | This is everything you need. When you reach Module 3, typing commands in a terminal will already feel routine. -->[cite: 2]
 
