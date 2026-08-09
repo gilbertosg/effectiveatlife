@@ -1,4 +1,4 @@
-<!-- HERO: Lesson 4.5: Using Your Project to Design More Projects | Once one Project works, let Claude draft the setup for the next one. -->
+<!-- HERO: Lesson 3.6: Using Your Project to Design More Projects | Once one Project works, let Claude draft the setup for the next one. -->
 
 <!-- TOC: Overview#anchor-overview | Step 1: Have Claude Design the Next Project#anchor-step-1 | Step 2: Pick Your Next Project#anchor-step-2 | Verification#anchor-verification -->
 
@@ -12,7 +12,7 @@ A working Project already knows your role and your formatting preferences. That 
 
 ### Prerequisites
 
-- [Lesson 4.3: Giving Your Project Reference Material](4-3_Adding_Project_Knowledge.md)
+- [Lesson 3.4: Giving Your Project Reference Material](3-4_Project_Material.md)
 - One working Project you have already set up
 
 ### Time to Complete
@@ -72,8 +72,8 @@ You will choose one new Project to build and create it using the design prompt a
 
 1. Pick one Project from the table below.
 2. Run the Step 1 design prompt with that Project as the goal.
-3. Create the Project, following [Lesson 4.2](4-2_Creating_Your_First_Project.md).
-4. Upload the suggested files, following [Lesson 4.3](4-3_Adding_Project_Knowledge.md).
+3. Create the Project, following [Lesson 3.3](3-3_First_Project.md).
+4. Upload the suggested files, following [Lesson 3.4](3-4_Project_Material.md).
 
 ### Example Projects Worth Building
 
@@ -108,7 +108,7 @@ You have completed both steps. Confirm your work by checking each item below:
 
 ### What's Next
 
-You have finished Module 4. You can now build a Claude Project for any recurring type of work, give it the reference material it needs, and keep its instructions current as your role changes. Put it into practice: pick one recurring task you have not yet covered, run the design prompt, and stand up your next Project this week.
+You have finished Module 3. You can now build a Claude Project for any recurring type of work, give it the reference material it needs, and keep its instructions current as your role changes. Put it into practice: pick one recurring task you have not yet covered, run the design prompt, and stand up your next Project this week.
 
 **Related Resources:**
 - [claude.ai](https://claude.ai) — The Claude AI platform

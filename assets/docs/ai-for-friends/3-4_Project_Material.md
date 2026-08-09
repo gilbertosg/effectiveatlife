@@ -1,4 +1,4 @@
-<!-- HERO: Lesson 4.3: Giving Your Project Reference Material | Upload your templates and style guides once. Every chat in the Project can use them. -->
+<!-- HERO: Lesson 3.4: Giving Your Project Reference Material | Upload your templates and style guides once. Every chat in the Project can use them. -->
 
 <!-- TOC: Overview#anchor-overview | Step 1: Upload Your Reference Files#anchor-step-1 | Step 2: Choose the Right Files for Your Role#anchor-step-2 | Step 3: Know What a Project Cannot Reach#anchor-step-3 | Verification#anchor-verification -->
 
@@ -12,7 +12,7 @@ Without reference files, you paste your template into every chat. With them, "dr
 
 ### Prerequisites
 
-- [Lesson 4.2: Creating Your First Project](4-2_Creating_Your_First_Project.md)
+- [Lesson 3.3: Creating Your First Project](3-3_First_Project.md)
 - Two or three reference files for your role (templates, style guides, glossaries)
 
 ### Time to Complete
@@ -115,12 +115,12 @@ You will learn precisely what a Project can and cannot reach, and what to check 
 | Files you explicitly uploaded | Your email |
 | Text you paste into a chat | Your applicant tracking system |
 | Its own custom instructions | Your document management system |
-| An app you've turned on a Connector for (Lesson 5.4) | Any other app or account you haven't connected |
+| An app you've turned on a Connector for (Lesson 4.4) | Any other app or account you haven't connected |
 | | Anything you have not uploaded or connected |
 
 <!-- WARNING: Check Before You Upload Sensitive Material | A personal claude.ai plan has no corporate data agreement. Check your employer's IT or Legal guidance before uploading employee records, privileged client files, or confidential campaign data. -->
 
-<!-- INFO: This Limit Is a Feature | Nothing reaches a Project on its own — you upload a document, or you choose to connect it. That second option, Connectors, does exist on claude.ai today (Module 5, Lesson 5.4 covers it in full), and once you turn one on for a Project, that Project can reach that connected app going forward. The rule that matters hasn't changed: you decide what a Project can see, whether by uploading or by connecting — it never happens without your choice. -->
+<!-- INFO: This Limit Is a Feature | Nothing reaches a Project on its own — you upload a document, or you choose to connect it. That second option, Connectors, does exist on claude.ai today (Module 4, Lesson 4.4 covers it in full), and once you turn one on for a Project, that Project can reach that connected app going forward. The rule that matters hasn't changed: you decide what a Project can see, whether by uploading or by connecting — it never happens without your choice. -->
 
 ---
 
@@ -142,7 +142,7 @@ You have completed all three steps. Confirm your setup by checking each item bel
 
 ### What's Next
 
-**Next Lesson:** [Lesson 4.4: Keeping Your Standing Instructions Current](4-4_Keeping_Instructions_Current.md)
+**Next Lesson:** [Lesson 3.5: Keeping Your Standing Instructions Current](3-5_Project_Instructions.md)
 
 **Related Resources:**
 - [claude.ai](https://claude.ai) — The Claude AI platform

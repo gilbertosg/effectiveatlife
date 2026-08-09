@@ -1,4 +1,4 @@
-<!-- HERO: Lesson 5.3: International Relations — Automating the Agreements Workflow | Check a website daily, draft the follow-up, and build a running Word document — as one packaged Claude Code plugin. -->
+<!-- HERO: Lesson 4.3: International Relations — Automating the Agreements Workflow | Check a website daily, draft the follow-up, and build a running Word document — as one packaged Claude Code plugin. -->
 
 <!-- TOC: Overview#anchor-overview | Step 0: How a Skill and a Plugin Actually Work#anchor-step-0 | Step 1: Create the Claude Code Project#anchor-step-1 | Step 2: Dictate the Whole Workflow#anchor-step-2 | Step 3: Build the Plugin's Three Skills#anchor-step-3 | Step 4: Install and Run Your Plugin#anchor-step-4 | Step 5: Optional — Run It Automatically Every Day#anchor-step-5 | Step 6: Turning It Off#anchor-step-6 | Verification#anchor-verification -->
 
@@ -10,12 +10,12 @@ This lesson builds one real, complete automation from the ground up: a desk offi
 
 The task itself is not complicated. It is repetitive: same website, same filter, same email pattern, same document, every single day. That repetition is exactly what a Claude Code plugin is for. You describe the job once, Claude Code builds the structure, and every future run is one command instead of a fresh explanation.
 
-If International Relations isn't your role, the mechanic in Step 0 and Steps 3 through 6 is what to focus on — Legal, Marketing, HR, and Industrial Engineering versions of this exact shape appear in Lessons 5.5 through 5.7.
+If International Relations isn't your role, the mechanic in Step 0 and Steps 3 through 6 is what to focus on — Legal, Marketing, HR, and Industrial Engineering versions of this exact shape appear in Lessons 4.5 through 4.7.
 
 ### Prerequisites
 
-- [Lesson 5.2: Installing Anthropic Skills](5-2_Installing_Anthropic_Skills.md), completed — Step 3 of this lesson writes a Word document
-- [Lesson 5.1: Your Claude Code Daily Habits](5-1_Your_Claude_Code_Daily_Habits.md) recommended, especially Step 4's rules for anything unattended before you reach Step 5 below
+- [Lesson 4.2: Installing Anthropic Skills](4-2_Installing_Antrhopic_Skills.md), completed — Step 3 of this lesson writes a Word document
+- [Lesson 4.1: Your Claude Code Daily Habits](4-1_Claude_Code_Daily_Habits.md) recommended, especially Step 4's rules for anything unattended before you reach Step 5 below
 - The web address of the page you want to monitor (a ministry press-release page, a treaty registry, or similar)
 
 ### Time to Complete
@@ -52,7 +52,7 @@ You will learn what a skill is, what a plugin is, and how they relate, in the ab
 
 | If your job is... | Reach for... |
 |---|---|
-| One well-defined, standalone task | A single skill (see Lesson 5.5 for an example that stays at exactly one skill) |
+| One well-defined, standalone task | A single skill (see Lesson 4.5 for an example that stays at exactly one skill) |
 | Several steps that share rules, data, or a file format | A plugin bundling multiple skills (this lesson builds one with three) |
 
 <!-- INFO: This Is the Whole Mechanic | Everything else in this lesson — the file tree, the commands, the marketplace — is this one idea, made concrete for one specific job: checking agreements for a foreign ministry desk. -->
@@ -431,11 +431,11 @@ Everything above still requires you to type three commands each morning. This st
 
 ### What You'll Do
 
-You will learn the realistic, non-developer way to run this daily without opening Claude Code yourself — after confirming you've applied Lesson 5.1's four rules for anything unattended.
+You will learn the realistic, non-developer way to run this daily without opening Claude Code yourself — after confirming you've applied Lesson 4.1's four rules for anything unattended.
 
 ### Instructions — Windows
 
-1. Before proceeding, revisit [Lesson 5.1, Step 4](5-1_Your_Claude_Code_Daily_Habits.md#anchor-step-4) — this step assumes you've run `/check-agreements` by hand several times already and trust its output.
+1. Before proceeding, revisit [Lesson 4.1, Step 4](4-1_Claude_Code_Daily_Habits.md#anchor-step-4) — this step assumes you've run `/check-agreements` by hand several times already and trust its output.
 2. Open **Windows Task Scheduler** (search for it in the Start menu).
 3. Create a new basic task, set to run daily at a time of your choosing.
 4. Set the action to run a program, pointing at the `claude` command with the check-agreements skill as its instruction.
@@ -449,7 +449,7 @@ claude -p "/check-agreements" --cwd "C:\path\to\ir-agreements-tracker"
 
 ### Instructions — Mac
 
-1. Before proceeding, revisit [Lesson 5.1, Step 4](5-1_Your_Claude_Code_Daily_Habits.md#anchor-step-4) — this step assumes you've run `/check-agreements` by hand several times already and trust its output.
+1. Before proceeding, revisit [Lesson 4.1, Step 4](4-1_Claude_Code_Daily_Habits.md#anchor-step-4) — this step assumes you've run `/check-agreements` by hand several times already and trust its output.
 2. Open **Terminal** and run `crontab -e` to open your personal schedule (opens in the `nano` editor by default).
 3. Add one line for a daily 8am run, then save (`Ctrl+O`, Enter, `Ctrl+X` in nano).
 
@@ -471,7 +471,7 @@ claude -p "/check-agreements" --cwd "C:\path\to\ir-agreements-tracker"
 
 ## Step 6: Turning It Off
 
-Anything you can turn on in this lesson, you should know how to turn off — the fourth rule from Lesson 5.1, Step 4.
+Anything you can turn on in this lesson, you should know how to turn off — the fourth rule from Lesson 4.1, Step 4.
 
 ### What You'll Do
 
@@ -501,7 +501,7 @@ You have completed all five required steps (Step 5 is optional; Step 6 only appl
 - [ ] `output/agreements-record.docx` opens correctly and shows the newest agreement at the top
 - [ ] You know where you'd disable the scheduled task and the plugin if you needed to
 
-<!-- NOTE: Not Working? | If a command isn't recognized, confirm the plugin installed correctly in Step 4 and that you restarted Claude Code afterward. If the Word document won't build, confirm Lesson 5.2's document skills are installed. -->
+<!-- NOTE: Not Working? | If a command isn't recognized, confirm the plugin installed correctly in Step 4 and that you restarted Claude Code afterward. If the Word document won't build, confirm Lesson 4.2's document skills are installed. -->
 
 ---
 
@@ -509,7 +509,7 @@ You have completed all five required steps (Step 5 is optional; Step 6 only appl
 
 ### What's Next
 
-**Next Lesson:** [Lesson 5.4: What Is an MCP Server?](5-4_What_Is_An_MCP_Server.md)
+**Next Lesson:** [Lesson 4.4: What Is an MCP Server?](4-4_What_is_an_MCP_Server.md)
 
 This lesson checked a website — something Claude Code could already do with no extra setup. The next lesson covers what changes when the data source is something Claude Code can't reach on its own, like your email or calendar, before the next three lessons build on that.
 

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lesson 5.7: From Sources to Story — A Content-Generation Pipeline — AI for Friends</title>
-<meta name="title" content="Lesson 5.7: From Sources to Story — A Content-Generation Pipeline">
+<title>Lesson 4.7: From Sources to Story — A Content-Generation Pipeline — AI for Friends</title>
+<meta name="title" content="Lesson 4.7: From Sources to Story — A Content-Generation Pipeline">
 <meta name="description" content="Gather articles, compile them into one digest, and draft a finished, on-brand piece of content from it.">
 
 <script src="https://cdn.tailwindcss.com"></script>
@@ -50,7 +50,7 @@
           Menu
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
           <div class="mb-1">
             <a href="../module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
               <span class="font-mono text-xs text-accent-cyan">01</span>
@@ -84,37 +84,28 @@
             </a>
             <div class="ml-8 space-y-0.5 pb-2">
               <a href="../module-3/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Claude Code Onboarding Guide</a>
-            </div>
-          </div>
-          <div class="border-t border-white/10 my-1"></div>
-          <div class="mb-1">
-            <a href="../module-4/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
-              <span class="font-mono text-xs text-accent-teal">04</span>
-              <span class="font-display font-semibold text-sm text-os-primary">Building Your AI Personal Assistant</span>
-            </a>
-            <div class="ml-8 space-y-0.5 pb-2">
-              <a href="../module-4/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 What Is a Claude Project?</a>
-              <a href="../module-4/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Creating Your First Project</a>
-              <a href="../module-4/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 Giving Your Project Reference Material</a>
-              <a href="../module-4/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 Keeping Your Standing Instructions Current</a>
-              <a href="../module-4/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Using Your Project to Design More Projects</a>
-              <a href="../module-4/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Worked Examples by Role</a>
+              <a href="../module-3/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 What Is a Claude Project?</a>
+              <a href="../module-3/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creating Your First Project</a>
+              <a href="../module-3/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Giving Your Project Reference Material</a>
+              <a href="../module-3/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Keeping Your Standing Instructions Current</a>
+              <a href="../module-3/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Using Your Project to Design More Projects</a>
+              <a href="../module-3/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Worked Examples by Role</a>
             </div>
           </div>
           <div class="border-t border-white/10 my-1"></div>
           <div>
             <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
-              <span class="font-mono text-xs text-os-primary">05</span>
+              <span class="font-mono text-xs text-os-primary">04</span>
               <span class="font-display font-semibold text-sm text-os-primary">Automating Workflows with Claude Code</span>
             </a>
             <div class="ml-8 space-y-0.5 pb-2">
-              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.1 Your Claude Code Daily Habits</a>
-              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.2 Installing Anthropic Skills</a>
-              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.3 International Relations: Automating the Agreements Workflow</a>
-              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.4 What Is an MCP Server?</a>
-              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.5 Daily Briefing from Email and Calendar</a>
-              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.6 Staying Informed: A Market-Awareness Digest</a>
-              <a href="lesson-7.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">5.7 From Sources to Story</a>
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Your Claude Code Daily Habits</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Installing Anthropic Skills</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 International Relations: Automating the Agreements Workflow</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 What Is an MCP Server?</a>
+              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Daily Briefing from Email and Calendar</a>
+              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Staying Informed: A Market-Awareness Digest</a>
+              <a href="lesson-7.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">4.7 From Sources to Story</a>
             </div>
           </div>
           <div class="border-t border-white/10 my-2"></div>
@@ -128,7 +119,7 @@
         <span class="cursor-default" title="Spanish version — coming soon">ES</span>
       </div>
     </nav>
-    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Module 5</a>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Module 4</a>
   </div>
 </header>
 
@@ -139,9 +130,9 @@
     <div class="font-mono text-xs text-os-tertiary mb-6">
       <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a>
       <span class="mx-1.5">/</span>
-      <a href="index.html" class="hover:text-accent-cyan transition-colors">Module 5</a>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Module 4</a>
       <span class="mx-1.5">/</span>
-      <span class="text-os-secondary">Lesson 5.7</span>
+      <span class="text-os-secondary">Lesson 4.7</span>
     </div>
     <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">From Sources to Story: A Content-Generation Pipeline</h1>
     <p class="text-os-secondary text-lg leading-relaxed mb-6">
@@ -164,7 +155,7 @@
 <article class="px-6 pb-24">
   <div class="lesson-body max-w-2xl mx-auto text-[16px]">
 
-    <p>This closing lesson adds one more stage to the pattern from Lessons 5.3 and 5.6: gather, compile, and now <strong>produce</strong> — turning a pile of articles and news into one finished, on-brand piece of content, ready to publish. It is the same shape you've now built three times, extended one step further.</p>
+    <p>This closing lesson adds one more stage to the pattern from Lessons 4.3 and 4.6: gather, compile, and now <strong>produce</strong> — turning a pile of articles and news into one finished, on-brand piece of content, ready to publish. It is the same shape you've now built three times, extended one step further.</p>
     <p>Content generation usually starts with research: reading a dozen articles to find the two or three worth writing about. Automating that research step — and handing the writer a compiled, organized digest instead of a dozen open tabs — is where this workflow earns its time back.</p>
 
     <h2 id="step-1"><span class="step-num">1</span>Dictate the Workflow</h2>
@@ -203,11 +194,11 @@ themes, content format, and tone, and ask me anything you need first.</pre>
 
     <div class="callout callout-note">
       <span class="callout-label">Reuse a Brand-Voice CLAUDE.md If You Have One</span>
-      <p>If you already built a Marketing Project in Lesson 4.6, its custom instructions — brand voice, banned words, tone — describe almost exactly what this CLAUDE.md needs. Copy from it instead of starting blank.</p>
+      <p>If you already built a Marketing Project in Lesson 3.7, its custom instructions — brand voice, banned words, tone — describe almost exactly what this CLAUDE.md needs. Copy from it instead of starting blank.</p>
     </div>
 
     <h2 id="step-2"><span class="step-num">2</span>Build the Three-Skill Plugin</h2>
-    <p>Three skills, the same shape as Lesson 5.3's gather-respond-assemble pattern: gather-articles, compile-digest, draft-content. This reuses the plugin file structure from Lesson 5.3, so this step focuses on the three skills themselves.</p>
+    <p>Three skills, the same shape as Lesson 4.3's gather-respond-assemble pattern: gather-articles, compile-digest, draft-content. This reuses the plugin file structure from Lesson 4.3, so this step focuses on the three skills themselves.</p>
 
     <ol>
       <li>Ask Claude Code to build gather-articles, review it.</li>
@@ -337,7 +328,7 @@ in the format and voice set in CLAUDE.md. Use when the user says
 
     <p class="!mb-2 text-os-primary font-semibold text-sm">Windows</p>
     <ol>
-      <li>Before proceeding, revisit <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lesson 5.1, Step 4</a> — confirm you trust both scheduled skills' output from manual runs first.</li>
+      <li>Before proceeding, revisit <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lesson 4.1, Step 4</a> — confirm you trust both scheduled skills' output from manual runs first.</li>
       <li>Open <strong>Windows Task Scheduler</strong>.</li>
       <li>Schedule the two gathering commands to run daily or weekly.</li>
       <li>Leave /draft-content for you to run by hand, once you've reviewed the digest.</li>
@@ -348,7 +339,7 @@ claude -p "/compile-digest" --cwd "C:\path\to\content-pipeline"</pre>
 
     <p class="!mb-2 mt-6 text-os-primary font-semibold text-sm">Mac</p>
     <ol>
-      <li>Before proceeding, revisit <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lesson 5.1, Step 4</a> — confirm you trust both scheduled skills' output from manual runs first.</li>
+      <li>Before proceeding, revisit <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lesson 4.1, Step 4</a> — confirm you trust both scheduled skills' output from manual runs first.</li>
       <li>Open <strong>Terminal</strong> and run <span class="font-mono text-os-primary">crontab -e</span> (opens in the <span class="font-mono">nano</span> editor by default).</li>
       <li>Add both lines below on a daily or weekly cadence, then save (<span class="font-mono">Ctrl+O</span>, Enter, <span class="font-mono">Ctrl+X</span> in nano). Leave /draft-content for you to run by hand, once you've reviewed the digest.</li>
     </ol>
@@ -371,7 +362,7 @@ claude -p "/compile-digest" --cwd "C:\path\to\content-pipeline"</pre>
     </div>
     <div class="callout callout-note">
       <span class="callout-label">Turning It Off</span>
-      <p>On Windows: disable or delete the two scheduled tasks in Windows Task Scheduler. On Mac: run <span class="font-mono text-os-primary">crontab -e</span> and delete or comment out both lines. Either way, also disable the plugin the same way shown in Lesson 5.3, Step 6, if you want to stop entirely. Your logged articles and past digests stay exactly as they are either way.</p>
+      <p>On Windows: disable or delete the two scheduled tasks in Windows Task Scheduler. On Mac: run <span class="font-mono text-os-primary">crontab -e</span> and delete or comment out both lines. Either way, also disable the plugin the same way shown in Lesson 4.3, Step 6, if you want to stop entirely. Your logged articles and past digests stay exactly as they are either way.</p>
     </div>
 
     <h2 class="!mt-16">Verification</h2>
@@ -404,7 +395,7 @@ claude -p "/compile-digest" --cwd "C:\path\to\content-pipeline"</pre>
 <!-- ============ PREV/NEXT ============ -->
 <nav class="px-6 pb-24">
   <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
-    <a href="lesson-6.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 5.6 Staying Informed</a>
+    <a href="lesson-6.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 4.6 Staying Informed</a>
     <a href="../index.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
       Back to Course Home &rarr;
     </a>

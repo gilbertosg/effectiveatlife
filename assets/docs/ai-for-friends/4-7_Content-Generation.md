@@ -1,10 +1,10 @@
-<!-- HERO: Lesson 5.7: From Sources to Story — A Content-Generation Pipeline | Gather articles, compile them into one digest, and draft a finished, on-brand piece of content from it. -->
+<!-- HERO: Lesson 4.7: From Sources to Story — A Content-Generation Pipeline | Gather articles, compile them into one digest, and draft a finished, on-brand piece of content from it. -->
 
 <!-- TOC: Overview#anchor-overview | Step 1: Dictate the Workflow#anchor-step-1 | Step 2: Build the Three-Skill Plugin#anchor-step-2 | Step 3: Install and Run It#anchor-step-3 | Step 4: Optional — Run It on a Schedule#anchor-step-4 | Verification#anchor-verification -->
 
 ## Overview
 
-This closing lesson adds one more stage to the pattern from Lessons 5.3 and 5.6: gather, compile, and now **produce** — turning a pile of articles and news into one finished, on-brand piece of content, ready to publish. It is the same shape you've now built three times, extended one step further.
+This closing lesson adds one more stage to the pattern from Lessons 4.3 and 4.6: gather, compile, and now **produce** — turning a pile of articles and news into one finished, on-brand piece of content, ready to publish. It is the same shape you've now built three times, extended one step further.
 
 ### Why This Matters
 
@@ -12,9 +12,9 @@ Content generation usually starts with research: reading a dozen articles to fin
 
 ### Prerequisites
 
-- [Lesson 5.2: Installing Anthropic Skills](5-2_Installing_Anthropic_Skills.md), completed — this lesson's final skill can write a Word draft
-- [Lesson 5.3](5-3_International_Relations_Agreements_Workflow.md) and [Lesson 5.6](5-6_Staying_Informed_Market_Awareness_Digest.md) recommended — this lesson reuses their plugin structure and knowledge-log pattern without re-explaining them
-- A brand-voice CLAUDE.md, if you already built one in [Lesson 4.6](4-6_Worked_Examples_By_Role.md) for Marketing — reuse it here
+- [Lesson 4.2: Installing Anthropic Skills](4-2_Installing_Antrhopic_Skills.md), completed — this lesson's final skill can write a Word draft
+- [Lesson 4.3](4-3_Automating_Agreements_RI_Example.md) and [Lesson 4.6](4-6_Market_Awareness.md) recommended — this lesson reuses their plugin structure and knowledge-log pattern without re-explaining them
+- A brand-voice CLAUDE.md, if you already built one in [Lesson 3.7](3-7_Examples_by_Role.md) for Marketing — reuse it here
 
 ### Time to Complete
 
@@ -74,7 +74,7 @@ content-pipeline/
 └── drafts/ Finished content drafts land here
 ```
 
-<!-- NOTE: Reuse a Brand-Voice CLAUDE.md If You Have One | If you already built a Marketing Project in Lesson 4.6, its custom instructions — brand voice, banned words, tone — describe almost exactly what this CLAUDE.md needs. Copy from it instead of starting blank. -->
+<!-- NOTE: Reuse a Brand-Voice CLAUDE.md If You Have One | If you already built a Marketing Project in Lesson 3.7, its custom instructions — brand voice, banned words, tone — describe almost exactly what this CLAUDE.md needs. Copy from it instead of starting blank. -->
 
 ---
 
@@ -82,7 +82,7 @@ content-pipeline/
 
 ## Step 2: Build the Three-Skill Plugin
 
-Three skills, the same shape as Lesson 5.3's gather-respond-assemble pattern: `gather-articles`, `compile-digest`, `draft-content`. This reuses the plugin file structure from Lesson 5.3 — `.claude-plugin/marketplace.json`, `plugins/<name>/.claude-plugin/plugin.json`, `skills/<name>/SKILL.md` — so this step focuses on the three skills themselves.
+Three skills, the same shape as Lesson 4.3's gather-respond-assemble pattern: `gather-articles`, `compile-digest`, `draft-content`. This reuses the plugin file structure from Lesson 4.3 — `.claude-plugin/marketplace.json`, `plugins/<name>/.claude-plugin/plugin.json`, `skills/<name>/SKILL.md` — so this step focuses on the three skills themselves.
 
 ### What You'll Do
 
@@ -262,7 +262,7 @@ You will schedule `/gather-articles` and `/compile-digest` to run automatically,
 
 ### Instructions — Windows
 
-1. Before proceeding, revisit [Lesson 5.1, Step 4](5-1_Your_Claude_Code_Daily_Habits.md#anchor-step-4) — confirm you trust both scheduled skills' output from manual runs first.
+1. Before proceeding, revisit [Lesson 4.1, Step 4](4-1_Claude_Code_Daily_Habits.md#anchor-step-4) — confirm you trust both scheduled skills' output from manual runs first.
 2. Open **Windows Task Scheduler**.
 3. Schedule the two gathering commands to run daily or weekly.
 4. Leave `/draft-content` for you to run by hand, once you've reviewed the digest.
@@ -276,7 +276,7 @@ claude -p "/compile-digest" --cwd "C:\path\to\content-pipeline"
 
 ### Instructions — Mac
 
-1. Before proceeding, revisit [Lesson 5.1, Step 4](5-1_Your_Claude_Code_Daily_Habits.md#anchor-step-4) — confirm you trust both scheduled skills' output from manual runs first.
+1. Before proceeding, revisit [Lesson 4.1, Step 4](4-1_Claude_Code_Daily_Habits.md#anchor-step-4) — confirm you trust both scheduled skills' output from manual runs first.
 2. Open **Terminal** and run `crontab -e` (opens in the `nano` editor by default).
 3. Add both lines below on a daily or weekly cadence, then save (`Ctrl+O`, Enter, `Ctrl+X` in nano). Leave `/draft-content` for you to run by hand, once you've reviewed the digest.
 
@@ -293,7 +293,7 @@ claude -p "/compile-digest" --cwd "C:\path\to\content-pipeline"
 
 <!-- NOTE: Why Leave Drafting Manual | Automating research is low-risk — worst case, an irrelevant article gets logged. Automating what gets published carries more risk, so this lesson keeps a person deciding when to draft and reviewing before anything goes out. -->
 
-<!-- NOTE: Turning It Off | On Windows: disable or delete the two scheduled tasks in Windows Task Scheduler. On Mac: run crontab -e and delete or comment out both lines. Either way, also disable the plugin the same way shown in Lesson 5.3, Step 6, if you want to stop entirely. Your logged articles and past digests stay exactly as they are either way. -->
+<!-- NOTE: Turning It Off | On Windows: disable or delete the two scheduled tasks in Windows Task Scheduler. On Mac: run crontab -e and delete or comment out both lines. Either way, also disable the plugin the same way shown in Lesson 4.3, Step 6, if you want to stop entirely. Your logged articles and past digests stay exactly as they are either way. -->
 
 ---
 
@@ -316,9 +316,9 @@ You have completed all three required steps (Step 4 is optional). Confirm your s
 
 ### What's Next
 
-You have finished this course. You know how AI models work and how to prompt them well (Module 1), how to set up your computer (Module 2), how to run Claude Code on your own files (Module 3), how to build a claude.ai Project (Module 4), and how to package a repeatable, multi-step workflow as a Claude Code plugin — with daily habits, MCP connections, and teardown steps built in along the way (Module 5).
+You have finished this course. You know how AI models work and how to prompt them well (Module 1), how to set up your computer (Module 2), how to run Claude Code on your own files and build a claude.ai Project (Module 3), and how to package a repeatable, multi-step workflow as a Claude Code plugin — with daily habits, MCP connections, and teardown steps built in along the way (Module 4).
 
-Pick one recurring task from your own role that this course hasn't covered yet, and build a plugin around it using the same shape: check or gather something, compile or respond to it, produce a finished output. Start small — one skill, like Lesson 5.5, is sometimes the whole answer. And whatever you build, make sure you know how to turn it off — Lesson 5.1 and every automation lesson since has said why that matters.
+Pick one recurring task from your own role that this course hasn't covered yet, and build a plugin around it using the same shape: check or gather something, compile or respond to it, produce a finished output. Start small — one skill, like Lesson 4.5, is sometimes the whole answer. And whatever you build, make sure you know how to turn it off — Lesson 4.1 and every automation lesson since has said why that matters.
 
 **Related Resources:**
 - [claude.ai](https://claude.ai) — The Claude AI platform

@@ -1,4 +1,4 @@
-<!-- HERO: Lesson 5.2: Installing Anthropic Skills | Add four skills in one install and Claude Code stops treating Word, PDF, and PowerPoint files as plain text. -->
+<!-- HERO: Lesson 4.2: Installing Anthropic Skills | Add four skills in one install and Claude Code stops treating Word, PDF, and PowerPoint files as plain text. -->
 
 <!-- TOC: Overview#anchor-overview | Step 1: What a Skill Adds That Plain Claude Code Doesn't Have#anchor-step-1 | Step 2: Add Anthropic's Skill Marketplace#anchor-step-2 | Step 3: Install the Document Skills#anchor-step-3 | Step 4: Verify It Worked#anchor-step-4 | Verification#anchor-verification -->
 
@@ -8,12 +8,12 @@ By the end of this lesson, you will have installed Anthropic's document-processi
 
 ### Why This Matters
 
-Lesson 5.3 ends with Claude Code assembling a running Word document — an agreement summary, a follow-up email, a response, and your notes, added to the same file every day without breaking its formatting. That only works if Claude Code has the right skill installed first. This lesson is that one-time setup step.
+Lesson 4.3 ends with Claude Code assembling a running Word document — an agreement summary, a follow-up email, a response, and your notes, added to the same file every day without breaking its formatting. That only works if Claude Code has the right skill installed first. This lesson is that one-time setup step.
 
 ### Prerequisites
 
-- [Module 3: Claude Code — AI on Your Own Files](3-claude-code-setup.md), completed and installed
-- [Lesson 5.1: Your Claude Code Daily Habits](5-1_Your_Claude_Code_Daily_Habits.md) recommended
+- [Module 3: Claude Code — Terminal, Files, and Projects](3-0_Claude-Code.md), completed and installed
+- [Lesson 4.1: Your Claude Code Daily Habits](4-1_Claude_Code_Daily_Habits.md) recommended
 - Claude Code running in a terminal (VS Code's integrated terminal is fine)
 
 ### Time to Complete
@@ -34,7 +34,7 @@ A `.docx`, `.pptx`, or `.xlsx` file is not plain text — it is a small archive 
 
 ### What You'll Do
 
-You will understand what a skill is and why "document skills" specifically are worth installing before Lesson 5.3.
+You will understand what a skill is and why "document skills" specifically are worth installing before Lesson 4.3.
 
 ### Instructions
 
@@ -53,7 +53,7 @@ You will understand what a skill is and why "document skills" specifically are w
 
 <!-- INFO: One Plugin, Four Skills | Anthropic packages docx, pdf, pptx, and xlsx together as a single plugin called `document-skills`. You install it once and get all four. -->
 
-<!-- TIP: This Is Optional Until You Need It | If you never ask Claude Code to touch a Word, PDF, or PowerPoint file, you don't need this. Lesson 5.3 needs it for its Word-document step, so install it now if you plan to do that lesson. -->
+<!-- TIP: This Is Optional Until You Need It | If you never ask Claude Code to touch a Word, PDF, or PowerPoint file, you don't need this. Lesson 4.3 needs it for its Word-document step, so install it now if you plan to do that lesson. -->
 
 ---
 
@@ -171,11 +171,11 @@ You have completed all four steps. Confirm your setup by checking each item belo
 
 ---
 
-<!-- CELEBRATION: Lesson Complete! | Claude Code can now read and write real Word, PDF, and PowerPoint files — everything Lesson 5.3's Word-document step needs. -->
+<!-- CELEBRATION: Lesson Complete! | Claude Code can now read and write real Word, PDF, and PowerPoint files — everything Lesson 4.3's Word-document step needs. -->
 
 ### What's Next
 
-**Next Lesson:** [Lesson 5.3: International Relations — Automating the Agreements Workflow](5-3_International_Relations_Agreements_Workflow.md)
+**Next Lesson:** [Lesson 4.3: International Relations — Automating the Agreements Workflow](4-3_Automating_Agreements_RI_Example.md)
 
 **Related Resources:**
 - [claude.ai](https://claude.ai) — The Claude AI platform

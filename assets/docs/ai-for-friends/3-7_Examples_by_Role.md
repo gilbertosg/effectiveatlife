@@ -1,4 +1,4 @@
-<!-- HERO: Lesson 4.6: Worked Examples by Role | Five complete Projects — name, instructions, files, and a real chat — one for each role in this course. -->
+<!-- HERO: Lesson 3.7: Worked Examples by Role | Five complete Projects — name, instructions, files, and a real chat — one for each role in this course. -->
 
 <!-- TOC: Overview#anchor-overview | Step 1: Legal — Contract Review#anchor-step-1 | Step 2: Marketing — Content Assistant#anchor-step-2 | Step 3: Industrial Engineering — Process & Work-Order Assistant#anchor-step-3 | Step 4: International Relations — Diplomatic Affairs Assistant#anchor-step-4 | Step 5: HR — Recruiting Assistant#anchor-step-5 | Verification#anchor-verification -->
 
@@ -12,8 +12,8 @@ A template with brackets is a starting point. A finished example is proof it wor
 
 ### Prerequisites
 
-- [Lesson 4.2: Creating Your First Project](4-2_Creating_Your_First_Project.md)
-- [Lesson 4.3: Giving Your Project Reference Material](4-3_Adding_Project_Knowledge.md)
+- [Lesson 3.3: Creating Your First Project](3-3_First_Project.md)
+- [Lesson 3.4: Giving Your Project Reference Material](3-4_Project_Material.md)
 
 ### Time to Complete
 
@@ -329,7 +329,7 @@ short acknowledgment note to send back to the Ministry of Trade?
 
 <!-- INFO: What Made This Fast | The officer pasted one summary and got the priority-topic match, the house-format memo offer, and the follow-up note offer in one pass — all three depend on facts that live in the Project, not in the prompt. -->
 
-<!-- NOTE: Going Further | Lesson 5.3 builds this exact workflow out further as a full Claude Code automation: checking a website daily, tracking new agreements, drafting the follow-up email, and assembling a running Word document — all without you doing it by hand each day. -->
+<!-- NOTE: Going Further | Lesson 4.3 builds this exact workflow out further as a full Claude Code automation: checking a website daily, tracking new agreements, drafting the follow-up email, and assembling a running Word document — all without you doing it by hand each day. -->
 
 ---
 
@@ -421,7 +421,7 @@ You have completed all five steps. Confirm your understanding by checking each i
 - [ ] You can name the files that Project uploads and what each one unlocks
 - [ ] You can explain, in one sentence, what the sample exchange did **not** require the user to type
 
-<!-- NOTE: Not Working? | If your role's example doesn't fit your exact work, that's expected — copy it anyway, then edit the My Context block and required-fields list until it matches. That editing is the whole skill from Lesson 4.4. -->
+<!-- NOTE: Not Working? | If your role's example doesn't fit your exact work, that's expected — copy it anyway, then edit the My Context block and required-fields list until it matches. That editing is the whole skill from Lesson 3.5. -->
 
 ---
 
@@ -429,9 +429,9 @@ You have completed all five steps. Confirm your understanding by checking each i
 
 ### What's Next
 
-**Next Module:** [Module 5: Automating Workflows with Claude Code](5-automating-workflows.md)
+**Next Module:** [Module 4: Automating Workflows with Claude Code](4-0_Claude_Code_Workflows.md)
 
-You have finished Module 4. You can build a Claude Project for any recurring type of work, give it the reference material it needs, keep its instructions current, and now you have five finished examples to copy from directly. Module 5 goes further: teaching Claude Code daily habits, live connections to real systems, and how to read and write native Word, PDF, and PowerPoint files — chaining multiple steps into one repeatable, automated workflow, built out from the International Relations example in Step 4 above.
+You have finished Module 3. You can build a Claude Project for any recurring type of work, give it the reference material it needs, keep its instructions current, and now you have five finished examples to copy from directly. Module 4 goes further: teaching Claude Code daily habits, live connections to real systems, and how to read and write native Word, PDF, and PowerPoint files — chaining multiple steps into one repeatable, automated workflow, built out from the International Relations example in Step 4 above.
 
 **Related Resources:**
 - [claude.ai](https://claude.ai) — The Claude AI platform

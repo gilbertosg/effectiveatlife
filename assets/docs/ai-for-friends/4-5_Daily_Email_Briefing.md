@@ -1,10 +1,10 @@
-<!-- HERO: Lesson 5.5: Daily Briefing from Email and Calendar | Connect Claude Code to your inbox and calendar, then read one morning summary instead of two apps. -->
+<!-- HERO: Lesson 4.5: Daily Briefing from Email and Calendar | Connect Claude Code to your inbox and calendar, then read one morning summary instead of two apps. -->
 
 <!-- TOC: Overview#anchor-overview | Step 1: Connect an Email and Calendar MCP Server#anchor-step-1 | Step 2: Dictate What "Day Ahead" Means to You#anchor-step-2 | Step 3: Build the Daily-Briefing Skill#anchor-step-3 | Step 4: Optional — Run It Automatically Every Morning#anchor-step-4 | Verification#anchor-verification -->
 
 ## Overview
 
-This lesson connects Claude Code to your real email and calendar, then builds one skill that reads both and hands you a single, structured briefing: today's schedule, what to know before each meeting, and anything urgent sitting in your inbox. Where Lesson 5.3 built a three-skill plugin, this one shows the other end of the range — sometimes one well-built skill is the whole job.
+This lesson connects Claude Code to your real email and calendar, then builds one skill that reads both and hands you a single, structured briefing: today's schedule, what to know before each meeting, and anything urgent sitting in your inbox. Where Lesson 4.3 built a three-skill plugin, this one shows the other end of the range — sometimes one well-built skill is the whole job.
 
 ### Why This Matters
 
@@ -12,8 +12,8 @@ Most mornings start with opening two apps and piecing together the same picture 
 
 ### Prerequisites
 
-- [Lesson 5.4: What Is an MCP Server?](5-4_What_Is_An_MCP_Server.md), completed — this lesson assumes you already know the `claude mcp add` command and `/mcp` and won't re-explain them
-- [Lesson 5.3: International Relations — Automating the Agreements Workflow](5-3_International_Relations_Agreements_Workflow.md) recommended — this lesson assumes you already know how a `SKILL.md` and the dictate-to-setup pattern work and won't re-explain them in full
+- [Lesson 4.4: What Is an MCP Server?](4-4_What_is_an_MCP_Server.md), completed — this lesson assumes you already know the `claude mcp add` command and `/mcp` and won't re-explain them
+- [Lesson 4.3: International Relations — Automating the Agreements Workflow](4-3_Automating_Agreements_RI_Example.md) recommended — this lesson assumes you already know how a `SKILL.md` and the dictate-to-setup pattern work and won't re-explain them in full
 - An email account and calendar you're allowed to connect an AI tool to (check with your organization first if this is a work account)
 
 ### Time to Complete
@@ -30,17 +30,17 @@ Most mornings start with opening two apps and piecing together the same picture 
 
 ## Step 1: Connect an Email and Calendar MCP Server
 
-Claude Code has no built-in access to your email or calendar. It needs an MCP connection — the mechanism from Lesson 5.4 — before it can read a single message or event.
+Claude Code has no built-in access to your email or calendar. It needs an MCP connection — the mechanism from Lesson 4.4 — before it can read a single message or event.
 
 ### What You'll Do
 
-You will identify which connector matches your provider, add it using the pattern from Lesson 5.4, and confirm it's connected.
+You will identify which connector matches your provider, add it using the pattern from Lesson 4.4, and confirm it's connected.
 
 ### Instructions
 
 1. Identify your provider: Google Workspace (Gmail + Google Calendar) or Microsoft 365 (Outlook Mail + Outlook Calendar) are the two most common.
-2. Check `code.claude.com/docs`, claude.ai's Connectors settings, or type `/mcp` inside Claude Code to see whether a ready-made connector exists for your provider today — Lesson 5.4, Step 4 covers what to do if it doesn't yet.
-3. Add the connector using the `claude mcp add --scope user --transport <type> <name> <address>` pattern from Lesson 5.4, Step 3, filling in the real name and address you found.
+2. Check `code.claude.com/docs`, claude.ai's Connectors settings, or type `/mcp` inside Claude Code to see whether a ready-made connector exists for your provider today — Lesson 4.4, Step 4 covers what to do if it doesn't yet.
+3. Add the connector using the `claude mcp add --scope user --transport <type> <name> <address>` pattern from Lesson 4.4, Step 3, filling in the real name and address you found.
 4. Approve the sign-in prompt that opens in your browser.
 5. Run `/mcp` to confirm it connected and see the tools it provides.
 
@@ -57,7 +57,7 @@ You will identify which connector matches your provider, add it using the patter
 
 ## Step 2: Dictate What "Day Ahead" Means to You
 
-With the connector in place, describe the briefing you actually want — in one long message, the same dictate-to-setup approach from Lesson 5.3.
+With the connector in place, describe the briefing you actually want — in one long message, the same dictate-to-setup approach from Lesson 4.3.
 
 ### What You'll Do
 
@@ -186,11 +186,11 @@ Everything above still requires opening Claude Code and typing `/daily-briefing`
 
 ### What You'll Do
 
-You will schedule the skill to run automatically each morning using Windows Task Scheduler (or `cron` on Mac) — the same approach from Lesson 5.3.
+You will schedule the skill to run automatically each morning using Windows Task Scheduler (or `cron` on Mac) — the same approach from Lesson 4.3.
 
 ### Instructions — Windows
 
-1. Before proceeding, revisit [Lesson 5.1, Step 4](5-1_Your_Claude_Code_Daily_Habits.md#anchor-step-4) — confirm you trust `/daily-briefing`'s output from several manual runs first.
+1. Before proceeding, revisit [Lesson 4.1, Step 4](4-1_Claude_Code_Daily_Habits.md#anchor-step-4) — confirm you trust `/daily-briefing`'s output from several manual runs first.
 2. Open **Windows Task Scheduler**.
 3. Create a basic task set to run daily, for example at 7:00 AM.
 4. Point the action at the command below.
@@ -203,7 +203,7 @@ claude -p "/daily-briefing" --cwd "C:\path\to\daily-briefing"
 
 ### Instructions — Mac
 
-1. Before proceeding, revisit [Lesson 5.1, Step 4](5-1_Your_Claude_Code_Daily_Habits.md#anchor-step-4) — confirm you trust `/daily-briefing`'s output from several manual runs first.
+1. Before proceeding, revisit [Lesson 4.1, Step 4](4-1_Claude_Code_Daily_Habits.md#anchor-step-4) — confirm you trust `/daily-briefing`'s output from several manual runs first.
 2. Open **Terminal** and run `crontab -e` (opens in the `nano` editor by default).
 3. Add the line below for a daily 7:00 AM run, then save (`Ctrl+O`, Enter, `Ctrl+X` in nano).
 
@@ -217,7 +217,7 @@ claude -p "/daily-briefing" --cwd "C:\path\to\daily-briefing"
 
 <!-- WARNING: This Step Is Optional | Typing /daily-briefing yourself each morning already works. Only automate this if you specifically want the file waiting for you before you sit down. -->
 
-<!-- NOTE: Turning It Off | On Windows: open Windows Task Scheduler, find the task by name, and Disable or Delete it — the same two options as Lesson 5.3, Step 6. On Mac: run crontab -e and delete or comment out the line. Your connected MCP server and your CLAUDE.md rules are untouched either way. -->
+<!-- NOTE: Turning It Off | On Windows: open Windows Task Scheduler, find the task by name, and Disable or Delete it — the same two options as Lesson 4.3, Step 6. On Mac: run crontab -e and delete or comment out the line. Your connected MCP server and your CLAUDE.md rules are untouched either way. -->
 
 ---
 
@@ -231,7 +231,7 @@ You have completed all three required steps (Step 4 is optional). Confirm your s
 - [ ] The project folder has a `README.md` and `CLAUDE.md` describing your briefing rules
 - [ ] `/daily-briefing` runs and produces a briefing that correctly cross-references at least one meeting and one email
 
-<!-- NOTE: Not Working? | If the calendar or email tool isn't found, confirm the connector shows as connected in /mcp and that you restarted Claude Code after adding it. Lesson 5.4 covers this connection in full if you skipped it. -->
+<!-- NOTE: Not Working? | If the calendar or email tool isn't found, confirm the connector shows as connected in /mcp and that you restarted Claude Code after adding it. Lesson 4.4 covers this connection in full if you skipped it. -->
 
 ---
 
@@ -239,7 +239,7 @@ You have completed all three required steps (Step 4 is optional). Confirm your s
 
 ### What's Next
 
-**Next Lesson:** [Lesson 5.6: Staying Informed — A Market-Awareness Digest](5-6_Staying_Informed_Market_Awareness_Digest.md)
+**Next Lesson:** [Lesson 4.6: Staying Informed — A Market-Awareness Digest](4-6_Market_Awareness.md)
 
 **Related Resources:**
 - [claude.ai](https://claude.ai) — The Claude AI platform

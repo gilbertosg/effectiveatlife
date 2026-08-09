@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 3.7: Worked Examples by Role — AI for Friends</title>
+<meta name="title" content="Lesson 3.7: Worked Examples by Role">
+<meta name="description" content="Five complete Projects — name, instructions, files, and a real chat — one for each role in this course.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../assets/css/custom.css">
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pillars</a>
+      <a href="../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Course</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menu
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="../module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">AI Foundations</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-1/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 How AI Models Work</a>
+              <a href="../module-1/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Prompt vs. Context Engineering</a>
+              <a href="../module-1/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Practical Prompting Techniques</a>
+              <a href="../module-1/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Choosing the Right AI Model</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Setting Up Your Computer</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPTIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Installing Windows Terminal</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Installing VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navigating in the Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Claude Code Onboarding Guide</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 What Is a Claude Project?</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creating Your First Project</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Giving Your Project Reference Material</a>
+              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Keeping Your Standing Instructions Current</a>
+              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Using Your Project to Design More Projects</a>
+              <a href="lesson-7.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">3.7 Worked Examples by Role</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="../module-4/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">04</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Automating Workflows with Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-4/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Your Claude Code Daily Habits</a>
+              <a href="../module-4/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Installing Anthropic Skills</a>
+              <a href="../module-4/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 International Relations: Automating the Agreements Workflow</a>
+              <a href="../module-4/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 What Is an MCP Server?</a>
+              <a href="../module-4/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Daily Briefing from Email and Calendar</a>
+              <a href="../module-4/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Staying Informed: A Market-Awareness Digest</a>
+              <a href="../module-4/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.7 From Sources to Story</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Course Home</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <span class="text-accent-cyan font-semibold">EN</span>
+        <span class="text-white/20">/</span>
+        <span class="cursor-default" title="Spanish version — coming soon">ES</span>
+      </div>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Module 3</a>
+  </div>
+</header>
+
+<!-- ============ LESSON HEADER ============ -->
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a>
+      <span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Module 3</a>
+      <span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lesson 3.7</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Worked Examples by Role</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">
+      Five complete Projects — name, instructions, files, and a real chat — one for each role in this course.
+    </p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">10 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent-teal/40 text-accent-teal">REQUIRED</span>
+    </div>
+    <div class="flex flex-wrap gap-2 font-mono text-[10px]">
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Legal</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Marketing</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Industrial Engineering</a>
+      <a href="#step-4" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">4. International Relations</a>
+      <a href="#step-5" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">5. HR</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ LESSON BODY ============ -->
+<article class="px-6 pb-24">
+  <div class="lesson-body max-w-2xl mx-auto text-[16px]">
+
+    <p>Lessons 3.2 through 3.6 taught you the mechanics: parts, instructions, files, upkeep, and design. This lesson shows those mechanics finished — five complete Projects, each with a real situation, the exact custom instructions pasted in, the files uploaded, and a sample chat showing what comes back. Find your role below and copy the whole thing as your starting point.</p>
+    <p>A template with brackets is a starting point. A finished example is proof it works. Read the one that matches your role closely — then read at least one other. Seeing how a Legal Project differs from an Industrial Engineering Project sharpens your sense of what "one kind of recurring work" actually means.</p>
+
+    <h2 id="step-1"><span class="step-num">1</span>Legal — Contract Review</h2>
+    <h3>The Situation</h3>
+    <p>A commercial contracts attorney reviews 8 to 12 vendor and NDA agreements a week. Every review starts the same way: paste the contract, restate the four clauses that matter, wait for a plain-English pass. The Project removes the restating.</p>
+
+    <h3>The Complete Project</h3>
+    <p><strong>Name:</strong> Contract Review<br><strong>Description:</strong> Clause-by-clause review of vendor agreements and NDAs against our standard positions.</p>
+
+    <pre>You are my contract review assistant. Your responsibilities:
+
+1. Review contract language clause by clause and summarize each in plain English.
+2. Flag risk in a redline style — quote the exact language, never paraphrase.
+3. Track defined terms and note when they are used inconsistently.
+4. Categorize each finding as High, Medium, or Low risk.
+
+My context:
+- I review: vendor agreements, NDAs, and master service agreements
+- My jurisdiction is: Delaware
+- My standard positions are: liability cap must be at least the contract value;
+no auto-renewal beyond one term without a 60-day notice window
+
+Always flag: indemnity language, liability caps, auto-renewal terms, and
+termination-for-convenience clauses. Present findings in a table with
+columns: Clause Reference, Plain-English Summary, Risk Level.</pre>
+
+    <p><strong>Files uploaded to Project knowledge:</strong></p>
+    <ul class="plain">
+      <li><strong>standard_msa_template.docx</strong> — our own fallback contract language, for comparison</li>
+      <li><strong>defined_terms_glossary.docx</strong> — terms that must be used consistently across a deal</li>
+      <li><strong>precedent_redlines_2025.docx</strong> — three past redlines showing our house style</li>
+    </ul>
+
+    <h3>Sample Exchange</h3>
+    <pre>You:
+Review the attached vendor NDA against our standard positions.
+[NDA pasted]
+
+Claude:
+| Clause Reference | Plain-English Summary | Risk Level |
+|---|---|---|
+| § 4.2 | Liability capped at $50,000 — below our contract value of
+$210,000. | High |
+| § 7.1 | Auto-renews annually with only 30 days' notice, not our
+standard 60. | Medium |
+| § 2.3 | "Confidential Information" definition matches our glossary
+term for term. | Low |
+
+Two findings need redlines before this goes back to the vendor: § 4.2
+(liability cap) and § 7.1 (notice window). Want me to draft the redline
+language for both?</pre>
+
+    <div class="callout callout-info">
+      <span class="callout-label">What Made This Fast</span>
+      <p>The attorney never explained what a liability cap is, never re-typed the jurisdiction, and never re-pasted the glossary. All three were already in the Project.</p>
+    </div>
+
+    <h2 id="step-2"><span class="step-num">2</span>Marketing — Content Assistant</h2>
+    <h3>The Situation</h3>
+    <p>A brand marketing manager repurposes one blog post into five channel variants every week and needs each one checked against a 40-item banned-words list before it goes out.</p>
+
+    <h3>The Complete Project</h3>
+    <p><strong>Name:</strong> Content Assistant<br><strong>Description:</strong> Repurposes one piece of content across channels in brand voice.</p>
+
+    <pre>You are my content assistant. Your responsibilities:
+
+1. Repurpose one piece of content into variants for each of my channels.
+2. Enforce brand voice on everything you draft.
+3. Summarize campaign performance and highlight what drove results.
+4. Produce one clearly labeled section per channel when repurposing.
+
+My context:
+- My brand voice is: confident, plain-spoken, never hype
+- My primary channels are: LinkedIn, email newsletter, blog, X
+- Words we never use: synergy, game-changer, revolutionary, unlock, leverage (as a verb)
+
+When repurposing, keep the core message identical across channels but adapt
+length and tone to each. Always respect the banned-words list.</pre>
+
+    <p><strong>Files uploaded to Project knowledge:</strong></p>
+    <ul class="plain">
+      <li><strong>brand_style_guide.docx</strong> — voice, tone, and formatting rules</li>
+      <li><strong>q2_campaign_briefs.docx</strong> — past briefs, for consistent framing</li>
+      <li><strong>approved_claims_list.docx</strong> — product claims that are legally cleared to use</li>
+    </ul>
+
+    <h3>Sample Exchange</h3>
+    <pre>You:
+Repurpose this blog post into LinkedIn, email, and X versions.
+[Blog post pasted]
+
+Claude:
+**LinkedIn (150 words):**
+[full post, professional framing, ends with a discussion question]
+
+**Email Newsletter (80 words):**
+[shorter, one clear call to action, subject line included]
+
+**X (under 280 characters):**
+[single punchy line, no banned words, thread-starter framing]
+
+All three keep the same core claim — the 40% setup-time reduction — and
+none use a banned word. Want a fourth variant for the blog itself, or is
+the source post staying as-is?</pre>
+
+    <div class="callout callout-info">
+      <span class="callout-label">What Made This Fast</span>
+      <p>The manager didn't paste the style guide, didn't restate the banned-words list, and got three channel-appropriate drafts from one instruction.</p>
+    </div>
+
+    <h2 id="step-3"><span class="step-num">3</span>Industrial Engineering — Process &amp; Work-Order Assistant</h2>
+    <h3>The Situation</h3>
+    <p>An industrial engineer at a final-assembly work center reviews 15 to 20 nonconformance reports a week and needs to catch any defect type repeating across three or more reports before it becomes a line-down issue.</p>
+
+    <h3>The Complete Project</h3>
+    <p><strong>Name:</strong> Process &amp; Work-Order Assistant<br><strong>Description:</strong> Nonconformance summaries, standard-work drafting, and work-order status tracking for final assembly.</p>
+
+    <pre>You are my process and work-order assistant. Your responsibilities:
+
+1. Summarize nonconformance reports into a root-cause-and-disposition table.
+2. Draft standard work instructions from my rough notes, in our required format.
+3. Track work-order status when I share updates from the floor.
+4. Flag any recurring defect type across three or more reports in the same period.
+
+My context:
+- My work centers are: final assembly, torque station, inspection
+- My standard work format requires: purpose, tools, steps, safety notes
+- My escalation threshold is: any nonconformance tied to a torque-critical fastener
+
+When I share nonconformance reports, always extract: Part Number, Work Order,
+Defect Description, Root Cause (if known), Disposition, and Recurrence Flag.</pre>
+
+    <p><strong>Files uploaded to Project knowledge:</strong></p>
+    <ul class="plain">
+      <li><strong>nonconformance_report_format.docx</strong> — the fields every report must capture</li>
+      <li><strong>standard_work_template.docx</strong> — required sections for new standard work</li>
+      <li><strong>time_study_log.xlsx</strong> — recent cycle-time data, for context on bottlenecks</li>
+    </ul>
+
+    <h3>Sample Exchange</h3>
+    <pre>You:
+Here are this week's five nonconformance reports from final assembly.
+[reports pasted]
+
+Claude:
+| Part Number | Work Order | Defect | Root Cause | Disposition | Recurrence |
+|---|---|---|---|---|---|
+| 4471-A | WO-88213 | Under-torqued fastener | Calibration drift | Rework | Flag |
+| 4471-A | WO-88240 | Under-torqued fastener | Not stated | Rework | Flag |
+| 4471-A | WO-88255 | Under-torqued fastener | Calibration drift | Rework | Flag |
+| 2290-C | WO-88221 | Surface scratch | Handling | Use-as-is | — |
+| 5510-B | WO-88238 | Missing label | Operator skip | Rework | — |
+
+Recurrence flag: Part 4471-A has three under-torqued fastener defects
+this week, two citing calibration drift as root cause. This meets your
+escalation threshold — torque-critical fastener. Recommend a torque-wrench
+calibration check on that station before the next shift.</pre>
+
+    <div class="callout callout-info">
+      <span class="callout-label">What Made This Fast</span>
+      <p>The engineer pasted five raw reports and got a comparable table plus an unprompted escalation — because the recurrence rule and the escalation threshold were already standing instructions.</p>
+    </div>
+
+    <h2 id="step-4"><span class="step-num">4</span>International Relations — Diplomatic Affairs Assistant</h2>
+    <h3>The Situation</h3>
+    <p>A desk officer tracks incoming agreements and cables daily and needs to know immediately which ones touch the foreign minister's stated priorities, so a briefing memo and a follow-up can go out the same day.</p>
+
+    <h3>The Complete Project</h3>
+    <p><strong>Name:</strong> Diplomatic Affairs Assistant<br><strong>Description:</strong> Briefing memos, protocol checks, and agreement tracking for the foreign minister's desk.</p>
+
+    <pre>You are my diplomatic affairs assistant. Your responsibilities:
+
+1. Draft briefing memos on incoming agreements, meetings, or delegations in our house format.
+2. Flag any item relevant to the chancellor or foreign minister's priority topics.
+3. Track agreements and their follow-up status as I share updates.
+4. Check draft correspondence against our protocol and tone conventions before I send it.
+
+My context:
+- My priority topics are: trade cooperation, regional security, cultural exchange
+- My counterpart ministries or missions are: the Ministry of Trade and the
+Ministry of Foreign Affairs of our two nearest counterpart states
+- My house format for briefing memos requires: summary, stakeholders,
+recommended position
+
+When I share a new agreement or cable, always extract: Title, Counterpart,
+Date, Summary, Relevance to Priority Topics, and Recommended Next Step.</pre>
+
+    <p><strong>Files uploaded to Project knowledge:</strong></p>
+    <ul class="plain">
+      <li><strong>briefing_memo_template.docx</strong> — required sections and formatting</li>
+      <li><strong>protocol_and_etiquette_reference.docx</strong> — address forms, precedence rules, tone conventions</li>
+      <li><strong>agreement_tracking_log.docx</strong> — agreements already logged, to avoid duplicate memos</li>
+    </ul>
+
+    <h3>Sample Exchange</h3>
+    <pre>You:
+New cable came in from the Ministry of Trade — here's the summary.
+[cable pasted]
+
+Claude:
+Title: Framework Agreement on Cross-Border Logistics Cooperation
+Counterpart: Ministry of Trade
+Date: Received today
+Summary: Proposes a joint customs-clearance fast lane for perishable
+goods, renewable annually.
+
+Relevance to Priority Topics: Direct match — trade cooperation.
+
+Recommended Next Step: Draft a briefing memo for the foreign minister
+this week and send a follow-up note to the Ministry of Trade confirming
+receipt and requesting the technical annex referenced in § 3.
+
+Want me to draft the briefing memo now, using our house format, and a
+short acknowledgment note to send back to the Ministry of Trade?</pre>
+
+    <div class="callout callout-info">
+      <span class="callout-label">What Made This Fast</span>
+      <p>The officer pasted one summary and got the priority-topic match, the house-format memo offer, and the follow-up note offer in one pass — all three depend on facts that live in the Project, not in the prompt.</p>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">Going Further</span>
+      <p>Lesson 4.3 builds this exact workflow out further as a full Claude Code automation: checking a website daily, tracking new agreements, drafting the follow-up email, and assembling a running Word document — all without you doing it by hand each day.</p>
+    </div>
+
+    <h2 id="step-5"><span class="step-num">5</span>HR — Recruiting Assistant</h2>
+    <h3>The Situation</h3>
+    <p>A recruiter screens 10 to 15 candidates a week for open roles and needs every candidate summarized the same way, whether the source is an interview transcript or a rough set of notes.</p>
+
+    <h3>The Complete Project</h3>
+    <p><strong>Name:</strong> Recruiting Assistant<br><strong>Description:</strong> Candidate summaries, outreach messages, and pipeline tracking.</p>
+
+    <pre>You are my recruiting assistant. Your responsibilities:
+
+1. Summarize candidate profiles from interview notes into structured tables.
+2. Draft outreach messages for passive candidates (professional, concise, warm).
+3. Track pipeline status when I share updates.
+4. Format all outputs in clean markdown tables or bullet points.
+
+My context:
+- I recruit for: engineering and operations roles
+- My ATS (applicant tracking system) is: Greenhouse
+- My hiring managers are: the team lead for each open requisition
+
+When I share interview notes, always extract: Name, Role Applied,
+Years of Experience, Key Strengths, Concerns, Compensation
+Expectations, Availability, and Next Steps.</pre>
+
+    <p><strong>Files uploaded to Project knowledge:</strong></p>
+    <ul class="plain">
+      <li><strong>interview_scorecard_template.docx</strong> — the fields every interview must capture</li>
+      <li><strong>job_description_format.docx</strong> — our standard job-description structure</li>
+      <li><strong>offer_letter_template.docx</strong> — required sections and language for offers</li>
+    </ul>
+
+    <h3>Sample Exchange</h3>
+    <pre>You:
+Here are my notes from today's screen with a Senior Account Manager
+candidate. [notes pasted]
+
+Claude:
+| Field | Value |
+|---|---|
+| Name | Priya Nair |
+| Role Applied | Senior Account Manager |
+| Experience | 7 years, B2B account management |
+| Key Strengths | Strong retention track record, CRM-fluent |
+| Concerns | No direct experience in our vertical |
+| Compensation Expectations | $135K base |
+| Availability | 3 weeks' notice |
+| Next Steps | Panel interview with the hiring manager |
+
+This meets the minimum requirements from the job description. The
+vertical-experience gap is worth raising with the hiring manager before
+the panel round. Want a one-line summary to forward to them?</pre>
+
+    <div class="callout callout-info">
+      <span class="callout-label">What Made This Fast</span>
+      <p>The recruiter pasted raw notes and got a scorecard-ready table with the eight required fields, no template re-typed.</p>
+    </div>
+
+    <h2 class="!mt-16">Verification</h2>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You can point to the exact custom instructions for the Project closest to your role</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You can name the files that Project uploads and what each one unlocks</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You can explain, in one sentence, what the sample exchange did not require the user to type</span></div>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">Not Working?</span>
+      <p>If your role's example doesn't fit your exact work, that's expected — copy it anyway, then edit the My Context block and required-fields list until it matches. That editing is the whole skill from Lesson 3.5.</p>
+    </div>
+
+    <h2 class="!mt-10 !text-base">Related Resources</h2>
+    <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
+      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — The Claude AI platform</li>
+      <li><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">code.claude.com/docs</a> — Official documentation</li>
+      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">support.claude.com</a> — Help center and troubleshooting</li>
+    </ul>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-teal/15 to-transparent border border-accent-teal/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-teal mb-2">Module 3 complete</p>
+      <p class="text-sm text-os-secondary">You now have five complete, finished Projects to copy from — one of them almost certainly matches your role well enough to use today. Paste the whole template for your closest role into a new Project, get it working first, then edit the brackets to match your real details.</p>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ PREV/NEXT ============ -->
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="lesson-6.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 3.6 Using Your Project to Design More Projects</a>
+    <a href="../module-4/index.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
+      Next: Module 4 &rarr;
+    </a>
+  </div>
+</nav>
+
+<!-- ============ FOOTER ============ -->
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">You do not rise to the level of your goals. You fall to the level of your systems.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Built as a system, not a slogan.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
+
+</body>
+</html>

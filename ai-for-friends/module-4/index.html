@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Module 4: Building Your AI Personal Assistant — AI for Friends</title>
-<meta name="title" content="Module 4: Building Your AI Personal Assistant — AI for Friends">
-<meta name="description" content="Build a Claude Project — a reusable workspace on claude.ai that knows your role, follows your standing instructions, and draws on your own reference documents.">
+<title>Module 4: Automating Workflows with Claude Code — AI for Friends</title>
+<meta name="title" content="Module 4: Automating Workflows with Claude Code — AI for Friends">
+<meta name="description" content="Teach Claude Code to read and write native Office files, connect to live systems, and chain several steps into one repeatable, automated workflow.">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -50,7 +50,7 @@
           Menu
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
           <div class="mb-1">
             <a href="../module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
               <span class="font-mono text-xs text-accent-cyan">01</span>
@@ -84,37 +84,28 @@
             </a>
             <div class="ml-8 space-y-0.5 pb-2">
               <a href="../module-3/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Claude Code Onboarding Guide</a>
-            </div>
-          </div>
-          <div class="border-t border-white/10 my-1"></div>
-          <div class="mb-1">
-            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
-              <span class="font-mono text-xs text-accent-teal">04</span>
-              <span class="font-display font-semibold text-sm text-os-primary">Building Your AI Personal Assistant</span>
-            </a>
-            <div class="ml-8 space-y-0.5 pb-2">
-              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 What Is a Claude Project?</a>
-              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Creating Your First Project</a>
-              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 Giving Your Project Reference Material</a>
-              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 Keeping Your Standing Instructions Current</a>
-              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Using Your Project to Design More Projects</a>
-              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Worked Examples by Role</a>
+              <a href="../module-3/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 What Is a Claude Project?</a>
+              <a href="../module-3/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creating Your First Project</a>
+              <a href="../module-3/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Giving Your Project Reference Material</a>
+              <a href="../module-3/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Keeping Your Standing Instructions Current</a>
+              <a href="../module-3/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Using Your Project to Design More Projects</a>
+              <a href="../module-3/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Worked Examples by Role</a>
             </div>
           </div>
           <div class="border-t border-white/10 my-1"></div>
           <div>
-            <a href="../module-5/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
-              <span class="font-mono text-xs text-os-primary">05</span>
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">04</span>
               <span class="font-display font-semibold text-sm text-os-primary">Automating Workflows with Claude Code</span>
             </a>
             <div class="ml-8 space-y-0.5 pb-2">
-              <a href="../module-5/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.1 Your Claude Code Daily Habits</a>
-              <a href="../module-5/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.2 Installing Anthropic Skills</a>
-              <a href="../module-5/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.3 International Relations: Automating the Agreements Workflow</a>
-              <a href="../module-5/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.4 What Is an MCP Server?</a>
-              <a href="../module-5/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.5 Daily Briefing from Email and Calendar</a>
-              <a href="../module-5/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.6 Staying Informed: A Market-Awareness Digest</a>
-              <a href="../module-5/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.7 From Sources to Story</a>
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Your Claude Code Daily Habits</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Installing Anthropic Skills</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 International Relations: Automating the Agreements Workflow</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 What Is an MCP Server?</a>
+              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Daily Briefing from Email and Calendar</a>
+              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Staying Informed: A Market-Awareness Digest</a>
+              <a href="lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.7 From Sources to Story</a>
             </div>
           </div>
           <div class="border-t border-white/10 my-2"></div>
@@ -140,31 +131,54 @@
   <div class="relative max-w-3xl mx-auto fade-up">
     <a href="../index.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; AI for Friends</a>
     <div class="flex items-center gap-2 mt-6 mb-6">
-      <span class="font-display font-bold text-3xl text-accent-teal">04</span>
-      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent-teal/40 text-accent-teal">REQUIRED</span>
+      <span class="font-display font-bold text-3xl text-os-primary">04</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/40 text-os-primary">REQUIRED</span>
     </div>
-    <h1 class="font-display font-bold tracking-tight text-4xl sm:text-5xl leading-[1.1] mb-6">Building Your AI Personal Assistant</h1>
+    <h1 class="font-display font-bold tracking-tight text-4xl sm:text-5xl leading-[1.1] mb-6">Automating Workflows with Claude Code</h1>
     <p class="text-os-secondary text-lg leading-relaxed mb-8">
-      A Claude Project is a dedicated workspace on claude.ai built around one kind of recurring work. Write your
-      standing instructions once, upload your reference documents once, and every future chat inside the Project
-      inherits both.
+      Teach Claude Code to read and write native Office files, connect to live systems, and chain several steps
+      into one repeatable, automated workflow — daily habits that make it sustainable, plus a packaged, reusable
+      plugin so a recurring job runs the same way every time you invoke it.
     </p>
     <div class="flex flex-wrap items-center gap-4 font-mono text-xs text-os-tertiary mb-10">
-      <span class="px-3 py-1.5 rounded-full border border-white/15">65 min</span>
-      <span class="px-3 py-1.5 rounded-full border border-white/15">6 lessons</span>
+      <span class="px-3 py-1.5 rounded-full border border-white/15">3–3.5 hours</span>
+      <span class="px-3 py-1.5 rounded-full border border-white/15">7 lessons</span>
       <span class="px-3 py-1.5 rounded-full border border-white/15">HR · Industrial Engineering · International Relations · Legal · Marketing</span>
     </div>
     <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
       <p class="font-mono text-[11px] uppercase tracking-widest text-accent-teal mb-3">By the end, you will</p>
       <ul class="space-y-2 text-sm text-os-secondary">
-        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Create a Claude Project with custom instructions written for your role</li>
-        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Upload reference documents a Project can draw on in every conversation</li>
-        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Keep a Project's standing instructions current as your work changes</li>
-        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Use a working Project to design the next one</li>
+        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Have the daily habits — session hygiene, fast diff review, usage awareness — that make Claude Code sustainable before you automate anything</li>
+        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Add Anthropic's document skills so Claude Code can read and write real .docx, .pdf, and .pptx files</li>
+        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Understand the difference between a skill (one capability) and a plugin (several capabilities packaged together)</li>
+        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Understand what an MCP connection is and add one yourself, on claude.ai and in Claude Code</li>
+        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Walk through one complete, real automation built entirely by dictating the requirements and letting Claude Code do the setup</li>
+        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Connect Claude Code to your email and calendar and generate a daily briefing for the day ahead</li>
+        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Know how to turn off everything you build — a scheduled task, a plugin, an MCP connection — not just how to start it</li>
       </ul>
     </div>
   </div>
 </header>
+
+<!-- ============ WHICH LESSON IS FOR YOU ============ -->
+<section class="px-6 pb-16">
+  <div class="max-w-3xl mx-auto glossary">
+    <p class="font-mono text-xs uppercase tracking-widest text-accent-teal mb-2 fade-up">Which Lesson Is For You</p>
+    <p class="text-os-secondary text-sm leading-relaxed mb-6 fade-up">Only Lessons 4.3, 4.5, and 4.6 are written around one specific role's example. Every role should still complete 4.1, 4.2, and 4.4 — they're the daily habits, the document skills, and the MCP concept every later lesson depends on, regardless of role.</p>
+    <div class="rounded-2xl border border-white/10 overflow-hidden fade-up">
+      <table>
+        <thead><tr><th>Role</th><th>Written For You</th><th>The Shape Still Fits You In</th></tr></thead>
+        <tbody>
+          <tr><td><strong>International Relations</strong></td><td>4.3 (webpage &rarr; follow-up &rarr; Word document)</td><td>—</td></tr>
+          <tr><td><strong>Marketing</strong></td><td>4.6 (source monitoring &rarr; context-aware digest)</td><td>4.3's shape (check &rarr; respond &rarr; assemble); 4.7's content pipeline was built with Marketing in mind too</td></tr>
+          <tr><td><strong>Legal</strong></td><td>—</td><td>4.3's shape, swapping the webpage for a court docket or filing portal; 4.6's shape for tracking a regulator's announcements</td></tr>
+          <tr><td><strong>Industrial Engineering</strong></td><td>—</td><td>4.3's shape, swapping the webpage for a supplier compliance portal; 4.6's shape for a recurring nonconformance sweep</td></tr>
+          <tr><td><strong>HR (Recruiting)</strong></td><td>—</td><td>4.5's single-skill shape, swapping calendar/email for an applicant-tracking system once an MCP connection exists for it</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
 <!-- ============ LESSONS ============ -->
 <section class="px-6 pb-16">
@@ -175,17 +189,17 @@
       <a href="lesson-1.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]">
         <span class="font-mono text-sm text-accent-cyan shrink-0">4.1</span>
         <div class="flex-1">
-          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">What Is a Claude Project?</h3>
-          <p class="text-os-secondary text-sm mt-1">The three parts of a Project, why it beats a blank chat, and how to scope your first one.</p>
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Your Claude Code Daily Habits</h3>
+          <p class="text-os-secondary text-sm mt-1">Session hygiene, a fast diff-review habit, usage awareness, and the four rules for anything that will run unattended.</p>
         </div>
-        <span class="font-mono text-[11px] text-os-tertiary shrink-0">10 min</span>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">15–20 min</span>
       </a>
 
       <a href="lesson-2.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.05s">
         <span class="font-mono text-sm text-accent-cyan shrink-0">4.2</span>
         <div class="flex-1">
-          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Creating Your First Project</h3>
-          <p class="text-os-secondary text-sm mt-1">The setup click path, the four sections of good custom instructions, and copy-ready templates for all five roles.</p>
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Installing Anthropic Skills</h3>
+          <p class="text-os-secondary text-sm mt-1">Add Anthropic's document-processing skills so Claude Code can read and write real Word, PDF, and PowerPoint files.</p>
         </div>
         <span class="font-mono text-[11px] text-os-tertiary shrink-0">15 min</span>
       </a>
@@ -193,37 +207,46 @@
       <a href="lesson-3.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.1s">
         <span class="font-mono text-sm text-accent-cyan shrink-0">4.3</span>
         <div class="flex-1">
-          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Giving Your Project Reference Material</h3>
-          <p class="text-os-secondary text-sm mt-1">How to upload reference files, which files to upload for your role, and exactly what a Project can and cannot reach.</p>
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">International Relations: Automating the Agreements Workflow</h3>
+          <p class="text-os-secondary text-sm mt-1">What a skill and a plugin actually are, then a full worked example — a three-step plugin that checks a webpage, drafts a follow-up, and builds a running Word document.</p>
         </div>
-        <span class="font-mono text-[11px] text-os-tertiary shrink-0">10 min</span>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">40–55 min</span>
       </a>
 
       <a href="lesson-4.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.15s">
         <span class="font-mono text-sm text-accent-cyan shrink-0">4.4</span>
         <div class="flex-1">
-          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Keeping Your Standing Instructions Current</h3>
-          <p class="text-os-secondary text-sm mt-1">Where a Project's memory actually lives and how to update it when a standing fact changes.</p>
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">What Is an MCP Server?</h3>
+          <p class="text-os-secondary text-sm mt-1">What an MCP connection is, how to add one as a Connector on claude.ai, and how to add one in Claude Code with claude mcp add.</p>
         </div>
-        <span class="font-mono text-[11px] text-os-tertiary shrink-0">10 min</span>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">20 min</span>
       </a>
 
       <a href="lesson-5.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.2s">
         <span class="font-mono text-sm text-accent-cyan shrink-0">4.5</span>
         <div class="flex-1">
-          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Using Your Project to Design More Projects</h3>
-          <p class="text-os-secondary text-sm mt-1">A prompt that has Claude draft your next Project end to end, plus Projects worth building across all five roles.</p>
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Daily Briefing from Email and Calendar</h3>
+          <p class="text-os-secondary text-sm mt-1">Connect Claude Code to your email and calendar, then build one skill that reads today's meetings and recent email into a single morning briefing.</p>
         </div>
-        <span class="font-mono text-[11px] text-os-tertiary shrink-0">10 min</span>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">20–25 min</span>
       </a>
 
       <a href="lesson-6.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.25s">
         <span class="font-mono text-sm text-accent-cyan shrink-0">4.6</span>
         <div class="flex-1">
-          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Worked Examples by Role</h3>
-          <p class="text-os-secondary text-sm mt-1">One complete, end-to-end Project — name, instructions, files, and a sample chat — for all five roles.</p>
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Staying Informed: A Market-Awareness Digest</h3>
+          <p class="text-os-secondary text-sm mt-1">Monitor several websites or public feeds, summarize only what's genuinely new, and email yourself a digest — built for Marketing but useful for any role.</p>
         </div>
-        <span class="font-mono text-[11px] text-os-tertiary shrink-0">10 min</span>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">25–30 min</span>
+      </a>
+
+      <a href="lesson-7.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.3s">
+        <span class="font-mono text-sm text-accent-cyan shrink-0">4.7</span>
+        <div class="flex-1">
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">From Sources to Story: A Content-Generation Pipeline</h3>
+          <p class="text-os-secondary text-sm mt-1">Gather articles and news, compile them into one organized digest, and draft a finished, on-brand piece of content — the closing lesson of this course.</p>
+        </div>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">30–35 min</span>
       </a>
 
     </div>
@@ -239,13 +262,15 @@
       <table>
         <thead><tr><th>Term</th><th>Defined In</th><th>Plain English Meaning</th></tr></thead>
         <tbody>
-          <tr><td><strong>Claude Project</strong></td><td>Lesson 4.1</td><td>A reusable workspace on claude.ai built around one kind of recurring work.</td></tr>
-          <tr><td><strong>Custom Instructions</strong></td><td>Lesson 4.1</td><td>Plain-language standing rules that tell Claude who it is, how to behave, and how to format answers.</td></tr>
-          <tr><td><strong>Project Knowledge</strong></td><td>Lesson 4.1</td><td>Reference files you upload once so Claude can draw on them in any chat inside the Project.</td></tr>
-          <tr><td><strong>Standing Instruction</strong></td><td>Lesson 4.4</td><td>A fact that should always be true, written into the custom instructions so every chat uses it.</td></tr>
-          <tr><td><strong>My Context Block</strong></td><td>Lesson 4.2</td><td>The section of your instructions holding the details about your role, systems, and preferences.</td></tr>
-          <tr><td><strong>Project Scope</strong></td><td>Lesson 4.1</td><td>The single kind of recurring work a Project covers. One kind of work per Project.</td></tr>
-          <tr><td><strong>Meta Prompt</strong></td><td>Lesson 4.5</td><td>A prompt that asks Claude to design a whole new Project for you, ready to paste in.</td></tr>
+          <tr><td><strong>Skill</strong></td><td>Lesson 4.2</td><td>A packaged capability Claude Code can use, such as reading or writing a specific file type, or performing one well-defined task.</td></tr>
+          <tr><td><strong>Plugin</strong></td><td>Lesson 4.3</td><td>Several related skills and commands packaged together as one reusable, distributable unit.</td></tr>
+          <tr><td><strong>Marketplace</strong></td><td>Lesson 4.2</td><td>A catalog of installable plugins. Anthropic runs a public one; you can also point Claude Code at your own project folder as a private one.</td></tr>
+          <tr><td><strong>SKILL.md</strong></td><td>Lesson 4.3</td><td>The one required file inside every skill folder — its instructions, written for Claude, not for a human reader.</td></tr>
+          <tr><td><strong>plugin.json</strong></td><td>Lesson 4.3</td><td>The manifest file that names a plugin and lists its version, so Claude Code recognizes it as one unit.</td></tr>
+          <tr><td><strong>WebFetch</strong></td><td>Lesson 4.3</td><td>Claude Code's built-in ability to open and read a live webpage — no extra setup required.</td></tr>
+          <tr><td><strong>MCP Server / Connector</strong></td><td>Lesson 4.4</td><td>A live connection between Claude and a real system — your email or calendar provider, for example — so Claude can read and act on real data there.</td></tr>
+          <tr><td><strong>Knowledge Log</strong></td><td>Lesson 4.3</td><td>A running file a skill checks against before reporting anything, so a second run reports only what's genuinely new.</td></tr>
+          <tr><td><strong>Content Digest</strong></td><td>Lesson 4.7</td><td>A compiled, deduplicated summary pulled from several sources, organized by theme and ready to turn into one finished piece of content.</td></tr>
         </tbody>
       </table>
       <details>
@@ -253,21 +278,17 @@
         <div>
           <table>
             <tbody>
-              <tr><td><strong>Plain Chat</strong></td><td>Lesson 4.1</td><td>A single conversation that forgets everything the moment it ends.</td></tr>
-              <tr><td><strong>Recruiting Assistant</strong></td><td>Lesson 4.1</td><td>The example HR Project: candidate summaries, outreach messages, pipeline tracking.</td></tr>
-              <tr><td><strong>Contract Review</strong></td><td>Lesson 4.1</td><td>The example Legal Project: clause review, risk flagging, tracking defined terms.</td></tr>
-              <tr><td><strong>Content Assistant</strong></td><td>Lesson 4.1</td><td>The example Marketing Project: repurposing content, enforcing brand voice, campaign summaries.</td></tr>
-              <tr><td><strong>Process &amp; Work-Order Assistant</strong></td><td>Lesson 4.1</td><td>The example Industrial Engineering Project: nonconformance summaries, standard-work drafting, work-order status tracking.</td></tr>
-              <tr><td><strong>Diplomatic Affairs Assistant</strong></td><td>Lesson 4.1</td><td>The example International Relations Project: briefing memos, protocol checks, agreement and cable tracking.</td></tr>
-              <tr><td><strong>Identity Line</strong></td><td>Lesson 4.2</td><td>The "You are my ___ assistant" line that sets Claude's role for every chat in the Project.</td></tr>
-              <tr><td><strong>Responsibilities List</strong></td><td>Lesson 4.2</td><td>The numbered list of standing jobs the Project handles.</td></tr>
-              <tr><td><strong>Output Format Rule</strong></td><td>Lesson 4.2</td><td>Your default answer format (table, bullets) and any required fields.</td></tr>
-              <tr><td><strong>Required Fields</strong></td><td>Lesson 4.2</td><td>The specific items Claude must extract or include in every answer.</td></tr>
-              <tr><td><strong>Reference Shelf</strong></td><td>Lesson 4.3</td><td>The set of uploaded files a Project draws on, in place of you pasting them each time.</td></tr>
-              <tr><td><strong>Live System Access</strong></td><td>Lesson 4.3</td><td>What a Project reaches by default: nothing beyond what you upload. Connectors (Module 5, Lesson 5.4) are the one way to deliberately extend that.</td></tr>
-              <tr><td><strong>Project Memory</strong></td><td>Lesson 4.4</td><td>The custom instructions and uploaded files. There is no separate learned-preference feature.</td></tr>
-              <tr><td><strong>Repeat-Correction Rule</strong></td><td>Lesson 4.4</td><td>If you correct Claude the same way in every chat, that correction belongs in the instructions.</td></tr>
-              <tr><td><strong>Project Template</strong></td><td>Lesson 4.5</td><td>The four-part setup (name, description, instructions, file list) for a new Project.</td></tr>
+              <tr><td><strong>Document Skills</strong></td><td>Lesson 4.2</td><td>Anthropic's bundle of four skills — docx, pdf, pptx, xlsx — for reading and writing native Office files.</td></tr>
+              <tr><td><strong>/plugin marketplace add</strong></td><td>Lesson 4.2</td><td>The command that tells Claude Code about a new catalog of installable plugins.</td></tr>
+              <tr><td><strong>/plugin install</strong></td><td>Lesson 4.2</td><td>The command that adds one specific plugin from an already-known marketplace.</td></tr>
+              <tr><td><strong>Local Marketplace</strong></td><td>Lesson 4.3</td><td>A marketplace whose catalog is just a folder on your own computer — no GitHub account or team required.</td></tr>
+              <tr><td><strong>Dictation-to-Setup</strong></td><td>Lesson 4.3</td><td>Describing a whole workflow out loud (or by typing it as one long message) and letting Claude Code build the folder structure, README, and CLAUDE.md from that description.</td></tr>
+              <tr><td><strong>Chained Skills</strong></td><td>Lesson 4.3</td><td>Multiple skills inside one plugin, each handling one stage of a multi-step workflow.</td></tr>
+              <tr><td><strong>${CLAUDE_PLUGIN_ROOT}</strong></td><td>Lesson 4.3</td><td>A portable path variable a plugin's files use to reference its own scripts and templates, regardless of where it is installed.</td></tr>
+              <tr><td><strong>claude mcp add</strong></td><td>Lesson 4.4</td><td>The Claude Code command that adds an MCP connection, with a transport type, a name, and an address or command.</td></tr>
+              <tr><td><strong>--scope user</strong></td><td>Lesson 4.4</td><td>The flag that makes an MCP connection available in every Claude Code project on your computer, not just the one you added it from.</td></tr>
+              <tr><td><strong>/mcp</strong></td><td>Lesson 4.4</td><td>The command that lists every MCP connection currently active in a session and the tools each one provides.</td></tr>
+              <tr><td><strong>The Four Rules for Anything Unattended</strong></td><td>Lesson 4.1</td><td>Plan Mode's diff review doesn't apply once nothing's at the keyboard; a silent failure looks like nothing happened; scheduled runs still cost usage; know how to turn it off before you turn it on.</td></tr>
             </tbody>
           </table>
         </div>
@@ -276,13 +297,13 @@
 
     <div class="callout callout-info">
       <span class="callout-label">Custom Instructions and CLAUDE.md Are the Same Idea, Two Surfaces</span>
-      <p>A Project's custom instructions (this module) and Claude Code's CLAUDE.md (Module 5) both do the same job: standing rules Claude reads automatically instead of you restating them every time. The difference is only which surface you're on. If you end up using both daily, that similarity is deliberate — the fix for "I keep repeating myself" is the same fix either way.</p>
+      <p>Module 3's custom instructions (claude.ai Projects) and this module's CLAUDE.md (Claude Code) both do the same job — standing rules Claude reads automatically instead of you restating them — for two different products. If you use both daily, that similarity is deliberate, not a coincidence: whichever surface you're on, the fix for "I keep repeating myself" is the same one.</p>
     </div>
   </div>
 </section>
 
 <!-- ============ SUPPORT RESOURCES ============ -->
-<section class="px-6 pb-16">
+<section class="px-6 pb-24">
   <div class="max-w-3xl mx-auto glossary">
     <p class="font-mono text-xs uppercase tracking-widest text-accent-cyan mb-4 fade-up">Support Resources</p>
     <div class="rounded-2xl border border-white/10 overflow-hidden fade-up">
@@ -295,19 +316,6 @@
         </tbody>
       </table>
     </div>
-  </div>
-</section>
-
-<!-- ============ NEXT MODULE ============ -->
-<section class="px-6 pb-24">
-  <div class="max-w-3xl mx-auto rounded-2xl bg-gradient-to-br from-white/[0.06] to-transparent border border-white/10 p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-    <div>
-      <p class="font-mono text-[11px] uppercase tracking-widest text-os-tertiary mb-2">Up next</p>
-      <p class="font-display font-semibold">Module 5: Automating Workflows with Claude Code</p>
-    </div>
-    <a href="../module-5/index.html" class="px-5 py-3 rounded-lg border border-[#00F0FF]/50 text-[#00F0FF] font-display font-bold text-sm hover:bg-[#00F0FF]/10 hover:shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all whitespace-nowrap">
-      View Module 5
-    </a>
   </div>
 </section>
 

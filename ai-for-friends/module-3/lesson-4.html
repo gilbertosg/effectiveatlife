@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 3.4: Giving Your Project Reference Material — AI for Friends</title>
+<meta name="title" content="Lesson 3.4: Giving Your Project Reference Material">
+<meta name="description" content="Upload your templates and style guides once. Every chat in the Project can use them — and know exactly what a Project can and cannot reach.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../assets/css/custom.css">
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pillars</a>
+      <a href="../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Course</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menu
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="../module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">AI Foundations</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-1/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 How AI Models Work</a>
+              <a href="../module-1/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Prompt vs. Context Engineering</a>
+              <a href="../module-1/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Practical Prompting Techniques</a>
+              <a href="../module-1/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Choosing the Right AI Model</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Setting Up Your Computer</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPTIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Installing Windows Terminal</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Installing VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navigating in the Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Claude Code Onboarding Guide</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 What Is a Claude Project?</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creating Your First Project</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">3.4 Giving Your Project Reference Material</a>
+              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Keeping Your Standing Instructions Current</a>
+              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Using Your Project to Design More Projects</a>
+              <a href="lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Worked Examples by Role</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="../module-4/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">04</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Automating Workflows with Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-4/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Your Claude Code Daily Habits</a>
+              <a href="../module-4/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Installing Anthropic Skills</a>
+              <a href="../module-4/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 International Relations: Automating the Agreements Workflow</a>
+              <a href="../module-4/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 What Is an MCP Server?</a>
+              <a href="../module-4/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Daily Briefing from Email and Calendar</a>
+              <a href="../module-4/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Staying Informed: A Market-Awareness Digest</a>
+              <a href="../module-4/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.7 From Sources to Story</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Course Home</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <span class="text-accent-cyan font-semibold">EN</span>
+        <span class="text-white/20">/</span>
+        <span class="cursor-default" title="Spanish version — coming soon">ES</span>
+      </div>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Module 3</a>
+  </div>
+</header>
+
+<!-- ============ LESSON HEADER ============ -->
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a>
+      <span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Module 3</a>
+      <span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lesson 3.4</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Giving Your Project Reference Material</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">
+      Upload your templates and style guides once. Every chat in the Project can use them.
+    </p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">15 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent-teal/40 text-accent-teal">REQUIRED</span>
+    </div>
+    <div class="flex flex-wrap gap-2 font-mono text-[10px]">
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Upload Files</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Choose the Right Files</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Know the Limits</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ LESSON BODY ============ -->
+<article class="px-6 pb-24">
+  <div class="lesson-body max-w-2xl mx-auto text-[16px]">
+
+    <p>By the end of this lesson, you will have uploaded reference files to your Project and will know exactly what a Project can and cannot reach. Custom instructions tell Claude how to work. Project knowledge gives it the material to work from.</p>
+    <p>Without reference files, you paste your template into every chat. With them, "draft an offer letter for this candidate" or "review this contract against our standard positions" works with nothing attached. You also need to know the Project's limits: it reaches only what you upload, which protects your confidential material.</p>
+
+    <h2 id="step-1"><span class="step-num">1</span>Upload Your Reference Files</h2>
+    <p>Project knowledge is a set of documents you upload to a Project so Claude can reference them when it answers. This step gets your files into the Project. Once they are there, you never re-attach them.</p>
+
+    <ol>
+      <li>Open your Project on claude.ai.</li>
+      <li>Find the <strong>Project knowledge</strong> section.</li>
+      <li>Upload your files.</li>
+      <li>Confirm each file appears in the list.</li>
+    </ol>
+
+    <pre>Recruiting Assistant
+└─ Project knowledge
+   ├─ interview_scorecard_template.docx
+   ├─ job_description_format.docx
+   └─ offer_letter_template.docx
+
+Any chat in this Project can now reference these files.</pre>
+
+    <div class="callout callout-note">
+      <span class="callout-label">You Never Re-Attach</span>
+      <p>Once a file is in Project knowledge, every chat inside the Project can reference it automatically. You do not attach it again, in this chat or any future one.</p>
+    </div>
+    <div class="callout callout-tip">
+      <span class="callout-label">Start With Three Files</span>
+      <p>You do not need to upload everything at once. Start with the three files you reach for most. Add more when a chat needs material you have not uploaded yet.</p>
+    </div>
+
+    <h2 id="step-2"><span class="step-num">2</span>Choose the Right Files for Your Role</h2>
+    <p>The right files turn common requests into one-line prompts. This step shows which files each role should upload and what each set unlocks.</p>
+
+    <table>
+      <thead><tr><th>Role</th><th>Files to Upload</th><th>What It Unlocks</th></tr></thead>
+      <tbody>
+        <tr><td>Legal</td><td>Standard contract templates, defined-terms glossary, past redlines or precedent language</td><td>"Review this contract against our standard positions" works against your real positions</td></tr>
+        <tr><td>Marketing</td><td>Brand style guide, past campaign briefs, approved messaging and claims list</td><td>Drafts arrive already in your brand voice</td></tr>
+        <tr><td>Industrial Engineering</td><td>Standard-work template, nonconformance report format, time-study log</td><td>"Draft standard work for this operation" works with no template pasted, and defect summaries land in your real report format</td></tr>
+        <tr><td>International Relations</td><td>Briefing-memo template, protocol and etiquette reference, agreement-tracking log</td><td>"Draft a briefing memo on this agreement" arrives in your house format and already checked against protocol</td></tr>
+        <tr><td>HR (Recruiting)</td><td>Interview scorecard template, standard job-description format, offer-letter template</td><td>"Draft an offer letter for this candidate" works with no template pasted</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Instructions vs. Knowledge</span>
+      <p>Custom instructions tell Claude how to work. Project knowledge gives it what to work from. Instructions are the method; the uploaded files are the source material.</p>
+    </div>
+
+    <h2 id="step-3"><span class="step-num">3</span>Know What a Project Cannot Reach</h2>
+    <p>A Project references only what you explicitly upload to it, and this stays true by default. It has no live access to your email, your applicant tracking system, your document management system, or any other app or account — unless you deliberately turn one on. This limit is a confidentiality feature: you control exactly what Claude can see.</p>
+
+    <table>
+      <thead><tr><th>Can Reach</th><th>Cannot Reach (Unless You Connect It)</th></tr></thead>
+      <tbody>
+        <tr><td>Files you explicitly uploaded</td><td>Your email</td></tr>
+        <tr><td>Text you paste into a chat</td><td>Your applicant tracking system</td></tr>
+        <tr><td>Its own custom instructions</td><td>Your document management system</td></tr>
+        <tr><td>An app you've turned on a Connector for (Lesson 4.4)</td><td>Any other app or account you haven't connected</td></tr>
+        <tr><td>&nbsp;</td><td>Anything you have not uploaded or connected</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Check Before You Upload Sensitive Material</span>
+      <p>A personal claude.ai plan has no corporate data agreement. Check your employer's IT or Legal guidance before uploading employee records, privileged client files, or confidential campaign data.</p>
+    </div>
+    <div class="callout callout-info">
+      <span class="callout-label">This Limit Is a Feature</span>
+      <p>Nothing reaches a Project on its own — you upload a document, or you choose to connect it. That second option, Connectors, does exist on claude.ai today (Module 4, Lesson 4.4 covers it in full), and once you turn one on for a Project, that Project can reach that connected app going forward. The rule that matters hasn't changed: you decide what a Project can see, whether by uploading or by connecting — it never happens without your choice.</p>
+    </div>
+
+    <h2 class="!mt-16">Verification</h2>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">At least one reference file appears in your Project knowledge</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">A chat answers using an uploaded file without you attaching it</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You can state what a Project cannot reach by default, what would change that, and what you would check before uploading sensitive material</span></div>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">Not Working?</span>
+      <p>If a chat ignores an uploaded file, confirm the file appears in the Project knowledge list from Step 1. If you are unsure about what is safe to upload, the table and warning in Step 3 are your reference.</p>
+    </div>
+
+    <h2 class="!mt-10 !text-base">Related Resources</h2>
+    <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
+      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — The Claude AI platform</li>
+      <li><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">Claude documentation</a> — Official documentation</li>
+      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">Claude support</a> — Help center and troubleshooting</li>
+    </ul>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lesson complete</p>
+      <p class="text-sm text-os-secondary">Your Project now has reference material every chat can use, and you know exactly what the Project can and cannot reach. Upload one template, then ask a chat to use it by name without attaching anything — when it draws on the file, your Project knowledge is working.</p>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ PREV/NEXT ============ -->
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="lesson-3.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 3.3 Creating Your First Project</a>
+    <a href="lesson-5.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
+      Next: Keeping Your Standing Instructions Current &rarr;
+    </a>
+  </div>
+</nav>
+
+<!-- ============ FOOTER ============ -->
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">You do not rise to the level of your goals. You fall to the level of your systems.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Built as a system, not a slogan.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
+
+</body>
+</html>

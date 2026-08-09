@@ -1,10 +1,10 @@
-<!-- HERO: Lesson 5.4: What Is an MCP Server? | The one concept that lets Claude reach past your files and chats into your real, live accounts — on the web and in Claude Code. -->
+<!-- HERO: Lesson 4.4: What Is an MCP Server? | The one concept that lets Claude reach past your files and chats into your real, live accounts — on the web and in Claude Code. -->
 
 <!-- TOC: Overview#anchor-overview | Step 1: The Concept, Made Concrete#anchor-step-1 | Step 2: Adding a Connector on claude.ai#anchor-step-2 | Step 3: Adding an MCP Server in Claude Code#anchor-step-3 | Step 4: Checking, Removing, and Being Honest About What Exists#anchor-step-4 | Verification#anchor-verification -->
 
 ## Overview
 
-Lesson 1.1 defined MCP in one line: "a live connection between your AI assistant and another app or system." This lesson makes that concrete. You will see exactly what an MCP connection looks like on claude.ai and in Claude Code, add one yourself, and learn the honest limits of what's available today — before Lesson 5.5 asks you to connect your email and calendar.
+Lesson 1.1 defined MCP in one line: "a live connection between your AI assistant and another app or system." This lesson makes that concrete. You will see exactly what an MCP connection looks like on claude.ai and in Claude Code, add one yourself, and learn the honest limits of what's available today — before Lesson 4.5 asks you to connect your email and calendar.
 
 ### Why This Matters
 
@@ -12,7 +12,7 @@ Every lesson so far in this module worked with things Claude Code can already re
 
 ### Prerequisites
 
-- [Lesson 5.1: Your Claude Code Daily Habits](5-1_Your_Claude_Code_Daily_Habits.md), completed
+- [Lesson 4.1: Your Claude Code Daily Habits](4-1_Claude_Code_Daily_Habits.md), completed
 - A claude.ai account, for Step 2
 
 ### Time to Complete
@@ -52,10 +52,10 @@ You will see the shape of an MCP connection and where it fits next to the tools 
 | Already works with no connection | Needs an MCP connection |
 |---|---|
 | Reading files in your open folder (Module 3) | Reading your email |
-| Fetching a public webpage (Lesson 5.3) | Reading your calendar |
-| Reading files uploaded to a claude.ai Project (Lesson 4.3) | Posting to a team chat tool |
+| Fetching a public webpage (Lesson 4.3) | Reading your calendar |
+| Reading files uploaded to a claude.ai Project (Lesson 3.4) | Posting to a team chat tool |
 
-<!-- INFO: This Is Not the Same as Uploading a File | Uploading a file to a Project (Lesson 4.3) is a one-time snapshot. An MCP connection is live — Claude reads the current state of the system every time, not a copy you made once. -->
+<!-- INFO: This Is Not the Same as Uploading a File | Uploading a file to a Project (Lesson 3.4) is a one-time snapshot. An MCP connection is live — Claude reads the current state of the system every time, not a copy you made once. -->
 
 ---
 
@@ -74,11 +74,11 @@ You will find the Connectors setting on claude.ai and understand what turning on
 1. On claude.ai, open **Settings** and look for a **Connectors** (sometimes labeled **Integrations**) section. Menu names and exact locations change over time — if it's not where this lesson says, search Settings for "connector" or check the current location in claude.ai's own help center.
 2. Browse the available connectors. What's offered changes over time and by plan (Free, Pro, Team, Enterprise) — check what's actually listed for your account rather than assuming a specific app is there.
 3. To connect one, click it and complete the sign-in flow — this is a standard OAuth login into your own account, the same kind of "Sign in with Google" flow you've used elsewhere. You are not sharing a password with Claude.
-4. If you use claude.ai Projects (Module 4), check whether a connector can be scoped to a specific Project rather than your whole account — this determines whether a Project that has a connector enabled can now reach that live app, correcting a point from Lesson 4.3.
+4. If you use claude.ai Projects (Module 3), check whether a connector can be scoped to a specific Project rather than your whole account — this determines whether a Project that has a connector enabled can now reach that live app, correcting a point from Lesson 3.4.
 
 <!-- WARNING: Verify What's Current, Don't Trust a Screenshot | Which apps have a ready-made connector, and whether a given connector is available on your specific plan, both change over time. This lesson deliberately doesn't promise a fixed list — check Settings on your own account for the current, real answer. -->
 
-<!-- NOTE: Correcting Lesson 4.3 | Lesson 4.3 stated that a Project cannot reach your email or any other app or account. That was true when written and still describes the *default* — nothing reaches a Project automatically. The correction: if you explicitly turn on a Connector for a Project, that Project can then reach that connected app going forward. The core rule hasn't changed — you decide what a Project can see — but a Connector is now one of the ways you can extend that reach, not just an uploaded file. -->
+<!-- NOTE: Correcting Lesson 3.4 | Lesson 3.4 stated that a Project cannot reach your email or any other app or account. That was true when written and still describes the *default* — nothing reaches a Project automatically. The correction: if you explicitly turn on a Connector for a Project, that Project can then reach that connected app going forward. The core rule hasn't changed — you decide what a Project can see — but a Connector is now one of the ways you can extend that reach, not just an uploaded file. -->
 
 ---
 
@@ -95,7 +95,7 @@ You will learn the `claude mcp add` command, the difference between adding a con
 ### Instructions
 
 1. Read the command pattern and the two scope options below.
-2. Practice on any MCP server you have a real address or command for — if you don't have one yet, skip practicing and come back to this step when Lesson 5.5 gives you one to add.
+2. Practice on any MCP server you have a real address or command for — if you don't have one yet, skip practicing and come back to this step when Lesson 4.5 gives you one to add.
 3. Use `/mcp` inside any Claude Code session to see what's currently connected and what tools each connection provides.
 
 ### The Command Pattern
@@ -143,7 +143,7 @@ Running this inside any session lists every connected server and the tools it pr
 
 ## Step 4: Checking, Removing, and Being Honest About What Exists
 
-Before Lesson 5.5 asks you to connect your real email and calendar, one honest caveat and one piece of housekeeping.
+Before Lesson 4.5 asks you to connect your real email and calendar, one honest caveat and one piece of housekeeping.
 
 ### What You'll Do
 
@@ -155,7 +155,7 @@ You will learn what to do when the exact connector you want doesn't exist ready-
 2. To remove a connection in Claude Code, ask Claude directly — "remove the project-tracker MCP server" — and confirm what it proposes, or check `/mcp` for the exact removal command it reports.
 3. To remove a Connector on claude.ai, return to Settings → Connectors and disconnect it the same way you'd revoke access from any other "Sign in with Google"-style connection.
 
-<!-- WARNING: Not Every App Has a Ready-Made, First-Party Connector | Anthropic, Google, and Microsoft all publish some hosted MCP connectors, and the list grows over time — but there is no guarantee that a first-party, one-line connector exists yet for every specific app, including major ones like Gmail or Outlook. If Settings → Connectors or a documented address doesn't show what you need, that's a real gap, not something you're doing wrong. Lesson 5.5 shows you where to check for the current state before assuming access exists. -->
+<!-- WARNING: Not Every App Has a Ready-Made, First-Party Connector | Anthropic, Google, and Microsoft all publish some hosted MCP connectors, and the list grows over time — but there is no guarantee that a first-party, one-line connector exists yet for every specific app, including major ones like Gmail or Outlook. If Settings → Connectors or a documented address doesn't show what you need, that's a real gap, not something you're doing wrong. Lesson 4.5 shows you where to check for the current state before assuming access exists. -->
 
 <!-- NOTE: This Changes, Faster Than This Course Does | Connector availability is one of the fastest-moving parts of Claude. Treat what you find in Settings or the docs on the day you read this as the real answer — not any specific name or address printed in a course like this one. -->
 
@@ -180,7 +180,7 @@ You have completed all three steps. Confirm your understanding by checking each 
 
 ### What's Next
 
-**Next Lesson:** [Lesson 5.5: Daily Briefing from Email and Calendar](5-5_Daily_Briefing_Email_And_Calendar.md)
+**Next Lesson:** [Lesson 4.5: Daily Briefing from Email and Calendar](4-5_Daily_Email_Briefing.md)
 
 **Related Resources:**
 - [claude.ai](https://claude.ai) — Check Settings → Connectors

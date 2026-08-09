@@ -1,4 +1,4 @@
-<!-- HERO: Lesson 5.1: Your Claude Code Daily Habits | The small habits that separate someone who used Claude Code once from someone who uses it every day. -->
+<!-- HERO: Lesson 4.1: Your Claude Code Daily Habits | The small habits that separate someone who used Claude Code once from someone who uses it every day. -->
 
 <!-- TOC: Overview#anchor-overview | Step 1: Manage Your Session#anchor-step-1 | Step 2: Review Diffs Without Slowing Down#anchor-step-2 | Step 3: Watch Your Usage#anchor-step-3 | Step 4: Before You Automate Anything#anchor-step-4 | Verification#anchor-verification -->
 
@@ -12,7 +12,7 @@ Every lesson from here on builds something: a plugin, a connection to your email
 
 ### Prerequisites
 
-- [Module 3: Claude Code — AI on Your Own Files](3-claude-code-setup.md), completed and installed
+- [Module 3: Claude Code — Terminal, Files, and Projects](3-0_Claude-Code.md), completed and installed
 
 ### Time to Complete
 
@@ -100,7 +100,7 @@ You will learn where to check your usage and the one command that keeps a single
 
 <!-- INFO: One Pool, Two Surfaces | claude.ai chat and Claude Code are not separate budgets. A heavy afternoon in one affects what's left for the other. -->
 
-<!-- TIP: Cost Awareness Compounds in Module 5 | Once a skill runs on a schedule (starting in Lesson 5.3), it uses your plan's usage every time it fires, whether or not you're watching. Get comfortable checking Settings → Usage now, before anything runs unattended. -->
+<!-- TIP: Cost Awareness Compounds in Module 4 | Once a skill runs on a schedule (starting in Lesson 4.3), it uses your plan's usage every time it fires, whether or not you're watching. Get comfortable checking Settings → Usage now, before anything runs unattended. -->
 
 ---
 
@@ -127,7 +127,7 @@ You will read four rules that apply to every scheduled or unattended task in thi
 3. **Unattended tasks still cost usage every time they run.** A daily schedule that costs a small amount per run adds up over a month. Know roughly what a task costs (Step 3) before putting it on a schedule that runs without your attention.
 4. **Know how to turn it off.** Before you turn any schedule on, find where you'd turn it off — later lessons in this module show exactly where. A habit you can't stop isn't a habit, it's a liability.
 
-<!-- WARNING: This Checklist Applies to Every Later Lesson's Scheduling Step | Lessons 5.3, 5.5, 5.6, and 5.7 each have an optional "run this automatically" step. Every one of them assumes you've internalized these four rules first — they won't repeat this checklist in full each time. -->
+<!-- WARNING: This Checklist Applies to Every Later Lesson's Scheduling Step | Lessons 4.3, 4.5, 4.6, and 4.7 each have an optional "run this automatically" step. Every one of them assumes you've internalized these four rules first — they won't repeat this checklist in full each time. -->
 
 <!-- NOTE: Uninstalling and Disabling | Later lessons show exactly how to remove a scheduled task and disable a plugin once you no longer need it. Rule 4 above is why that guidance is there — not as an afterthought, but as part of the same trust model as the diff review itself. -->
 
@@ -144,7 +144,7 @@ You have completed all four steps. Confirm your understanding by checking each i
 - [ ] You know where to check your usage and why `/clear` helps keep it under control
 - [ ] You can state all four rules for anything unattended, especially that Plan Mode's diff review doesn't apply once a task runs without you
 
-<!-- NOTE: Not Working? | If any of this feels abstract, that's normal before you've automated anything. Come back and re-read Step 4 specifically once you reach the first scheduling step in Lesson 5.3 — it will make more sense with a real task in front of you. -->
+<!-- NOTE: Not Working? | If any of this feels abstract, that's normal before you've automated anything. Come back and re-read Step 4 specifically once you reach the first scheduling step in Lesson 4.3 — it will make more sense with a real task in front of you. -->
 
 ---
 
@@ -152,7 +152,7 @@ You have completed all four steps. Confirm your understanding by checking each i
 
 ### What's Next
 
-**Next Lesson:** [Lesson 5.2: Installing Anthropic Skills](5-2_Installing_Anthropic_Skills.md)
+**Next Lesson:** [Lesson 4.2: Installing Anthropic Skills](4-2_Installing_Antrhopic_Skills.md)
 
 **Related Resources:**
 - [claude.ai](https://claude.ai) — Check Settings → Usage

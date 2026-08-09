@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 3.3: Creating Your First Project — AI for Friends</title>
+<meta name="title" content="Lesson 3.3: Creating Your First Project">
+<meta name="description" content="Name it, describe it, and write the standing instructions. That is the whole setup — with copy-ready templates for five roles.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../assets/css/custom.css">
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pillars</a>
+      <a href="../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Course</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menu
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="../module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">AI Foundations</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-1/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 How AI Models Work</a>
+              <a href="../module-1/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Prompt vs. Context Engineering</a>
+              <a href="../module-1/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Practical Prompting Techniques</a>
+              <a href="../module-1/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Choosing the Right AI Model</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Setting Up Your Computer</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPTIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Installing Windows Terminal</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Installing VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navigating in the Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Claude Code Onboarding Guide</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 What Is a Claude Project?</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">3.3 Creating Your First Project</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Giving Your Project Reference Material</a>
+              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Keeping Your Standing Instructions Current</a>
+              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Using Your Project to Design More Projects</a>
+              <a href="lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Worked Examples by Role</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="../module-4/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">04</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Automating Workflows with Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-4/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Your Claude Code Daily Habits</a>
+              <a href="../module-4/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Installing Anthropic Skills</a>
+              <a href="../module-4/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 International Relations: Automating the Agreements Workflow</a>
+              <a href="../module-4/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 What Is an MCP Server?</a>
+              <a href="../module-4/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Daily Briefing from Email and Calendar</a>
+              <a href="../module-4/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Staying Informed: A Market-Awareness Digest</a>
+              <a href="../module-4/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.7 From Sources to Story</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Course Home</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <span class="text-accent-cyan font-semibold">EN</span>
+        <span class="text-white/20">/</span>
+        <span class="cursor-default" title="Spanish version — coming soon">ES</span>
+      </div>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Module 3</a>
+  </div>
+</header>
+
+<!-- ============ LESSON HEADER ============ -->
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a>
+      <span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Module 3</a>
+      <span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lesson 3.3</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Creating Your First Project</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">
+      Name it, describe it, and write the standing instructions. That is the whole setup.
+    </p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">15 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent-teal/40 text-accent-teal">REQUIRED</span>
+    </div>
+    <div class="flex flex-wrap gap-2 font-mono text-[10px]">
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Create the Project</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Write Instructions</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Use Your Template</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ LESSON BODY ============ -->
+<article class="px-6 pb-24">
+  <div class="lesson-body max-w-2xl mx-auto text-[16px]">
+
+    <p>By the end of this lesson, you will have a working Project on claude.ai with a name, a description, and custom instructions written for your role. Creating a Project is mostly one meaningful step: writing the standing instructions. Everything else is a name and a short description.</p>
+    <p>The custom instructions are the Project's job description. They tell Claude who it is and how to behave in every chat inside the Project. Write them once and you stop re-explaining your role, your rules, and your preferred format.</p>
+
+    <h2 id="step-1"><span class="step-num">1</span>Create the Project</h2>
+    <p>Creating a Project takes four clicks and two short text fields. This step gets the empty Project on your screen. The next two steps fill it with instructions.</p>
+
+    <ol>
+      <li>Go to <strong>claude.ai</strong> and log in.</li>
+      <li>Click <strong>Projects</strong> in the left sidebar.</li>
+      <li>Click <strong>Create project</strong>.</li>
+      <li>Give it a name and a short description of its purpose, then save.</li>
+    </ol>
+
+    <pre>Projects (left sidebar)
+└─ Recruiting Assistant ← your new Project
+
+Recruiting Assistant
+├─ Name: Recruiting Assistant
+├─ Description: Candidate summaries and outreach
+├─ Custom instructions: (empty — you fill this in Step 2)
+└─ Project knowledge: (empty — you add files in Lesson 3.4)</pre>
+
+    <div class="callout callout-tip">
+      <span class="callout-label">Description Is for You, Not Claude</span>
+      <p>The description helps you recognize the Project in your sidebar. Keep it to one line. Claude works from the custom instructions, not the description.</p>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">Everything Is Editable Later</span>
+      <p>The name, description, and instructions can all be changed at any time. Nothing you set now is permanent, so do not overthink the first draft.</p>
+    </div>
+
+    <h2 id="step-2"><span class="step-num">2</span>Write Your Custom Instructions</h2>
+    <p>The custom instructions are the one step that matters. They are the Project's standing orders, written in plain language. Good instructions cover four things: who Claude is, what it does, your context, and how you want answers formatted.</p>
+
+    <table>
+      <thead><tr><th>Section</th><th>What Goes There</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Identity</strong></td><td>"You are my ___ assistant."</td><td>Sets Claude's role for every chat in the Project</td></tr>
+        <tr><td><strong>Responsibilities</strong></td><td>A numbered list of the standing jobs it handles</td><td>Tells Claude what work to expect and do</td></tr>
+        <tr><td><strong>My context</strong></td><td>The bracketed blanks about your role, systems, and preferences</td><td>Grounds Claude's answers in your real situation</td></tr>
+        <tr><td><strong>Output format</strong></td><td>Your default format (table, bullets) and any required fields</td><td>Produces answers you can use without reformatting</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-info">
+      <span class="callout-label">This Is the One Step That Matters</span>
+      <p>Name and description take seconds. The custom instructions do the real work. Time spent here pays off in every chat you run inside the Project.</p>
+    </div>
+    <div class="callout callout-tip">
+      <span class="callout-label">Write in Plain Sentences</span>
+      <p>Write your instructions the way you would brief a new assistant on their first day. Plain sentences work better than keywords or shorthand.</p>
+    </div>
+
+    <h2 id="step-3"><span class="step-num">3</span>Use the Template for Your Role</h2>
+    <p>Do not write instructions from scratch. Copy the template that fits your role, fill in the bracketed blanks with your own details, and paste it into the custom instructions field. The HR template is below. The Legal, Marketing, Industrial Engineering, and International Relations templates are in the expandable section beneath it.</p>
+
+    <h3>HR Template</h3>
+    <pre>You are my recruiting assistant. Your responsibilities:
+
+1. Summarize candidate profiles from interview notes into structured tables.
+2. Draft outreach messages for passive candidates (professional, concise, warm).
+3. Track pipeline status when I share updates.
+4. Format all outputs in clean markdown tables or bullet points.
+
+My context:
+- I recruit for: [role types, e.g., engineers, sales, operations]
+- My ATS (applicant tracking system) is: [system name]
+- My hiring managers are: [names, if helpful]
+
+When I share interview notes, always extract: Name, Role Applied,
+Years of Experience, Key Strengths, Concerns, Compensation
+Expectations, Availability, and Next Steps.</pre>
+
+    <details>
+      <summary>Templates for Legal, Marketing, Industrial Engineering, and International Relations</summary>
+      <div>
+        <h3>For Legal</h3>
+        <pre>You are my contract review assistant. Your responsibilities:
+
+1. Review contract language clause by clause and summarize each in plain English.
+2. Flag risk in a redline style — quote the exact language, never paraphrase.
+3. Track defined terms and note when they are used inconsistently.
+4. Categorize each finding as High, Medium, or Low risk.
+
+My context:
+- I review: [contract types, e.g., NDAs, vendor agreements, MSAs]
+- My jurisdiction is: [state / country]
+- My standard positions are: [e.g., liability cap must be &gt;= contract value]
+
+Always flag: indemnity language, liability caps, auto-renewal terms, and
+termination-for-convenience clauses. Present findings in a table with
+columns: Clause Reference, Plain-English Summary, Risk Level.</pre>
+
+        <h3>For Marketing</h3>
+        <pre>You are my content assistant. Your responsibilities:
+
+1. Repurpose one piece of content into variants for each of my channels.
+2. Enforce brand voice on everything you draft.
+3. Summarize campaign performance and highlight what drove results.
+4. Produce one clearly labeled section per channel when repurposing.
+
+My context:
+- My brand voice is: [description, e.g., confident, plain-spoken, never hype]
+- My primary channels are: [list, e.g., LinkedIn, email, blog, X]
+- Words we never use: [banned words, e.g., synergy, game-changer, revolutionary]
+
+When repurposing, keep the core message identical across channels but adapt
+length and tone to each. Always respect the banned-words list.</pre>
+
+        <h3>For Industrial Engineering</h3>
+        <pre>You are my process and work-order assistant. Your responsibilities:
+
+1. Summarize nonconformance reports into a root-cause-and-disposition table.
+2. Draft standard work instructions from my rough notes, in our required format.
+3. Track work-order status when I share updates from the floor.
+4. Flag any recurring defect type across three or more reports in the same period.
+
+My context:
+- My work centers are: [list, e.g., final assembly, machining, inspection]
+- My standard work format requires: [sections, e.g., purpose, tools, steps, safety notes]
+- My escalation threshold is: [e.g., any nonconformance tied to a safety-critical part]
+
+When I share nonconformance reports, always extract: Part Number, Work Order,
+Defect Description, Root Cause (if known), Disposition, and Recurrence Flag.</pre>
+
+        <h3>For International Relations</h3>
+        <pre>You are my diplomatic affairs assistant. Your responsibilities:
+
+1. Draft briefing memos on incoming agreements, meetings, or delegations in our house format.
+2. Flag any item relevant to the chancellor or foreign minister's priority topics.
+3. Track agreements and their follow-up status as I share updates.
+4. Check draft correspondence against our protocol and tone conventions before I send it.
+
+My context:
+- My priority topics are: [list, e.g., trade, security cooperation, cultural exchange]
+- My counterpart ministries or missions are: [list]
+- My house format for briefing memos requires: [sections, e.g., summary, stakeholders, recommended position]
+
+When I share a new agreement or cable, always extract: Title, Counterpart,
+Date, Summary, Relevance to Priority Topics, and Recommended Next Step.</pre>
+      </div>
+    </details>
+
+    <div class="callout callout-tip">
+      <span class="callout-label">Fill In Every Bracket</span>
+      <p>A bracket left blank is a rule Claude cannot follow. Replace each [bracketed blank] with your own details before you save.</p>
+    </div>
+    <div class="callout callout-warning">
+      <span class="callout-label">Do Not Paste Sensitive Detail Into Instructions</span>
+      <p>Role types and system names are fine in your instructions. Employee records and client identifiers are not. Lesson 3.4 covers what a Project can and cannot reach, and what to check before uploading sensitive material.</p>
+    </div>
+
+    <h2 class="!mt-16">Verification</h2>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">A Project exists in your claude.ai sidebar</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">The Project has a name and a one-line description</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Your custom instructions are saved with every bracket filled in</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">A new chat inside the Project follows the instructions without you repeating them</span></div>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">Not Working?</span>
+      <p>If a new chat ignores your instructions, confirm you saved them in the custom instructions field, not in a message. The template in Step 3 shows exactly what belongs there.</p>
+    </div>
+
+    <h2 class="!mt-10 !text-base">Related Resources</h2>
+    <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
+      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — The Claude AI platform</li>
+      <li><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">Claude documentation</a> — Official documentation</li>
+      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">Claude support</a> — Help center and troubleshooting</li>
+    </ul>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lesson complete</p>
+      <p class="text-sm text-os-secondary">You now have a working Project with custom instructions written for your role, and a new chat inside it already follows them. Test it right now — open a new chat and ask it to do one of its listed responsibilities.</p>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ PREV/NEXT ============ -->
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="lesson-2.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 3.2 What Is a Claude Project?</a>
+    <a href="lesson-4.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
+      Next: Giving Your Project Reference Material &rarr;
+    </a>
+  </div>
+</nav>
+
+<!-- ============ FOOTER ============ -->
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">You do not rise to the level of your goals. You fall to the level of your systems.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Built as a system, not a slogan.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
+
+</body>
+</html>

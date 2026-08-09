@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lesson 4.4: Keeping Your Standing Instructions Current — AI for Friends</title>
-<meta name="title" content="Lesson 4.4: Keeping Your Standing Instructions Current">
-<meta name="description" content="Your custom instructions are the Project's memory. Keeping them current is one edit, not a feature to manage.">
+<title>Lesson 4.4: What Is an MCP Server? — AI for Friends</title>
+<meta name="title" content="Lesson 4.4: What Is an MCP Server?">
+<meta name="description" content="The one concept that lets Claude reach past your files and chats into your real, live accounts — on the web and in Claude Code.">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -50,7 +50,7 @@
           Menu
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
           <div class="mb-1">
             <a href="../module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
               <span class="font-mono text-xs text-accent-cyan">01</span>
@@ -84,37 +84,28 @@
             </a>
             <div class="ml-8 space-y-0.5 pb-2">
               <a href="../module-3/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Claude Code Onboarding Guide</a>
-            </div>
-          </div>
-          <div class="border-t border-white/10 my-1"></div>
-          <div class="mb-1">
-            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
-              <span class="font-mono text-xs text-accent-teal">04</span>
-              <span class="font-display font-semibold text-sm text-os-primary">Building Your AI Personal Assistant</span>
-            </a>
-            <div class="ml-8 space-y-0.5 pb-2">
-              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 What Is a Claude Project?</a>
-              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Creating Your First Project</a>
-              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 Giving Your Project Reference Material</a>
-              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">4.4 Keeping Your Standing Instructions Current</a>
-              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Using Your Project to Design More Projects</a>
-              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Worked Examples by Role</a>
+              <a href="../module-3/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 What Is a Claude Project?</a>
+              <a href="../module-3/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creating Your First Project</a>
+              <a href="../module-3/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Giving Your Project Reference Material</a>
+              <a href="../module-3/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Keeping Your Standing Instructions Current</a>
+              <a href="../module-3/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Using Your Project to Design More Projects</a>
+              <a href="../module-3/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Worked Examples by Role</a>
             </div>
           </div>
           <div class="border-t border-white/10 my-1"></div>
           <div>
-            <a href="../module-5/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
-              <span class="font-mono text-xs text-os-primary">05</span>
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">04</span>
               <span class="font-display font-semibold text-sm text-os-primary">Automating Workflows with Claude Code</span>
             </a>
             <div class="ml-8 space-y-0.5 pb-2">
-              <a href="../module-5/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.1 Your Claude Code Daily Habits</a>
-              <a href="../module-5/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.2 Installing Anthropic Skills</a>
-              <a href="../module-5/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.3 International Relations: Automating the Agreements Workflow</a>
-              <a href="../module-5/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.4 What Is an MCP Server?</a>
-              <a href="../module-5/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.5 Daily Briefing from Email and Calendar</a>
-              <a href="../module-5/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.6 Staying Informed: A Market-Awareness Digest</a>
-              <a href="../module-5/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.7 From Sources to Story</a>
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Your Claude Code Daily Habits</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Installing Anthropic Skills</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 International Relations: Automating the Agreements Workflow</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">4.4 What Is an MCP Server?</a>
+              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Daily Briefing from Email and Calendar</a>
+              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Staying Informed: A Market-Awareness Digest</a>
+              <a href="lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.7 From Sources to Story</a>
             </div>
           </div>
           <div class="border-t border-white/10 my-2"></div>
@@ -143,17 +134,19 @@
       <span class="mx-1.5">/</span>
       <span class="text-os-secondary">Lesson 4.4</span>
     </div>
-    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Keeping Your Standing Instructions Current</h1>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">What Is an MCP Server?</h1>
     <p class="text-os-secondary text-lg leading-relaxed mb-6">
-      Your custom instructions are the Project's memory. Keeping them current is one edit, not a feature to manage.
+      The one concept that lets Claude reach past your files and chats into your real, live accounts — on the web and in Claude Code.
     </p>
     <div class="flex flex-wrap items-center gap-2 mb-8">
-      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">10 MIN</span>
-      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent-teal/40 text-accent-teal">REQUIRED</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">20 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/40 text-os-primary">REQUIRED</span>
     </div>
     <div class="flex flex-wrap gap-2 font-mono text-[10px]">
-      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. How It Remembers</a>
-      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Update When Facts Change</a>
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. The Concept</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Connectors on claude.ai</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. MCP in Claude Code</a>
+      <a href="#step-4" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">4. Checking and Removing</a>
     </div>
   </div>
 </header>
@@ -162,82 +155,139 @@
 <article class="px-6 pb-24">
   <div class="lesson-body max-w-2xl mx-auto text-[16px]">
 
-    <p>By the end of this lesson, you will know where a Project's memory lives and how to keep it current. A Project's custom instructions are its memory. There is no separate memory feature running in the background, so keeping a Project current means editing its instructions when a fact changes.</p>
-    <p>People expect Claude to "learn" their preferences over time. A Project does not work that way. Anything that should always be true has to live in the custom instructions. Once you know this, you stop repeating the same correction in every chat and make one edit instead.</p>
+    <p>Lesson 1.1 defined MCP in one line: "a live connection between your AI assistant and another app or system." This lesson makes that concrete. You will see exactly what an MCP connection looks like on claude.ai and in Claude Code, add one yourself, and learn the honest limits of what's available today — before Lesson 4.5 asks you to connect your email and calendar.</p>
+    <p>Every lesson so far in this module worked with things Claude Code can already reach on its own: files in a folder, a public webpage. Your email, your calendar, and most other real accounts are not reachable that way. An MCP connection is the one mechanism that changes that — and it's worth understanding on purpose, once, rather than picking up piecemeal from a command you're told to copy.</p>
 
-    <h2 id="step-1"><span class="step-num">1</span>How a Project Actually Remembers</h2>
-    <p>A Project's custom instructions are what persist across every conversation inside it. There is no separate memory to manage and no learned-preference feature. If something should always be true, it lives in the custom instructions.</p>
-
-    <div class="col-2">
-      <div>
-        <h4>Persists across every chat in the Project:</h4>
-        <ul>
-          <li>Your custom instructions.</li>
-          <li>Your uploaded Project knowledge.</li>
-        </ul>
-      </div>
-      <div>
-        <h4>Does not persist:</h4>
-        <ul>
-          <li>Anything said in one chat.</li>
-          <li>Mid-conversation corrections.</li>
-          <li>Preferences you assume Claude picked up.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="callout callout-info">
-      <span class="callout-label">There Is No Hidden Memory</span>
-      <p>A Project does not quietly learn your preferences between chats. The custom instructions and uploaded files are the entire memory. If a fact is not written there, the next chat will not know it.</p>
-    </div>
-
-    <h2 id="step-2"><span class="step-num">2</span>Update the Instructions When Facts Change</h2>
-    <p>When a standing fact changes, open the Project and edit the custom instructions. Every future chat uses the updated version immediately. This step shows the kinds of facts worth keeping current and how to update them.</p>
-
-    <ol>
-      <li>Open your Project and edit the custom instructions.</li>
-      <li>Add or change the standing fact.</li>
-      <li>Save.</li>
-      <li>Start a new chat inside the Project and confirm the updated fact is in effect.</li>
-    </ol>
+    <h2 id="step-1"><span class="step-num">1</span>The Concept, Made Concrete</h2>
+    <p>An MCP server is a bridge. On one side is Claude — on claude.ai or in Claude Code. On the other side is a real system: your email, your calendar, a database, a project tracker. MCP is the protocol that lets the two talk, so Claude can read real, current data instead of guessing from what it was trained on.</p>
 
     <table>
-      <thead><tr><th>Role</th><th>Standing Fact</th><th>Add It When</th></tr></thead>
+      <thead><tr><th>Without an MCP Connection</th><th>With One Added</th></tr></thead>
       <tbody>
-        <tr><td>HR</td><td>"My default output format is a table, one row per item."</td><td>You want a consistent format on every answer</td></tr>
-        <tr><td>HR</td><td>"My lead hiring manager is now [Name]; address candidate summaries to them."</td><td>The lead hiring manager changes</td></tr>
-        <tr><td>Legal</td><td>"Our jurisdiction changed to [State]; assume that governing law when none is stated."</td><td>The governing jurisdiction changes</td></tr>
-        <tr><td>Marketing</td><td>"We added [term] to the banned-words list; never use it in public copy."</td><td>The banned-words list is updated</td></tr>
-        <tr><td>Industrial Engineering</td><td>"The owner of [work center] is now [Name]; route escalations to them."</td><td>A work-center owner changes</td></tr>
-        <tr><td>International Relations</td><td>"Our counterpart contact at [ministry] is now [Name/title]; address correspondence to them."</td><td>A counterpart contact or protocol rule changes</td></tr>
+        <tr><td>Claude only sees files you've opened or pasted, or a public webpage it fetched directly</td><td>Claude can read and act on a real, live system — your inbox, your calendar, a company database</td></tr>
+        <tr><td>"What's on my calendar today" gets a guess or a request to paste it in</td><td>"What's on my calendar today" gets a real answer, read live</td></tr>
+        <tr><td>Every session starts from nothing outside your files</td><td>The connection persists across sessions once it's set up</td></tr>
+      </tbody>
+    </table>
+
+    <table>
+      <thead><tr><th>Already Works With No Connection</th><th>Needs an MCP Connection</th></tr></thead>
+      <tbody>
+        <tr><td>Reading files in your open folder (Module 3)</td><td>Reading your email</td></tr>
+        <tr><td>Fetching a public webpage (Lesson 4.3)</td><td>Reading your calendar</td></tr>
+        <tr><td>Reading files uploaded to a claude.ai Project (Lesson 3.4)</td><td>Posting to a team chat tool</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-info">
+      <span class="callout-label">This Is Not the Same as Uploading a File</span>
+      <p>Uploading a file to a Project (Lesson 3.4) is a one-time snapshot. An MCP connection is live — Claude reads the current state of the system every time, not a copy you made once.</p>
+    </div>
+
+    <h2 id="step-2"><span class="step-num">2</span>Adding a Connector on claude.ai</h2>
+    <p>On the web, MCP connections are called Connectors. This is the no-terminal, click-based way to give Claude access to a real app.</p>
+
+    <ol>
+      <li>On claude.ai, open <strong>Settings</strong> and look for a <strong>Connectors</strong> (sometimes labeled <strong>Integrations</strong>) section. Menu names and exact locations change over time — if it's not where this lesson says, search Settings for "connector" or check the current location in claude.ai's own help center.</li>
+      <li>Browse the available connectors. What's offered changes over time and by plan (Free, Pro, Team, Enterprise) — check what's actually listed for your account rather than assuming a specific app is there.</li>
+      <li>To connect one, click it and complete the sign-in flow — this is a standard OAuth login into your own account, the same kind of "Sign in with Google" flow you've used elsewhere. You are not sharing a password with Claude.</li>
+      <li>If you use claude.ai Projects (Module 3), check whether a connector can be scoped to a specific Project rather than your whole account — this determines whether a Project that has a connector enabled can now reach that live app, correcting a point from Lesson 3.4.</li>
+    </ol>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Verify What's Current, Don't Trust a Screenshot</span>
+      <p>Which apps have a ready-made connector, and whether a given connector is available on your specific plan, both change over time. This lesson deliberately doesn't promise a fixed list — check Settings on your own account for the current, real answer.</p>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">Correcting Lesson 3.4</span>
+      <p>Lesson 3.4 stated that a Project cannot reach your email or any other app or account. That was true when written and still describes the default — nothing reaches a Project automatically. The correction: if you explicitly turn on a Connector for a Project, that Project can then reach that connected app going forward. The core rule hasn't changed — you decide what a Project can see — but a Connector is now one of the ways you can extend that reach, not just an uploaded file.</p>
+    </div>
+
+    <h2 id="step-3"><span class="step-num">3</span>Adding an MCP Server in Claude Code</h2>
+    <p>In the terminal, the same idea has a command instead of a settings page.</p>
+
+    <ol>
+      <li>Read the command pattern and the two scope options below.</li>
+      <li>Practice on any MCP server you have a real address or command for — if you don't have one yet, skip practicing and come back to this step when Lesson 4.5 gives you one to add.</li>
+      <li>Use /mcp inside any Claude Code session to see what's currently connected and what tools each connection provides.</li>
+    </ol>
+
+    <pre>claude mcp add --transport &lt;type&gt; &lt;name&gt; &lt;address-or-command&gt;</pre>
+
+    <table>
+      <thead><tr><th>Piece</th><th>What Goes There</th></tr></thead>
+      <tbody>
+        <tr><td>&lt;type&gt;</td><td>How Claude talks to the server: stdio for a local program Claude runs itself, sse or http for a remote, hosted server reached by address</td></tr>
+        <tr><td>&lt;name&gt;</td><td>A short label you choose — this becomes the name shown in /mcp</td></tr>
+        <tr><td>&lt;address-or-command&gt;</td><td>A web address for sse/http, or the command that starts the local program for stdio</td></tr>
+      </tbody>
+    </table>
+
+    <p>Example — a remote, hosted server:</p>
+    <pre>claude mcp add --transport sse project-tracker https://mcp.example.com/sse</pre>
+
+    <table>
+      <thead><tr><th>Scope</th><th>Command</th><th>Where It's Available</th></tr></thead>
+      <tbody>
+        <tr><td>Project (default)</td><td>claude mcp add --transport sse project-tracker https://mcp.example.com/sse</td><td>Only inside the folder you ran this from</td></tr>
+        <tr><td>User (global)</td><td>claude mcp add --scope user --transport sse project-tracker https://mcp.example.com/sse</td><td>Every Claude Code project on your computer</td></tr>
       </tbody>
     </table>
 
     <div class="callout callout-tip">
-      <span class="callout-label">The Repeat-Correction Rule</span>
-      <p>If you correct Claude the same way in every chat, that correction belongs in the custom instructions. Put it there once and you stop repeating it.</p>
+      <span class="callout-label">Add "--scope user" for Anything You'll Use Daily</span>
+      <p>If a connection is specific to one project's job (a database only that project touches), leave it project-scoped. If it's something you'd want in every session — your email, your calendar — add --scope user so you don't repeat the setup per project.</p>
+    </div>
+
+    <p>The first time you use a connection that needs a sign-in, a browser window opens for the same kind of OAuth login as Step 2 — you're approving Claude Code's access to your account, not handing over a password.</p>
+    <pre>/mcp</pre>
+    <p>Running this inside any session lists every connected server and the tools it provides — your first stop whenever something isn't working.</p>
+
+    <div class="callout callout-info">
+      <span class="callout-label">The File Alternative</span>
+      <p>Advanced users can also define MCP servers directly in a project's .mcp.json file, or globally in ~/.claude.json, instead of using the add command. For a first Claude Code MCP connection, the command above is the simpler path — the files exist mainly so a whole team can check a shared .mcp.json into version control and get the same connections automatically.</p>
+    </div>
+
+    <h2 id="step-4"><span class="step-num">4</span>Checking, Removing, and Being Honest About What Exists</h2>
+    <p>Before Lesson 4.5 asks you to connect your real email and calendar, one honest caveat and one piece of housekeeping.</p>
+
+    <ol>
+      <li>Read the caveat below before assuming a specific app has a one-line, ready-made connector.</li>
+      <li>To remove a connection in Claude Code, ask Claude directly — "remove the project-tracker MCP server" — and confirm what it proposes, or check /mcp for the exact removal command it reports.</li>
+      <li>To remove a Connector on claude.ai, return to Settings &rarr; Connectors and disconnect it the same way you'd revoke access from any other "Sign in with Google"-style connection.</li>
+    </ol>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Not Every App Has a Ready-Made, First-Party Connector</span>
+      <p>Anthropic, Google, and Microsoft all publish some hosted MCP connectors, and the list grows over time — but there is no guarantee that a first-party, one-line connector exists yet for every specific app, including major ones like Gmail or Outlook. If Settings &rarr; Connectors or a documented address doesn't show what you need, that's a real gap, not something you're doing wrong. Lesson 4.5 shows you where to check for the current state before assuming access exists.</p>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">This Changes, Faster Than This Course Does</span>
+      <p>Connector availability is one of the fastest-moving parts of Claude. Treat what you find in Settings or the docs on the day you read this as the real answer — not any specific name or address printed in a course like this one.</p>
     </div>
 
     <h2 class="!mt-16">Verification</h2>
     <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
-      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You can state where a Project's memory lives (the custom instructions)</span></div>
-      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You have added one standing fact and confirmed it takes effect in a new chat</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You can explain what an MCP connection adds that a plain file upload does not</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You know where to find Connectors on claude.ai and what an OAuth sign-in there does and doesn't share</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You can write the claude mcp add command pattern from memory, including the --scope user option</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You know that /mcp shows what's connected, and that not every app has a ready-made connector yet</span></div>
     </div>
     <div class="callout callout-note">
       <span class="callout-label">Not Working?</span>
-      <p>If a new chat does not use your updated fact, confirm you saved the change in the custom instructions field. The columns in Step 1 show what persists and what does not.</p>
+      <p>If /mcp shows nothing after adding a server, confirm you restarted Claude Code and that the address or command you used is correct — a typo in an address is the most common cause.</p>
     </div>
 
     <h2 class="!mt-10 !text-base">Related Resources</h2>
     <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
-      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — The Claude AI platform</li>
-      <li><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">Claude documentation</a> — Official documentation</li>
-      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">Claude support</a> — Help center and troubleshooting</li>
+      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — Check Settings &rarr; Connectors</li>
+      <li><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">code.claude.com/docs</a> — Official documentation, including current MCP server availability</li>
+      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">support.claude.com</a> — Help center and troubleshooting</li>
     </ul>
 
     <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
       <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lesson complete</p>
-      <p class="text-sm text-os-secondary">You now know where a Project's memory lives and how to keep it current with a single edit to the custom instructions. Think of the one thing you correct in every chat, add it to your custom instructions today, and confirm the next chat gets it right on its own.</p>
+      <p class="text-sm text-os-secondary">You now understand MCP well enough to add a real connection on either surface — and to tell the difference between a genuine gap and something you're doing wrong. If a later lesson's MCP step doesn't work, the fix is almost always here: wrong scope, no /mcp check, or a connector that isn't actually available yet.</p>
     </div>
 
   </div>
@@ -246,9 +296,9 @@
 <!-- ============ PREV/NEXT ============ -->
 <nav class="px-6 pb-24">
   <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
-    <a href="lesson-3.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 4.3 Giving Your Project Reference Material</a>
+    <a href="lesson-3.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 4.3 Automating the Agreements Workflow</a>
     <a href="lesson-5.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
-      Next: Using Your Project to Design More Projects &rarr;
+      Next: Daily Briefing from Email and Calendar &rarr;
     </a>
   </div>
 </nav>

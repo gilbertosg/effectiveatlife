@@ -9,7 +9,7 @@ This is the static source for **effectiveatlife.com** — a public site that tra
 What's live today:
 - `index.html` — the landing page.
 - `blog/` — a hub plus one long-form article, with the pattern established for more.
-- `ai-for-friends/` — a complete 3-module course (course hub → 3 module hubs → 8 lesson pages, 12 files total), built for HR / Legal / Marketing / Industrial Engineering professionals.
+- `ai-for-friends/` — a complete 4-module course (course hub → 4 module hubs → 21 lesson pages, 26 files total), built for HR / Legal / Marketing / Industrial Engineering / International Relations professionals.
 
 The two documents that govern this project's content and visuals:
 - `assets/docs/Effective-at-Life-Implementation-Guide-V1.md` — the original phased build plan (folder structure, what each page contains).
@@ -23,17 +23,17 @@ Two new reference docs exist specifically to speed up future content work — **
 
 **No build tooling.** No `package.json`, no bundler, no framework. Each `.html` file ships exactly as written to S3. There is nothing to `npm install`, build, lint, or test in the conventional sense.
 
-**Shared shell, copy-paste not includes.** Because pages are single-file, the header/nav/footer, the Tailwind `tailwind.config` block (custom `os-*` and `accent-*` colors, `display`/`body`/`mono` font families), the Google Fonts `<link>` tags, and the base `<style>` block are duplicated across every page in `index.html`, `blog/`, and all 12 files in `ai-for-friends/`. When adding a new page, copy the shell from the closest existing analog (a blog article for articles, a lesson page for lessons — see the two template docs above) rather than reinventing it. If the shell itself needs to change (a new nav item, a new brand color), there is no single source of truth to edit once — it has to be updated in every page that carries it.
+**Shared shell, copy-paste not includes.** Because pages are single-file, the header/nav/footer, the Tailwind `tailwind.config` block (custom `os-*` and `accent-*` colors, `display`/`body`/`mono` font families), and the Google Fonts `<link>` tags are duplicated across every page in `index.html`, `blog/`, and all 26 files in `ai-for-friends/`. When adding a new page, copy the shell from the closest existing analog (a blog article for articles, a lesson page for lessons — see the two template docs above) rather than reinventing it. If the shell itself needs to change (a new nav item, a new brand color), there is no single source of truth to edit once — it has to be updated in every page that carries it. The course's shared CSS is the one deliberate exception — see `assets/css/custom.css` below.
 
 **Directory layout:**
 - `index.html` — landing page: hero, 7-pillar bento grid (`#pillars`), AI-as-foundation section (`#ai`), methodology/inspiration matrix (`#methodology`), operational loops (`#loops`).
 - `blog/index.html` — blog hub (article grid with pillar pill-tags).
 - `blog/*.html` — individual articles. See `assets/docs/Article-Template.md`.
-- `ai-for-friends/index.html` — course hub (3 module cards).
-- `ai-for-friends/module-{1,2,3}/index.html` — module hubs, each with a "Key Concepts" glossary (core table + `<details>` expandable full reference) and a "Support Resources" table.
-- `ai-for-friends/module-{1,2,3}/lesson-{n}.html` — individual lessons. See `assets/docs/Lesson-Template.md`.
-- `assets/docs/` — governing docs (Implementation Guide, Design System Guide) plus the two page templates and the raw markdown source content the course/blog were synthesized from (`assets/docs/ai-for-friends/`).
-- `assets/css`, `assets/js`, `assets/images` — exist but are currently empty. Per the Design Guide, pages are self-contained; only use these for a genuinely shared, non-inlineable asset (e.g. an image).
+- `ai-for-friends/index.html` — course hub (4 module cards).
+- `ai-for-friends/module-{1,2,3,4}/index.html` — module hubs, each with a "Key Concepts" glossary (core table + `<details>` expandable full reference) and a "Support Resources" table.
+- `ai-for-friends/module-{1,2,3,4}/lesson-{n}.html` — individual lessons. See `assets/docs/Lesson-Template.md`. Module 1 has 4 lessons, Module 2 has 3, Module 3 has 7, Module 4 has 7 (21 lessons total).
+- `assets/docs/` — governing docs (Implementation Guide, Design System Guide) plus the two page templates and the raw markdown source content the course/blog were synthesized from (`assets/docs/ai-for-friends/`). `assets/docs/references/AI-for-Friends-Course-State-Report.md` is the living reference for the course's current structure, conversion pipeline, and styling conventions — read it before any course structural change.
+- `assets/css/custom.css` — the one shared, non-inlined stylesheet, used only by the `ai-for-friends/` course pages (base resets, lesson typography, callout variants, course-menu dropdown). A deliberate, explicit exception to the single-file-delivery rule above — see the state report's CSS-extraction section for why. `assets/js` and `assets/images` exist but are currently empty.
 - `error.html` — static 404/error page for S3 static hosting.
 
 **Known duplication bug to watch for:** the fade-in-on-scroll pattern uses a CSS `.fade-up` class (`opacity: 0` + a `fadeInUp` keyframe defined in each page's own `<style>` block) combined with an `IntersectionObserver` in a trailing `<script>` that adds `.fade-up` to grid items when they scroll into view. Do **not** put the static `fade-up` class on an element *and* also target it with the observer script — the observer sets `opacity: 0` via inline style on load, and re-adding a class the element already has does not restart a CSS animation, so the element stays permanently invisible. Hero-level content uses the static class only (animates once on load); scroll-triggered grids use the observer only. This bug has bitten this project twice already (once on `blog/index.html`, once conceptually in the original `index.html` hero) — check for it explicitly any time a page's content isn't fading in.
@@ -67,7 +67,7 @@ Every layout, palette, and signature-element decision on this site — the landi
 
 ## Internationalization (Spanish) — not built yet, but scaffolded
 
-A Spanish translation is the next planned initiative. Groundwork already exists in all 12 `ai-for-friends/**` pages: a small **EN · ES** language pill in the course nav, with ES currently rendered disabled (`title="Spanish version — coming soon"`, no `href`) so it's visible without being a dead link.
+A Spanish translation is the next planned initiative. Groundwork already exists in all 26 `ai-for-friends/**` pages: a small **EN · ES** language pill in the course nav, with ES currently rendered disabled (`title="Spanish version — coming soon"`, no `href`) so it's visible without being a dead link.
 
 **The convention when this gets built:**
 - **English stays at its current, unprefixed paths** (`ai-for-friends/...`, `blog/...`, `index.html`) as the default locale. Existing links and any external references keep working.

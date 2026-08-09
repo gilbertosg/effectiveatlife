@@ -1,4 +1,4 @@
-<!-- HERO: Lesson 4.2: Creating Your First Project | Name it, describe it, and write the standing instructions. That is the whole setup. -->
+<!-- HERO: Lesson 3.3: Creating Your First Project | Name it, describe it, and write the standing instructions. That is the whole setup. -->
 
 <!-- TOC: Overview#anchor-overview | Step 1: Create the Project#anchor-step-1 | Step 2: Write Your Custom Instructions#anchor-step-2 | Step 3: Use the Template for Your Role#anchor-step-3 | Verification#anchor-verification -->
 
@@ -12,7 +12,7 @@ The custom instructions are the Project's job description. They tell Claude who 
 
 ### Prerequisites
 
-- [Lesson 4.1: What Is a Claude Project?](4-1_What_Is_A_Claude_Project.md)
+- [Lesson 3.2: What Is a Claude Project?](3-2_Claude_Code_Project_Basics.md)
 - A Claude account (claude.ai)
 
 ### Time to Complete
@@ -52,7 +52,7 @@ Recruiting Assistant
 ├─ Name: Recruiting Assistant
 ├─ Description: Candidate summaries and outreach
 ├─ Custom instructions: (empty — you fill this in Step 2)
-└─ Project knowledge: (empty — you add files in Lesson 4.3)
+└─ Project knowledge: (empty — you add files in Lesson 3.4)
 ```
 
 <!-- TIP: Description Is for You, Not Claude | The description helps you recognize the Project in your sidebar. Keep it to one line. Claude works from the custom instructions, not the description. -->
@@ -209,7 +209,7 @@ Date, Summary, Relevance to Priority Topics, and Recommended Next Step.
 
 <!-- TIP: Fill In Every Bracket | A bracket left blank is a rule Claude cannot follow. Replace each [bracketed blank] with your own details before you save. -->
 
-<!-- WARNING: Do Not Paste Sensitive Detail Into Instructions | Role types and system names are fine in your instructions. Employee records and client identifiers are not. Lesson 4.3 covers what a Project can and cannot reach, and what to check before uploading sensitive material. -->
+<!-- WARNING: Do Not Paste Sensitive Detail Into Instructions | Role types and system names are fine in your instructions. Employee records and client identifiers are not. Lesson 3.4 covers what a Project can and cannot reach, and what to check before uploading sensitive material. -->
 
 ---
 
@@ -232,7 +232,7 @@ You have completed all three steps. Confirm your setup by checking each item bel
 
 ### What's Next
 
-**Next Lesson:** [Lesson 4.3: Giving Your Project Reference Material](4-3_Adding_Project_Knowledge.md)
+**Next Lesson:** [Lesson 3.4: Giving Your Project Reference Material](3-4_Project_Material.md)
 
 **Related Resources:**
 - [claude.ai](https://claude.ai) — The Claude AI platform

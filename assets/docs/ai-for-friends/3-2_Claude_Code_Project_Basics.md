@@ -1,4 +1,4 @@
-<!-- HERO: Lesson 4.1: What Is a Claude Project? | A Project is a reusable workspace on claude.ai that already knows your role, your rules, and your reference documents. -->
+<!-- HERO: Lesson 3.2: What Is a Claude Project? | A Project is a reusable workspace on claude.ai that already knows your role, your rules, and your reference documents. -->
 
 <!-- TOC: Overview#anchor-overview | Step 1: The Three Parts of a Project#anchor-step-1 | Step 2: Why a Project Beats a Blank Chat#anchor-step-2 | Step 3: Decide What Your First Project Is For#anchor-step-3 | Verification#anchor-verification -->
 
@@ -150,7 +150,7 @@ You have completed all three steps. Confirm your understanding by checking each 
 
 ### What's Next
 
-**Next Lesson:** [Lesson 4.2: Creating Your First Project](4-2_Creating_Your_First_Project.md)
+**Next Lesson:** [Lesson 3.3: Creating Your First Project](3-3_First_Project.md)
 
 **Related Resources:**
 - [claude.ai](https://claude.ai) — The Claude AI platform

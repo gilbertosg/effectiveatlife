@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lesson 2.2: Installing Visual Studio Code — AI for Friends</title>
-<meta name="title" content="Lesson 2.2: Installing Visual Studio Code">
-<meta name="description" content="A lighter, earlier pass at the editor install so Module 3's version feels familiar.">
+<title>Lesson 3.5: Keeping Your Standing Instructions Current — AI for Friends</title>
+<meta name="title" content="Lesson 3.5: Keeping Your Standing Instructions Current">
+<meta name="description" content="Your custom instructions are the Project's memory. Keeping them current is one edit, not a feature to manage.">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -33,6 +33,7 @@
 </head>
 <body class="bg-os-deep text-os-primary font-body antialiased">
 
+<!-- ============ NAV ============ -->
 <header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
   <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
     <a href="../../index.html" class="flex items-center gap-2.5 group">
@@ -49,7 +50,7 @@
           Menu
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-                <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
           <div class="mb-1">
             <a href="../module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
               <span class="font-mono text-xs text-accent-cyan">01</span>
@@ -64,31 +65,31 @@
           </div>
           <div class="border-t border-white/10 my-1"></div>
           <div class="mb-1">
-            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
               <span class="font-mono text-xs text-os-tertiary">02</span>
               <span class="font-display font-semibold text-sm text-os-primary">Setting Up Your Computer</span>
               <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPTIONAL</span>
             </a>
             <div class="ml-8 space-y-0.5 pb-2">
-              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Installing Windows Terminal</a>
-              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">2.2 Installing VS Code</a>
-              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navigating in the Terminal</a>
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Installing Windows Terminal</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Installing VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navigating in the Terminal</a>
             </div>
           </div>
           <div class="border-t border-white/10 my-1"></div>
           <div class="mb-1">
-            <a href="../module-3/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
               <span class="font-mono text-xs text-accent-purple">03</span>
               <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
             </a>
             <div class="ml-8 space-y-0.5 pb-2">
-              <a href="../module-3/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Claude Code Onboarding Guide</a>
-              <a href="../module-3/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 What Is a Claude Project?</a>
-              <a href="../module-3/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creating Your First Project</a>
-              <a href="../module-3/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Giving Your Project Reference Material</a>
-              <a href="../module-3/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Keeping Your Standing Instructions Current</a>
-              <a href="../module-3/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Using Your Project to Design More Projects</a>
-              <a href="../module-3/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Worked Examples by Role</a>
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Claude Code Onboarding Guide</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 What Is a Claude Project?</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creating Your First Project</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Giving Your Project Reference Material</a>
+              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">3.5 Keeping Your Standing Instructions Current</a>
+              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Using Your Project to Design More Projects</a>
+              <a href="lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Worked Examples by Role</a>
             </div>
           </div>
           <div class="border-t border-white/10 my-1"></div>
@@ -118,100 +119,104 @@
         <span class="cursor-default" title="Spanish version — coming soon">ES</span>
       </div>
     </nav>
-    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg border border-white/20 text-os-secondary hover:border-accent-cyan/50 hover:text-accent-cyan transition-colors">Module 2</a>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Module 3</a>
   </div>
 </header>
 
+<!-- ============ LESSON HEADER ============ -->
 <header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
   <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
   <div class="relative max-w-2xl mx-auto fade-up">
     <div class="font-mono text-xs text-os-tertiary mb-6">
-      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a><span class="mx-1.5">/</span>
-      <a href="index.html" class="hover:text-accent-cyan transition-colors">Module 2</a><span class="mx-1.5">/</span>
-      <span class="text-os-secondary">Lesson 2.2</span>
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a>
+      <span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Module 3</a>
+      <span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lesson 3.5</span>
     </div>
-    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Installing Visual Studio Code</h1>
-    <p class="text-os-secondary text-lg leading-relaxed mb-6">A lighter, earlier pass at an install Module 3 covers in full — so the real walkthrough feels familiar when you get there.</p>
-    <div class="flex flex-wrap items-center gap-2">
-      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">5 MIN</span>
-      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">OPTIONAL</span>
-    </div>
-    <div class="callout callout-note mt-6 mb-6">
-      <span class="callout-label">Module 3 Covers This in Full</span>
-      <p>Module 3 walks through this install in more detail. This is a lighter, earlier look — skip it if you'd rather do it once, properly, in Module 3.</p>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Keeping Your Standing Instructions Current</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">
+      Your custom instructions are the Project's memory. Keeping them current is one edit, not a feature to manage.
+    </p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">10 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent-teal/40 text-accent-teal">REQUIRED</span>
     </div>
     <div class="flex flex-wrap gap-2 font-mono text-[10px]">
-      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Download &amp; Install</a>
-      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Find Extensions</a>
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. How It Remembers</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Update When Facts Change</a>
     </div>
   </div>
 </header>
 
+<!-- ============ LESSON BODY ============ -->
 <article class="px-6 pb-24">
   <div class="lesson-body max-w-2xl mx-auto text-[16px]">
 
-    <h2 id="step-1"><span class="step-num">1</span>Download and Install VS Code</h2>
-    <p>VS Code comes straight from Microsoft's official site. You download an installer, run it, and accept the defaults — nothing to configure at this stage.</p>
+    <p>By the end of this lesson, you will know where a Project's memory lives and how to keep it current. A Project's custom instructions are its memory. There is no separate memory feature running in the background, so keeping a Project current means editing its instructions when a fact changes.</p>
+    <p>People expect Claude to "learn" their preferences over time. A Project does not work that way. Anything that should always be true has to live in the custom instructions. Once you know this, you stop repeating the same correction in every chat and make one edit instead.</p>
 
-    <h3>Windows</h3>
+    <h2 id="step-1"><span class="step-num">1</span>How a Project Actually Remembers</h2>
+    <p>A Project's custom instructions are what persist across every conversation inside it. There is no separate memory to manage and no learned-preference feature. If something should always be true, it lives in the custom instructions.</p>
+
+    <div class="col-2">
+      <div>
+        <h4>Persists across every chat in the Project:</h4>
+        <ul>
+          <li>Your custom instructions.</li>
+          <li>Your uploaded Project knowledge.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Does not persist:</h4>
+        <ul>
+          <li>Anything said in one chat.</li>
+          <li>Mid-conversation corrections.</li>
+          <li>Preferences you assume Claude picked up.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout callout-info">
+      <span class="callout-label">There Is No Hidden Memory</span>
+      <p>A Project does not quietly learn your preferences between chats. The custom instructions and uploaded files are the entire memory. If a fact is not written there, the next chat will not know it.</p>
+    </div>
+
+    <h2 id="step-2"><span class="step-num">2</span>Update the Instructions When Facts Change</h2>
+    <p>When a standing fact changes, open the Project and edit the custom instructions. Every future chat uses the updated version immediately. This step shows the kinds of facts worth keeping current and how to update them.</p>
+
     <ol>
-      <li>Go to <span class="font-mono text-os-primary">code.visualstudio.com</span>.</li>
-      <li>Click the download button for Windows.</li>
-      <li>Run the installer and accept all default options.</li>
-      <li>Open Visual Studio Code once it finishes.</li>
+      <li>Open your Project and edit the custom instructions.</li>
+      <li>Add or change the standing fact.</li>
+      <li>Save.</li>
+      <li>Start a new chat inside the Project and confirm the updated fact is in effect.</li>
     </ol>
 
-    <h3>Mac</h3>
-    <ol>
-      <li>Go to <span class="font-mono text-os-primary">code.visualstudio.com</span>.</li>
-      <li>Click the download button for Mac.</li>
-      <li>Open the downloaded file and drag <strong>Visual Studio Code</strong> into your <strong>Applications</strong> folder.</li>
-      <li>Open it from Applications (or Spotlight — Cmd + Space, then type "Visual Studio Code"). The first time, macOS may ask you to confirm you trust it — click <strong>Open</strong>.</li>
-    </ol>
-
-    <pre>+-----------------------------------------+
-| (icons) | Welcome                       |
-| []      |                               |
-| *       | Start                         |
-| v       | New File...                   |
-| |>      | Open Folder...                |
-| []      |                               |
-|         | (empty editor area)           |
-+-----------------------------------------+</pre>
-    <p>A window with a Welcome tab, a row of icons down the left sidebar, and an empty editor area in the middle — identical on Windows and Mac.</p>
+    <table>
+      <thead><tr><th>Role</th><th>Standing Fact</th><th>Add It When</th></tr></thead>
+      <tbody>
+        <tr><td>HR</td><td>"My default output format is a table, one row per item."</td><td>You want a consistent format on every answer</td></tr>
+        <tr><td>HR</td><td>"My lead hiring manager is now [Name]; address candidate summaries to them."</td><td>The lead hiring manager changes</td></tr>
+        <tr><td>Legal</td><td>"Our jurisdiction changed to [State]; assume that governing law when none is stated."</td><td>The governing jurisdiction changes</td></tr>
+        <tr><td>Marketing</td><td>"We added [term] to the banned-words list; never use it in public copy."</td><td>The banned-words list is updated</td></tr>
+        <tr><td>Industrial Engineering</td><td>"The owner of [work center] is now [Name]; route escalations to them."</td><td>A work-center owner changes</td></tr>
+        <tr><td>International Relations</td><td>"Our counterpart contact at [ministry] is now [Name/title]; address correspondence to them."</td><td>A counterpart contact or protocol rule changes</td></tr>
+      </tbody>
+    </table>
 
     <div class="callout callout-tip">
-      <span class="callout-label">Official Site Only</span>
-      <p>Download only from code.visualstudio.com — not a third-party download site. The official installer is safe and free.</p>
-    </div>
-    <div class="callout callout-note">
-      <span class="callout-label">Defaults Are Fine Here</span>
-      <p>You do not need to change any installer option. Click through with the defaults. Module 3 covers any settings that matter later.</p>
-    </div>
-
-    <h2 id="step-2"><span class="step-num">2</span>Find the Extensions Panel</h2>
-    <p>Extensions are add-ons that give VS Code new abilities. Don't install any yet — the goal here is just finding the panel so it's familiar in Module 3.</p>
-    <ol>
-      <li>Look at the left sidebar for the <strong>Extensions</strong> icon (four squares).</li>
-      <li>Click it, or press <span class="font-mono text-os-primary">Ctrl + Shift + X</span> (Windows) / <span class="font-mono text-os-primary">Cmd + Shift + X</span> (Mac) to open the panel.</li>
-      <li>Type a name in the search box to see how results appear.</li>
-      <li>Browse the list. Don't click Install on anything yet.</li>
-    </ol>
-
-    <div class="callout callout-note">
-      <span class="callout-label">Install Nothing Yet</span>
-      <p>Module 3 tells you exactly which extensions to add. Installing them now, out of order, only creates confusion — just look.</p>
+      <span class="callout-label">The Repeat-Correction Rule</span>
+      <p>If you correct Claude the same way in every chat, that correction belongs in the custom instructions. Put it there once and you stop repeating it.</p>
     </div>
 
     <h2 class="!mt-16">Verification</h2>
     <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
-      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">VS Code opens cleanly to the Welcome tab</span></div>
-      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You can open the Extensions panel and search it</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You can state where a Project's memory lives (the custom instructions)</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You have added one standing fact and confirmed it takes effect in a new chat</span></div>
     </div>
-
-    <div class="callout callout-tip">
-      <span class="callout-label">Leave It Installed</span>
-      <p>Keep VS Code installed after this lesson. Module 3 picks up right where you left off and installs the extensions you actually need.</p>
+    <div class="callout callout-note">
+      <span class="callout-label">Not Working?</span>
+      <p>If a new chat does not use your updated fact, confirm you saved the change in the custom instructions field. The columns in Step 1 show what persists and what does not.</p>
     </div>
 
     <h2 class="!mt-10 !text-base">Related Resources</h2>
@@ -223,19 +228,23 @@
 
     <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
       <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lesson complete</p>
-      <p class="text-sm text-os-secondary">You have VS Code installed and know where the Extensions panel lives — the two things that make Module 3's editor setup feel familiar.</p>
+      <p class="text-sm text-os-secondary">You now know where a Project's memory lives and how to keep it current with a single edit to the custom instructions. Think of the one thing you correct in every chat, add it to your custom instructions today, and confirm the next chat gets it right on its own.</p>
     </div>
 
   </div>
 </article>
 
+<!-- ============ PREV/NEXT ============ -->
 <nav class="px-6 pb-24">
   <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
-    <a href="lesson-1.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 2.1 Installing Windows Terminal</a>
-    <a href="lesson-3.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">Next: Navigating the Terminal &rarr;</a>
+    <a href="lesson-4.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 3.4 Giving Your Project Reference Material</a>
+    <a href="lesson-6.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
+      Next: Using Your Project to Design More Projects &rarr;
+    </a>
   </div>
 </nav>
 
+<!-- ============ FOOTER ============ -->
 <footer class="px-6 py-16 border-t border-white/[0.08]">
   <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
     <div>

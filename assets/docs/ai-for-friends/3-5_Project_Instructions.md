@@ -1,4 +1,4 @@
-<!-- HERO: Lesson 4.4: Keeping Your Standing Instructions Current | Your custom instructions are the Project's memory. Keeping them current is one edit, not a feature to manage. -->
+<!-- HERO: Lesson 3.5: Keeping Your Standing Instructions Current | Your custom instructions are the Project's memory. Keeping them current is one edit, not a feature to manage. -->
 
 <!-- TOC: Overview#anchor-overview | Step 1: How a Project Actually Remembers#anchor-step-1 | Step 2: Update the Instructions When Facts Change#anchor-step-2 | Verification#anchor-verification -->
 
@@ -12,7 +12,7 @@ People expect Claude to "learn" their preferences over time. A Project does not 
 
 ### Prerequisites
 
-- [Lesson 4.2: Creating Your First Project](4-2_Creating_Your_First_Project.md)
+- [Lesson 3.3: Creating Your First Project](3-3_First_Project.md)
 - A Project with custom instructions already saved
 
 ### Time to Complete
@@ -114,7 +114,7 @@ You have completed both steps. Confirm your understanding by checking each item 
 
 ### What's Next
 
-**Next Lesson:** [Lesson 4.5: Using Your Project to Design More Projects](4-5_Designing_More_Projects.md)
+**Next Lesson:** [Lesson 3.6: Using Your Project to Design More Projects](3-6_Using_Projects_to_Design_More.md)
 
 **Related Resources:**
 - [claude.ai](https://claude.ai) — The Claude AI platform

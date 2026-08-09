@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lesson 4.5: Using Your Project to Design More Projects — AI for Friends</title>
-<meta name="title" content="Lesson 4.5: Using Your Project to Design More Projects">
-<meta name="description" content="Once one Project works, let Claude draft the setup for the next one.">
+<title>Lesson 4.5: Daily Briefing from Email and Calendar — AI for Friends</title>
+<meta name="title" content="Lesson 4.5: Daily Briefing from Email and Calendar">
+<meta name="description" content="Connect Claude Code to your inbox and calendar, then read one morning summary instead of two apps.">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -50,7 +50,7 @@
           Menu
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
           <div class="mb-1">
             <a href="../module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
               <span class="font-mono text-xs text-accent-cyan">01</span>
@@ -84,37 +84,28 @@
             </a>
             <div class="ml-8 space-y-0.5 pb-2">
               <a href="../module-3/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Claude Code Onboarding Guide</a>
-            </div>
-          </div>
-          <div class="border-t border-white/10 my-1"></div>
-          <div class="mb-1">
-            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
-              <span class="font-mono text-xs text-accent-teal">04</span>
-              <span class="font-display font-semibold text-sm text-os-primary">Building Your AI Personal Assistant</span>
-            </a>
-            <div class="ml-8 space-y-0.5 pb-2">
-              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 What Is a Claude Project?</a>
-              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Creating Your First Project</a>
-              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 Giving Your Project Reference Material</a>
-              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 Keeping Your Standing Instructions Current</a>
-              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">4.5 Using Your Project to Design More Projects</a>
-              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Worked Examples by Role</a>
+              <a href="../module-3/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 What Is a Claude Project?</a>
+              <a href="../module-3/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creating Your First Project</a>
+              <a href="../module-3/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Giving Your Project Reference Material</a>
+              <a href="../module-3/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Keeping Your Standing Instructions Current</a>
+              <a href="../module-3/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Using Your Project to Design More Projects</a>
+              <a href="../module-3/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Worked Examples by Role</a>
             </div>
           </div>
           <div class="border-t border-white/10 my-1"></div>
           <div>
-            <a href="../module-5/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
-              <span class="font-mono text-xs text-os-primary">05</span>
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">04</span>
               <span class="font-display font-semibold text-sm text-os-primary">Automating Workflows with Claude Code</span>
             </a>
             <div class="ml-8 space-y-0.5 pb-2">
-              <a href="../module-5/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.1 Your Claude Code Daily Habits</a>
-              <a href="../module-5/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.2 Installing Anthropic Skills</a>
-              <a href="../module-5/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.3 International Relations: Automating the Agreements Workflow</a>
-              <a href="../module-5/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.4 What Is an MCP Server?</a>
-              <a href="../module-5/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.5 Daily Briefing from Email and Calendar</a>
-              <a href="../module-5/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.6 Staying Informed: A Market-Awareness Digest</a>
-              <a href="../module-5/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.7 From Sources to Story</a>
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Your Claude Code Daily Habits</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Installing Anthropic Skills</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 International Relations: Automating the Agreements Workflow</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 What Is an MCP Server?</a>
+              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">4.5 Daily Briefing from Email and Calendar</a>
+              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Staying Informed: A Market-Awareness Digest</a>
+              <a href="lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.7 From Sources to Story</a>
             </div>
           </div>
           <div class="border-t border-white/10 my-2"></div>
@@ -143,17 +134,19 @@
       <span class="mx-1.5">/</span>
       <span class="text-os-secondary">Lesson 4.5</span>
     </div>
-    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Using Your Project to Design More Projects</h1>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Daily Briefing from Email and Calendar</h1>
     <p class="text-os-secondary text-lg leading-relaxed mb-6">
-      Once one Project works, let Claude draft the setup for the next one.
+      Connect Claude Code to your inbox and calendar, then read one morning summary instead of two apps.
     </p>
     <div class="flex flex-wrap items-center gap-2 mb-8">
-      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">10 MIN</span>
-      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent-teal/40 text-accent-teal">REQUIRED</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">20–25 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/40 text-os-primary">REQUIRED</span>
     </div>
     <div class="flex flex-wrap gap-2 font-mono text-[10px]">
-      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Have Claude Design It</a>
-      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Pick Your Next Project</a>
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Connect Email and Calendar</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Dictate What You Need</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Build the Skill</a>
+      <a href="#step-4" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">4. Optional Scheduling</a>
     </div>
   </div>
 </header>
@@ -162,71 +155,175 @@
 <article class="px-6 pb-24">
   <div class="lesson-body max-w-2xl mx-auto text-[16px]">
 
-    <p>By the end of this lesson, you will use a working Project to design your next one. Once your first Project works well, you do not start the second from scratch. You ask Claude to draft the name, description, instructions, and file list for you.</p>
-    <p>A working Project already knows your role and your formatting preferences. That makes it the best tool for designing the next Project, because its suggestions arrive pre-fitted to how you work. You get a complete setup to paste in, instead of a blank instructions field to fill alone.</p>
+    <p>This lesson connects Claude Code to your real email and calendar, then builds one skill that reads both and hands you a single, structured briefing: today's schedule, what to know before each meeting, and anything urgent sitting in your inbox. Where Lesson 4.3 built a three-skill plugin, this one shows the other end of the range — sometimes one well-built skill is the whole job.</p>
+    <p>Most mornings start with opening two apps and piecing together the same picture by hand: what's on the calendar, what needs a reply, what's actually urgent versus just unread. That's a pattern this course has already covered — checking something repetitive and turning it into a summary — applied to a data source everyone already has.</p>
 
-    <h2 id="step-1"><span class="step-num">1</span>Have Claude Design the Next Project</h2>
-    <p>Your first working Project can design your next one. Ask it for the full setup in a pasteable format, and it drafts the name, description, custom instructions, and reference-file list for you.</p>
-
-    <ol>
-      <li>Open your existing, working Project.</li>
-      <li>Start a new chat inside it.</li>
-      <li>Paste the prompt below, editing the goal to match the Project you want.</li>
-      <li>Read the four-part setup Claude returns.</li>
-    </ol>
-
-    <h3 class="!mt-6 !mb-2 font-display font-semibold text-[1.05rem] text-white">The Design Prompt</h3>
-    <pre>I want a new Project that drafts weekly status summaries for my team.
-Design it for me. Give me the exact: (1) Project name, (2) short
-description, (3) custom instructions, and (4) a list of reference
-documents I should upload as Project knowledge. Write the custom
-instructions so I can paste them straight into a new Project.</pre>
-
-    <div class="callout callout-info">
-      <span class="callout-label">Why This Works</span>
-      <p>A working Project already knows your role and your formatting preferences. Its suggestions for the next Project arrive pre-fitted to how you work, so you edit rather than start from nothing.</p>
-    </div>
-    <div class="callout callout-tip">
-      <span class="callout-label">Ask Inside Your Existing Project</span>
-      <p>Run this prompt inside a Project you have already set up, not in a blank chat. The setup it drafts will match the style and format you already use.</p>
-    </div>
-
-    <h2 id="step-2"><span class="step-num">2</span>Pick Your Next Project</h2>
-    <p>The design prompt works best with a clear target. This step gives you five proven Project ideas. Pick one, run the prompt from Step 1, and build it using the lessons you have already completed.</p>
+    <h2 id="step-1"><span class="step-num">1</span>Connect an Email and Calendar MCP Server</h2>
+    <p>Claude Code has no built-in access to your email or calendar. It needs an MCP connection — the mechanism from Lesson 4.4 — before it can read a single message or event.</p>
 
     <ol>
-      <li>Pick one Project from the table below.</li>
-      <li>Run the Step 1 design prompt with that Project as the goal.</li>
-      <li>Create the Project, following <a href="lesson-2.html" class="text-accent-cyan hover:underline">Lesson 4.2</a>.</li>
-      <li>Upload the suggested files, following <a href="lesson-3.html" class="text-accent-cyan hover:underline">Lesson 4.3</a>.</li>
+      <li>Identify your provider: Google Workspace (Gmail + Google Calendar) or Microsoft 365 (Outlook Mail + Outlook Calendar) are the two most common.</li>
+      <li>Check code.claude.com/docs, claude.ai's Connectors settings, or type /mcp inside Claude Code to see whether a ready-made connector exists for your provider today — Lesson 4.4, Step 4 covers what to do if it doesn't yet.</li>
+      <li>Add the connector using the <span class="font-mono text-os-primary">claude mcp add --scope user --transport &lt;type&gt; &lt;name&gt; &lt;address&gt;</span> pattern from Lesson 4.4, Step 3, filling in the real name and address you found.</li>
+      <li>Approve the sign-in prompt that opens in your browser.</li>
+      <li>Run /mcp to confirm it connected and see the tools it provides.</li>
     </ol>
 
     <table>
-      <thead><tr><th>Project Name</th><th>Purpose</th><th>What It Would Need</th></tr></thead>
+      <thead><tr><th>Provider</th><th>What You're Connecting</th><th>Where to Check the Current Setup</th></tr></thead>
       <tbody>
-        <tr><td>Weekly-Reporter</td><td>Turns your notes into a weekly status summary</td><td>Your status-report template as Project knowledge</td></tr>
-        <tr><td>Feedback-Tracker</td><td>Spots recurring themes in client or employee feedback</td><td>A folder of past feedback notes to reference</td></tr>
-        <tr><td>Template-Finder</td><td>Helps you pick and fill the right document template</td><td>All your standard templates uploaded as knowledge</td></tr>
-        <tr><td>Deadline-Monitor</td><td>Flags approaching filing or campaign deadlines you paste in</td><td>Your standing deadline rules in the custom instructions</td></tr>
-        <tr><td>Meeting-Summarizer</td><td>Turns meeting notes into action items</td><td>Your preferred action-item format in the instructions</td></tr>
-        <tr><td>Nonconformance-Tracker</td><td>Spots recurring defect types across nonconformance reports (Industrial Engineering)</td><td>A folder of past nonconformance reports and your report format</td></tr>
-        <tr><td>Cable-Digest</td><td>Turns incoming cables or agreements into a briefing-ready summary (International Relations)</td><td>Your briefing-memo template and priority-topics list</td></tr>
+        <tr><td>Google Workspace</td><td>Gmail + Google Calendar</td><td>/mcp inside Claude Code, claude.ai Connectors, or code.claude.com/docs</td></tr>
+        <tr><td>Microsoft 365</td><td>Outlook Mail + Outlook Calendar</td><td>/mcp inside Claude Code, claude.ai Connectors, or code.claude.com/docs</td></tr>
       </tbody>
     </table>
 
+    <div class="callout callout-warning">
+      <span class="callout-label">Check With Your Organization First</span>
+      <p>Connecting an AI tool to a work email or calendar account may need IT or security approval, depending on your employer's policy. Confirm before connecting a work account — a personal account is a safer place to practice this lesson first.</p>
+    </div>
+
+    <h2 id="step-2"><span class="step-num">2</span>Dictate What "Day Ahead" Means to You</h2>
+    <p>With the connector in place, describe the briefing you actually want — in one long message, the same dictate-to-setup approach from Lesson 4.3.</p>
+
+    <ol>
+      <li>Create a new folder, for example <span class="font-mono text-os-primary">daily-briefing</span>, and open it in Claude Code.</li>
+      <li>Adapt and send the example dictation below.</li>
+      <li>Answer any clarifying questions Claude Code asks.</li>
+      <li>Review the proposed CLAUDE.md before approving it.</li>
+    </ol>
+
+    <pre>I want a daily briefing that pulls together my calendar and my email
+so I don't have to check two apps every morning. For today's calendar,
+I want every meeting listed with the time, the attendees, and one line
+on what I need to know or prepare before it. For email, I only care
+about messages from the last 24 hours that are unread or flagged —
+summarize what's actually urgent and skip routine notifications and
+anything already read. If an email is from someone who's also on
+today's calendar, connect the two — mention it next to that meeting
+instead of as a separate item. Keep the whole briefing short enough to
+read in two minutes. Set this up as a project with a README and a
+CLAUDE.md capturing these rules, and ask me anything you need first.</pre>
+
+    <p>What Claude Code should produce:</p>
+    <pre>daily-briefing/
+├── README.md              Explains the briefing and how to run it
+├── CLAUDE.md               Standing rules: what counts as urgent, how
+│                           long the briefing should be, how to cross-
+│                           reference meetings and email
+└── output/
+    └── todays-briefing.md Where each day's briefing lands</pre>
+
     <div class="callout callout-tip">
-      <span class="callout-label">Build One, Not Five</span>
-      <p>Pick a single Project and set it up completely before starting another. One finished Project you use beats five half-built ones you do not.</p>
+      <span class="callout-label">Keep This One Simple</span>
+      <p>Not every workflow needs a three-skill plugin. This lesson builds toward exactly one skill — the shape should match the job, not the other way around.</p>
+    </div>
+
+    <h2 id="step-3"><span class="step-num">3</span>Build the Daily-Briefing Skill</h2>
+    <p>One skill, using both the calendar and email tools your connector provides.</p>
+
+    <ol>
+      <li>Ask Claude Code to build the skill, describing its job precisely (the description below is ready to use).</li>
+      <li>Review the SKILL.md it produces.</li>
+      <li>Run /daily-briefing and check the output against what you actually needed to know this morning.</li>
+    </ol>
+
+    <p>What to tell Claude Code to build:</p>
+    <pre>Build a skill called daily-briefing. Its job: pull today's calendar
+events using the calendar tool, and pull unread or flagged email from
+the last 24 hours using the email tool. Cross-reference the two — if
+an email sender is also an attendee on a meeting today, mention that
+email next to that meeting instead of as a separate item. Produce one
+short briefing: a schedule block listing each meeting with attendees
+and a one-line prep note, followed by a short list of anything urgent
+left in email that doesn't tie to a meeting. Save it to
+output/todays-briefing.md and show it to me.</pre>
+
+    <p>What this produces (skills/daily-briefing/SKILL.md, abbreviated):</p>
+    <pre>---
+name: daily-briefing
+description: Pull today's calendar and recent email into one morning
+briefing, cross-referencing meeting attendees with email senders. Use
+when the user says "give me my briefing," "what's today look like,"
+or "/daily-briefing."
+---
+
+# daily-briefing
+
+1. Fetch today's calendar events using the connected calendar tool.
+2. Fetch email from the last 24 hours that is unread or flagged, using
+   the connected email tool.
+3. For each meeting, check whether any attendee also sent a fetched
+   email. If so, fold a one-line summary of that email into that
+   meeting's entry instead of listing it separately.
+4. Write the schedule block: time, attendees, and one prep line per
+   meeting.
+5. Write a short "Flagged in Email" section for anything urgent that
+   didn't tie to a meeting.
+6. Save the result to output/todays-briefing.md and display it.</pre>
+
+    <p>Sample output:</p>
+    <pre>Today's Briefing — Tuesday
+
+09:00 — Budget Review (with Marcus Chen, Priya Nair)
+Marcus emailed last night asking to move the Q3 numbers earlier in
+the agenda — worth confirming before the meeting starts.
+
+11:30 — Vendor Call (with external: Aria Logistics)
+No related email. First call with this vendor — no history yet.
+
+Flagged in Email
+- IT: password reset required by end of week (not tied to a meeting)</pre>
+
+    <div class="callout callout-info">
+      <span class="callout-label">What Made This Fast</span>
+      <p>The cross-reference step — connecting Marcus's email to the 9:00 meeting — is the entire value of asking one skill to look at two sources together instead of checking each app separately.</p>
+    </div>
+
+    <h2 id="step-4"><span class="step-num">4</span>Optional — Run It Automatically Every Morning</h2>
+    <p>Everything above still requires opening Claude Code and typing /daily-briefing. This step is optional: it runs the briefing before you sit down.</p>
+
+    <p class="!mb-2 text-os-primary font-semibold text-sm">Windows</p>
+    <ol>
+      <li>Before proceeding, revisit <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lesson 4.1, Step 4</a> — confirm you trust /daily-briefing's output from several manual runs first.</li>
+      <li>Open <strong>Windows Task Scheduler</strong>.</li>
+      <li>Create a basic task set to run daily, for example at 7:00 AM.</li>
+      <li>Point the action at the command below.</li>
+    </ol>
+
+    <pre>claude -p "/daily-briefing" --cwd "C:\path\to\daily-briefing"</pre>
+
+    <p class="!mb-2 mt-6 text-os-primary font-semibold text-sm">Mac</p>
+    <ol>
+      <li>Before proceeding, revisit <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lesson 4.1, Step 4</a> — confirm you trust /daily-briefing's output from several manual runs first.</li>
+      <li>Open <strong>Terminal</strong> and run <span class="font-mono text-os-primary">crontab -e</span> (opens in the <span class="font-mono">nano</span> editor by default).</li>
+      <li>Add the line below for a daily 7:00 AM run, then save (<span class="font-mono">Ctrl+O</span>, Enter, <span class="font-mono">Ctrl+X</span> in nano).</li>
+    </ol>
+
+    <pre>0 7 * * * claude -p "/daily-briefing" --cwd "$HOME/daily-briefing"</pre>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Mac: Grant Full Disk Access</span>
+      <p>cron jobs on macOS often fail silently unless the terminal app running them has Full Disk Access. Go to <strong>System Settings &rarr; Privacy &amp; Security &rarr; Full Disk Access</strong> and enable it for Terminal (or your terminal app).</p>
+    </div>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">This Step Is Optional</span>
+      <p>Typing /daily-briefing yourself each morning already works. Only automate this if you specifically want the file waiting for you before you sit down.</p>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">Turning It Off</span>
+      <p>On Windows: open Windows Task Scheduler, find the task by name, and Disable or Delete it — the same two options as Lesson 4.3, Step 6. On Mac: run <span class="font-mono text-os-primary">crontab -e</span> and delete or comment out the line. Your connected MCP server and your CLAUDE.md rules are untouched either way.</p>
     </div>
 
     <h2 class="!mt-16">Verification</h2>
     <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
-      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You have run the design prompt and received a complete four-part setup</span></div>
-      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">You have created at least one additional Project from that setup</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">An email and calendar MCP connector is added and confirmed working with /mcp</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">The project folder has a README.md and CLAUDE.md describing your briefing rules</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">/daily-briefing runs and produces a briefing that correctly cross-references at least one meeting and one email</span></div>
     </div>
     <div class="callout callout-note">
       <span class="callout-label">Not Working?</span>
-      <p>If the setup Claude returns is generic, run the prompt inside your existing working Project rather than a blank chat. Step 1 explains why that matters.</p>
+      <p>If the calendar or email tool isn't found, confirm the connector shows as connected in /mcp and that you restarted Claude Code after adding it. Lesson 4.4 covers this connection in full if you skipped it.</p>
     </div>
 
     <h2 class="!mt-10 !text-base">Related Resources</h2>
@@ -238,7 +335,7 @@ instructions so I can paste them straight into a new Project.</pre>
 
     <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
       <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lesson complete</p>
-      <p class="text-sm text-os-secondary">You now use a working Project to design the next one, turning one good setup into a whole shelf of assistants. Open your working Project, run the design prompt for your next idea, and create it before you close the tab — momentum is easiest to keep while the first Project is fresh.</p>
+      <p class="text-sm text-os-secondary">You connected Claude Code to real, live data outside your files for the first time, and built one skill that reads two sources together. Before building a multi-skill plugin next time, ask whether the job is really one step done well — this lesson's single skill replaced two apps and a mental cross-reference, and that was the whole win.</p>
     </div>
 
   </div>
@@ -247,9 +344,9 @@ instructions so I can paste them straight into a new Project.</pre>
 <!-- ============ PREV/NEXT ============ -->
 <nav class="px-6 pb-24">
   <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
-    <a href="lesson-4.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 4.4 Keeping Your Standing Instructions Current</a>
+    <a href="lesson-4.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 4.4 What Is an MCP Server?</a>
     <a href="lesson-6.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
-      Next: Worked Examples by Role &rarr;
+      Next: Staying Informed &rarr;
     </a>
   </div>
 </nav>

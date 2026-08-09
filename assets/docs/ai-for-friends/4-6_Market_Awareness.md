@@ -1,10 +1,10 @@
-<!-- HERO: Lesson 5.6: Staying Informed — A Market-Awareness Digest | Monitor several sources, report only what's new, and get an email that keeps you current without checking anything by hand. -->
+<!-- HERO: Lesson 4.6: Staying Informed — A Market-Awareness Digest | Monitor several sources, report only what's new, and get an email that keeps you current without checking anything by hand. -->
 
 <!-- TOC: Overview#anchor-overview | Step 1: Choose Your Sources#anchor-step-1 | Step 2: Dictate the Workflow#anchor-step-2 | Step 3: Build the Two-Skill Plugin#anchor-step-3 | Step 4: Optional — Run It on a Schedule#anchor-step-4 | Verification#anchor-verification -->
 
 ## Overview
 
-This lesson builds a market-awareness workflow: a short list of websites or public feeds gets checked regularly, only what's genuinely new gets summarized — with real context about what's already been seen — and a digest email lands in your inbox. This is the same check-something-new shape as Lesson 5.3, now aimed at staying current for content generation and market awareness, which is exactly why Marketing teams reach for this pattern most often. If Legal, HR, or Industrial Engineering is your role, this same shape fits a docket check, a compliance-portal sweep, or a nonconformance scan equally well — the "sources" are just different.
+This lesson builds a market-awareness workflow: a short list of websites or public feeds gets checked regularly, only what's genuinely new gets summarized — with real context about what's already been seen — and a digest email lands in your inbox. This is the same check-something-new shape as Lesson 4.3, now aimed at staying current for content generation and market awareness, which is exactly why Marketing teams reach for this pattern most often. If Legal, HR, or Industrial Engineering is your role, this same shape fits a docket check, a compliance-portal sweep, or a nonconformance scan equally well — the "sources" are just different.
 
 ### Why This Matters
 
@@ -12,8 +12,8 @@ Staying informed usually means checking the same handful of sites over and over,
 
 ### Prerequisites
 
-- [Lesson 5.3: International Relations — Automating the Agreements Workflow](5-3_International_Relations_Agreements_Workflow.md) recommended — this lesson reuses its plugin file structure without re-explaining it
-- An email MCP connector from [Lesson 5.4](5-4_What_Is_An_MCP_Server.md) and [Lesson 5.5](5-5_Daily_Briefing_Email_And_Calendar.md), if you want the digest emailed rather than saved as a file
+- [Lesson 4.3: International Relations — Automating the Agreements Workflow](4-3_Automating_Agreements_RI_Example.md) recommended — this lesson reuses its plugin file structure without re-explaining it
+- An email MCP connector from [Lesson 4.4](4-4_What_is_an_MCP_Server.md) and [Lesson 4.5](4-5_Daily_Email_Briefing.md), if you want the digest emailed rather than saved as a file
 
 ### Time to Complete
 
@@ -41,7 +41,7 @@ You will list a small, specific set of websites, news pages, or public feeds to 
 2. Prefer pages with a stable, predictable structure (a press-release list, a blog index) over ones that change layout constantly.
 3. Read the callout below before assuming this lesson covers every social platform.
 
-<!-- WARNING: About X/Twitter Specifically | This lesson's hands-on example uses public websites and feeds, reached with Claude Code's built-in WebFetch — the same tool proven in Lesson 5.3. Live X/Twitter content specifically is not reliably reachable this way: it requires either the paid X API or a dedicated MCP connector, which most readers won't have set up. If you have that access, the same two-skill shape below applies to X as a source — just swap the fetch step for the X tool you've connected, using the pattern from Lesson 5.4. Everyone else: the websites-and-feeds version below gets you the same outcome. -->
+<!-- WARNING: About X/Twitter Specifically | This lesson's hands-on example uses public websites and feeds, reached with Claude Code's built-in WebFetch — the same tool proven in Lesson 4.3. Live X/Twitter content specifically is not reliably reachable this way: it requires either the paid X API or a dedicated MCP connector, which most readers won't have set up. If you have that access, the same two-skill shape below applies to X as a source — just swap the fetch step for the X tool you've connected, using the pattern from Lesson 4.4. Everyone else: the websites-and-feeds version below gets you the same outcome. -->
 
 <!-- TIP: A Feed Beats a Page When One Exists | If a source publishes an RSS or Atom feed, fetching that is more reliable than fetching the human-facing webpage — feeds rarely change structure the way a redesigned page does. -->
 
@@ -51,7 +51,7 @@ You will list a small, specific set of websites, news pages, or public feeds to 
 
 ## Step 2: Dictate the Workflow
 
-Describe the whole digest in one message, the same dictate-to-setup pattern from Lesson 5.3.
+Describe the whole digest in one message, the same dictate-to-setup pattern from Lesson 4.3.
 
 ### What You'll Do
 
@@ -100,7 +100,7 @@ market-digest/
 
 ## Step 3: Build the Two-Skill Plugin
 
-Two skills: one that watches, one that reports. This reuses the exact plugin file structure from Lesson 5.3 — `.claude-plugin/marketplace.json`, `plugins/<name>/.claude-plugin/plugin.json`, `skills/<name>/SKILL.md` — so this step focuses on what's different: the two skills themselves.
+Two skills: one that watches, one that reports. This reuses the exact plugin file structure from Lesson 4.3 — `.claude-plugin/marketplace.json`, `plugins/<name>/.claude-plugin/plugin.json`, `skills/<name>/SKILL.md` — so this step focuses on what's different: the two skills themselves.
 
 ### What You'll Do
 
@@ -205,7 +205,7 @@ launching next month. No prior mentions from Northwind on this topic.
 
 <!-- INFO: What Made This Fast | The digest didn't just list two facts — it flagged that Aria's move was the third in two weeks. That context only exists because scan-sources kept logging every prior mention, not just the newest one. -->
 
-<!-- TIP: Install It Like 5.3 | The marketplace-add and plugin-install commands from Lesson 5.3, Step 4 work exactly the same way here — register the project folder as a local marketplace, install the plugin, restart Claude Code. -->
+<!-- TIP: Install It Like 4.3 | The marketplace-add and plugin-install commands from Lesson 4.3, Step 4 work exactly the same way here — register the project folder as a local marketplace, install the plugin, restart Claude Code. -->
 
 ---
 
@@ -221,7 +221,7 @@ You will schedule `/scan-sources` and `/send-digest` to run automatically, back 
 
 ### Instructions — Windows
 
-1. Before proceeding, revisit [Lesson 5.1, Step 4](5-1_Your_Claude_Code_Daily_Habits.md#anchor-step-4) — confirm you trust both skills' output from manual runs first.
+1. Before proceeding, revisit [Lesson 4.1, Step 4](4-1_Claude_Code_Daily_Habits.md#anchor-step-4) — confirm you trust both skills' output from manual runs first.
 2. Open **Windows Task Scheduler**.
 3. Create a task that runs both commands in sequence, on whatever cadence fits — daily for fast-moving topics, weekly for slower ones.
 
@@ -234,7 +234,7 @@ claude -p "/send-digest" --cwd "C:\path\to\market-digest"
 
 ### Instructions — Mac
 
-1. Before proceeding, revisit [Lesson 5.1, Step 4](5-1_Your_Claude_Code_Daily_Habits.md#anchor-step-4) — confirm you trust both skills' output from manual runs first.
+1. Before proceeding, revisit [Lesson 4.1, Step 4](4-1_Claude_Code_Daily_Habits.md#anchor-step-4) — confirm you trust both skills' output from manual runs first.
 2. Open **Terminal** and run `crontab -e` (opens in the `nano` editor by default).
 3. Add both lines below on the cadence that fits, then save (`Ctrl+O`, Enter, `Ctrl+X` in nano).
 
@@ -249,7 +249,7 @@ claude -p "/send-digest" --cwd "C:\path\to\market-digest"
 
 <!-- WARNING: This Step Is Optional | Running both commands yourself, on whatever cadence you choose, already works. Only automate this if you want the digest to show up without you starting it. -->
 
-<!-- NOTE: Turning It Off | On Windows: disable or delete the scheduled task in Windows Task Scheduler. On Mac: run crontab -e and delete or comment out both lines. Either way, also disable the plugin the same way shown in Lesson 5.3, Step 6, if you want to stop entirely. data/knowledge-log.md stays exactly as it is either way. -->
+<!-- NOTE: Turning It Off | On Windows: disable or delete the scheduled task in Windows Task Scheduler. On Mac: run crontab -e and delete or comment out both lines. Either way, also disable the plugin the same way shown in Lesson 4.3, Step 6, if you want to stop entirely. data/knowledge-log.md stays exactly as it is either way. -->
 
 ---
 
@@ -271,7 +271,7 @@ You have completed all three required steps (Step 4 is optional). Confirm your s
 
 ### What's Next
 
-**Next Lesson:** [Lesson 5.7: From Sources to Story — A Content-Generation Pipeline](5-7_From_Sources_To_Story_Content_Generation.md)
+**Next Lesson:** [Lesson 4.7: From Sources to Story — A Content-Generation Pipeline](4-7_Content-Generation.md)
 
 **Related Resources:**
 - [claude.ai](https://claude.ai) — The Claude AI platform
