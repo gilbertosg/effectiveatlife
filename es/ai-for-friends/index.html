@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI for Friends — Effective at Life</title>
+<meta name="title" content="AI for Friends — Effective at Life">
+<meta name="description" content="Un curso intensivo sin jerga técnica para usar Claude en el trabajo — cómo funcionan los modelos de IA, cómo darles buenas instrucciones, y cómo usar Claude Code con tus propios archivos. No se necesitan conocimientos técnicos.">
+<link rel="alternate" hreflang="en" href="https://effectiveatlife.com/ai-for-friends/index.html">
+<link rel="alternate" hreflang="es" href="https://effectiveatlife.com/es/ai-for-friends/index.html">
+<link rel="alternate" hreflang="x-default" href="https://effectiveatlife.com/ai-for-friends/index.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C',
+          'os-surface': '#111827',
+          'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF',
+          'os-secondary': '#9CA3AF',
+          'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF',
+          'accent-teal': '#00C2D1',
+          'accent-purple': '#7B2CBF',
+          'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../assets/css/custom.css">
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pilares</a>
+      <a href="../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="index.html" class="text-accent-cyan">Curso</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menú
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Fundamentos de IA</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="module-1/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 Cómo Funcionan los Modelos de IA</a>
+              <a href="module-1/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Ingeniería de Prompts vs. Ingeniería de Contexto</a>
+              <a href="module-1/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Técnicas Prácticas de Prompting</a>
+              <a href="module-1/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Cómo Elegir el Modelo de IA Correcto</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Configura tu Computadora</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPCIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Instalando la Terminal de Windows</a>
+              <a href="module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Instalando VS Code</a>
+              <a href="module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navegando en la Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="module-3/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="module-3/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Guía de Inicio de Claude Code</a>
+              <a href="module-3/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 ¿Qué Es un Proyecto de Claude?</a>
+              <a href="module-3/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creando tu Primer Proyecto</a>
+              <a href="module-3/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Cómo Darle Material de Referencia a tu Proyecto</a>
+              <a href="module-3/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Cómo Mantener Actualizadas tus Instrucciones Permanentes</a>
+              <a href="module-3/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Usa tu Proyecto para Diseñar Más Proyectos</a>
+              <a href="module-3/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Ejemplos Prácticos por Rol</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="module-4/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">04</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Automatiza Flujos de Trabajo con Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="module-4/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Tus Hábitos Diarios con Claude Code</a>
+              <a href="module-4/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Instalando Skills de Anthropic</a>
+              <a href="module-4/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 Relaciones Internacionales: Automatiza el Flujo de Acuerdos</a>
+              <a href="module-4/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 ¿Qué Es un Servidor MCP?</a>
+              <a href="module-4/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Resumen Diario de Correo y Calendario</a>
+              <a href="module-4/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Mantente Informado: un Resumen de Mercado</a>
+              <a href="module-4/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.7 De Fuentes a Contenido</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Inicio del curso</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <a href="../../ai-for-friends/index.html" class="hover:text-accent-cyan transition-colors">EN</a>
+        <span class="text-white/20">/</span>
+        <span class="text-accent-cyan font-semibold">ES</span>
+      </div>
+    </nav>
+    <a href="module-1/index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">
+      Comenzar el Curso
+    </a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="relative pt-40 pb-16 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-accent-cyan/10 blur-[120px] pointer-events-none"></div>
+
+  <div class="relative max-w-3xl mx-auto fade-up">
+    <p class="font-mono text-xs uppercase tracking-widest text-accent-cyan mb-5">AI for Friends</p>
+    <h1 class="font-display font-bold tracking-tight text-4xl sm:text-5xl leading-[1.1] mb-6">
+      Un curso intensivo sin jerga técnica<br class="hidden sm:block"> para usar la IA <span class="text-os-secondary">en el trabajo.</span>
+    </h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-8">
+      Escrito para profesionales de RR. HH., Ingeniería Industrial, Relaciones Internacionales, Legal y Marketing
+      sin ningún conocimiento técnico previo. Cuatro módulos en una sola línea: entiende cómo funciona realmente
+      la IA, aprende a darle instrucciones que funcionen, usa Claude Code con tus propios archivos y configura
+      un Proyecto de Claude, y luego automatiza un flujo de trabajo recurrente.
+    </p>
+    <div class="flex flex-wrap items-center gap-4 font-mono text-xs text-os-tertiary">
+      <span class="px-3 py-1.5 rounded-full border border-white/15">4 módulos</span>
+      <span class="px-3 py-1.5 rounded-full border border-white/15">21 lecciones principales</span>
+      <span class="px-3 py-1.5 rounded-full border border-white/15">~6.5 horas en total</span>
+      <span class="px-3 py-1.5 rounded-full border border-white/15">No requiere programación</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULES ============ -->
+<section class="px-6 pb-16">
+  <div class="max-w-5xl mx-auto grid grid-cols-1 gap-4 md:gap-6">
+
+    <a href="module-1/index.html" class="group fade-up rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-8 flex flex-col md:flex-row md:items-center gap-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]">
+      <div class="font-display font-bold text-4xl text-accent-cyan shrink-0">01</div>
+      <div class="flex-1">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent-cyan/40 text-accent-cyan">OBLIGATORIO</span>
+          <span class="font-mono text-[10px] text-os-tertiary">55–70 min · 4 lecciones</span>
+        </div>
+        <h2 class="font-display font-semibold text-xl mb-2 group-hover:text-accent-cyan transition-colors">Fundamentos de IA</h2>
+        <p class="text-os-secondary text-sm leading-relaxed">
+          Cómo funcionan realmente los modelos de IA, la diferencia entre ingeniería de prompts e ingeniería de
+          contexto, cuatro técnicas que cubren el 90% del uso diario, y qué modelo de Claude usar en cada caso.
+        </p>
+      </div>
+      <div class="font-mono text-xs text-accent-cyan shrink-0">Comenzar &rarr;</div>
+    </a>
+
+    <a href="module-2/index.html" class="group fade-up rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-8 flex flex-col md:flex-row md:items-center gap-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.1s">
+      <div class="font-display font-bold text-4xl text-os-tertiary shrink-0">02</div>
+      <div class="flex-1">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/20 text-os-secondary">CALENTAMIENTO OPCIONAL</span>
+          <span class="font-mono text-[10px] text-os-tertiary">25 min · 3 lecciones · Windows y Mac</span>
+        </div>
+        <h2 class="font-display font-semibold text-xl mb-2 group-hover:text-accent-cyan transition-colors">Configura tu Computadora</h2>
+        <p class="text-os-secondary text-sm leading-relaxed">
+          Un espacio de práctica sin presión para quien nunca ha abierto una terminal o un editor de código. Salta
+          directo al Módulo 3 si ya te sientes cómodo con ambos — nada aquí es un requisito previo.
+        </p>
+      </div>
+      <div class="font-mono text-xs text-accent-cyan shrink-0">Comenzar &rarr;</div>
+    </a>
+
+    <a href="module-3/index.html" class="group fade-up rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-8 flex flex-col md:flex-row md:items-center gap-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.2s">
+      <div class="font-display font-bold text-4xl text-accent-purple shrink-0">03</div>
+      <div class="flex-1">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent-purple/40 text-accent-purple">OBLIGATORIO</span>
+          <span class="font-mono text-[10px] text-os-tertiary">100–110 min · 7 lecciones · Windows y Mac</span>
+        </div>
+        <h2 class="font-display font-semibold text-xl mb-2 group-hover:text-accent-cyan transition-colors">Claude Code — Terminal, Archivos y Proyectos</h2>
+        <p class="text-os-secondary text-sm leading-relaxed">
+          Apunta un asistente de IA a una carpeta con tus documentos reales para que redacte, edite y organice
+          por ti. Instalación completa, un tutorial práctico, y luego un Proyecto de Claude para que también
+          recuerde tus instrucciones permanentes en la web.
+        </p>
+      </div>
+      <div class="font-mono text-xs text-accent-cyan shrink-0">Comenzar &rarr;</div>
+    </a>
+
+    <a href="module-4/index.html" class="group fade-up rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-8 flex flex-col md:flex-row md:items-center gap-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.3s">
+      <div class="font-display font-bold text-4xl text-os-primary shrink-0">04</div>
+      <div class="flex-1">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/40 text-os-primary">OBLIGATORIO</span>
+          <span class="font-mono text-[10px] text-os-tertiary">3–3.5 horas · 7 lecciones</span>
+        </div>
+        <h2 class="font-display font-semibold text-xl mb-2 group-hover:text-accent-cyan transition-colors">Automatiza Flujos de Trabajo con Claude Code</h2>
+        <p class="text-os-secondary text-sm leading-relaxed">
+          Enséñale a Claude Code a leer y escribir archivos nativos de Office, conectarse a sistemas en vivo, y
+          encadenar varios pasos en un flujo de trabajo automatizado y repetible.
+        </p>
+      </div>
+      <div class="font-mono text-xs text-accent-cyan shrink-0">Comenzar &rarr;</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ============ HOW TO USE THIS COURSE ============ -->
+<section class="px-6 pb-24">
+  <div class="max-w-5xl mx-auto rounded-2xl bg-os-surface/60 border border-white/10 p-8">
+    <p class="font-mono text-xs uppercase tracking-widest text-accent-teal mb-4">Cómo Usar Este Curso</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-os-secondary leading-relaxed">
+      <p><strong class="text-os-primary">Sigue el orden.</strong> El Módulo 1 define términos que todas las lecciones posteriores dan por sabidos. No te lo saltes.</p>
+      <p><strong class="text-os-primary">El Módulo 2 es opcional.</strong> Es un calentamiento para la terminal y VS Code. Si ya te sientes cómodo con ambos, salta directo al Módulo 3.</p>
+      <p><strong class="text-os-primary">Practica sobre la marcha.</strong> Cada lección incluye prompts que puedes ejecutar de inmediato en Claude. Abre <span class="font-mono text-os-primary">claude.ai</span> y realmente ejecútalos.</p>
+      <p><strong class="text-os-primary">El Módulo 4 va más allá.</strong> Una vez que te sientas cómodo con Claude Code y los Proyectos de Claude (Módulo 3), automatiza un flujo de trabajo recurrente (Módulo 4).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">No te elevas al nivel de tus metas. Caes al nivel de tus sistemas.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Construido como un sistema, no como un eslogan.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 1.3: Técnicas Prácticas de Prompting — AI for Friends</title>
+<meta name="title" content="Lección 1.3: Técnicas Prácticas de Prompting">
+<meta name="description" content="Cuatro técnicas fundamentales, el framework COSTARS, prompting estilo entrevista, y los hábitos de validación que mantienen confiable cada respuesta.">
+<link rel="alternate" hreflang="en" href="https://effectiveatlife.com/ai-for-friends/module-1/lesson-3.html">
+<link rel="alternate" hreflang="es" href="https://effectiveatlife.com/es/ai-for-friends/module-1/lesson-3.html">
+<link rel="alternate" hreflang="x-default" href="https://effectiveatlife.com/ai-for-friends/module-1/lesson-3.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../../assets/css/custom.css">
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pilares</a>
+      <a href="../../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Curso</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menú
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+                <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Fundamentos de IA</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 Cómo Funcionan los Modelos de IA</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Ingeniería de Prompts vs. Ingeniería de Contexto</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">1.3 Técnicas Prácticas de Prompting</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Cómo Elegir el Modelo de IA Correcto</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Configura tu Computadora</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPCIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Instalando la Terminal de Windows</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Instalando VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navegando en la Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-3/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-3/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Guía de Inicio de Claude Code</a>
+              <a href="../module-3/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 ¿Qué Es un Proyecto de Claude?</a>
+              <a href="../module-3/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creando tu Primer Proyecto</a>
+              <a href="../module-3/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Cómo Darle Material de Referencia a tu Proyecto</a>
+              <a href="../module-3/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Cómo Mantener Actualizadas tus Instrucciones Permanentes</a>
+              <a href="../module-3/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Usa tu Proyecto para Diseñar Más Proyectos</a>
+              <a href="../module-3/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Ejemplos Prácticos por Rol</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="../module-4/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">04</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Automatiza Flujos de Trabajo con Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-4/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Tus Hábitos Diarios con Claude Code</a>
+              <a href="../module-4/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Instalando Skills de Anthropic</a>
+              <a href="../module-4/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 Relaciones Internacionales: Automatiza el Flujo de Acuerdos</a>
+              <a href="../module-4/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 ¿Qué Es un Servidor MCP?</a>
+              <a href="../module-4/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Resumen Diario de Correo y Calendario</a>
+              <a href="../module-4/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Mantente Informado: un Resumen de Mercado</a>
+              <a href="../module-4/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.7 De Fuentes a Contenido</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Inicio del curso</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <a href="../../../ai-for-friends/module-1/lesson-3.html" class="hover:text-accent-cyan transition-colors">EN</a>
+        <span class="text-white/20">/</span>
+        <span class="text-accent-cyan font-semibold">ES</span>
+      </div>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Módulo 1</a>
+  </div>
+</header>
+
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a><span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Módulo 1</a><span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lección 1.3</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Técnicas Prácticas de Prompting</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">Construye tu caja de herramientas diaria de IA — cuatro técnicas fundamentales, un framework estructurado, y los hábitos de validación que mantienen confiables tus resultados.</p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">20–30 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">PASO 3 DE 4</span>
+    </div>
+    <div class="flex flex-wrap gap-2 font-mono text-[10px]">
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Cuatro Técnicas</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. COSTARS</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Estilo Entrevista</a>
+      <a href="#step-4" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">4. Hábitos de Validación</a>
+      <a href="#step-5" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">5. Plan de Acción</a>
+    </div>
+  </div>
+</header>
+
+<article class="px-6 pb-24">
+  <div class="lesson-body max-w-2xl mx-auto text-[16px]">
+
+    <h2 id="step-1"><span class="step-num">1</span>Cuatro Técnicas Fundamentales de Prompting</h2>
+    <p>Cuatro técnicas cubren el 90% de lo que harás con Claude. Cada una resuelve un problema distinto — saber cuál usar es la habilidad.</p>
+
+    <table>
+      <thead><tr><th>Técnica</th><th>Qué Es</th><th>Cuándo Usarla</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Few-Shot</strong></td><td>Muestra 1–3 ejemplos de entrada/salida correctos; la IA imita el patrón</td><td>Extracción de datos, formato, clasificación — donde sea que necesites estructura consistente</td></tr>
+        <tr><td><strong>Role Prompting</strong></td><td>Asígnale a la IA un rol específico para moldear tono, vocabulario, profundidad</td><td>Cuando necesitas experiencia de dominio o un estilo apropiado para la audiencia</td></tr>
+        <tr><td><strong>Chain-of-Thought</strong></td><td>Pídele a la IA que razone paso a paso antes de la respuesta final</td><td>Análisis complejo, decisiones de varios factores, trabajo relevante para la seguridad</td></tr>
+        <tr><td><strong>Meta Prompting</strong></td><td>Pídele a la IA que escriba el prompt por ti</td><td>Cuando sabes lo que quieres pero no cómo pedirlo</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Ejemplo de few-shot (RR. HH.)</h3>
+    <pre>Necesito que extraigas información de candidatos a partir de notas de entrevista.
+
+Entrada de Ejemplo: "Hablé con María el martes. Tiene 8 años en gestión de operaciones. Buena comunicación. Quiere $145K. Disponible en 2 semanas."
+Salida de Ejemplo:
+| Campo | Valor |
+| Nombre | María |
+| Experiencia | 8 años, gestión de operaciones |
+| Fortalezas | Comunicación |
+| Salario | $145K |
+| Disponibilidad | 2 semanas |
+
+Ahora procesa esta entrada:
+"Llamé a James el viernes. 12 años en cadena de suministro, los últimos 4 liderando un equipo de logística. Busca un rango de $160K. Puede empezar el 1 de marzo. Gran pensamiento sistémico."</pre>
+
+    <details>
+      <summary>Ejemplo de few-shot — Legal (riesgo de cláusulas contractuales)</summary>
+      <div><pre>Necesito que clasifiques cláusulas contractuales por nivel de riesgo.
+
+Entrada de Ejemplo: "Cualquiera de las partes puede terminar este acuerdo por cualquier motivo con 15 días de aviso por escrito."
+Salida de Ejemplo: RIESGO ALTO — La ventana corta de terminación por conveniencia genera inestabilidad de ingresos. Acción: Negociar a 90 días y agregar una cuota por terminación anticipada.
+
+Entrada de Ejemplo: "Este acuerdo se renueva automáticamente por periodos sucesivos de un año a menos que cualquiera de las partes dé aviso con 60 días de anticipación."
+Salida de Ejemplo: RIESGO MEDIO — La renovación automática es estándar, y 60 días de aviso es razonable. Acción: Agendar la fecha límite de aviso; no se necesita redline.
+
+Ahora clasifica esto:
+"La responsabilidad total del Proveedor bajo este acuerdo no excederá $10,000 en ninguna circunstancia, incluyendo negligencia grave."</pre></div>
+    </details>
+
+    <details>
+      <summary>Ejemplo de few-shot — Ingeniería Industrial (clasificación de causas de tiempo muerto)</summary>
+      <div><pre>Necesito que clasifiques eventos de tiempo muerto no planificado por categoría de causa raíz.
+
+Entrada de Ejemplo: "La Línea 3 se detuvo 45 min, el cambio de formato tardó más de lo estándar por falta de un accesorio."
+Salida de Ejemplo: DESPERDICIO DE PREPARACIÓN/CAMBIO — Causa raíz: accesorio no preparado con anticipación. Acción: preparar accesorios 15 minutos antes del cambio programado.
+
+Entrada de Ejemplo: "La Línea 1 estuvo 20 min parada, el sensor de la banda transportadora se desalineó de nuevo tras el último mantenimiento preventivo."
+Salida de Ejemplo: EQUIPO/MANTENIMIENTO — Causa raíz: alineación del sensor no verificada durante el mantenimiento preventivo. Acción: agregar verificación de alineación a la lista de mantenimiento preventivo.
+
+Ahora clasifica esto:
+"La Línea 2 estuvo inactiva 30 min esperando la entrega de un componente desde recepción."</pre></div>
+    </details>
+
+    <h3>Role prompting por puesto</h3>
+    <pre>RR. HH.: "Eres un reclutador senior con 10 años de experiencia contratando en roles técnicos y profesionales. Entiendes cómo distinguir habilidades transferibles de las específicas de un rol, y cómo escribir descripciones de puesto inclusivas y precisas. Comunícate en un lenguaje claro y amigable para el candidato."
+
+Ingeniería Industrial: "Eres un ingeniero industrial senior con 10 años de experiencia en optimización de procesos y Lean Six Sigma. Entiendes el takt time, el OEE, el análisis de causa raíz, y los ocho desperdicios. Comunícate en un lenguaje preciso y basado en datos, apropiado para las partes interesadas de operaciones."
+
+Legal: "Eres un abogado senior de contratos comerciales con 12 años de experiencia. Entiendes indemnización, límites de responsabilidad, derechos de terminación, y términos de renovación automática. Señala el riesgo con precisión, cita el lenguaje exacto en cuestión, y comunícate en inglés sencillo para una audiencia de negocios."
+
+Marketing: "Eres un gerente senior de marketing de marca con 10 años de experiencia en redes pagadas, correo electrónico y contenido. Entiendes segmentación de audiencia, métricas de campaña, y voz de marca consistente. Escribe de forma concisa y persuasiva para la audiencia de cada canal."</pre>
+
+    <details>
+      <summary>Ejemplos de chain-of-thought — Legal y Marketing</summary>
+      <div>
+        <p><strong>Legal — escalar el incumplimiento de un proveedor:</strong></p>
+        <pre>Eres un abogado de contratos comerciales. Necesito decidir si escalar formalmente el incumplimiento de contrato de un proveedor.
+
+Piénsalo paso a paso:
+1. El contrato exigía entrega para el 15 de agosto. El proveedor entregó el 10 de septiembre.
+2. El retraso nos costó un estimado de $40,000 en compromisos posteriores incumplidos.
+3. El contrato incluye un periodo de subsanación de 30 días y una cláusula de daños liquidados de $500/día.
+4. Dependemos de este proveedor para otros dos proyectos activos.
+
+Recomienda: ¿enviar un aviso formal de incumplimiento ahora, o abrir primero una resolución informal? Muestra tu razonamiento.</pre>
+        <p><strong>Marketing — asignar un presupuesto publicitario limitado:</strong></p>
+        <pre>Tengo un conflicto de calendario. Dos campañas necesitan el mismo presupuesto publicitario limitado esta semana, y solo puedo financiar una por completo.
+
+Campaña A: Lanzamiento de producto, fecha límite estricta el viernes, ligada a un anuncio de prensa que no se puede mover.
+Campaña B: Promoción de temporada, fecha límite estricta el domingo, históricamente nuestro correo de mayor ingreso del trimestre.
+
+Piénsalo paso a paso: ¿Qué campaña recibe el presupuesto? ¿Qué hago con la otra? ¿Qué debo comunicarle a mi director?</pre>
+      </div>
+    </details>
+
+    <details>
+      <summary>Meta prompting — pídele a la IA que escriba tu prompt</summary>
+      <div>
+        <p>Úsalo cuando sepas QUÉ quieres pero no CÓMO pedirlo:</p>
+        <pre>Eres un experto en escribir prompts de IA.
+Necesito un prompt que haga [describe tu objetivo].
+El resultado debe [describe el formato/estructura].
+La audiencia es [describe quién lo leerá].
+Escribe ese prompt por mí.</pre>
+        <p>Ejemplo:</p>
+        <pre>Eres un experto en escribir prompts de IA.
+Necesito un prompt que haga que una IA extraiga elementos de acción de notas de reunión y los formatee como una lista de verificación con responsables y fechas límite.
+El resultado debe ser una tabla en markdown.
+La audiencia es mi líder de equipo, que necesita revisar rápidamente los compromisos.
+Escribe ese prompt por mí.</pre>
+        <p>No hay penalización por pedirle a la IA que te ayude a hablar con la IA — úsalo con confianza.</p>
+      </div>
+    </details>
+
+    <div class="callout callout-tip"><span class="callout-label">Combina Técnicas para Mejores Resultados</span><p>Empieza cada prompt complejo con Role Prompting para sentar las bases. Agrega ejemplos Few-Shot para el formato. Agrega Chain-of-Thought para el análisis.</p></div>
+
+    <h2 id="step-2"><span class="step-num">2</span>El Framework COSTARS</h2>
+    <p>Cuando una tarea es compleja y multidimensional, una sola oración no basta. COSTARS te da una estructura de siete componentes que elimina las suposiciones en cada dimensión de un prompt.</p>
+
+    <table>
+      <thead><tr><th>Letra</th><th>Componente</th><th>Qué Controla</th></tr></thead>
+      <tbody>
+        <tr><td><strong>C</strong></td><td>Contexto</td><td>Trasfondo — quién eres, la situación, qué ha pasado hasta ahora</td></tr>
+        <tr><td><strong>O</strong></td><td>Objetivo</td><td>Lo que quieres que la IA logre</td></tr>
+        <tr><td><strong>S</strong></td><td>Estilo</td><td>Cómo se lee el resultado: profesional, técnico, basado en datos</td></tr>
+        <tr><td><strong>T</strong></td><td>Tono</td><td>El registro emocional: confiado, empático, urgente</td></tr>
+        <tr><td><strong>A</strong></td><td>Audiencia</td><td>Quién lo leerá — tu director, un nuevo empleado, un cliente</td></tr>
+        <tr><td><strong>R</strong></td><td>Respuesta</td><td>Formato: tabla, viñetas, borrador de correo, lista numerada</td></tr>
+        <tr><td><strong>S</strong></td><td>Alcance</td><td>Lo que la IA NO debe hacer — límites, exclusiones, supuestos</td></tr>
+      </tbody>
+    </table>
+
+    <h3>El prompt de Lanzamiento de IA (copia y completa)</h3>
+    <pre>Contexto: Soy miembro del equipo de [nombre del equipo], enfocado en [áreas clave de tu responsabilidad individual], y me gustaría identificar formas concretas en que la IA puede ayudar a reducir o eliminar tareas mundanas o repetitivas en mi flujo de trabajo, manteniéndome en el asiento estratégico del conductor como validador y dueño de todos los resultados.
+
+Objetivo: Eres un consultor de clase mundial en transformación con IA y mejora de procesos, especializado en ayudar a profesionales de distintas industrias a usar la IA como su socio de pensamiento. Identifica 2-3 oportunidades concretas donde la IA pueda amplificar mis capacidades mientras mantengo total propiedad estratégica.
+
+Estilo: Profesional y técnico, respaldado por ejemplos e indicadores de datos reales de la industria.
+
+Tono: Confiado y pragmático, abordando tanto oportunidades como desafíos de implementación.
+
+Audiencia: Mi gerente y las partes interesadas clave, que necesitan entender tanto las capacidades técnicas que voy a aprovechar, el retorno de inversión práctico, y cómo mantendré la propiedad y supervisión de mi trabajo.
+
+Respuesta: Provee una tabla con una lista priorizada de oportunidades concretas donde la IA pueda amplificar mis capacidades. Para cada una: 1) cómo se ve el apoyo de la IA (entradas, salidas, mi rol de validación), 2) cómo esto cambia mi trabajo y el ahorro de tiempo semanal estimado, 3) un consejo práctico para evitar errores comunes, 4) un primer paso recomendado inmediato, 5) qué seguiría siendo completamente mío.
+
+Alcance: Enfócate en mi rol específico. No recomiendes herramientas que requieran instalación de TI o acceso de administrador. Mantén los ejemplos anclados en mi trabajo profesional del día a día.</pre>
+    <p><strong>Reemplaza antes de enviar:</strong> <code class="font-mono text-os-primary">[nombre del equipo]</code> — p. ej. "Marketing" o "Legal" — y <code class="font-mono text-os-primary">[áreas clave de tu responsabilidad individual]</code> — p. ej. "gestionar campañas de marca" o "revisar contratos con proveedores".</p>
+
+    <div class="callout callout-tip"><span class="callout-label">Este Es tu Lanzamiento de IA</span><p>Ejecuta este prompt con los detalles de tu propio rol — produce una hoja de ruta personalizada de adopción de IA en menos de 2 minutos. Guarda el resultado.</p></div>
+
+    <h2 id="step-3"><span class="step-num">3</span>Prompting Estilo Entrevista para Tareas Exploratorias</h2>
+    <p>A veces no sabes exactamente qué necesitas. El prompting estilo entrevista invierte la dinámica: en lugar de redactar el prompt perfecto, le pides a la IA que te entreviste.</p>
+
+    <pre>Eres un consultor experimentado en transformación con IA, especializado en ayudar a profesionales de distintas industrias a identificar problemas que pueden resolver usando IA. Tienes experiencia profunda en colaboración humano-IA, mejora de procesos, y en entender dónde la IA aporta un valor enorme frente a dónde el juicio humano sigue siendo crítico.
+
+Soy un [TU ROL Y EQUIPO] buscando identificar formas concretas en que la IA puede ayudar a reducir o eliminar tareas mundanas o repetitivas, manteniéndome en el asiento estratégico del conductor como validador y dueño de todos los resultados.
+
+Ayúdame con una evaluación haciéndome preguntas específicas sobre mi trabajo. Empieza haciendo hasta tres preguntas enfocadas (una a la vez) sobre mis roles, responsabilidades y puntos de dolor. Luego haz hasta tres más sobre trabajo repetitivo, sobrecarga de información, y dónde desearía tener mejores conocimientos.
+
+Mi objetivo: identificar 2-3 oportunidades concretas donde la IA pueda amplificar mis capacidades mientras mantengo total propiedad estratégica. Una vez que tengas mis respuestas, produce una tabla con: 1) cómo se vería el apoyo de la IA, 2) ahorro de tiempo, 3) un consejo práctico, 4) un primer paso inmediato, 5) qué seguiría siendo completamente mío.</pre>
+
+    <table>
+      <thead><tr><th>Dimensión</th><th>Prompt COSTARS</th><th>Prompt Estilo Entrevista</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Esfuerzo inicial</strong></td><td>Alto — tú completas todos los detalles</td><td>Bajo — la IA te pregunta a ti</td></tr>
+        <tr><td><strong>Velocidad</strong></td><td>Rápido — un prompt, una respuesta</td><td>Más lento — conversación de 5–10 min</td></tr>
+        <tr><td><strong>Profundidad</strong></td><td>Buena, según lo que proporcionaste</td><td>Excelente — saca a la luz lo que no se te ocurrió mencionar</td></tr>
+        <tr><td><strong>Ideal para</strong></td><td>Tareas donde sabes exactamente qué necesitas</td><td>Tareas exploratorias donde aún estás definiendo el problema</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-info"><span class="callout-label">Empieza Aquí Si Es tu Primera Sesión</span><p>El prompting estilo entrevista requiere menos esfuerzo inicial y produce resultados más personalizados. Ejecútalo antes del prompt COSTARS si no estás seguro de qué pedir.</p></div>
+
+    <h2 id="step-4"><span class="step-num">4</span>Hábitos de Validación Responsable</h2>
+    <p>La IA es poderosa, no infalible — genera texto que suena confiado incluso cuando está equivocado. Cada resultado requiere validación humana antes de convertirse en una decisión, una comunicación, o un entregable.</p>
+
+    <table>
+      <thead><tr><th>Hábito</th><th>Qué Significa</th><th>Cómo Aplicarlo</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1. Verificación de Fuente</strong></td><td>¿De dónde salió esto? ¿Puedes verificarlo?</td><td>¿Puedes rastrearlo a un sistema fuente o dato verificado? Si no, trátalo como no verificado.</td></tr>
+        <tr><td><strong>2. Escaneo de Plausibilidad</strong></td><td>¿Algo contradice lo que ya sabes?</td><td>Lee con tu experiencia de dominio activa — investiga cualquier cosa que se sienta rara.</td></tr>
+        <tr><td><strong>3. Autocrítica</strong></td><td>Haz que la IA cuestione su propio resultado</td><td>Pregunta "Enumera 3 formas en que esto podría estar equivocado o incompleto."</td></tr>
+        <tr><td><strong>4. Etiqueta Borradores</strong></td><td>Marca el estatus del resultado de IA antes de compartirlo</td><td>Siempre etiqueta "borrador", "necesita revisión", o "solo para lluvia de ideas".</td></tr>
+        <tr><td><strong>5. Descompón Tareas Riesgosas</strong></td><td>Divide el trabajo de alto riesgo en subtareas seguras</td><td>Usa Claude para resumir o generar opciones; los humanos son dueños de las conclusiones.</td></tr>
+        <tr><td><strong>6. Escala Casos Límite</strong></td><td>Sabe cuándo detenerte y preguntarle a un experto humano</td><td>¿No estás seguro sobre cumplimiento o implicaciones legales? Pregúntale a tu gerente.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Autocrítica en la práctica</h3>
+    <pre>Tú: "Enumera 3 formas en que este análisis podría estar equivocado o incompleto."
+
+Claude: "1. Clasifiqué a los candidatos solo por años de experiencia. Las habilidades relevantes y el alcance reciente del rol pueden importar más que la antigüedad bruta.
+2. Asumí que cada currículum enumeraba toda la experiencia relevante. Algunos candidatos subestiman roles anteriores, así que puedo haber subestimado su idoneidad.
+3. No consideré las certificaciones requeridas por la descripción del puesto, que podrían descalificar a un candidato mejor clasificado."</pre>
+
+    <table>
+      <thead><tr><th>Seguro para IA</th><th>Mantén Solo Humano</th></tr></thead>
+      <tbody>
+        <tr><td>Resumir notas de reunión</td><td>Tomar decisiones de contratación o despido</td></tr>
+        <tr><td>Redactar correos (revisas antes de enviar)</td><td>Aprobar procedimientos críticos de seguridad</td></tr>
+        <tr><td>Dar formato a datos en tablas</td><td>Hacer representaciones legalmente vinculantes</td></tr>
+        <tr><td>Generar opciones para tu consideración</td><td>Comprometerse a fechas límite en nombre de tu equipo</td></tr>
+        <tr><td>Extraer elementos de acción de transcripciones</td><td>Finalizar decisiones de riesgo de marca o legal</td></tr>
+        <tr><td>Clasificar y priorizar según criterios que tú definas</td><td>Aprobar determinaciones de cumplimiento</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-warning"><span class="callout-label">La Validación Parcial No Es Validación</span><p>"Se ve bien" no es un método de validación. Aplica la Verificación de Fuente y el Escaneo de Plausibilidad a cada resultado de IA antes de compartirlo.</p></div>
+
+    <h2 id="step-5"><span class="step-num">5</span>Tu Plan de Acción</h2>
+    <p>Las técnicas solo se vuelven habilidades a través de la práctica.</p>
+
+    <table>
+      <thead><tr><th>Situación</th><th>Usa Esto</th><th>Por Qué</th></tr></thead>
+      <tbody>
+        <tr><td>Sabes lo que quieres y el formato es claro</td><td>Zero-Shot + COSTARS</td><td>Ejecución rápida y de un solo intento con cobertura completa</td></tr>
+        <tr><td>Necesitas formato consistente entre elementos</td><td>Few-Shot</td><td>La coincidencia de patrones elimina la variación</td></tr>
+        <tr><td>Necesitas experiencia de dominio o un tono específico</td><td>Role Prompting</td><td>Define vocabulario, profundidad, prioridades</td></tr>
+        <tr><td>Una decisión compleja con varios factores</td><td>Chain-of-Thought</td><td>Obliga a un razonamiento visible y auditable</td></tr>
+        <tr><td>No estás seguro de lo que necesitas</td><td>Estilo Entrevista</td><td>La IA reúne contexto mediante preguntas</td></tr>
+        <tr><td>Sabes el objetivo pero no cómo formularlo</td><td>Meta Prompting</td><td>La IA escribe el prompt por ti</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>Para el viernes:</strong> ejecuta hoy el prompt COSTARS del Paso 2, el prompt Estilo Entrevista del Paso 3 mañana, y luego elige la única oportunidad de mayor valor de cualquiera de los dos resultados y dedícale 15 minutos con Claude.</p>
+
+    <div class="callout callout-tip"><span class="callout-label">Construye tu Biblioteca de Prompts</span><p>Guarda los resultados y los prompts que los generaron. En un mes tendrás una biblioteca personal que cubre tu trabajo más común.</p></div>
+
+    <h2 class="!mt-16">Verificación</h2>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Puedes nombrar las cuatro técnicas fundamentales y cuándo usar cada una</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Puedes explicar qué representa cada letra en COSTARS</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Puedes aplicar la autocrítica y nombrar al menos tres hábitos de validación</span></div>
+    </div>
+
+    <h2 class="!mt-10 !text-base">Recursos Relacionados</h2>
+    <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
+      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — Ejecuta cada prompt de esta lección</li>
+      <li><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">Documentación de Claude</a> — Documentación oficial del producto y sus funciones</li>
+      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">Soporte de Claude</a> — Centro de ayuda y soporte de cuenta</li>
+    </ul>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lección completada</p>
+      <p class="text-sm text-os-secondary">Cuatro técnicas, un framework, un método exploratorio, y seis hábitos de validación — todo lo que necesitas para usar Claude efectivamente desde hoy.</p>
+    </div>
+
+  </div>
+</article>
+
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="lesson-2.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 1.2 Prompts vs. Contexto</a>
+    <a href="lesson-4.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">Siguiente: Elegir un Modelo &rarr;</a>
+  </div>
+</nav>
+
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">No te elevas al nivel de tus metas. Caes al nivel de tus sistemas.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Construido como un sistema, no como un eslogan.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
+
+</body>
+</html>

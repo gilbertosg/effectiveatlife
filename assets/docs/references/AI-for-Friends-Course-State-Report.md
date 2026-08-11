@@ -438,6 +438,8 @@ Starting point: a new `M-L_Title.md` file has been (or needs to be) written in `
 6. **Update the module hub:** add the new lesson to its "Lessons in this module" table, and to the Key Concepts glossary if it introduces new core terms.
 7. **Make a conscious choice on the two divergent conventions** flagged in §7 (full vs. trimmed callout CSS block; inline-utility vs. `.toc-pill`-class progress pills; `<ol>` styling method) rather than silently propagating whichever one happened to be in the page you copied from.
 8. **Preview locally before pushing** — `python3 -m http.server 8934` from the repo root, then check the new page and its immediate neighbors (progress pills scroll correctly under the fixed header, callouts render, dropdown highlights the right lesson). Root `CLAUDE.md` notes that `git push` to **any** branch deploys straight to production S3 with `--delete` — there's no staging environment, so this local check is the only gate before go-live.
+
+    **If a Spanish `es/` mirror exists (see §13) when you add a new lesson**, budget for a second translation pass — the new English lesson has no Spanish counterpart yet, and the new lesson also needs to be added to the course-menu dropdown of all 26+26 = 52 files (English and Spanish), not just the English 26.
 9. **A new module means editing every existing HTML file, not just the new module's own pages.** Adding Module 4/5 required updating the course-menu dropdown in all 12 pre-existing files (every Module 1–3 hub and lesson, plus the course index) to list the new module and its lessons — the dropdown is copy-paste-identical shell content, so it drifts out of sync with reality the moment a module is added unless every file is touched. Budget for this — it's the single largest share of the update work, larger than building the new module's own pages.
 10. **The previously-last module needs "un-terminaling."** Before this batch, Module 3 was the last module: its hub had no "Up next" card, and its lesson's closing card read "Course complete" with nav pointing at "Back to Course Home." Adding Module 4 required going back and adding an "Up next" card to Module 3's hub, and changing its lesson's closing card to "Module 3 complete" with nav pointing at "Next: Module 4." The same edit will be needed on Module 5 whenever a Module 6 is added — check the current last module's hub and final lesson specifically, don't assume only new files need touching.
 11. **Recompute the course index's totals by hand.** `ai-for-friends/index.html`'s hero badges (module count, lesson count, total hours) and its "How to Use This Course" tip grid don't update automatically — sum each module's stated lesson count and duration range from its hub page, and add a tip to the grid if the new module needs one (e.g. Modules 4/5 got a combined 4th tip; the grid's column count was changed from 3 to 2 to fit it cleanly as a 2×2 layout).
@@ -548,3 +550,38 @@ The course originally had two adjacent modules that read as an awkward split fro
 - File counts: 26 total HTML files under `ai-for-friends/` (was 27); `module-3/` has 8 files (index + 7 lessons), `module-4/` has 8 files (index + 7 lessons); `module-5/` no longer exists on disk.
 - Full prev/next navigation chain manually verified end to end: 3.1 → 3.2 → 3.3 → 3.4 → 3.5 → 3.6 → 3.7 → Module 4 hub, with no broken or self-referencing links.
 - Browser check (local `python3 -m http.server`, Claude in Chrome) confirmed: the course-menu dropdown's Mac-skip callout, Module 3's merged 7-lesson table, and Module 4's renumbered scheduling step all render correctly with no layout issues, and the dropdown scrolls correctly at a constrained viewport height.
+
+---
+
+## 13. Spanish (`es/`) Mirror (Completed)
+
+The course's i18n scaffolding (the disabled "EN · ES" pill, documented in root `CLAUDE.md`) was activated: all 26 English pages now have a real, complete Spanish translation at `es/ai-for-friends/**` (52 HTML files total on disk for this course). Scope was the course only — `index.html` and `blog/` remain English-only; their nav links from Spanish course pages point at the English originals (no dead links, matches the documented gradual-rollout convention).
+
+**Governing reference**: `assets/docs/references/ES-Translation-Style-Guide.md` — voice (tú), the full EN/ES glossary (what stays in English — Claude Code, Prompt, model names, CLI commands, product/OS UI names — vs. what translates normally — Agent→Agente, Context window→Ventana de contexto, MCP Server→Servidor MCP), the path-rewriting rules per page depth, and the EN/ES pill + hreflang wiring pattern. Read this before touching any `es/` file or adding a new English lesson that needs a Spanish counterpart.
+
+### What changed
+
+- **New tree**: `es/ai-for-friends/index.html` + `module-{1,2,3,4}/index.html` + `module-{1,2,3,4}/lesson-*.html` — 26 new files, same filenames and nesting as the English tree, one `es/` ancestor deeper. HTML structure (classes, ids, Tailwind config, the course-menu-toggle script, all SVGs) copied byte-for-byte from each English source; only text nodes, `<title>`, and meta description/title were translated.
+- **All 26 English files** got two small additions — the previously-inert `ES` pill span became a real link to its Spanish counterpart, and an `<link rel="alternate" hreflang="...">` triple (en/es/x-default, absolute URLs) was added to `<head>`. Nothing else in the English files changed — verified via `git diff --stat` showing an identical `5 ++++-` diff on every one of the 26 files.
+- **Every one of the 52 files'** course-menu dropdown lists all 4 modules/21 lessons in the page's own locale, with correct active-row highlighting per page. Internal course links (sibling lessons, own module hub, other modules) needed **no path change** between locales — only links escaping `ai-for-friends/` (root `index.html`, `blog/`, `assets/css/custom.css`) needed one extra `../` for the added `es/` ancestor.
+- **Structural outliers translated as-is, not normalized**: `module-3/lesson-1.html`'s 0-indexed/purple `.lesson-body--lg` styling and `module-4/lesson-3.html`'s 0-indexed-but-standard-styling were both preserved exactly in their Spanish counterparts. Windows/Mac split content (Module 2's setup lessons, `module-3/lesson-1.html`, `module-4/lesson-3.html`/`-5.html`/`-6.html`/`-7.html`) has both OS paths translated in full on the Spanish side too.
+
+### Execution method (for repeating this on a future new lesson)
+
+One lesson (`module-1/lesson-1.html`) was translated and browser-verified by hand first, as the concrete tone/pattern reference. The remaining 25 files were split by module across 4 parallel agents, each given the style guide, the verified sample, and an explicit file list. **Important operational lesson**: background agents launched with `isolation: "worktree"` get a git worktree checked out from the last *commit* — they cannot see new, still-uncommitted files (the style guide and sample were both uncommitted at launch time). The first attempt at this had to be aborted and relaunched without worktree isolation for exactly this reason. If delegating a similar bulk-translation pass again, either commit the reference files first, or don't use worktree isolation for agents that need to read sibling uncommitted work.
+
+### Verification performed
+
+- File count: `find es/ai-for-friends -name "*.html" | wc -l` → 26.
+- `grep -L '<html lang="es">'` across all 26 Spanish files → empty (all correct).
+- Every Spanish file has exactly 3 `hreflang` occurrences (en/es/x-default).
+- `assets/css/custom.css` link depth verified correct at both nesting levels (`../../` for the Spanish course index, `../../../` for Spanish module/lesson files).
+- `git diff --stat -- ai-for-friends/` shows all 26 English files changed by the identical `5 ++++-` — confirms no unintended content drift.
+- No leftover untranslated nav shell strings (checked for literal "Pillars"/"Course"/"Menu"/"Module N"/"Course Home" — none found; "Blog" is intentionally unchanged, an established Spanish loanword per the style guide).
+- Browser check (local `python3 -m http.server`, Claude in Chrome): Spanish course index, the purple 0-indexed outlier (`module-3/lesson-1.html`), a Windows/Mac split lesson (`module-2/lesson-2.html`), and the terminal module's closing lesson (`module-4/lesson-7.html`, confirming "Curso completado" / "Volver al Inicio del Curso" framing with no fabricated next-module link) — all rendered correctly, EN/ES pill round-trip confirmed working in both directions, course-menu dropdown opens/closes/highlights correctly, no console errors.
+
+### Open items flagged by the translating agents, not yet resolved
+
+- **HR abbreviation**: "RR. HH." was used consistently across all 4 agents/modules (a good sign of convergence), but this wasn't a pre-set glossary entry — worth confirming this is the preferred convention before any further content is added.
+- **Coined terms not in the original glossary**, used consistently within Module 3 but worth reviewing: Diff→"Diff" (kept), Plan Mode→"Modo Plan", Slash Command→"Comando Slash", Project Folder→"Carpeta del Proyecto", Plain Chat→"Chat Simple".
+- **Code-block (`<pre>`) translation boundary**: natural-language content inside `<pre>` blocks (dictation scripts, sample digest output) was translated; literal artifacts (SKILL.md frontmatter, CLI confirmation strings, file paths) were left in English. This wasn't explicit in the style guide before this pass — now worth codifying there if it's the desired convention going forward.

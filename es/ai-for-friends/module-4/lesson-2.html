@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 4.2: Instalando Skills de Anthropic — AI for Friends</title>
+<meta name="title" content="Lección 4.2: Instalando Skills de Anthropic">
+<meta name="description" content="Agrega cuatro skills en una sola instalación y Claude Code deja de tratar los archivos de Word, PDF y PowerPoint como texto plano.">
+<link rel="alternate" hreflang="en" href="https://effectiveatlife.com/ai-for-friends/module-4/lesson-2.html">
+<link rel="alternate" hreflang="es" href="https://effectiveatlife.com/es/ai-for-friends/module-4/lesson-2.html">
+<link rel="alternate" hreflang="x-default" href="https://effectiveatlife.com/ai-for-friends/module-4/lesson-2.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../../assets/css/custom.css">
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pilares</a>
+      <a href="../../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Curso</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menú
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="../module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Fundamentos de IA</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-1/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 Cómo Funcionan los Modelos de IA</a>
+              <a href="../module-1/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Ingeniería de Prompts vs. Ingeniería de Contexto</a>
+              <a href="../module-1/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Técnicas Prácticas de Prompting</a>
+              <a href="../module-1/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Cómo Elegir el Modelo de IA Correcto</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Configura tu Computadora</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPCIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Instalando la Terminal de Windows</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Instalando VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navegando en la Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-3/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-3/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Guía de Inicio de Claude Code</a>
+              <a href="../module-3/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 ¿Qué Es un Proyecto de Claude?</a>
+              <a href="../module-3/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creando tu Primer Proyecto</a>
+              <a href="../module-3/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Cómo Darle Material de Referencia a tu Proyecto</a>
+              <a href="../module-3/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Cómo Mantener Actualizadas tus Instrucciones Permanentes</a>
+              <a href="../module-3/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Usa tu Proyecto para Diseñar Más Proyectos</a>
+              <a href="../module-3/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Ejemplos Prácticos por Rol</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">04</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Automatiza Flujos de Trabajo con Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Tus Hábitos Diarios con Claude Code</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">4.2 Instalando Skills de Anthropic</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 Relaciones Internacionales: Automatiza el Flujo de Acuerdos</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 ¿Qué Es un Servidor MCP?</a>
+              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Resumen Diario de Correo y Calendario</a>
+              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Mantente Informado: un Resumen de Mercado</a>
+              <a href="lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.7 De Fuentes a Contenido</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Inicio del curso</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <a href="../../../ai-for-friends/module-4/lesson-2.html" class="hover:text-accent-cyan transition-colors">EN</a>
+        <span class="text-white/20">/</span>
+        <span class="text-accent-cyan font-semibold">ES</span>
+      </div>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Módulo 4</a>
+  </div>
+</header>
+
+<!-- ============ LESSON HEADER ============ -->
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a>
+      <span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Módulo 4</a>
+      <span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lección 4.2</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Instalando Skills de Anthropic</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">
+      Agrega cuatro skills en una sola instalación y Claude Code deja de tratar los archivos de Word, PDF y PowerPoint como texto plano.
+    </p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">15 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/40 text-os-primary">OBLIGATORIO</span>
+    </div>
+    <div class="flex flex-wrap gap-2 font-mono text-[10px]">
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Qué Agrega un Skill</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Agrega el Marketplace</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Instala los Skills</a>
+      <a href="#step-4" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">4. Verifica</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ LESSON BODY ============ -->
+<article class="px-6 pb-24">
+  <div class="lesson-body max-w-2xl mx-auto text-[16px]">
+
+    <p>Al terminar esta lección, habrás instalado los skills de procesamiento de documentos de Anthropic y confirmado que Claude Code puede construir un archivo .docx real y abrible. De fábrica, Claude Code puede leer un archivo de Word como texto comprimido y le cuesta escribir uno con el formato correcto. Estos skills arreglan ambas cosas.</p>
+    <p>La Lección 4.3 termina con Claude Code armando un documento de Word en constante crecimiento — un resumen de acuerdo, un correo de seguimiento, una respuesta, y tus notas, agregados al mismo archivo cada día sin romper su formato. Eso solo funciona si Claude Code tiene primero el skill correcto instalado. Esta lección es ese paso de configuración de una sola vez.</p>
+
+    <h2 id="step-1"><span class="step-num">1</span>Qué Agrega un Skill que Claude Code Normal No Tiene</h2>
+    <p>Un archivo .docx, .pptx o .xlsx no es texto plano — es un pequeño archivo comprimido con instrucciones de formato. Sin un skill que le indique cómo, Claude Code igual puede abrir uno, pero lo lee como contenido comprimido y difícil de seguir, y escribir uno nuevo desde cero produce un archivo que muchas veces no abre correctamente en Word o PowerPoint.</p>
+
+    <table>
+      <thead><tr><th>Sin el Skill</th><th>Con el Skill Instalado</th></tr></thead>
+      <tbody>
+        <tr><td>Claude Code lee un .docx como contenido crudo y difícil de interpretar</td><td>Claude Code lee el texto, las tablas y los encabezados con su formato real</td></tr>
+        <tr><td>Un archivo de Word nuevo que escribe Claude Code suele tener el formato roto o no abre bien</td><td>Un archivo de Word nuevo abre correctamente, con encabezados, tablas y configuración de página reales</td></tr>
+        <tr><td>Los PDF se pueden leer pero no se puede extraer nada de forma limpia</td><td>El texto y las tablas simples se extraen de forma limpia de un PDF</td></tr>
+        <tr><td>Las presentaciones de PowerPoint casi no sirven como entrada ni como salida</td><td>Claude Code puede leer el contenido de las diapositivas y construir una presentación con el formato correcto</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Un Plugin, Cuatro Skills</span>
+      <p>Anthropic empaqueta docx, pdf, pptx y xlsx juntos como un solo plugin llamado document-skills. Lo instalas una vez y obtienes los cuatro.</p>
+    </div>
+    <div class="callout callout-tip">
+      <span class="callout-label">Esto Es Opcional Hasta Que lo Necesites</span>
+      <p>Si nunca le pides a Claude Code que toque un archivo de Word, PDF o PowerPoint, no necesitas esto. La Lección 4.3 lo necesita para su paso del documento de Word, así que instálalo ahora si piensas hacer esa lección.</p>
+    </div>
+
+    <h2 id="step-2"><span class="step-num">2</span>Agrega el Marketplace de Skills de Anthropic</h2>
+    <p>Claude Code no viene con todos los skills posibles preinstalados. Los skills vienen de un marketplace — un catálogo de plugins instalables — y apuntas Claude Code a uno antes de poder instalar algo de ahí.</p>
+
+    <ol>
+      <li>Abre Claude Code en una terminal (cualquier carpeta de proyecto sirve para este paso).</li>
+      <li>Escribe el comando de abajo y presiona Enter.</li>
+      <li>Espera a que Claude Code confirme que el marketplace se agregó.</li>
+    </ol>
+
+    <pre>/plugin marketplace add anthropics/skills</pre>
+
+    <p>Lo que deberías ver:</p>
+    <pre>Marketplace "anthropic-agent-skills" added.
+Run /plugin install &lt;name&gt;@anthropic-agent-skills to install a plugin from it.</pre>
+
+    <div class="callout callout-note">
+      <span class="callout-label">Paso de Una Sola Vez</span>
+      <p>Solo necesitas agregar un marketplace dado una vez por computadora. Cada sesión futura de Claude Code ya lo conoce.</p>
+    </div>
+    <div class="callout callout-warning">
+      <span class="callout-label">Solo Agrega Marketplaces en los que Confíes</span>
+      <p>Un marketplace es un catálogo de instrucciones que Claude Code va a seguir. anthropics/skills es el repositorio oficial del propio Anthropic. No agregues un marketplace de una fuente desconocida sin consultarlo antes con tu equipo de TI o de seguridad.</p>
+    </div>
+
+    <h2 id="step-3"><span class="step-num">3</span>Instala los Skills de Documentos</h2>
+    <p>Con el marketplace agregado, instalar los skills reales es un comando más.</p>
+
+    <ol>
+      <li>En la misma sesión de Claude Code, escribe el comando de instalación de abajo.</li>
+      <li>Presiona Enter y espera la confirmación.</li>
+      <li>Reinicia Claude Code (cierra y vuelve a abrir tu terminal, o empieza una sesión nueva) para que los skills nuevos se carguen.</li>
+    </ol>
+
+    <pre>/plugin install document-skills@anthropic-agent-skills</pre>
+
+    <p>Lo que deberías ver:</p>
+    <pre>Installed "document-skills" (docx, pdf, pptx, xlsx).
+Restart Claude Code for the new skills to take effect.</pre>
+
+    <div class="callout callout-tip">
+      <span class="callout-label">Revisa Qué Está Instalado</span>
+      <p>Escribe /plugin en cualquier momento para ver una lista de cada marketplace y plugin instalado actualmente en tu computadora.</p>
+    </div>
+
+    <h2 id="step-4"><span class="step-num">4</span>Verifica que Funcionó</h2>
+    <p>La forma más rápida de comprobar que un skill está activo es pedirle a Claude Code que lo use.</p>
+
+    <ol>
+      <li>Abre una carpeta de proyecto en Claude Code (cualquier carpeta — esto es solo una prueba).</li>
+      <li>Escribe el prompt de abajo.</li>
+      <li>Abre el archivo resultante en Word (o un visor que soporte .docx) y confirma que se ve como un documento real, no con el formato roto.</li>
+    </ol>
+
+    <pre>Create a one-page Word document called skill-test.docx with a title,
+"Skill Test," and three bullet points describing what you can now do
+with Word files that you couldn't do before this skill was installed.</pre>
+
+    <p>Lo que deberías ver: aparece un archivo real skill-test.docx en la barra lateral del Explorador de tu carpeta de proyecto. Al abrirlo se ve un título con formato y tres viñetas — no un muro de XML ni texto roto.</p>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Si No Funcionó</span>
+      <p>Confirma que reiniciaste Claude Code después del Paso 3. Los skills se cargan al iniciar la sesión, no a mitad de ella.</p>
+    </div>
+
+    <h2 class="!mt-16">Verificación</h2>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">/plugin marketplace add anthropics/skills se completó sin error</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">/plugin install document-skills@anthropic-agent-skills se completó y reiniciaste Claude Code</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Claude Code construyó un archivo skill-test.docx que abre correctamente con el formato real</span></div>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">¿No Funciona?</span>
+      <p>Si el archivo de prueba no abre o se ve roto, confirma que la instalación se completó en el Paso 3 y que reiniciaste la sesión. Si sigue fallando, corre /doctor y revisa la salida en busca de un error relacionado con el plugin.</p>
+    </div>
+
+    <h2 class="!mt-10 !text-base">Recursos Relacionados</h2>
+    <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
+      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — La plataforma de IA de Claude</li>
+      <li><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">code.claude.com/docs</a> — Documentación oficial</li>
+      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">support.claude.com</a> — Centro de ayuda y solución de problemas</li>
+    </ul>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lección completada</p>
+      <p class="text-sm text-os-secondary">Claude Code ahora puede leer y escribir archivos reales de Word, PDF y PowerPoint — todo lo que necesita el paso del documento de Word de la Lección 4.3. Elimina skill-test.docx una vez que hayas confirmado que abre correctamente; solo estaba ahí para probar que la instalación funcionó.</p>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ PREV/NEXT ============ -->
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="lesson-1.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 4.1 Tus Hábitos Diarios con Claude Code</a>
+    <a href="lesson-3.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
+      Siguiente: Automatiza el Flujo de Acuerdos &rarr;
+    </a>
+  </div>
+</nav>
+
+<!-- ============ FOOTER ============ -->
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">No te elevas al nivel de tus metas. Caes al nivel de tus sistemas.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Construido como un sistema, no como un eslogan.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
+
+</body>
+</html>

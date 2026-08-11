@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 3.6: Usa tu Proyecto para Diseñar Más Proyectos — AI for Friends</title>
+<meta name="title" content="Lección 3.6: Usa tu Proyecto para Diseñar Más Proyectos">
+<meta name="description" content="Una vez que un Proyecto funciona, deja que Claude redacte la configuración del siguiente.">
+<link rel="alternate" hreflang="en" href="https://effectiveatlife.com/ai-for-friends/module-3/lesson-6.html">
+<link rel="alternate" hreflang="es" href="https://effectiveatlife.com/es/ai-for-friends/module-3/lesson-6.html">
+<link rel="alternate" hreflang="x-default" href="https://effectiveatlife.com/ai-for-friends/module-3/lesson-6.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../../assets/css/custom.css">
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pilares</a>
+      <a href="../../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Curso</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menú
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="../module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Fundamentos de IA</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-1/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 Cómo Funcionan los Modelos de IA</a>
+              <a href="../module-1/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Ingeniería de Prompts vs. Ingeniería de Contexto</a>
+              <a href="../module-1/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Técnicas Prácticas de Prompting</a>
+              <a href="../module-1/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Cómo Elegir el Modelo de IA Correcto</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Configura tu Computadora</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPCIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Instalando la Terminal de Windows</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Instalando VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navegando en la Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Guía de Inicio de Claude Code</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 ¿Qué Es un Proyecto de Claude?</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creando tu Primer Proyecto</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Cómo Darle Material de Referencia a tu Proyecto</a>
+              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Cómo Mantener Actualizadas tus Instrucciones Permanentes</a>
+              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">3.6 Usa tu Proyecto para Diseñar Más Proyectos</a>
+              <a href="lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Ejemplos Prácticos por Rol</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="../module-4/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">04</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Automatiza Flujos de Trabajo con Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-4/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Tus Hábitos Diarios con Claude Code</a>
+              <a href="../module-4/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Instalando Skills de Anthropic</a>
+              <a href="../module-4/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 Relaciones Internacionales: Automatiza el Flujo de Acuerdos</a>
+              <a href="../module-4/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 ¿Qué Es un Servidor MCP?</a>
+              <a href="../module-4/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Resumen Diario de Correo y Calendario</a>
+              <a href="../module-4/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Mantente Informado: un Resumen de Mercado</a>
+              <a href="../module-4/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.7 De Fuentes a Contenido</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Inicio del curso</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <a href="../../../ai-for-friends/module-3/lesson-6.html" class="hover:text-accent-cyan transition-colors">EN</a>
+        <span class="text-white/20">/</span>
+        <span class="text-accent-cyan font-semibold">ES</span>
+      </div>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Módulo 3</a>
+  </div>
+</header>
+
+<!-- ============ LESSON HEADER ============ -->
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a>
+      <span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Módulo 3</a>
+      <span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lección 3.6</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Usa tu Proyecto para Diseñar Más Proyectos</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">
+      Una vez que un Proyecto funciona, deja que Claude redacte la configuración del siguiente.
+    </p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">10 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent-teal/40 text-accent-teal">OBLIGATORIO</span>
+    </div>
+    <div class="flex flex-wrap gap-2 font-mono text-[10px]">
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Haz que Claude lo Diseñe</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Elige tu Próximo Proyecto</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ LESSON BODY ============ -->
+<article class="px-6 pb-24">
+  <div class="lesson-body max-w-2xl mx-auto text-[16px]">
+
+    <p>Al terminar esta lección, usarás un Proyecto que ya funciona para diseñar el siguiente. Una vez que tu primer Proyecto funciona bien, no empiezas el segundo desde cero. Le pides a Claude que redacte el nombre, la descripción, las instrucciones y la lista de archivos por ti.</p>
+    <p>Un Proyecto que ya funciona conoce tu rol y tus preferencias de formato. Eso lo convierte en la mejor herramienta para diseñar el siguiente Proyecto, porque sus sugerencias llegan ya ajustadas a tu forma de trabajar. Obtienes una configuración completa lista para pegar, en lugar de un campo de instrucciones en blanco que llenar solo.</p>
+
+    <h2 id="step-1"><span class="step-num">1</span>Haz que Claude Diseñe el Siguiente Proyecto</h2>
+    <p>Tu primer Proyecto en funcionamiento puede diseñar el siguiente. Pídele la configuración completa en un formato listo para pegar, y él redacta el nombre, la descripción, las instrucciones personalizadas y la lista de archivos de referencia por ti.</p>
+
+    <ol>
+      <li>Abre tu Proyecto existente que ya funciona.</li>
+      <li>Inicia un chat nuevo dentro de él.</li>
+      <li>Pega el prompt de abajo, editando el objetivo para que coincida con el Proyecto que quieres.</li>
+      <li>Lee la configuración de cuatro partes que Claude te devuelve.</li>
+    </ol>
+
+    <h3 class="!mt-6 !mb-2 font-display font-semibold text-[1.05rem] text-white">El Prompt de Diseño</h3>
+    <pre>Quiero un nuevo Proyecto que redacte resúmenes semanales de estado
+para mi equipo. Diséñalo por mí. Dame exactamente: (1) el nombre del
+Proyecto, (2) una descripción corta, (3) las instrucciones
+personalizadas, y (4) una lista de documentos de referencia que debería
+subir como conocimiento del Proyecto. Escribe las instrucciones
+personalizadas para que pueda pegarlas directamente en un Proyecto
+nuevo.</pre>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Por Qué Funciona Esto</span>
+      <p>Un Proyecto que ya funciona conoce tu rol y tus preferencias de formato. Sus sugerencias para el siguiente Proyecto llegan ya ajustadas a tu forma de trabajar, así que editas en lugar de partir de la nada.</p>
+    </div>
+    <div class="callout callout-tip">
+      <span class="callout-label">Pregunta Dentro de tu Proyecto Existente</span>
+      <p>Ejecuta este prompt dentro de un Proyecto que ya hayas configurado, no en un chat en blanco. La configuración que redacte coincidirá con el estilo y formato que ya usas.</p>
+    </div>
+
+    <h2 id="step-2"><span class="step-num">2</span>Elige tu Próximo Proyecto</h2>
+    <p>El prompt de diseño funciona mejor con un objetivo claro. Este paso te da cinco ideas de Proyecto ya probadas. Elige una, ejecuta el prompt del Paso 1, y constrúyela usando las lecciones que ya completaste.</p>
+
+    <ol>
+      <li>Elige un Proyecto de la tabla de abajo.</li>
+      <li>Ejecuta el prompt de diseño del Paso 1 con ese Proyecto como objetivo.</li>
+      <li>Crea el Proyecto, siguiendo la <a href="lesson-3.html" class="text-accent-cyan hover:underline">Lección 3.3</a>.</li>
+      <li>Sube los archivos sugeridos, siguiendo la <a href="lesson-4.html" class="text-accent-cyan hover:underline">Lección 3.4</a>.</li>
+    </ol>
+
+    <table>
+      <thead><tr><th>Nombre del Proyecto</th><th>Propósito</th><th>Qué Necesitaría</th></tr></thead>
+      <tbody>
+        <tr><td>Reportero-Semanal</td><td>Convierte tus notas en un resumen semanal de estado</td><td>Tu plantilla de reporte de estado como conocimiento del Proyecto</td></tr>
+        <tr><td>Rastreador-de-Retroalimentación</td><td>Detecta temas recurrentes en la retroalimentación de clientes o empleados</td><td>Una carpeta con notas de retroalimentación pasadas como referencia</td></tr>
+        <tr><td>Buscador-de-Plantillas</td><td>Te ayuda a elegir y llenar la plantilla de documento correcta</td><td>Todas tus plantillas estándar subidas como conocimiento</td></tr>
+        <tr><td>Monitor-de-Plazos</td><td>Señala plazos de presentación o de campaña próximos que le pegues</td><td>Tus reglas permanentes de plazos en las instrucciones personalizadas</td></tr>
+        <tr><td>Resumidor-de-Reuniones</td><td>Convierte notas de reuniones en elementos de acción</td><td>Tu formato preferido de elementos de acción en las instrucciones</td></tr>
+        <tr><td>Rastreador-de-No-Conformidades</td><td>Detecta tipos de defectos recurrentes en los reportes de no conformidad (Ingeniería Industrial)</td><td>Una carpeta con reportes de no conformidad pasados y tu formato de reporte</td></tr>
+        <tr><td>Resumen-de-Cables</td><td>Convierte cables o acuerdos entrantes en un resumen listo para briefing (Relaciones Internacionales)</td><td>Tu plantilla de memorando informativo y tu lista de temas prioritarios</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-tip">
+      <span class="callout-label">Construye Uno, No Cinco</span>
+      <p>Elige un solo Proyecto y configúralo por completo antes de empezar otro. Un Proyecto terminado que usas vale más que cinco a medio construir que no usas.</p>
+    </div>
+
+    <h2 class="!mt-16">Verificación</h2>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Has ejecutado el prompt de diseño y recibido una configuración completa de cuatro partes</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Has creado al menos un Proyecto adicional a partir de esa configuración</span></div>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">¿No Funciona?</span>
+      <p>Si la configuración que devuelve Claude es genérica, ejecuta el prompt dentro de tu Proyecto existente que ya funciona, en lugar de un chat en blanco. El Paso 1 explica por qué eso importa.</p>
+    </div>
+
+    <h2 class="!mt-10 !text-base">Recursos Relacionados</h2>
+    <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
+      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — La plataforma de IA de Claude</li>
+      <li><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">code.claude.com/docs</a> — Documentación oficial</li>
+      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">support.claude.com</a> — Centro de ayuda y solución de problemas</li>
+    </ul>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lección completada</p>
+      <p class="text-sm text-os-secondary">Ahora usas un Proyecto que ya funciona para diseñar el siguiente, convirtiendo una buena configuración en todo un estante de asistentes. Abre tu Proyecto que ya funciona, ejecuta el prompt de diseño para tu próxima idea, y créalo antes de cerrar la pestaña — el impulso es más fácil de mantener mientras el primer Proyecto está fresco.</p>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ PREV/NEXT ============ -->
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="lesson-5.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 3.5 Cómo Mantener Actualizadas tus Instrucciones Permanentes</a>
+    <a href="lesson-7.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
+      Siguiente: Ejemplos Prácticos por Rol &rarr;
+    </a>
+  </div>
+</nav>
+
+<!-- ============ FOOTER ============ -->
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">No te elevas al nivel de tus metas. Caes al nivel de tus sistemas.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Construido como un sistema, no como un eslogan.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
+
+</body>
+</html>

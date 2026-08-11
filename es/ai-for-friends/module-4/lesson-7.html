@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 4.7: De las Fuentes a la Historia — un Flujo de Generación de Contenido — AI for Friends</title>
+<meta name="title" content="Lección 4.7: De las Fuentes a la Historia — un Flujo de Generación de Contenido">
+<meta name="description" content="Reúne artículos, compílalos en un solo resumen, y redacta una pieza de contenido terminada y fiel a tu marca a partir de ellos.">
+<link rel="alternate" hreflang="en" href="https://effectiveatlife.com/ai-for-friends/module-4/lesson-7.html">
+<link rel="alternate" hreflang="es" href="https://effectiveatlife.com/es/ai-for-friends/module-4/lesson-7.html">
+<link rel="alternate" hreflang="x-default" href="https://effectiveatlife.com/ai-for-friends/module-4/lesson-7.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../../assets/css/custom.css">
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pilares</a>
+      <a href="../../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Curso</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menú
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="../module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Fundamentos de IA</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-1/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 Cómo Funcionan los Modelos de IA</a>
+              <a href="../module-1/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Ingeniería de Prompts vs. Ingeniería de Contexto</a>
+              <a href="../module-1/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Técnicas Prácticas de Prompting</a>
+              <a href="../module-1/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Cómo Elegir el Modelo de IA Correcto</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Configura tu Computadora</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPCIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Instalando la Terminal de Windows</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Instalando VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navegando en la Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-3/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-3/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Guía de Inicio de Claude Code</a>
+              <a href="../module-3/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 ¿Qué Es un Proyecto de Claude?</a>
+              <a href="../module-3/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creando tu Primer Proyecto</a>
+              <a href="../module-3/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Cómo Darle Material de Referencia a tu Proyecto</a>
+              <a href="../module-3/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Cómo Mantener Actualizadas tus Instrucciones Permanentes</a>
+              <a href="../module-3/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Usa tu Proyecto para Diseñar Más Proyectos</a>
+              <a href="../module-3/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Ejemplos Prácticos por Rol</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">04</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Automatiza Flujos de Trabajo con Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Tus Hábitos Diarios con Claude Code</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Instalando Skills de Anthropic</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 Relaciones Internacionales: Automatiza el Flujo de Acuerdos</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 ¿Qué Es un Servidor MCP?</a>
+              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Resumen Diario de Correo y Calendario</a>
+              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Mantente Informado: un Resumen de Mercado</a>
+              <a href="lesson-7.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">4.7 De Fuentes a Contenido</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Inicio del curso</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <a href="../../../ai-for-friends/module-4/lesson-7.html" class="hover:text-accent-cyan transition-colors">EN</a>
+        <span class="text-white/20">/</span>
+        <span class="text-accent-cyan font-semibold">ES</span>
+      </div>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Módulo 4</a>
+  </div>
+</header>
+
+<!-- ============ LESSON HEADER ============ -->
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a>
+      <span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Módulo 4</a>
+      <span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lección 4.7</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">De las Fuentes a la Historia: un Flujo de Generación de Contenido</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">
+      Reúne artículos, compílalos en un solo resumen, y redacta una pieza de contenido terminada y fiel a tu marca a partir de ellos.
+    </p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">30–35 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/40 text-os-primary">OBLIGATORIO</span>
+    </div>
+    <div class="flex flex-wrap gap-2 font-mono text-[10px]">
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Dicta el Flujo de Trabajo</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Construye el Plugin</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Instala y Ejecuta</a>
+      <a href="#step-4" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">4. Programación Opcional</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ LESSON BODY ============ -->
+<article class="px-6 pb-24">
+  <div class="lesson-body max-w-2xl mx-auto text-[16px]">
+
+    <p>Esta lección de cierre agrega una etapa más al patrón de las Lecciones 4.3 y 4.6: reunir, compilar, y ahora <strong>producir</strong> — convertir un montón de artículos y noticias en una sola pieza de contenido terminada y fiel a tu marca, lista para publicar. Es la misma forma que ya construiste tres veces, extendida un paso más.</p>
+    <p>La generación de contenido normalmente empieza con investigación: leer una docena de artículos para encontrar los dos o tres que valen la pena escribir. Automatizar ese paso de investigación — y entregarle al redactor un resumen compilado y organizado en lugar de una docena de pestañas abiertas — es donde este flujo de trabajo recupera su tiempo.</p>
+
+    <h2 id="step-1"><span class="step-num">1</span>Dicta el Flujo de Trabajo</h2>
+    <p>Describe todo el pipeline en un solo mensaje — fuentes, contenido objetivo, y tono — el mismo patrón de dictado a configuración usado a lo largo de este módulo.</p>
+
+    <ol>
+      <li>Crea una carpeta nueva, por ejemplo <span class="font-mono text-os-primary">content-pipeline</span>, y ábrela en Claude Code.</li>
+      <li>Adapta y envía el ejemplo de dictado de abajo.</li>
+      <li>Responde cualquier pregunta aclaratoria.</li>
+      <li>Revisa el CLAUDE.md propuesto antes de aprobarlo.</li>
+    </ol>
+
+    <pre>Quiero un flujo de trabajo que convierta artículos de noticias en una
+sola pieza de contenido que pueda publicar. Estas son mis fuentes:
+[lista tus 3-6 sitios de noticias, blogs, o feeds]. Me importan los
+artículos que tocan estos temas: [lista tus temas, por ejemplo,
+tendencias de la industria, cambios regulatorios, movimientos de la
+competencia]. Cuando lleguen artículos nuevos, quiero que se agrupen
+en un solo resumen organizado por tema, no solo una lista plana. Luego
+quiero una pieza de contenido en borrador construida a partir de ese
+resumen — específicamente un [artículo de blog / publicación de
+LinkedIn / sección de newsletter], de aproximadamente [cantidad de
+palabras], en la voz de nuestra marca: [describe tu tono, por ejemplo,
+seguro, directo, sin exageraciones]. Configura esto como un proyecto
+con un README y un CLAUDE.md que capture mis fuentes, temas, formato
+de contenido, y tono, y pregúntame lo que necesites primero.</pre>
+
+    <p>Lo que Claude Code debería producir:</p>
+    <pre>content-pipeline/
+├── README.md              Explica el pipeline
+├── CLAUDE.md               Reglas permanentes: fuentes, temas,
+│                           formato de contenido, voz de marca
+├── data/
+│   └── seen-articles-log.md   Cada artículo ya reunido
+├── digests/
+│   └── theme-digests/     Resúmenes compilados, agrupados por tema
+└── output/
+    └── drafts/            Los borradores de contenido terminados llegan aquí</pre>
+
+    <div class="callout callout-note">
+      <span class="callout-label">Reutiliza un CLAUDE.md de Voz de Marca si Ya Tienes Uno</span>
+      <p>Si ya construiste un Proyecto de Marketing en la Lección 3.7, sus instrucciones personalizadas — voz de marca, palabras prohibidas, tono — describen casi exactamente lo que necesita este CLAUDE.md. Cópialo de ahí en lugar de empezar en blanco.</p>
+    </div>
+
+    <h2 id="step-2"><span class="step-num">2</span>Construye el Plugin de Tres Skills</h2>
+    <p>Tres skills, la misma forma que el patrón de reunir-responder-armar de la Lección 4.3: gather-articles, compile-digest, draft-content. Esto reutiliza la estructura de archivos del plugin de la Lección 4.3, así que este paso se enfoca en los tres skills en sí.</p>
+
+    <ol>
+      <li>Pídele a Claude Code que construya gather-articles, revísalo.</li>
+      <li>Pide compile-digest, revísalo.</li>
+      <li>Pide draft-content, revísalo.</li>
+      <li>Corre los tres comandos en orden contra fuentes reales.</li>
+    </ol>
+
+    <p>Skill 1 — /gather-articles. Qué decirle a Claude Code que construya:</p>
+    <pre>Construye un skill llamado gather-articles. Su trabajo: obtener cada
+fuente listada en CLAUDE.md, extraer el título, la fecha, y un resumen
+corto de cada artículo, y compararlo contra
+data/seen-articles-log.md. Quedarte solo con los artículos que
+todavía no estén registrados y que coincidan con uno de nuestros
+temas en CLAUDE.md. Agregar cada artículo nuevo y dentro del tema al
+registro con su título, fecha, tema, enlace de la fuente, y resumen.</pre>
+
+    <p>Lo que esto produce (skills/gather-articles/SKILL.md, resumido):</p>
+    <pre>---
+name: gather-articles
+description: Fetch each source, extract new on-theme articles, and log
+them. Use when the user says "gather articles" or "/gather-articles."
+---
+
+# gather-articles
+
+1. Read the source list and theme list from CLAUDE.md.
+2. Fetch each source with WebFetch and extract each article's title,
+   date, and a short summary.
+3. Read data/seen-articles-log.md — everything logged so far.
+4. Keep only articles not already logged and matching a theme.
+5. Append each one to the log with title, date, theme, source link,
+   and summary.
+6. Report how many new, on-theme articles were found.</pre>
+
+    <p>Skill 2 — /compile-digest. Qué decirle a Claude Code que construya:</p>
+    <pre>Construye un skill llamado compile-digest. Su trabajo: leer cada
+artículo en data/seen-articles-log.md que todavía no esté compilado,
+agruparlos por tema, y escribir un solo archivo de resumen organizado
+en digests/theme-digests/ con una sección por tema, cada artículo
+listado con su resumen y enlace de la fuente. Marcar cada artículo
+incluido como "compiled" en el registro.</pre>
+
+    <p>Lo que esto produce (skills/compile-digest/SKILL.md, resumido):</p>
+    <pre>---
+name: compile-digest
+description: Group uncompiled logged articles by theme into one
+organized digest file. Use when the user says "compile the digest"
+or "/compile-digest."
+---
+
+# compile-digest
+
+1. Read data/seen-articles-log.md. Find every article marked
+   "gathered" but not yet "compiled."
+2. Group them by theme.
+3. Write digests/theme-digests/&lt;date&gt;-digest.md: one section per
+   theme, each article's title, summary, and source link.
+4. Mark each included article "compiled" in the log.
+5. Report the digest's file path and how many themes it covers.</pre>
+
+    <p>Skill 3 — /draft-content. Qué decirle a Claude Code que construya:</p>
+    <pre>Construye un skill llamado draft-content. Su trabajo: leer el resumen
+más reciente en digests/theme-digests/, y redactar una pieza de
+contenido en el formato y tono descritos en CLAUDE.md — un artículo de
+blog, publicación de LinkedIn, o sección de newsletter, con la
+longitud objetivo también en CLAUDE.md. Hacer referencia a puntos
+específicos del resumen en lugar de escribir de forma genérica. Si el
+formato objetivo es un documento de Word, usar el skill de docx para
+guardarlo en output/drafts/; si no, guardarlo como Markdown.</pre>
+
+    <p>Lo que esto produce (skills/draft-content/SKILL.md, resumido):</p>
+    <pre>---
+name: draft-content
+description: Draft one piece of content from the latest theme digest,
+in the format and voice set in CLAUDE.md. Use when the user says
+"draft the content" or "/draft-content."
+---
+
+# draft-content
+
+1. Read the most recent file in digests/theme-digests/.
+2. Read the target format, length, and brand voice from CLAUDE.md.
+3. Draft the content, referencing specific articles and themes from
+   the digest rather than generic statements.
+4. If the target format is a Word document, use the docx skill to
+   save output/drafts/&lt;date&gt;-draft.docx. Otherwise save
+   output/drafts/&lt;date&gt;-draft.md.
+5. Show the draft and note which digest it was built from.</pre>
+
+    <p>Salida de muestra:</p>
+    <pre>/gather-articles  → "4 artículos nuevos dentro del tema, registrados
+                     en 2 temas."
+/compile-digest   → "Compilado digests/theme-digests/tuesday-digest.md
+                     — 2 temas: Tendencias de la Industria
+                     (3 artículos), Cambios Regulatorios (1 artículo)."
+/draft-content    → "Redactado output/drafts/tuesday-draft.md — un
+                     artículo de blog de 420 palabras que hace
+                     referencia a los 3 artículos de Tendencias de la
+                     Industria y a la actualización regulatoria.
+                     Guardado en la voz de marca según CLAUDE.md."</pre>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Qué Hizo Esto Rápido</span>
+      <p>El borrador no empezó desde una página en blanco — empezó desde un resumen ya organizado y ya agrupado por tema. Ese es todo el valor de dividir reunir, compilar y redactar en tres skills separados en lugar de uno.</p>
+    </div>
+
+    <h2 id="step-3"><span class="step-num">3</span>Instálalo y Ejecútalo</h2>
+    <p>El mismo patrón de instalación que cada plugin de este módulo.</p>
+
+    <ol>
+      <li>Registra el marketplace local e instala el plugin.</li>
+      <li>Reinicia Claude Code.</li>
+      <li>Corre los tres comandos en orden.</li>
+    </ol>
+
+    <pre>/plugin marketplace add /path/to/content-pipeline
+/plugin install content-pipeline@content-pipeline</pre>
+
+    <p>Luego, después de reiniciar Claude Code dentro de la carpeta del proyecto:</p>
+    <pre>/gather-articles
+/compile-digest
+/draft-content</pre>
+
+    <div class="callout callout-tip">
+      <span class="callout-label">Revisa el Borrador Antes de Publicar</span>
+      <p>draft-content produce un primer borrador, no una pieza terminada. Léelo contra los artículos fuente, verifica cualquier dato específico, y edita el tono antes de que vaya a cualquier lugar público — el mismo hábito de validación de la Lección 1.3 aplica aquí.</p>
+    </div>
+
+    <h2 id="step-4"><span class="step-num">4</span>Opcional — Ejecútalo en un Horario</h2>
+    <p>Los pasos de reunir y compilar pueden correr sin supervisión; redactar vale la pena hacerlo con una persona revisando todavía el resultado.</p>
+
+    <p class="!mb-2 text-os-primary font-semibold text-sm">Windows</p>
+    <ol>
+      <li>Antes de continuar, revisa de nuevo la <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lección 4.1, Paso 4</a> — confirma que confías en el resultado de ambos skills programados tras ejecuciones manuales primero.</li>
+      <li>Abre <strong>Windows Task Scheduler</strong> (Programador de tareas).</li>
+      <li>Programa los dos comandos de reunión para correr a diario o semanalmente.</li>
+      <li>Deja /draft-content para correrlo tú mismo a mano, una vez que hayas revisado el resumen.</li>
+    </ol>
+
+    <pre>claude -p "/gather-articles" --cwd "C:\path\to\content-pipeline"
+claude -p "/compile-digest" --cwd "C:\path\to\content-pipeline"</pre>
+
+    <p class="!mb-2 mt-6 text-os-primary font-semibold text-sm">Mac</p>
+    <ol>
+      <li>Antes de continuar, revisa de nuevo la <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lección 4.1, Paso 4</a> — confirma que confías en el resultado de ambos skills programados tras ejecuciones manuales primero.</li>
+      <li>Abre <strong>Terminal</strong> y corre <span class="font-mono text-os-primary">crontab -e</span> (se abre en el editor <span class="font-mono">nano</span> por defecto).</li>
+      <li>Agrega ambas líneas de abajo en una periodicidad diaria o semanal, y guarda (<span class="font-mono">Ctrl+O</span>, Enter, <span class="font-mono">Ctrl+X</span> en nano). Deja /draft-content para correrlo tú mismo a mano, una vez que hayas revisado el resumen.</li>
+    </ol>
+
+    <pre>0 8 * * * claude -p "/gather-articles" --cwd "$HOME/content-pipeline"
+5 8 * * * claude -p "/compile-digest" --cwd "$HOME/content-pipeline"</pre>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Mac: Otorga Full Disk Access</span>
+      <p>Las tareas de cron en macOS suelen fallar en silencio a menos que la app de terminal que las corre tenga Full Disk Access (Acceso completo al disco). Ve a <strong>System Settings &rarr; Privacy &amp; Security &rarr; Full Disk Access</strong> y actívalo para Terminal (o tu app de terminal).</p>
+    </div>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Este Paso Es Opcional</span>
+      <p>Correr los tres comandos tú mismo ya funciona. Automatizar solo los primeros dos, y mantener manual el paso de redacción, es una decisión deliberada — no un requisito.</p>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">Por Qué Dejar la Redacción Manual</span>
+      <p>Automatizar la investigación es de bajo riesgo — en el peor de los casos, se registra un artículo sin relación. Automatizar lo que se publica conlleva más riesgo, así que esta lección mantiene a una persona decidiendo cuándo redactar y revisando antes de que algo salga.</p>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">Cómo Apagarlo</span>
+      <p>En Windows: deshabilita o elimina las dos tareas programadas en Windows Task Scheduler. En Mac: corre <span class="font-mono text-os-primary">crontab -e</span> y elimina o comenta ambas líneas. En cualquier caso, deshabilita también el plugin de la misma forma que se muestra en la Lección 4.3, Paso 6, si quieres detener todo por completo. Tus artículos registrados y resúmenes pasados se quedan exactamente igual en cualquier caso.</p>
+    </div>
+
+    <h2 class="!mt-16">Verificación</h2>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">data/seen-articles-log.md crece con cada ejecución de /gather-articles sin duplicar artículos</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">/compile-digest produce un resumen agrupado por tema, no una lista plana</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">/draft-content produce un borrador que hace referencia a artículos específicos del resumen, en tu voz de marca</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Revisaste el borrador contra los artículos fuente antes de considerarlo terminado</span></div>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">¿No Funciona?</span>
+      <p>Si el borrador se lee de forma genérica en lugar de hacer referencia a artículos reales, confirma que draft-content realmente está leyendo el archivo del resumen, no escribiendo a partir de conocimiento general.</p>
+    </div>
+
+    <h2 class="!mt-10 !text-base">Recursos Relacionados</h2>
+    <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
+      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — La plataforma de IA de Claude</li>
+      <li><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">code.claude.com/docs</a> — Documentación oficial</li>
+      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">support.claude.com</a> — Centro de ayuda y soporte de cuenta</li>
+    </ul>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-purple/15 to-transparent border border-accent-purple/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-purple mb-2">Curso completado</p>
+      <p class="text-sm text-os-secondary">Construiste cuatro automatizaciones reales a través de cuatro fuentes de datos distintas — una página web, correo y calendario, feeds públicos, y artículos de noticias — todas usando la misma forma de reunir-responder-armar. Reunir, compilar, producir. Revisar, redactar, armar. Escanear, registrar, resumir. Ese patrón que se repite es lo que debes llevarte a tu próximo flujo de trabajo, más que cualquier comando específico. Elige una tarea recurrente de tu propio rol que este curso todavía no haya cubierto, y construye un plugin alrededor de ella — y sea lo que sea que construyas, asegúrate de saber cómo apagarlo.</p>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ PREV/NEXT ============ -->
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="lesson-6.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 4.6 Mantente Informado</a>
+    <a href="../index.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
+      Volver al Inicio del Curso &rarr;
+    </a>
+  </div>
+</nav>
+
+<!-- ============ FOOTER ============ -->
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">No te elevas al nivel de tus metas. Caes al nivel de tus sistemas.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Construido como un sistema, no como un eslogan.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
+
+</body>
+</html>

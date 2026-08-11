@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 1: Fundamentos de IA — AI for Friends</title>
+<meta name="title" content="Módulo 1: Fundamentos de IA — AI for Friends">
+<meta name="description" content="Cómo funcionan los modelos de IA, ingeniería de prompts vs. ingeniería de contexto, cuatro técnicas de prompting fundamentales, y cómo elegir el modelo correcto de Claude. No se necesitan conocimientos técnicos.">
+<link rel="alternate" hreflang="en" href="https://effectiveatlife.com/ai-for-friends/module-1/index.html">
+<link rel="alternate" hreflang="es" href="https://effectiveatlife.com/es/ai-for-friends/module-1/index.html">
+<link rel="alternate" hreflang="x-default" href="https://effectiveatlife.com/ai-for-friends/module-1/index.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../../assets/css/custom.css">
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pilares</a>
+      <a href="../../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Curso</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menú
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+                <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Fundamentos de IA</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 Cómo Funcionan los Modelos de IA</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Ingeniería de Prompts vs. Ingeniería de Contexto</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Técnicas Prácticas de Prompting</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Cómo Elegir el Modelo de IA Correcto</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Configura tu Computadora</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPCIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Instalando la Terminal de Windows</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Instalando VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navegando en la Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-3/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-3/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Guía de Inicio de Claude Code</a>
+              <a href="../module-3/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 ¿Qué Es un Proyecto de Claude?</a>
+              <a href="../module-3/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creando tu Primer Proyecto</a>
+              <a href="../module-3/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Cómo Darle Material de Referencia a tu Proyecto</a>
+              <a href="../module-3/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Cómo Mantener Actualizadas tus Instrucciones Permanentes</a>
+              <a href="../module-3/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Usa tu Proyecto para Diseñar Más Proyectos</a>
+              <a href="../module-3/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Ejemplos Prácticos por Rol</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="../module-4/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">04</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Automatiza Flujos de Trabajo con Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-4/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Tus Hábitos Diarios con Claude Code</a>
+              <a href="../module-4/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Instalando Skills de Anthropic</a>
+              <a href="../module-4/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 Relaciones Internacionales: Automatiza el Flujo de Acuerdos</a>
+              <a href="../module-4/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 ¿Qué Es un Servidor MCP?</a>
+              <a href="../module-4/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Resumen Diario de Correo y Calendario</a>
+              <a href="../module-4/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Mantente Informado: un Resumen de Mercado</a>
+              <a href="../module-4/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.7 De Fuentes a Contenido</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Inicio del curso</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <a href="../../../ai-for-friends/module-1/index.html" class="hover:text-accent-cyan transition-colors">EN</a>
+        <span class="text-white/20">/</span>
+        <span class="text-accent-cyan font-semibold">ES</span>
+      </div>
+    </nav>
+    <a href="lesson-1.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">
+      Comenzar el Módulo
+    </a>
+  </div>
+</header>
+
+<!-- ============ HEADER ============ -->
+<header class="relative pt-40 pb-16 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-3xl mx-auto fade-up">
+    <a href="../index.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; AI for Friends</a>
+    <div class="flex items-center gap-2 mt-6 mb-6">
+      <span class="font-display font-bold text-3xl text-accent-cyan">01</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent-cyan/40 text-accent-cyan">OBLIGATORIO</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-4xl sm:text-5xl leading-[1.1] mb-6">Fundamentos de IA</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-8">
+      La fluidez en IA necesaria para usar Claude con confianza y precisión en el trabajo diario — cómo procesan
+      información los modelos de IA, cómo escribir prompts que funcionen al primer intento, y qué modelo usar.
+    </p>
+    <div class="flex flex-wrap items-center gap-4 font-mono text-xs text-os-tertiary mb-10">
+      <span class="px-3 py-1.5 rounded-full border border-white/15">55–70 min</span>
+      <span class="px-3 py-1.5 rounded-full border border-white/15">4 lecciones</span>
+      <span class="px-3 py-1.5 rounded-full border border-white/15">RR. HH. · Ingeniería Industrial · Legal · Marketing</span>
+    </div>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-teal mb-3">Al terminar, podrás</p>
+      <ul class="space-y-2 text-sm text-os-secondary">
+        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Entender cómo funcionan los modelos de IA a nivel conceptual, sin código de por medio</li>
+        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Escribir prompts que produzcan resultados precisos y útiles al primer intento</li>
+        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Elegir el modelo de IA correcto para cada tarea según velocidad, costo y capacidad</li>
+        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Aplicar un hábito de validación a cada salida de IA antes de actuar sobre ella</li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- ============ LESSONS ============ -->
+<section class="px-6 pb-16">
+  <div class="max-w-3xl mx-auto">
+    <p class="font-mono text-xs uppercase tracking-widest text-accent-cyan mb-6 fade-up">Lecciones de este módulo</p>
+    <div class="space-y-4">
+
+      <a href="lesson-1.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]">
+        <span class="font-mono text-sm text-accent-cyan shrink-0">1.1</span>
+        <div class="flex-1">
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Cómo Funcionan los Modelos de IA</h3>
+          <p class="text-os-secondary text-sm mt-1">Qué hace realmente la IA, los términos que verás a diario, y cómo funciona el ciclo del agente.</p>
+        </div>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">10 min</span>
+      </a>
+
+      <a href="lesson-2.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.05s">
+        <span class="font-mono text-sm text-accent-cyan shrink-0">1.2</span>
+        <div class="flex-1">
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Ingeniería de Prompts vs. Ingeniería de Contexto</h3>
+          <p class="text-os-secondary text-sm mt-1">CÓMO le preguntas vs. QUÉ le das a la IA para trabajar, cinco patrones, y la fórmula completa de un prompt.</p>
+        </div>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">15–20 min</span>
+      </a>
+
+      <a href="lesson-3.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.1s">
+        <span class="font-mono text-sm text-accent-cyan shrink-0">1.3</span>
+        <div class="flex-1">
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Técnicas Prácticas de Prompting</h3>
+          <p class="text-os-secondary text-sm mt-1">Cuatro técnicas fundamentales, el framework COSTARS, prompting estilo entrevista, y hábitos de validación.</p>
+        </div>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">20–30 min</span>
+      </a>
+
+      <a href="lesson-4.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.15s">
+        <span class="font-mono text-sm text-accent-cyan shrink-0">1.4</span>
+        <div class="flex-1">
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Cómo Elegir el Modelo de IA Correcto</h3>
+          <p class="text-os-secondary text-sm mt-1">Haiku, Sonnet y Opus — una guía de selección según la tarea y comparaciones reales de costo.</p>
+        </div>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">10 min</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ KEY CONCEPTS ============ -->
+<section class="px-6 pb-16">
+  <div class="max-w-3xl mx-auto glossary">
+    <p class="font-mono text-xs uppercase tracking-widest text-accent-teal mb-2 fade-up">Conceptos Clave</p>
+    <p class="text-os-secondary text-sm leading-relaxed mb-6 fade-up">Términos centrales presentados en este módulo. Se indica la lección donde cada término se define por primera vez, para que puedas volver a la explicación de origen.</p>
+    <div class="rounded-2xl border border-white/10 overflow-hidden fade-up">
+      <table>
+        <thead><tr><th>Término</th><th>Definido En</th><th>Significado en Lenguaje Sencillo</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Prompt</strong></td><td>Lección 1.1</td><td>La instrucción o pregunta que le escribes a la IA.</td></tr>
+          <tr><td><strong>Ventana de Contexto</strong></td><td>Lección 1.1</td><td>La memoria de trabajo de la IA. Cuánto texto puede contener y procesar a la vez.</td></tr>
+          <tr><td><strong>Token</strong></td><td>Lección 1.1</td><td>Un fragmento de texto, aproximadamente tres cuartas partes de una palabra. Los modelos miden su capacidad en tokens.</td></tr>
+          <tr><td><strong>Agente</strong></td><td>Lección 1.1</td><td>Un asistente de IA preconfigurado con instrucciones específicas y, a veces, conexiones en vivo con otras apps.</td></tr>
+          <tr><td><strong>Servidor MCP</strong></td><td>Lección 1.1</td><td>Una conexión en vivo entre tu asistente de IA y otra app o sistema, como tu correo o un rastreador de proyectos.</td></tr>
+          <tr><td><strong>Base de Conocimiento</strong></td><td>Lección 1.1</td><td>Una colección de documentos que le proporcionas a la IA. Los consulta para responder tus preguntas.</td></tr>
+          <tr><td><strong>Alucinación</strong></td><td>Lección 1.2</td><td>Cuando la IA genera información falsa presentada como hecho — ocurre cuando le faltan datos reales y predice en su lugar.</td></tr>
+        </tbody>
+      </table>
+      <details>
+        <summary>Referencia completa de Conceptos Clave</summary>
+        <div>
+          <table>
+            <tbody>
+              <tr><td><strong>LLM</strong></td><td>Lección 1.1</td><td>Modelo de Lenguaje Extenso. El nombre técnico para los modelos de IA que generan texto.</td></tr>
+              <tr><td><strong>Ciclo del Agente</strong></td><td>Lección 1.1</td><td>El ciclo en el que un agente razona, selecciona herramientas, ejecuta acciones, y repite hasta completar la tarea.</td></tr>
+              <tr><td><strong>Ingeniería de Prompts</strong></td><td>Lección 1.2</td><td>Estructurar CÓMO preguntas — la redacción, especificidad y formato de tu instrucción.</td></tr>
+              <tr><td><strong>Ingeniería de Contexto</strong></td><td>Lección 1.2</td><td>Controlar QUÉ información le das a la IA para trabajar antes de que genere una respuesta.</td></tr>
+              <tr><td><strong>Zero-Shot Prompting</strong></td><td>Lecciones 1.2, 1.3</td><td>Preguntar una sola vez con instrucciones claras y sin ejemplos. Funciona para tareas bien definidas.</td></tr>
+              <tr><td><strong>Few-Shot Prompting</strong></td><td>Lecciones 1.2, 1.3</td><td>Proveer ejemplos del resultado deseado antes de pedirle a la IA que produzca uno nuevo. Mejora la consistencia.</td></tr>
+              <tr><td><strong>Role Prompting</strong></td><td>Lecciones 1.2, 1.3</td><td>Asignarle a la IA una identidad (p. ej. "Eres un especialista de RR. HH.") para moldear su tono, vocabulario y prioridades.</td></tr>
+              <tr><td><strong>Chain-of-Thought</strong></td><td>Lecciones 1.2, 1.3</td><td>Pedirle a la IA que razone paso a paso antes de dar una respuesta final. Reduce errores en tareas complejas.</td></tr>
+              <tr><td><strong>Prompting Estilo Entrevista</strong></td><td>Lección 1.3</td><td>Pedirle a la IA que te entreviste para reunir contexto antes de producir un resultado. Útil para tareas complejas o poco claras.</td></tr>
+              <tr><td><strong>Meta Prompting</strong></td><td>Lección 1.3</td><td>Pedirle a la IA que escriba un prompt por ti. Útil cuando conoces el objetivo pero no cómo formular la instrucción.</td></tr>
+              <tr><td><strong>COSTARS</strong></td><td>Lección 1.3</td><td>Un framework para construir prompts complejos: Contexto, Objetivo, Estilo, Tono, Audiencia, Respuesta, Alcance.</td></tr>
+              <tr><td><strong>Claude (Haiku/Sonnet/Opus)</strong></td><td>Lección 1.4</td><td>La familia de modelos de Anthropic, y tu opción predeterminada para casi todo. Haiku es rápido y económico. Sonnet es el equilibrio predeterminado. Opus maneja el razonamiento más complejo.</td></tr>
+              <tr><td><strong>Gemini</strong></td><td>Lección 1.4</td><td>La familia de modelos de Google. La única excepción de nicho que vale la pena conocer: Gemini maneja video y audio de forma nativa, algo que ningún modelo de Claude hace.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUPPORT RESOURCES ============ -->
+<section class="px-6 pb-16">
+  <div class="max-w-3xl mx-auto glossary">
+    <p class="font-mono text-xs uppercase tracking-widest text-accent-cyan mb-4 fade-up">Recursos de Soporte</p>
+    <div class="rounded-2xl border border-white/10 overflow-hidden fade-up">
+      <table>
+        <thead><tr><th>Recurso</th><th>Enlace</th><th>Propósito</th></tr></thead>
+        <tbody>
+          <tr><td>Claude</td><td><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a></td><td>Regístrate y usa Claude en tu navegador</td></tr>
+          <tr><td>Documentación de Claude</td><td><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">code.claude.com/docs</a></td><td>Documentación oficial</td></tr>
+          <tr><td>Soporte de Claude</td><td><a href="https://support.claude.com" class="text-accent-cyan hover:underline">support.claude.com</a></td><td>Centro de ayuda y soporte de cuenta</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEXT MODULE ============ -->
+<section class="px-6 pb-24">
+  <div class="max-w-3xl mx-auto rounded-2xl bg-gradient-to-br from-white/[0.06] to-transparent border border-white/10 p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div>
+      <p class="font-mono text-[11px] uppercase tracking-widest text-os-tertiary mb-2">A continuación</p>
+      <p class="font-display font-semibold">Módulo 2: Configura tu Computadora <span class="text-os-tertiary font-body font-normal text-sm">(opcional)</span></p>
+    </div>
+    <a href="../module-2/index.html" class="px-5 py-3 rounded-lg border border-[#00F0FF]/50 text-[#00F0FF] font-display font-bold text-sm hover:bg-[#00F0FF]/10 hover:shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all whitespace-nowrap">
+      Ver Módulo 2
+    </a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">No te elevas al nivel de tus metas. Caes al nivel de tus sistemas.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Construido como un sistema, no como un eslogan.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 3.3: Creando tu Primer Proyecto — AI for Friends</title>
+<meta name="title" content="Lección 3.3: Creando tu Primer Proyecto">
+<meta name="description" content="Nómbralo, descríbelo y escribe las instrucciones permanentes. Eso es toda la configuración — con plantillas listas para copiar para cinco roles.">
+<link rel="alternate" hreflang="en" href="https://effectiveatlife.com/ai-for-friends/module-3/lesson-3.html">
+<link rel="alternate" hreflang="es" href="https://effectiveatlife.com/es/ai-for-friends/module-3/lesson-3.html">
+<link rel="alternate" hreflang="x-default" href="https://effectiveatlife.com/ai-for-friends/module-3/lesson-3.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../../assets/css/custom.css">
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pilares</a>
+      <a href="../../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Curso</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menú
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="../module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Fundamentos de IA</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-1/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 Cómo Funcionan los Modelos de IA</a>
+              <a href="../module-1/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Ingeniería de Prompts vs. Ingeniería de Contexto</a>
+              <a href="../module-1/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Técnicas Prácticas de Prompting</a>
+              <a href="../module-1/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Cómo Elegir el Modelo de IA Correcto</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Configura tu Computadora</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPCIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Instalando la Terminal de Windows</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Instalando VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navegando en la Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Guía de Inicio de Claude Code</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 ¿Qué Es un Proyecto de Claude?</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">3.3 Creando tu Primer Proyecto</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Cómo Darle Material de Referencia a tu Proyecto</a>
+              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Cómo Mantener Actualizadas tus Instrucciones Permanentes</a>
+              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Usa tu Proyecto para Diseñar Más Proyectos</a>
+              <a href="lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Ejemplos Prácticos por Rol</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="../module-4/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">04</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Automatiza Flujos de Trabajo con Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-4/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Tus Hábitos Diarios con Claude Code</a>
+              <a href="../module-4/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Instalando Skills de Anthropic</a>
+              <a href="../module-4/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 Relaciones Internacionales: Automatiza el Flujo de Acuerdos</a>
+              <a href="../module-4/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 ¿Qué Es un Servidor MCP?</a>
+              <a href="../module-4/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Resumen Diario de Correo y Calendario</a>
+              <a href="../module-4/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Mantente Informado: un Resumen de Mercado</a>
+              <a href="../module-4/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.7 De Fuentes a Contenido</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Inicio del curso</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <a href="../../../ai-for-friends/module-3/lesson-3.html" class="hover:text-accent-cyan transition-colors">EN</a>
+        <span class="text-white/20">/</span>
+        <span class="text-accent-cyan font-semibold">ES</span>
+      </div>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Módulo 3</a>
+  </div>
+</header>
+
+<!-- ============ LESSON HEADER ============ -->
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a>
+      <span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Módulo 3</a>
+      <span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lección 3.3</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Creando tu Primer Proyecto</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">
+      Nómbralo, descríbelo y escribe las instrucciones permanentes. Eso es toda la configuración.
+    </p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">15 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent-teal/40 text-accent-teal">OBLIGATORIO</span>
+    </div>
+    <div class="flex flex-wrap gap-2 font-mono text-[10px]">
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Crea el Proyecto</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Escribe las Instrucciones</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Usa tu Plantilla</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ LESSON BODY ============ -->
+<article class="px-6 pb-24">
+  <div class="lesson-body max-w-2xl mx-auto text-[16px]">
+
+    <p>Al terminar esta lección, tendrás un Proyecto funcionando en claude.ai con un nombre, una descripción, e instrucciones personalizadas escritas para tu rol. Crear un Proyecto es, en esencia, un solo paso importante: escribir las instrucciones permanentes. Todo lo demás es un nombre y una descripción corta.</p>
+    <p>Las instrucciones personalizadas son la descripción de puesto del Proyecto. Le dicen a Claude quién es y cómo comportarse en cada chat dentro del Proyecto. Escríbelas una vez y dejarás de reexplicar tu rol, tus reglas y tu formato preferido.</p>
+
+    <h2 id="step-1"><span class="step-num">1</span>Crea el Proyecto</h2>
+    <p>Crear un Proyecto toma cuatro clics y dos campos de texto cortos. Este paso pone el Proyecto vacío en tu pantalla. Los siguientes dos pasos lo llenan con instrucciones.</p>
+
+    <ol>
+      <li>Ve a <strong>claude.ai</strong> e inicia sesión.</li>
+      <li>Haz clic en <strong>Projects</strong> en la barra lateral izquierda.</li>
+      <li>Haz clic en <strong>Create project</strong>.</li>
+      <li>Ponle un nombre y una descripción corta de su propósito, y guarda.</li>
+    </ol>
+
+    <pre>Projects (barra lateral izquierda)
+└─ Asistente de Reclutamiento ← tu nuevo Proyecto
+
+Asistente de Reclutamiento
+├─ Nombre: Asistente de Reclutamiento
+├─ Descripción: Resúmenes de candidatos y mensajes de contacto
+├─ Instrucciones personalizadas: (vacío — las llenas en el Paso 2)
+└─ Conocimiento del Proyecto: (vacío — agregas archivos en la Lección 3.4)</pre>
+
+    <div class="callout callout-tip">
+      <span class="callout-label">La Descripción Es Para Ti, No Para Claude</span>
+      <p>La descripción te ayuda a reconocer el Proyecto en tu barra lateral. Mantenla en una línea. Claude trabaja a partir de las instrucciones personalizadas, no de la descripción.</p>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">Todo Se Puede Editar Después</span>
+      <p>El nombre, la descripción y las instrucciones se pueden cambiar en cualquier momento. Nada de lo que definas ahora es permanente, así que no le des demasiadas vueltas al primer borrador.</p>
+    </div>
+
+    <h2 id="step-2"><span class="step-num">2</span>Escribe tus Instrucciones Personalizadas</h2>
+    <p>Las instrucciones personalizadas son el único paso que importa. Son las órdenes permanentes del Proyecto, escritas en lenguaje sencillo. Unas buenas instrucciones cubren cuatro cosas: quién es Claude, qué hace, tu contexto, y cómo quieres que se den formato a las respuestas.</p>
+
+    <table>
+      <thead><tr><th>Sección</th><th>Qué Va Ahí</th><th>Por Qué</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Identidad</strong></td><td>"Eres mi asistente de ___."</td><td>Establece el rol de Claude en cada chat del Proyecto</td></tr>
+        <tr><td><strong>Responsabilidades</strong></td><td>Una lista numerada de las tareas permanentes que maneja</td><td>Le dice a Claude qué trabajo esperar y hacer</td></tr>
+        <tr><td><strong>Mi contexto</strong></td><td>Los espacios entre corchetes sobre tu rol, tus sistemas y tus preferencias</td><td>Fundamenta las respuestas de Claude en tu situación real</td></tr>
+        <tr><td><strong>Formato de salida</strong></td><td>Tu formato predeterminado (tabla, viñetas) y cualquier campo obligatorio</td><td>Produce respuestas que puedes usar sin reformatear</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Este Es el Único Paso Que Importa</span>
+      <p>El nombre y la descripción toman segundos. Las instrucciones personalizadas hacen el trabajo real. El tiempo invertido aquí se recupera en cada chat que ejecutes dentro del Proyecto.</p>
+    </div>
+    <div class="callout callout-tip">
+      <span class="callout-label">Escribe en Oraciones Simples</span>
+      <p>Escribe tus instrucciones como si le dieras instrucciones a un nuevo asistente en su primer día. Las oraciones simples funcionan mejor que las palabras clave o las abreviaturas.</p>
+    </div>
+
+    <h2 id="step-3"><span class="step-num">3</span>Usa la Plantilla de tu Rol</h2>
+    <p>No escribas las instrucciones desde cero. Copia la plantilla que corresponde a tu rol, llena los espacios entre corchetes con tus propios detalles, y pégala en el campo de instrucciones personalizadas. La plantilla de RR. HH. está abajo. Las plantillas de Legal, Marketing, Ingeniería Industrial y Relaciones Internacionales están en la sección expandible debajo de ella.</p>
+
+    <h3>Plantilla de RR. HH.</h3>
+    <pre>Eres mi asistente de reclutamiento. Tus responsabilidades:
+
+1. Resumir los perfiles de candidatos a partir de notas de entrevista en tablas estructuradas.
+2. Redactar mensajes de contacto para candidatos pasivos (profesionales, concisos, cálidos).
+3. Dar seguimiento al estado del pipeline cuando comparta actualizaciones.
+4. Dar formato a todos los resultados en tablas de markdown limpias o viñetas.
+
+Mi contexto:
+- Recluto para: [tipos de puesto, p. ej., ingenieros, ventas, operaciones]
+- Mi ATS (sistema de seguimiento de candidatos) es: [nombre del sistema]
+- Mis gerentes de contratación son: [nombres, si es útil]
+
+Cuando comparta notas de entrevista, extrae siempre: Nombre, Puesto al
+que Aplica, Años de Experiencia, Fortalezas Clave, Inquietudes,
+Expectativas de Compensación, Disponibilidad, y Próximos Pasos.</pre>
+
+    <details>
+      <summary>Plantillas para Legal, Marketing, Ingeniería Industrial y Relaciones Internacionales</summary>
+      <div>
+        <h3>Para Legal</h3>
+        <pre>Eres mi asistente de revisión de contratos. Tus responsabilidades:
+
+1. Revisar el lenguaje del contrato cláusula por cláusula y resumir cada una en español sencillo.
+2. Señalar el riesgo en estilo redline — cita el lenguaje exacto, nunca lo parafrasees.
+3. Dar seguimiento a los términos definidos y anotar cuando se usen de forma inconsistente.
+4. Categorizar cada hallazgo como riesgo Alto, Medio o Bajo.
+
+Mi contexto:
+- Reviso: [tipos de contrato, p. ej., NDA, acuerdos con proveedores, MSA]
+- Mi jurisdicción es: [estado / país]
+- Mis posiciones estándar son: [p. ej., el límite de responsabilidad debe ser &gt;= al valor del contrato]
+
+Siempre señala: lenguaje de indemnización, límites de responsabilidad, términos
+de renovación automática, y cláusulas de terminación por conveniencia. Presenta
+los hallazgos en una tabla con columnas: Referencia de Cláusula, Resumen en
+Español Sencillo, Nivel de Riesgo.</pre>
+
+        <h3>Para Marketing</h3>
+        <pre>Eres mi asistente de contenido. Tus responsabilidades:
+
+1. Reutilizar una pieza de contenido en variantes para cada uno de mis canales.
+2. Aplicar la voz de marca en todo lo que redactes.
+3. Resumir el desempeño de campañas y destacar qué impulsó los resultados.
+4. Producir una sección claramente etiquetada por canal al reutilizar contenido.
+
+Mi contexto:
+- Mi voz de marca es: [descripción, p. ej., segura, directa, nunca exagerada]
+- Mis canales principales son: [lista, p. ej., LinkedIn, correo, blog, X]
+- Palabras que nunca usamos: [palabras prohibidas, p. ej., sinergia, revolucionario, disruptivo]
+
+Al reutilizar contenido, mantén el mensaje central idéntico entre canales pero
+adapta la extensión y el tono a cada uno. Respeta siempre la lista de palabras
+prohibidas.</pre>
+
+        <h3>Para Ingeniería Industrial</h3>
+        <pre>Eres mi asistente de procesos y órdenes de trabajo. Tus responsabilidades:
+
+1. Resumir los reportes de no conformidad en una tabla de causa raíz y disposición.
+2. Redactar instrucciones de trabajo estándar a partir de mis notas preliminares, en nuestro formato requerido.
+3. Dar seguimiento al estado de las órdenes de trabajo cuando comparta actualizaciones desde piso.
+4. Señalar cualquier tipo de defecto recurrente en tres o más reportes del mismo periodo.
+
+Mi contexto:
+- Mis centros de trabajo son: [lista, p. ej., ensamble final, maquinado, inspección]
+- Mi formato de trabajo estándar requiere: [secciones, p. ej., propósito, herramientas, pasos, notas de seguridad]
+- Mi umbral de escalamiento es: [p. ej., cualquier no conformidad ligada a una pieza crítica de seguridad]
+
+Cuando comparta reportes de no conformidad, extrae siempre: Número de Parte,
+Orden de Trabajo, Descripción del Defecto, Causa Raíz (si se conoce),
+Disposición, y Bandera de Recurrencia.</pre>
+
+        <h3>Para Relaciones Internacionales</h3>
+        <pre>Eres mi asistente de asuntos diplomáticos. Tus responsabilidades:
+
+1. Redactar memorandos informativos sobre acuerdos, reuniones o delegaciones entrantes en nuestro formato interno.
+2. Señalar cualquier asunto relevante para los temas prioritarios del canciller o ministro de asuntos exteriores.
+3. Dar seguimiento a los acuerdos y su estado de seguimiento conforme comparta actualizaciones.
+4. Verificar la correspondencia en borrador contra nuestras convenciones de protocolo y tono antes de que la envíe.
+
+Mi contexto:
+- Mis temas prioritarios son: [lista, p. ej., comercio, cooperación en seguridad, intercambio cultural]
+- Mis ministerios o misiones contraparte son: [lista]
+- Mi formato interno para memorandos informativos requiere: [secciones, p. ej., resumen, actores involucrados, posición recomendada]
+
+Cuando comparta un nuevo acuerdo o cable, extrae siempre: Título, Contraparte,
+Fecha, Resumen, Relevancia para los Temas Prioritarios, y Siguiente Paso
+Recomendado.</pre>
+      </div>
+    </details>
+
+    <div class="callout callout-tip">
+      <span class="callout-label">Llena Cada Corchete</span>
+      <p>Un corchete en blanco es una regla que Claude no puede seguir. Reemplaza cada [espacio entre corchetes] con tus propios detalles antes de guardar.</p>
+    </div>
+    <div class="callout callout-warning">
+      <span class="callout-label">No Pegues Detalles Sensibles en las Instrucciones</span>
+      <p>Los tipos de puesto y los nombres de sistemas están bien en tus instrucciones. Los expedientes de empleados y los identificadores de clientes no. La Lección 3.4 cubre a qué puede y no puede acceder un Proyecto, y qué verificar antes de subir material sensible.</p>
+    </div>
+
+    <h2 class="!mt-16">Verificación</h2>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Existe un Proyecto en tu barra lateral de claude.ai</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">El Proyecto tiene un nombre y una descripción de una línea</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Tus instrucciones personalizadas están guardadas con cada corchete lleno</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Un chat nuevo dentro del Proyecto sigue las instrucciones sin que las repitas</span></div>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">¿No Funciona?</span>
+      <p>Si un chat nuevo ignora tus instrucciones, confirma que las guardaste en el campo de instrucciones personalizadas, no en un mensaje. La plantilla del Paso 3 muestra exactamente qué va ahí.</p>
+    </div>
+
+    <h2 class="!mt-10 !text-base">Recursos Relacionados</h2>
+    <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
+      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — La plataforma de IA de Claude</li>
+      <li><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">Documentación de Claude</a> — Documentación oficial</li>
+      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">Soporte de Claude</a> — Centro de ayuda y solución de problemas</li>
+    </ul>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lección completada</p>
+      <p class="text-sm text-os-secondary">Ahora tienes un Proyecto funcionando con instrucciones personalizadas escritas para tu rol, y un chat nuevo dentro de él ya las sigue. Pruébalo ahora mismo — abre un chat nuevo y pídele que haga una de sus responsabilidades listadas.</p>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ PREV/NEXT ============ -->
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="lesson-2.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 3.2 ¿Qué Es un Proyecto de Claude?</a>
+    <a href="lesson-4.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
+      Siguiente: Cómo Darle Material de Referencia a tu Proyecto &rarr;
+    </a>
+  </div>
+</nav>
+
+<!-- ============ FOOTER ============ -->
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">No te elevas al nivel de tus metas. Caes al nivel de tus sistemas.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Construido como un sistema, no como un eslogan.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
+
+</body>
+</html>

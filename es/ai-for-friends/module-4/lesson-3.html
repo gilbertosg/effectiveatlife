@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 4.3: Relaciones Internacionales — Automatiza el Flujo de Acuerdos — AI for Friends</title>
+<meta name="title" content="Lección 4.3: Relaciones Internacionales — Automatiza el Flujo de Acuerdos">
+<meta name="description" content="Revisa un sitio web a diario, redacta el seguimiento, y arma un documento de Word en constante crecimiento — como un solo plugin empaquetado de Claude Code.">
+<link rel="alternate" hreflang="en" href="https://effectiveatlife.com/ai-for-friends/module-4/lesson-3.html">
+<link rel="alternate" hreflang="es" href="https://effectiveatlife.com/es/ai-for-friends/module-4/lesson-3.html">
+<link rel="alternate" hreflang="x-default" href="https://effectiveatlife.com/ai-for-friends/module-4/lesson-3.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../../assets/css/custom.css">
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pilares</a>
+      <a href="../../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Curso</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menú
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="../module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Fundamentos de IA</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-1/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 Cómo Funcionan los Modelos de IA</a>
+              <a href="../module-1/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Ingeniería de Prompts vs. Ingeniería de Contexto</a>
+              <a href="../module-1/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Técnicas Prácticas de Prompting</a>
+              <a href="../module-1/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Cómo Elegir el Modelo de IA Correcto</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Configura tu Computadora</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPCIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Instalando la Terminal de Windows</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Instalando VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navegando en la Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-3/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-3/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Guía de Inicio de Claude Code</a>
+              <a href="../module-3/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 ¿Qué Es un Proyecto de Claude?</a>
+              <a href="../module-3/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creando tu Primer Proyecto</a>
+              <a href="../module-3/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Cómo Darle Material de Referencia a tu Proyecto</a>
+              <a href="../module-3/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Cómo Mantener Actualizadas tus Instrucciones Permanentes</a>
+              <a href="../module-3/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Usa tu Proyecto para Diseñar Más Proyectos</a>
+              <a href="../module-3/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Ejemplos Prácticos por Rol</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">04</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Automatiza Flujos de Trabajo con Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Tus Hábitos Diarios con Claude Code</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Instalando Skills de Anthropic</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">4.3 Relaciones Internacionales: Automatiza el Flujo de Acuerdos</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 ¿Qué Es un Servidor MCP?</a>
+              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Resumen Diario de Correo y Calendario</a>
+              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Mantente Informado: un Resumen de Mercado</a>
+              <a href="lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.7 De Fuentes a Contenido</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Inicio del curso</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <a href="../../../ai-for-friends/module-4/lesson-3.html" class="hover:text-accent-cyan transition-colors">EN</a>
+        <span class="text-white/20">/</span>
+        <span class="text-accent-cyan font-semibold">ES</span>
+      </div>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Módulo 4</a>
+  </div>
+</header>
+
+<!-- ============ LESSON HEADER ============ -->
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a>
+      <span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Módulo 4</a>
+      <span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lección 4.3</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Relaciones Internacionales: Automatiza el Flujo de Acuerdos</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">
+      Revisa un sitio web a diario, redacta el seguimiento, y arma un documento de Word en constante crecimiento — como un solo plugin empaquetado de Claude Code.
+    </p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">40–55 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/40 text-os-primary">OBLIGATORIO</span>
+    </div>
+    <div class="flex flex-wrap gap-2 font-mono text-[10px]">
+      <a href="#step-0" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">0. El Mecanismo</a>
+      <a href="#step-1" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">1. Crea el Proyecto</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Dicta el Flujo de Trabajo</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Construye los Tres Skills</a>
+      <a href="#step-4" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">4. Instala y Ejecuta</a>
+      <a href="#step-5" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">5. Automatización Opcional</a>
+      <a href="#step-6" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">6. Cómo Apagarlo</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ LESSON BODY ============ -->
+<article class="px-6 pb-24">
+  <div class="lesson-body max-w-2xl mx-auto text-[16px]">
+
+    <p>Esta lección construye desde cero una automatización real y completa: la tarea diaria de un oficial de escritorio de revisar una página web gubernamental o ministerial en busca de acuerdos nuevos, redactar la correspondencia de seguimiento, y mantener un solo documento de Word, en constante crecimiento, actualizado con cada acuerdo, respuesta y nota personal. Al final, esa tarea diaria es un plugin — un conjunto empaquetado de tres skills encadenados — que activas con un solo comando en lugar de hacer cinco cosas a mano.</p>
+    <p>La tarea en sí no es complicada. Es repetitiva: el mismo sitio web, el mismo filtro, el mismo patrón de correo, el mismo documento, todos los días. Esa repetición es exactamente para lo que sirve un plugin de Claude Code. Describes el trabajo una vez, Claude Code construye la estructura, y cada ejecución futura es un comando en lugar de una explicación nueva.</p>
+    <p>Si Relaciones Internacionales no es tu rol, el mecanismo del Paso 0 y los Pasos 3 a 6 son en lo que debes enfocarte — las versiones para Legal, Marketing, RR. HH. e Ingeniería Industrial de esta misma forma aparecen en las Lecciones 4.5 a 4.7.</p>
+
+    <h2 id="step-0"><span class="step-num">0</span>Cómo Funcionan Realmente un Skill y un Plugin</h2>
+    <p>Antes de que empiece la historia de Relaciones Internacionales, aquí está el mecanismo que hay debajo, explicado sin rodeos y sin el ejemplo de ningún rol en particular — las mismas dos ideas que reutiliza cada lección posterior de este módulo.</p>
+
+    <p><strong>Un skill</strong> es una capacidad empaquetada: un conjunto de instrucciones, escritas para Claude en lugar de para un lector humano, guardadas en un archivo llamado SKILL.md, que Claude sigue cada vez que lo activas — normalmente con un comando /nombre. Un skill hace bien un solo trabajo: revisar una página web, redactar un correo, construir un documento.</p>
+    <p><strong>Un plugin</strong> es varios skills relacionados empaquetados juntos bajo un solo nombre, para que puedan compartir reglas y ser instalados, actualizados o eliminados como una sola unidad. Un plugin es el contenedor correcto exactamente cuando dos o más skills necesitan coincidir en los mismos datos — la misma lista de prioridades, el mismo formato de archivo, el mismo tono — y no quieres mantener ese acuerdo a mano en tres lugares separados.</p>
+
+    <table>
+      <thead><tr><th>Si tu trabajo es...</th><th>Recurre a...</th></tr></thead>
+      <tbody>
+        <tr><td>Una sola tarea independiente y bien definida</td><td>Un solo skill (ve la Lección 4.5 para un ejemplo que se queda en exactamente un skill)</td></tr>
+        <tr><td>Varios pasos que comparten reglas, datos o un formato de archivo</td><td>Un plugin que agrupa varios skills (esta lección construye uno con tres)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Este Es Todo el Mecanismo</span>
+      <p>Todo lo demás en esta lección — el árbol de archivos, los comandos, el marketplace — es esta misma idea, hecha concreta para un trabajo específico: revisar acuerdos para el escritorio de un ministerio de relaciones exteriores.</p>
+    </div>
+
+    <h2 id="step-1"><span class="step-num">1</span>Crea el Proyecto de Claude Code</h2>
+    <p>Cada plugin de Claude Code necesita una carpeta base. Este paso la crea y confirma que Claude Code está corriendo dentro de ella antes de describir nada.</p>
+
+    <ol>
+      <li>Crea una carpeta nueva, por ejemplo <span class="font-mono text-os-primary">ir-agreements-tracker</span>, en cualquier lugar donde guardes tus archivos de trabajo (no dentro de una carpeta con material confidencial sin relación — ve la advertencia de confidencialidad del Módulo 3).</li>
+      <li>Abre esa carpeta en VS Code (<strong>File &rarr; Open Folder</strong>, o clic derecho en la carpeta &rarr; <strong>Open with Code</strong>).</li>
+      <li>Abre la terminal integrada (<strong>Ctrl + `</strong>).</li>
+      <li>Escribe <span class="font-mono text-os-primary">claude</span> y presiona Enter para iniciar Claude Code dentro de esta carpeta.</li>
+    </ol>
+
+    <pre>ir-agreements-tracker/  ← vacía, recién creada
+
+El prompt de Claude Code está activo en la terminal, limitado a esta carpeta únicamente.</pre>
+
+    <div class="callout callout-note">
+      <span class="callout-label">Una Carpeta Vacía Es el Punto de Partida Correcto</span>
+      <p>Todavía no estás construyendo nada a mano. El Paso 2 le entrega a Claude Code una descripción completa y deja que construya la estructura.</p>
+    </div>
+    <div class="callout callout-warning">
+      <span class="callout-label">Limita el Alcance de Esta Carpeta con Cuidado</span>
+      <p>Claude Code solo puede ver los archivos dentro de la carpeta que abres. Mantén esta carpeta dedicada a este único flujo de trabajo — no abras una carpeta superior que también contenga material sensible sin relación.</p>
+    </div>
+
+    <h2 id="step-2"><span class="step-num">2</span>Dicta el Flujo de Trabajo Completo</h2>
+    <p>Esta es la parte inusual de esta lección: en lugar de escribir una instrucción corta e iterar, describes todo el flujo de trabajo en un solo mensaje largo, como si estuvieras orientando a un nuevo colaborador en su primer día. Puedes escribir esto, o decirlo usando el dictado integrado de tu sistema operativo (Windows: presiona <strong>Win + H</strong> para empezar a dictar en cualquier cuadro de texto, incluido el prompt de Claude Code. Mac: abre <strong>System Settings &rarr; Keyboard &rarr; Dictation</strong> para activarlo, y luego presiona <strong>Fn</strong> dos veces para empezar a dictar) — de cualquier forma, las palabras llegan al prompt como texto plano y Claude Code las trata exactamente igual.</p>
+
+    <ol>
+      <li>Lee el ejemplo de dictado de abajo. Está escrito para decirse en voz alta — oraciones simples, sin sintaxis especial.</li>
+      <li>Adáptalo con tu sitio web real, tus temas prioritarios reales, y tus áreas responsables reales.</li>
+      <li>Pega o dicta todo como un solo mensaje a Claude Code.</li>
+      <li>Deja que Claude Code haga preguntas aclaratorias si las tiene, y respóndelas.</li>
+      <li>Revisa lo que propone antes de aprobarlo — Claude Code debería describir una estructura de carpetas, un README.md y un CLAUDE.md para tu aprobación, no escribir archivos en silencio.</li>
+    </ol>
+
+    <h3>Ejemplo de Dictado (Adáptalo y Léelo en Voz Alta, o Pégalo Tal Cual)</h3>
+    <pre>Quiero configurar un proyecto que automatice algo que hago todos los
+días a mano. Cada mañana entro a la página pública de acuerdos del
+Ministerio de Comercio y reviso si se publicaron acuerdos nuevos desde
+ayer. Solo me interesan los acuerdos que tocan cooperación comercial,
+seguridad regional, o intercambio cultural — esos son los temas que
+sigue de cerca el canciller y el jefe de gabinete. Todo lo demás en esa
+página lo ignoro.
+
+Cuando encuentro un acuerdo nuevo que importa, necesito que pasen tres
+cosas. Primero, necesito un resumen corto del acuerdo, incluyendo su
+título, la contraparte, la fecha, y por qué importa para nuestros temas
+prioritarios. Segundo, necesito un correo de seguimiento redactado para
+enviar al área aquí responsable de ese tema — para acuerdos comerciales
+es nuestra Dirección de Comercio, para seguridad es nuestra Oficina de
+Cooperación en Seguridad, y para intercambio cultural es nuestra área
+de Asuntos Culturales. Tercero, una vez que envié ese seguimiento y
+recibí una respuesta del área responsable, necesito que todo eso — el
+resumen del acuerdo, el correo de seguimiento, su respuesta, y
+cualquier nota que yo agregue — quede capturado en un solo documento de
+Word que siga creciendo con el tiempo, con cada acuerdo nuevo agregado
+en un formato consistente arriba de todo, sin sobrescribir nunca lo que
+ya está ahí.
+
+Quiero que esto se configure como una estructura de carpetas apropiada
+con un README que explique qué hace y un CLAUDE.md con nuestras reglas
+permanentes — nuestros temas prioritarios, nuestro mapeo de áreas
+responsables, y nuestro tono para los correos de seguimiento. Voy a
+construir los pasos reales como un plugin después de que esto esté
+listo. Por ahora, solo deja la carpeta, el README, y el CLAUDE.md en su
+lugar, y pregúntame lo que necesites saber primero.</pre>
+
+    <h3>Lo Que Claude Code Debería Producir</h3>
+    <pre>ir-agreements-tracker/
+├── README.md              Explica el flujo de trabajo en lenguaje simple
+├── CLAUDE.md               Reglas permanentes: temas prioritarios, áreas
+│                           responsables, tono de correo, formato de documento
+├── data/
+│   └── agreements-log.md  Registro continuo de cada acuerdo visto hasta ahora
+├── drafts/                Los correos de seguimiento llegan aquí antes de enviarse
+└── output/
+    └── agreements-record.docx   El documento de Word en constante crecimiento (se crea en el Paso 3)</pre>
+
+    <p>Un CLAUDE.md de muestra que Claude Code podría redactar:</p>
+    <pre># IR Agreements Tracker — Reglas Permanentes
+
+## Temas Prioritarios
+Solo están dentro del alcance los acuerdos que tocan estos temas:
+- Cooperación comercial
+- Seguridad regional
+- Intercambio cultural
+
+## Áreas Responsables
+- Cooperación comercial → Dirección de Comercio
+- Seguridad regional → Oficina de Cooperación en Seguridad
+- Intercambio cultural → Área de Asuntos Culturales
+
+## Tono del Correo de Seguimiento
+Profesional, conciso y cordial. Siempre confirma la recepción y nombra
+el siguiente paso o documento específico que se solicita.
+
+## Formato del Documento
+El acuerdo más nuevo siempre va arriba de todo en agreements-record.docx.
+Nunca sobrescribas ni elimines una entrada anterior.</pre>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Por Qué Dictar Todo de una Vez</span>
+      <p>Claude Code toma mejores decisiones estructurales con todo el contexto por adelantado que con cinco instrucciones cortas y desconectadas. Este es el mismo principio de "adelantar el contexto" de la Lección 1.2, aplicado a la configuración de un proyecto en lugar de a un solo prompt.</p>
+    </div>
+    <div class="callout callout-tip">
+      <span class="callout-label">Revisa Antes de Aprobar</span>
+      <p>Claude Code debería describir este plan y preguntar antes de crear archivos (este es el comportamiento del Modo de Planificación del Módulo 3). Lee el CLAUDE.md propuesto con cuidado — se convierte en la regla permanente para cada ejecución futura.</p>
+    </div>
+
+    <h2 id="step-3"><span class="step-num">3</span>Construye los Tres Skills del Plugin</h2>
+    <p>Con la carpeta, el README y el CLAUDE.md en su lugar, el siguiente paso empaqueta el flujo de trabajo real — la idea del plugin del Paso 0, hecha concreta.</p>
+
+    <h3>Por Qué un Plugin, No Tres Comandos Sueltos</h3>
+    <p>Tres comandos independientes y aislados — uno para revisar el sitio web, uno para redactar un correo, uno para construir el documento — podrían funcionar cada uno por su cuenta. Pero comparten la misma lista de temas prioritarios, el mismo mapeo de áreas responsables, y el mismo formato de documento. Tres comandos sueltos significan escribir (y luego corregir) esa lógica compartida tres veces, y nada impide que un cuarto comando, sin relación, se apropie de un nombre parecido después. Un plugin agrupa los tres bajo un solo nombre, con las reglas compartidas escritas una vez y referenciadas por los tres — exactamente la regla de la tabla del Paso 0.</p>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Un Solo Espacio de Nombres, Reglas Compartidas</span>
+      <p>Los tres skills de un plugin viven bajo un solo nombre de plugin y todos pueden leer el mismo archivo de reglas. Corrige una regla una vez — el mapeo de áreas responsables, por ejemplo — y cada skill que depende de ella queda corregido al mismo tiempo.</p>
+    </div>
+
+    <h3>La Estructura de Archivos Objetivo</h3>
+    <pre>ir-agreements-tracker/
+├── .claude-plugin/
+│   └── marketplace.json         Entrada de catálogo que apunta al plugin de abajo
+├── plugins/
+│   └── agreements-tracker/
+│       ├── .claude-plugin/
+│       │   └── plugin.json      Manifiesto del plugin: nombre, versión, descripción
+│       ├── skills/
+│       │   ├── check-agreements/
+│       │   │   └── SKILL.md     /check-agreements
+│       │   ├── draft-followup/
+│       │   │   └── SKILL.md     /draft-followup
+│       │   └── build-agreement-doc/
+│       │       └── SKILL.md     /build-agreement-doc
+│       ├── rules/
+│       │   └── priority-topics.md    Compartido: temas + áreas responsables
+│       └── references/
+│           └── document-template.md  Compartido: el formato requerido del documento de Word
+├── data/
+│   └── agreements-log.md
+├── drafts/
+└── output/
+    └── agreements-record.docx</pre>
+
+    <h3>Skill 1 — /check-agreements</h3>
+    <p>Qué decirle a Claude Code que construya:</p>
+    <pre>Construye un skill llamado check-agreements. Su trabajo: obtener la
+página de acuerdos del Ministerio de Comercio que te doy, comparar lo
+que aparece contra data/agreements-log.md (el archivo de hoy, si ya
+existe alguno, es el historial), e identificar solo los acuerdos que
+todavía no están en ese registro. De esos acuerdos nuevos, quédate
+solo con los que coincidan con nuestros temas prioritarios en
+rules/priority-topics.md. Para cada uno que califique, agrégalo a
+data/agreements-log.md con su título, contraparte, fecha, y qué tema
+prioritario coincide. Repórtame una lista corta de lo nuevo y dentro
+del alcance — no necesita pasar nada más todavía.</pre>
+
+    <p>Lo que esto produce (skills/check-agreements/SKILL.md, resumido):</p>
+    <pre>---
+name: check-agreements
+description: Fetch the Ministry of Trade agreements page, compare
+against the existing log, and append any new agreement matching a
+priority topic. Use when the user says "check for new agreements" or
+"/check-agreements."
+---
+
+# check-agreements
+
+1. Fetch the agreements page at the URL on file in CLAUDE.md.
+2. Read data/agreements-log.md. If it doesn't exist, treat every
+   agreement on the page as new — this is the first run.
+3. Compare the page's list of agreements against the log. Identify only
+   titles not already present.
+4. For each new agreement, check it against rules/priority-topics.md.
+   Discard any that match no priority topic.
+5. Append each qualifying agreement to data/agreements-log.md: title,
+   counterpart, date, matched topic, and a status of "new."
+6. Report the list of newly logged agreements to the user.</pre>
+
+    <h3>Skill 2 — /draft-followup</h3>
+    <p>Qué decirle a Claude Code que construya:</p>
+    <pre>Construye un skill llamado draft-followup. Su trabajo: revisar
+data/agreements-log.md en busca de cualquier acuerdo todavía marcado
+como "new," y para cada uno, redactar un correo de seguimiento al área
+responsable listada en rules/priority-topics.md para el tema de ese
+acuerdo. Guardar cada borrador como un archivo en drafts/, nombrado
+según el acuerdo. Usar el tono descrito en CLAUDE.md. Una vez que se
+guarde un borrador, actualizar el estado de ese acuerdo en el registro
+a "follow-up drafted."</pre>
+
+    <p>Lo que esto produce (skills/draft-followup/SKILL.md, resumido):</p>
+    <pre>---
+name: draft-followup
+description: Draft a follow-up email to the accountable department for
+every agreement in the log still marked "new." Use when the user says
+"draft follow-ups" or "/draft-followup."
+---
+
+# draft-followup
+
+1. Read data/agreements-log.md. Find every entry marked "new."
+2. For each one, look up its topic's accountable department in
+   rules/priority-topics.md.
+3. Draft a short email to that department: confirm receipt of the
+   agreement, summarize it in two sentences, and request their
+   position or next-step input. Use the tone rule in CLAUDE.md.
+4. Save the draft to drafts/&lt;agreement-title&gt;-followup.md.
+5. Update that agreement's status in the log to "follow-up drafted."
+6. Report which drafts were created and where to find them.</pre>
+
+    <h3>Skill 3 — /build-agreement-doc</h3>
+    <p>Qué decirle a Claude Code que construya:</p>
+    <pre>Construye un skill llamado build-agreement-doc. Su trabajo: usar el
+skill de docx para crear output/agreements-record.docx si todavía no
+existe, o actualizarlo si ya existe. Para cada acuerdo en
+data/agreements-log.md marcado como "follow-up drafted" o más
+adelante, agregar una entrada arriba de TODO el documento — nunca
+sobrescribir entradas anteriores — siguiendo el formato en
+references/document-template.md. Cada entrada debe combinar: el
+resumen del acuerdo, el texto del correo de seguimiento desde drafts/,
+la respuesta del área (yo la pegaré cuando la tenga), y cualquier nota
+que agregue. Si todavía no existe respuesta ni notas para un acuerdo,
+dejar esas secciones marcadas como "pending" en lugar de omitir la
+entrada.</pre>
+
+    <p>Lo que esto produce (skills/build-agreement-doc/SKILL.md, resumido):</p>
+    <pre>---
+name: build-agreement-doc
+description: Create or update output/agreements-record.docx, adding
+each ready agreement at the top in the standard format. Use when the
+user says "update the agreement doc," "add this response," or
+"/build-agreement-doc."
+---
+
+# build-agreement-doc
+
+1. If output/agreements-record.docx doesn't exist, create it using the
+   docx skill, following references/document-template.md.
+2. For every agreement in data/agreements-log.md marked "follow-up
+   drafted" or later, check whether it already has an entry in the
+   document.
+3. For any agreement missing an entry, insert one at the very top of
+   the document (never remove or reorder existing entries):
+   - Agreement summary (title, counterpart, date, topic)
+   - The follow-up email sent (from drafts/)
+   - The department's response, if the user has provided it — else
+     "Response: pending"
+   - The user's own notes, if any — else omit that section
+4. Save the document and confirm it still opens correctly.
+5. Report which entries were added or updated.</pre>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Construye un Skill a la Vez</span>
+      <p>Pídele a Claude Code un SKILL.md, revísalo, y luego pide el siguiente. Construir los tres en una sola instrucción hace que los errores sean más difíciles de detectar y corregir.</p>
+    </div>
+    <div class="callout callout-tip">
+      <span class="callout-label">${CLAUDE_PLUGIN_ROOT} Mantiene las Rutas Portátiles</span>
+      <p>Dentro de un skill, las referencias a archivos de rules/ o references/ usan la variable ${CLAUDE_PLUGIN_ROOT} en lugar de una ruta fija, para que el plugin siga funcionando si alguna vez se mueve o se comparte. Claude Code maneja esto automáticamente cuando escribe los archivos del skill — no necesitas escribir esa sintaxis tú mismo.</p>
+    </div>
+
+    <h2 id="step-4"><span class="step-num">4</span>Instala y Ejecuta tu Plugin</h2>
+    <p>Un plugin sentado en una carpeta todavía no está activo. Este paso lo registra ante Claude Code como un marketplace local y lo instala, para que los tres comandos estén disponibles en cada sesión futura.</p>
+
+    <ol>
+      <li>Registra el marketplace local, apuntando a la carpeta de tu proyecto.</li>
+      <li>Instala el plugin desde ese marketplace.</li>
+      <li>Reinicia Claude Code.</li>
+      <li>Corre los tres comandos en orden.</li>
+    </ol>
+
+    <pre>/plugin marketplace add /path/to/ir-agreements-tracker
+/plugin install agreements-tracker@ir-agreements-tracker</pre>
+
+    <p>Luego, después de reiniciar Claude Code dentro de la carpeta del proyecto:</p>
+    <pre>/check-agreements
+/draft-followup
+/build-agreement-doc</pre>
+
+    <p>Lo que deberías ver:</p>
+    <pre>/check-agreements    → "1 acuerdo nuevo dentro del alcance: Acuerdo Marco
+                        de Cooperación Logística Transfronteriza
+                        (Cooperación comercial). Registrado."
+
+/draft-followup      → "1 correo de seguimiento redactado:
+                        drafts/framework-agreement-on-cross-border-
+                        logistics-cooperation-followup.md, dirigido a
+                        la Dirección de Comercio."
+
+/build-agreement-doc  → "1 entrada agregada a output/agreements-record.docx.
+                        Respuesta: pendiente — pégala cuando llegue y
+                        vuelve a correr este skill para completarla."</pre>
+
+    <div class="callout callout-note">
+      <span class="callout-label">Pegar la Respuesta Después</span>
+      <p>Cuando el área responsable responda, pega su respuesta en tu siguiente mensaje y pídele a Claude Code que vuelva a correr /build-agreement-doc — actualiza la línea "Respuesta: pendiente" de esa entrada en lugar de crear un duplicado.</p>
+    </div>
+    <div class="callout callout-info">
+      <span class="callout-label">Este Es Todo el Punto</span>
+      <p>Una sola instrucción — /check-agreements — reemplaza abrir un navegador, revisar una página web a simple vista, y recordar qué ya viste ayer. Tres comandos reemplazan toda una rutina matutina.</p>
+    </div>
+
+    <h2 id="step-5"><span class="step-num">5</span>Opcional — Ejecútalo Automáticamente Todos los Días</h2>
+    <p>Todo lo de arriba todavía requiere que escribas tres comandos cada mañana. Este paso es completamente opcional: hace que /check-agreements se ejecute solo, en un horario, sin nadie frente al teclado.</p>
+
+    <p class="!mb-2 text-os-primary font-semibold text-sm">Windows</p>
+    <ol>
+      <li>Antes de continuar, revisa de nuevo la <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lección 4.1, Paso 4</a> — este paso asume que ya corriste /check-agreements a mano varias veces y confías en su resultado.</li>
+      <li>Abre <strong>Windows Task Scheduler</strong> (Programador de tareas) (búscalo en el menú de Inicio).</li>
+      <li>Crea una tarea básica nueva, configurada para correr a diario a la hora que elijas.</li>
+      <li>Configura la acción para correr un programa, apuntando al comando claude con el skill check-agreements como instrucción.</li>
+      <li>Guarda la tarea.</li>
+    </ol>
+
+    <pre>claude -p "/check-agreements" --cwd "C:\path\to\ir-agreements-tracker"</pre>
+
+    <p class="!mb-2 mt-6 text-os-primary font-semibold text-sm">Mac</p>
+    <ol>
+      <li>Antes de continuar, revisa de nuevo la <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lección 4.1, Paso 4</a> — este paso asume que ya corriste /check-agreements a mano varias veces y confías en su resultado.</li>
+      <li>Abre <strong>Terminal</strong> y corre <span class="font-mono text-os-primary">crontab -e</span> para abrir tu horario personal (se abre en el editor <span class="font-mono">nano</span> por defecto).</li>
+      <li>Agrega una línea para una ejecución diaria a las 8am, y guarda (<span class="font-mono">Ctrl+O</span>, Enter, <span class="font-mono">Ctrl+X</span> en nano):</li>
+    </ol>
+
+    <pre>0 8 * * * claude -p "/check-agreements" --cwd "$HOME/ir-agreements-tracker"</pre>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Mac: Otorga Full Disk Access</span>
+      <p>Las tareas de cron en macOS suelen fallar en silencio a menos que la app de terminal que las corre tenga Full Disk Access (Acceso completo al disco). Ve a <strong>System Settings &rarr; Privacy &amp; Security &rarr; Full Disk Access</strong> y actívalo para Terminal (o tu app de terminal) — esta es la razón más común por la que una tarea programada de Mac parece no hacer nada.</p>
+    </div>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Este Paso Es Opcional</span>
+      <p>Todo en los Pasos 1 a 4 ya funciona escribiendo tú mismo tres comandos. Solo configura esto si específicamente quieres que la revisión corra sin supervisión, sin que nadie la esté viendo.</p>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">Redactar y el Documento Todavía te Necesitan</span>
+      <p>Programar solo automatiza el paso de revisión. Redactar un seguimiento y agregar una respuesta al documento todavía necesitan que una persona revise el resultado y pegue las respuestas reales — ese criterio sigue siendo tuyo, por diseño.</p>
+    </div>
+
+    <h2 id="step-6"><span class="step-num">6</span>Cómo Apagarlo</h2>
+    <p>Todo lo que puedas encender en esta lección, deberías saber cómo apagarlo — la cuarta regla de la Lección 4.1, Paso 4.</p>
+
+    <ol>
+      <li>Para detener el horario diario en <strong>Windows</strong>: abre <strong>Windows Task Scheduler</strong>, busca la tarea por el nombre que le diste en el Paso 5, y ya sea <strong>Disable</strong> (la conserva, deja de correr) o <strong>Delete</strong> (la elimina por completo).</li>
+      <li>Para detener el horario diario en <strong>Mac</strong>: corre <span class="font-mono text-os-primary">crontab -e</span>, elimina o comenta (agrega un <span class="font-mono">#</span> al inicio de) la línea que agregaste, y guarda.</li>
+      <li>Para deshabilitar el plugin sin eliminar tus archivos: abre tu archivo de configuración de Claude Code y busca la entrada enabledPlugins de agreements-tracker; ponla en false. Los comandos del plugin dejan de aparecer, pero nada en la carpeta de tu proyecto se toca.</li>
+      <li>Para eliminar el plugin por completo: pídele a Claude Code, "desinstala el plugin agreements-tracker," y revisa lo que propone antes de confirmar — debería eliminar el registro del plugin, no tus carpetas data/, drafts/ u output/.</li>
+    </ol>
+
+    <div class="callout callout-note">
+      <span class="callout-label">Tus Datos Sobreviven al Plugin</span>
+      <p>agreements-log.md y agreements-record.docx son archivos normales en la carpeta de tu proyecto. Deshabilitar o eliminar el plugin no los borra — solo los comandos /check-agreements, /draft-followup y /build-agreement-doc dejan de funcionar hasta que lo reinstales.</p>
+    </div>
+
+    <h2 class="!mt-16">Verificación</h2>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Puedes decir la diferencia entre un skill y un plugin en una oración cada uno</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">La carpeta del proyecto tiene un README.md y un CLAUDE.md que describen el flujo de trabajo y las reglas permanentes</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">El plugin tiene tres skills — check-agreements, draft-followup, build-agreement-doc — cada uno con su propio SKILL.md</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">El plugin está instalado y los tres comandos corren sin error</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">output/agreements-record.docx abre correctamente y muestra el acuerdo más nuevo arriba de todo</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Sabes dónde deshabilitarías la tarea programada y el plugin si lo necesitaras</span></div>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">¿No Funciona?</span>
+      <p>Si un comando no se reconoce, confirma que el plugin se instaló correctamente en el Paso 4 y que reiniciaste Claude Code después. Si el documento de Word no se construye, confirma que los skills de documentos de la Lección 4.2 están instalados.</p>
+    </div>
+
+    <h2 class="!mt-10 !text-base">Recursos Relacionados</h2>
+    <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
+      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — La plataforma de IA de Claude</li>
+      <li><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">code.claude.com/docs</a> — Documentación oficial</li>
+      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">support.claude.com</a> — Centro de ayuda y solución de problemas</li>
+    </ul>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lección completada</p>
+      <p class="text-sm text-os-secondary">Construiste un flujo de trabajo automatizado real, de tres pasos, desde una descripción en lenguaje simple hasta un plugin funcionando, y sabes cómo apagarlo. Esta forma — revisar algo nuevo, redactar una respuesta, armar un documento — se reutiliza para cualquier rol: cambia el sitio web por un expediente judicial, la página de prensa de un competidor, o el portal de cumplimiento de un proveedor.</p>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ PREV/NEXT ============ -->
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="lesson-2.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 4.2 Instalando Skills de Anthropic</a>
+    <a href="lesson-4.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
+      Siguiente: ¿Qué Es un Servidor MCP? &rarr;
+    </a>
+  </div>
+</nav>
+
+<!-- ============ FOOTER ============ -->
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">No te elevas al nivel de tus metas. Caes al nivel de tus sistemas.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Construido como un sistema, no como un eslogan.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
+
+</body>
+</html>

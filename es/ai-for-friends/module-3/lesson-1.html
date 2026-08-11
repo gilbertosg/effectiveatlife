@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 3.1: Guía de Inicio de Claude Code — AI for Friends</title>
+<meta name="title" content="Lección 3.1: Guía de Inicio de Claude Code">
+<meta name="description" content="Para profesionales de Marketing, RR. HH., Legal, Ingeniería Industrial y Relaciones Internacionales — Windows o Mac + VS Code + Claude Pro. Pon Claude Code en marcha y haz que trabaje por ti, en unos 35–45 minutos.">
+<link rel="alternate" hreflang="en" href="https://effectiveatlife.com/ai-for-friends/module-3/lesson-1.html">
+<link rel="alternate" hreflang="es" href="https://effectiveatlife.com/es/ai-for-friends/module-3/lesson-1.html">
+<link rel="alternate" hreflang="x-default" href="https://effectiveatlife.com/ai-for-friends/module-3/lesson-1.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../../assets/css/custom.css">
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pilares</a>
+      <a href="../../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Curso</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menú
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="../module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Fundamentos de IA</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-1/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 Cómo Funcionan los Modelos de IA</a>
+              <a href="../module-1/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Ingeniería de Prompts vs. Ingeniería de Contexto</a>
+              <a href="../module-1/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Técnicas Prácticas de Prompting</a>
+              <a href="../module-1/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Cómo Elegir el Modelo de IA Correcto</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Configura tu Computadora</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPCIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Instalando la Terminal de Windows</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Instalando VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navegando en la Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">3.1 Guía de Inicio de Claude Code</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 ¿Qué Es un Proyecto de Claude?</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creando tu Primer Proyecto</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Cómo Darle Material de Referencia a tu Proyecto</a>
+              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Cómo Mantener Actualizadas tus Instrucciones Permanentes</a>
+              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Usa tu Proyecto para Diseñar Más Proyectos</a>
+              <a href="lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Ejemplos Prácticos por Rol</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="../module-4/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">04</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Automatiza Flujos de Trabajo con Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-4/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Tus Hábitos Diarios con Claude Code</a>
+              <a href="../module-4/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Instalando Skills de Anthropic</a>
+              <a href="../module-4/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 Relaciones Internacionales: Automatiza el Flujo de Acuerdos</a>
+              <a href="../module-4/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 ¿Qué Es un Servidor MCP?</a>
+              <a href="../module-4/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Resumen Diario de Correo y Calendario</a>
+              <a href="../module-4/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Mantente Informado: un Resumen de Mercado</a>
+              <a href="../module-4/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.7 De Fuentes a Contenido</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Inicio del curso</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <a href="../../../ai-for-friends/module-3/lesson-1.html" class="hover:text-accent-cyan transition-colors">EN</a>
+        <span class="text-white/20">/</span>
+        <span class="text-accent-cyan font-semibold">ES</span>
+      </div>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Módulo 3</a>
+  </div>
+</header>
+
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a><span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Módulo 3</a><span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lección 3.1</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-3">Guía de Inicio de Claude Code</h1>
+    <p class="font-mono text-xs text-os-tertiary mb-6">PARA PROFESIONALES DE MARKETING, RR. HH., LEGAL, INGENIERÍA INDUSTRIAL Y RELACIONES INTERNACIONALES — WINDOWS O MAC + VS CODE + CLAUDE PRO</p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">35–45 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent-purple/40 text-accent-purple">OBLIGATORIO</span>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <a href="#step-0" class="toc-pill hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">0. Antes de Empezar</a>
+      <a href="#step-1" class="toc-pill hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">1. Web vs. Código</a>
+      <a href="#step-2" class="toc-pill hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Instalación</a>
+      <a href="#step-3" class="toc-pill hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Fundamentos de la Terminal</a>
+      <a href="#step-4" class="toc-pill hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">4. Tu Primera Tarea</a>
+      <a href="#step-5" class="toc-pill hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">5. Qué Sigue</a>
+    </div>
+  </div>
+</header>
+
+<article class="px-6 pb-24">
+  <div class="lesson-body lesson-body--lg max-w-2xl mx-auto text-[16px]">
+
+    <h2 id="step-0"><span class="step-num">0</span>Antes de Empezar</h2>
+    <p><strong>Qué es Claude Code:</strong> un asistente de IA que trabaja directamente con los archivos y carpetas de tu computadora. Le hablas en lenguaje cotidiano; él lee, redacta, edita y organiza documentos reales.</p>
+    <p><strong>Qué es VS Code:</strong> la ventana donde sucede todo esto. Piénsalo como Microsoft Word, pero diseñado para abrir una carpeta completa de archivos a la vez, en lugar de un solo documento. VS Code es la oficina; Claude Code es el asistente que trabaja en ella.</p>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Confidencialidad — lee esto primero</span>
+      <p>Claude Pro es una suscripción personal sin acuerdo de datos corporativo, supervisión administrativa, registros de auditoría ni controles de retención. Practica con material no sensible. Antes de procesar archivos reales de clientes, expedientes de empleados o material privilegiado, consulta con TI/Legal de tu empleador — es posible que requieran Claude Team/Enterprise en lugar de un plan Pro personal.</p>
+    </div>
+
+    <p><strong>Costo:</strong> Claude Pro, ~$20/mes (~$17/mes con facturación anual). El nivel gratuito no incluye Claude Code — suscríbete antes de tu sesión. <strong>Tiempo necesario:</strong> ~35–45 minutos. <strong>Cómo se ve el éxito:</strong> al final, tendrás Claude Code funcionando en tu propia terminal y le habrás hecho producir un trabajo real y guardado — sin copiar ni pegar.</p>
+
+    <div class="callout callout-note"><span class="callout-label">No Puedes Dañar tu Computadora</span><p>Claude pide permiso antes de cambiar cualquier cosa, y te muestra exactamente qué planea cambiar.</p></div>
+
+    <h3>Lista de requisitos previos</h3>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Windows 10 (compilación 1809 o superior) o Windows 11, o macOS 12 o posterior</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">4 GB o más de RAM</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Plan Claude Pro activo (claude.ai)</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Credenciales de inicio de sesión de Claude a la mano</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Capacidad de instalar software en la computadora</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Una carpeta con documentos de práctica no confidenciales</span></div>
+    </div>
+
+    <h2 id="step-1"><span class="step-num">1</span>Web vs. Claude Code — ¿Cuál Uso?</h2>
+    <p>Responde una pregunta: <strong>¿necesitas trabajar con archivos y carpetas, o solo hacer una pregunta?</strong></p>
+
+    <table>
+      <thead><tr><th>Si tú...</th><th>Usa esto</th></tr></thead>
+      <tbody>
+        <tr><td>Tienes una pregunta rápida, sin archivos de por medio</td><td><strong>claude.ai (web)</strong></td></tr>
+        <tr><td>Necesitas editar o crear UN solo archivo de Word/Excel/PowerPoint</td><td><strong>Claude Cowork</strong></td></tr>
+        <tr><td>Necesitas trabajar con MUCHOS archivos, o repetir la misma tarea</td><td><strong>Claude Code</strong> (esta guía)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-info"><span class="callout-label">La Diferencia Central, en Una Oración</span><p>La versión web es una conversación <em>sobre</em> tus documentos. Claude Code trabaja <em>sobre</em> tus documentos.</p></div>
+
+    <h3>Nueve ventajas concretas</h3>
+    <ul class="plain">
+      <li><strong>Carpetas completas, no una subida a la vez</strong> — apúntalo a una carpeta con 40 contratos o 200 currículums</li>
+      <li><strong>El resultado llega como archivos reales y guardados</strong> — sin copiar y pegar de una ventana de chat a Word</li>
+      <li><strong>El trabajo masivo se convierte en una sola instrucción</strong> — por ejemplo, "extrae la fecha de terminación de cada uno de estos 60 acuerdos en una sola tabla"</li>
+      <li><strong>Recuerda tu proyecto</strong> — un archivo CLAUDE.md guarda tu estilo interno, tono o términos definidos en todas las sesiones</li>
+      <li><strong>Ves exactamente qué cambió</strong> — cada edición es un "diff" antes/después que apruebas o rechazas</li>
+      <li><strong>Flujos de trabajo repetibles y guardados</strong> — convierte una tarea recurrente en un proceso reutilizable</li>
+      <li><strong>Trabajo de varios pasos en una sola pasada</strong> — lee, compara, señala y resume en una sola solicitud</li>
+      <li><strong>Los archivos quedan acotados a lo que abres</strong> — tú controlas exactamente qué puede ver</li>
+      <li><strong>Funciona con tu estructura de carpetas existente</strong> — sin un sistema de archivo paralelo</li>
+    </ul>
+
+    <details>
+      <summary>Antes / Después — por rol (Marketing, RR. HH., Legal, Ingeniería Industrial, Relaciones Internacionales)</summary>
+      <div>
+        <h3>Marketing</h3>
+        <table><tbody>
+          <tr><td>Reutilizar una entrada de blog en 8 variantes por canal</td><td>8 prompts separados, 8 copiar y pegar</td><td>Una instrucción &rarr; 8 archivos guardados</td></tr>
+          <tr><td>Aplicar la voz de marca en toda una campaña</td><td>Volver a pegar la guía de estilo en cada chat</td><td>CLAUDE.md la guarda de forma permanente</td></tr>
+          <tr><td>Auditar 50 piezas de texto para verificar consistencia</td><td>Poco práctico</td><td>Una pasada sobre la carpeta</td></tr>
+        </tbody></table>
+        <h3>Recursos Humanos</h3>
+        <table><tbody>
+          <tr><td>Resumir 40 currículums contra una descripción de puesto</td><td>40 subidas, sin resultado consolidado</td><td>Una carpeta &rarr; un archivo de resumen clasificado</td></tr>
+          <tr><td>Estandarizar 15 descripciones de puesto a una sola plantilla</td><td>15 chats, reensamblaje manual</td><td>Reescritura por lotes, cada una guardada de vuelta</td></tr>
+          <tr><td>Extraer fechas/términos de cartas de oferta</td><td>Manual, propenso a errores</td><td>Una tabla estructurada</td></tr>
+        </tbody></table>
+        <h3>Legal</h3>
+        <table><tbody>
+          <tr><td>Comparar el lenguaje de una cláusula en 30 acuerdos</td><td>Limitado por las subidas, pierde el hilo</td><td>Una pasada, una tabla comparativa</td></tr>
+          <tr><td>Mantener un glosario de términos definidos a lo largo de un trato</td><td>Reexplicar en cada sesión</td><td>Persistente en CLAUDE.md</td></tr>
+          <tr><td>Iterar un borrador con visibilidad total de los cambios</td><td>Copiar y pegar, sin historial</td><td>Revisión de diff en cada edición</td></tr>
+        </tbody></table>
+        <h3>Ingeniería Industrial</h3>
+        <table><tbody>
+          <tr><td>Extraer datos de tiempo de ciclo y tiempo de inactividad de 20 reportes de turno</td><td>20 subidas, sin resultado consolidado</td><td>Una carpeta &rarr; una tabla</td></tr>
+          <tr><td>Comparar el lenguaje de los SOP en varios documentos de celdas de trabajo</td><td>Limitado por las subidas, pierde el hilo</td><td>Una pasada, una tabla comparativa</td></tr>
+          <tr><td>Estandarizar los reportes de causa raíz (5 Porqués / espina de pescado) a una sola plantilla</td><td>Reensamblaje manual</td><td>Reescritura por lotes, cada una guardada de vuelta</td></tr>
+          <tr><td>Auditar una carpeta de bitácoras de mantenimiento en busca de códigos de falla recurrentes</td><td>Poco práctico</td><td>Una pasada sobre la carpeta</td></tr>
+        </tbody></table>
+        <h3>Relaciones Internacionales</h3>
+        <table><tbody>
+          <tr><td>Revisar la página de acuerdos de un ministerio y cotejar las publicaciones de hoy contra lo que ya has registrado</td><td>Visita manual, memoria manual de qué es nuevo</td><td>Una instrucción, verificada contra un registro continuo</td></tr>
+          <tr><td>Redactar un seguimiento dirigido al departamento responsable correcto según el tema de cada acuerdo</td><td>Reexplicar el mapeo de departamentos cada vez</td><td>Persistente en CLAUDE.md</td></tr>
+          <tr><td>Mantener un solo registro continuo de cada acuerdo, seguimiento y respuesta</td><td>Notas dispersas e hilos de correo</td><td>Un documento de Word que crece, con la entrada más reciente siempre arriba</td></tr>
+        </tbody></table>
+      </div>
+    </details>
+
+    <p><strong>Cuándo la versión web es realmente mejor:</strong> preguntas puntuales rápidas sin archivos, trabajar desde tu teléfono, hacer lluvia de ideas en voz alta, análisis de imágenes o capturas de pantalla, o cuando simplemente no quieres abrir una terminal hoy.</p>
+    <div class="callout callout-note"><span class="callout-label">Un Marco Honesto</span><p>La web para pensar. Claude Code para producir. La mayoría de las personas usa ambas. El único costo de Claude Code es una curva de aprendizaje de ~30 minutos, estar en una computadora en lugar de un teléfono, y escribir unos cuantos comandos.</p></div>
+
+    <h2 id="step-2"><span class="step-num">2</span>Instalación</h2>
+    <p>Vas a instalar dos programas gratuitos (VS Code y Claude Code) y a conectarlos con tu cuenta de pago de Claude Pro. Cada paso tiene un punto de verificación para que sepas que vas por buen camino — y este paso termina con Claude Code funcionando de verdad.</p>
+
+    <h3>2.1 Consigue Claude Pro</h3>
+    <ol><li>Ve a claude.ai &rarr; crea una cuenta &rarr; Settings &rarr; Upgrade to Pro (~$20/mes)</li></ol>
+    <p class="!-mt-4 text-sm">✅ Punto de verificación: "Pro" es visible en tu cuenta</p>
+
+    <h3>2.2 Instala Visual Studio Code</h3>
+    <p class="!mb-2 text-os-primary font-semibold text-sm">Windows</p>
+    <ol>
+      <li>Descárgalo desde <strong>code.visualstudio.com</strong> (solo el sitio oficial)</li>
+      <li>Elige <strong>User Installer, 64-bit</strong> (no se requieren permisos de administrador)</li>
+      <li>En la pantalla de casillas: deja marcada la opción "Add to PATH"; marca las opciones de menú contextual "Open with Code"</li>
+      <li>Primer inicio: cierra el recorrido de bienvenida y ubícate: Explorer (izquierda), Editor (centro), panel de Terminal (abajo), barra de estado (hasta abajo)</li>
+    </ol>
+    <p class="!mb-2 mt-4 text-os-primary font-semibold text-sm">Mac</p>
+    <ol>
+      <li>Descárgalo desde <strong>code.visualstudio.com</strong> (solo el sitio oficial) — elige la versión para Mac</li>
+      <li>Abre el archivo descargado y arrastra <strong>Visual Studio Code</strong> a tu carpeta <strong>Applications</strong></li>
+      <li>Ábrelo desde Applications (o Spotlight — Cmd+Space, y escribe "Visual Studio Code"). La primera vez, macOS puede pedirte que confirmes que confías en él — haz clic en <strong>Open</strong></li>
+      <li>Primer inicio: cierra el recorrido de bienvenida y ubícate: Explorer (izquierda), Editor (centro), panel de Terminal (abajo), barra de estado (hasta abajo) — el mismo diseño que en Windows</li>
+    </ol>
+    <p class="!-mt-4 text-sm">✅ Punto de verificación: VS Code abre sin problemas</p>
+
+    <details>
+      <summary>Opcional: extensiones recomendadas de VS Code</summary>
+      <div>
+        <p>Las extensiones son pequeños complementos — como apps para tu teléfono. No necesitas ninguna de ellas para terminar esta lección; vuelve una vez que Claude Code esté funcionando. Presiona <span class="font-mono text-os-primary">Ctrl+Shift+X</span> (Windows) / <span class="font-mono text-os-primary">Cmd+Shift+X</span> (Mac) &rarr; busca por nombre &rarr; haz clic en Install &rarr; Reload si se te solicita.</p>
+        <h3>Vale la pena instalar</h3>
+        <table>
+          <thead><tr><th>Extensión</th><th>Publicador</th><th>Por qué la necesitas</th></tr></thead>
+          <tbody>
+            <tr><td>Claude Code</td><td>Anthropic</td><td>Panel de chat gráfico dentro de VS Code — más amigable que la terminal</td></tr>
+            <tr><td>Markdown All in One</td><td>Yu Zhang</td><td>Vista previa en vivo, tabla de contenido automática, formato sencillo</td></tr>
+            <tr><td>Code Spell Checker</td><td>Street Side Software</td><td>Detecta errores tipográficos en textos, políticas y borradores mientras escribes</td></tr>
+            <tr><td>Rainbow CSV</td><td>mechatroner</td><td>Hace legibles en columnas las exportaciones de hojas de cálculo (.csv)</td></tr>
+            <tr><td>vscode-pdf</td><td>tomoki1207</td><td>Ver PDFs dentro de VS Code</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Agrega después si te sirve:</strong> Excel Viewer / Data Preview (vista de cuadrícula para hojas de cálculo), Markdown PDF (exportar a PDF/HTML pulido), Speech (dictar prompts), Word Count. <strong>Omite:</strong> GitLens, Docker, Python, ESLint, Prettier, servidores de lenguaje, Copilot — herramientas para desarrolladores que no aportan nada al trabajo con documentos.</p>
+        <p><strong>Dos configuraciones que vale la pena cambiar:</strong> activa Word Wrap (Alt+Z en Windows, Option+Z en Mac) para que los párrafos largos no se desplacen hacia los lados, y opcionalmente desactiva el minimapa para reducir el desorden visual.</p>
+      </div>
+    </details>
+
+    <h3>2.3 Instala Claude Code</h3>
+    <p class="!mb-2 text-os-primary font-semibold text-sm">Windows</p>
+    <ol>
+      <li>Abre <strong>Windows PowerShell</strong> (menú Start &rarr; escribe "PowerShell"). No se necesitan permisos de administrador.</li>
+      <li>Ejecuta:</li>
+    </ol>
+    <pre>irm https://claude.ai/install.ps1 | iex</pre>
+    <p>Es normal ver texto desplazándose y una barra de progreso de descarga — eso significa que está funcionando, no que se trabó. Cierra PowerShell y abre una ventana completamente nueva cuando termine; la configuración solo aplica a las terminales abiertas después.</p>
+
+    <p class="!mb-2 mt-4 text-os-primary font-semibold text-sm">Mac</p>
+    <ol>
+      <li>Abre <strong>Terminal</strong> (Cmd+Space, escribe "Terminal"). No se necesitan permisos de administrador.</li>
+      <li>Ejecuta:</li>
+    </ol>
+    <pre>curl -fsSL https://claude.ai/install.sh | bash</pre>
+    <p>Es normal ver texto desplazándose y una barra de progreso de descarga — eso significa que está funcionando, no que se trabó. Cierra Terminal y abre una ventana completamente nueva cuando termine; la configuración solo aplica a las terminales abiertas después.</p>
+
+    <details>
+      <summary>Opcional: instala también Git</summary>
+      <div>
+        <p>No es necesario para esta lección.</p>
+        <p class="!mb-2 text-os-primary font-semibold text-sm">Windows</p>
+        <p>Git for Windows agrega Git Bash, una terminal alternativa, a tu computadora.</p>
+        <ol><li>Descárgalo desde <strong>git-scm.com/downloads/win</strong> y acepta todas las opciones predeterminadas</li></ol>
+        <p class="!-mt-4 text-sm">✅ Punto de verificación: "Git Bash" aparece en el menú Start</p>
+        <p class="!mb-2 mt-4 text-os-primary font-semibold text-sm">Mac</p>
+        <p>Git viene incluido con Xcode Command Line Tools, no es una descarga aparte. Ejecuta <span class="font-mono text-os-primary">git --version</span> en Terminal — si no está instalado, macOS te pedirá instalar las Command Line Tools automáticamente.</p>
+        <p class="!-mt-4 text-sm">✅ Punto de verificación: <span class="font-mono">git --version</span> muestra un número de versión</p>
+      </div>
+    </details>
+
+    <h3>2.4 Primera ejecución — di hola</h3>
+    <ol>
+      <li>En tu nueva ventana de terminal, escribe <span class="font-mono text-os-primary">claude</span>, presiona Enter</li>
+      <li>Elige Claude.ai account login (no "API key")</li>
+      <li>Se abre un navegador &rarr; inicia sesión &rarr; aprueba &rarr; regresa a la terminal</li>
+      <li>Escribe <span class="font-mono text-os-primary">hello</span> y presiona Enter</li>
+    </ol>
+
+    <div class="mt-6 rounded-2xl bg-gradient-to-br from-accent-cyan/15 to-transparent border border-accent-cyan/30 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Está Funcionando</p>
+      <p class="text-sm text-os-secondary">Eso es Claude Code, en vivo, en tu terminal, por primera vez. Todo lo que sigue es simplemente apuntarlo hacia trabajo real.</p>
+    </div>
+
+    <details>
+      <summary>Solución de problemas</summary>
+      <div>
+        <table><tbody>
+          <tr><td><span class="font-mono">claude</span> no reconocido (Windows)</td><td>Primero cierra y vuelve a abrir la terminal. ¿Sigue fallando? &rarr; agrega <span class="font-mono">%USERPROFILE%\.local\bin</span> al PATH</td></tr>
+          <tr><td><span class="font-mono">claude</span> no reconocido (Mac)</td><td>Primero cierra y vuelve a abrir la terminal. ¿Sigue fallando? &rarr; agrega <span class="font-mono">export PATH="$HOME/.local/bin:$PATH"</span> a <span class="font-mono">~/.zshrc</span> (o <span class="font-mono">~/.bash_profile</span>), y luego reinicia la terminal</td></tr>
+          <tr><td>Atascado en el inicio de sesión / error de plan</td><td>Pro no está activo — revisa Settings en claude.ai</td></tr>
+          <tr><td>Advertencia de Defender/SmartScreen (solo Windows)</td><td>Es esperado para un instalador de PowerShell — ejecuta esto únicamente para la URL oficial de claude.ai</td></tr>
+          <tr><td>Cualquier otra cosa</td><td>Ejecuta primero <span class="font-mono">claude doctor</span>, luego consulta code.claude.com/docs/en/troubleshoot-install</td></tr>
+        </tbody></table>
+      </div>
+    </details>
+
+    <h2 id="step-3"><span class="step-num">3</span>Fundamentos de la Terminal</h2>
+    <div class="callout callout-tip"><span class="callout-label">Usa Solo Esta</span><p>Para todo en esta guía, usa la <strong>Terminal Integrada de VS Code</strong> — ábrela con <span class="font-mono text-os-primary">Ctrl + `</span> (la tecla de acento grave, arriba a la izquierda en tu teclado). Nunca necesitas abrir un programa de terminal aparte. Solo necesitas <strong>seis comandos</strong>, y ya usaste el más importante — <span class="font-mono text-os-primary">claude</span> — en el paso anterior.</p></div>
+
+    <details>
+      <summary>Otras terminales (contexto opcional)</summary>
+      <div>
+        <table><tbody>
+          <tr><td>Windows PowerShell</td><td>Shell moderna predeterminada de Windows</td><td>Solo para la instalación (Paso 2)</td></tr>
+          <tr><td>Git Bash</td><td>Shell estilo Unix de Git for Windows</td><td>Alternativa opcional</td></tr>
+          <tr><td>Command Prompt (cmd.exe)</td><td>Shell heredada de Windows</td><td>Evítala</td></tr>
+          <tr><td>Windows Terminal</td><td>App de terminal con pestañas de Microsoft</td><td>Opcional, un mejor anfitrión para PowerShell</td></tr>
+          <tr><td>Terminal.app (Mac)</td><td>Shell integrada de macOS (zsh)</td><td>Preinstalada, no hay nada que agregar</td></tr>
+        </tbody></table>
+      </div>
+    </details>
+
+    <h3>Los seis comandos</h3>
+    <table>
+      <tbody>
+        <tr><td><span class="font-mono text-os-primary">pwd</span></td><td>¿Dónde estoy? (igual en Windows y Mac)</td></tr>
+        <tr><td><span class="font-mono text-os-primary">dir</span> (PowerShell) / <span class="font-mono text-os-primary">ls</span> (Git Bash y Mac Terminal)</td><td>¿Qué hay en esta carpeta?</td></tr>
+        <tr><td><span class="font-mono text-os-primary">cd nombredecarpeta</span></td><td>Entra a una carpeta (igual en Windows y Mac)</td></tr>
+        <tr><td><span class="font-mono text-os-primary">cd ..</span></td><td>Sube un nivel (igual en Windows y Mac)</td></tr>
+        <tr><td><span class="font-mono text-os-primary">cls</span> (PowerShell) / <span class="font-mono text-os-primary">clear</span> (Git Bash y Mac Terminal)</td><td>Limpia la pantalla</td></tr>
+        <tr><td><span class="font-mono text-os-primary">Ctrl + C</span></td><td>Detiene lo que se esté ejecutando (igual en Windows y Mac)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-note"><span class="callout-label">Consejos de Supervivencia</span><p>Nada se ejecuta hasta que presionas Enter. La flecha hacia arriba recupera tu último comando. Tab autocompleta los nombres. Un error de tipeo solo produce un mensaje de error — no daña nada.</p></div>
+
+    <h2 id="step-4"><span class="step-num">4</span>Tu Primera Tarea</h2>
+
+    <h3>El único concepto: la carpeta del proyecto</h3>
+    <p>Claude solo puede ver y tocar los archivos de la carpeta que abres — una función de seguridad y confidencialidad. Crea una carpeta de prueba, por ejemplo <span class="font-mono text-os-primary">Documents\claude-practice</span> en Windows o <span class="font-mono text-os-primary">~/Documents/claude-practice</span> en Mac, con 3 a 5 documentos de muestra no confidenciales.</p>
+
+    <h3>Abre la carpeta</h3>
+    <ol>
+      <li>File &rarr; Open Folder &rarr; selecciona claude-practice (o clic derecho en la carpeta &rarr; "Open with Code")</li>
+      <li>Aprueba el aviso "Trust the authors"</li>
+      <li>Recorre la barra lateral de Explorer</li>
+      <li>Abre la terminal (Ctrl + `) y escribe <span class="font-mono text-os-primary">claude</span> de nuevo — las sesiones están acotadas a la carpeta en la que estás, así que esto inicia una nueva aquí</li>
+    </ol>
+
+    <h3>Cómo trabajar con archivos de Word, PDF y Excel</h3>
+    <p>Funciona de forma nativa y sin problemas: texto plano, Markdown (.md), .csv, .txt. Funciona con salvedades: PDFs (se pueden leer, no editar directamente), .docx (se puede leer, pero el formato se comprime). Flujo de trabajo recomendado: trabaja en Markdown, exporta a Word/PDF al final — pídele a Claude que convierta el contenido de .docx/PDF a Markdown como primer paso de un proyecto.</p>
+
+    <h3>Ejercicio 1 — haz una pregunta (solo lectura, riesgo cero)</h3>
+    <pre>¿Qué documentos hay en esta carpeta, y de qué trata cada uno?</pre>
+    <p>Escribes oraciones normales, no comandos. Ese es el cambio mental clave.</p>
+
+    <h3>Ejercicio 2 — haz que Claude cree un archivo</h3>
+    <pre>Lee todos los documentos de esta carpeta y crea un archivo llamado summary.md con un resumen de un párrafo de cada uno.</pre>
+    <p>La solicitud de permiso: Claude pregunta antes de escribir. Las opciones son permitir una vez, permitir siempre, o denegar. Este es el concepto de seguridad más importante de esta guía. Observa cómo aparece el nuevo archivo en la barra lateral de Explorer.</p>
+
+    <div class="mt-6 rounded-2xl bg-gradient-to-br from-accent-cyan/15 to-transparent border border-accent-cyan/30 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Eso Es un Archivo Real y Guardado</p>
+      <p class="text-sm text-os-secondary">Claude leyó tus documentos y escribió algo nuevo en el disco — sin copiar y pegar. Ese es exactamente el cambio hacia el que ha apuntado este curso.</p>
+    </div>
+
+    <details>
+      <summary>¿Quieres ir más allá? Dos ejercicios más</summary>
+      <div>
+        <h3>Ejercicio 3 — haz que Claude edite, y revisa el diff</h3>
+        <pre>Agrega una sección "Riesgos Clave" a summary.md con tres viñetas.</pre>
+        <p>Revisa la vista de diff — un antes/después lado a lado — y apruébala o recházala. Para Legal, esto es un redline de los cambios que propone la IA. Nada se aplica sin tu aprobación. Claude propone; tú decides.</p>
+
+        <h3>Ejercicio 4 — la tarea masiva (el verdadero beneficio)</h3>
+        <pre>Para cada documento de esta carpeta, extrae el título, la fecha y el tema principal, y colócalos todos en una sola tabla en index.csv.</pre>
+        <p>Abre el resultado con un visor de hojas de cálculo. Esa fue una sola instrucción — en la versión web, habría sido una subida y un prompt por cada documento.</p>
+
+        <p><strong>Modo Plan — tu mejor salvaguarda:</strong> Claude solo puede leer y pensar, no cambiar nada, hasta que apruebes un plan escrito. Actívalo con Shift+Tab (dos veces, igual en Windows y Mac) o <span class="font-mono">/plan</span>. Se recomienda como tu postura inicial predeterminada para cualquier cosa que toque trabajo real.</p>
+      </div>
+    </details>
+
+    <h2 id="step-5"><span class="step-num">5</span>Qué Sigue</h2>
+
+    <h3>CLAUDE.md — enséñale tus estándares a Claude una sola vez</h3>
+    <p>Un archivo de texto plano en la carpeta que Claude lee automáticamente en cada sesión:</p>
+    <ul class="plain">
+      <li><strong>Marketing:</strong> voz de marca, palabras prohibidas, nomenclatura de producto aprobada, nivel de lectura</li>
+      <li><strong>RR. HH.:</strong> avisos legales obligatorios, guía de tono, estructura de plantillas, reglas de lenguaje inclusivo</li>
+      <li><strong>Legal:</strong> términos definidos, formato de citas, jurisdicción, señalización de lenguaje de indemnización/responsabilidad</li>
+      <li><strong>Ingeniería Industrial:</strong> terminología de proceso (takt time, OEE, cambio de formato), estructura de plantillas de SOP, unidades de medida</li>
+      <li><strong>Relaciones Internacionales:</strong> temas prioritarios, mapeo de departamentos responsables, convenciones de protocolo y tono</li>
+    </ul>
+    <p>Intenta escribir un CLAUDE.md de cinco líneas y observa cómo cambia la siguiente respuesta.</p>
+
+    <h3>Comandos slash esenciales</h3>
+    <table>
+      <tbody>
+        <tr><td><span class="font-mono text-os-primary">/help</span></td><td>Todo lo disponible</td></tr>
+        <tr><td><span class="font-mono text-os-primary">/clear</span></td><td>Un inicio nuevo (también ayuda a mantenerte bajo los límites de uso)</td></tr>
+        <tr><td><span class="font-mono text-os-primary">/model</span></td><td>Ver o cambiar el modelo de IA</td></tr>
+        <tr><td><span class="font-mono text-os-primary">/plan</span></td><td>Activar el Modo Plan</td></tr>
+        <tr><td><span class="font-mono text-os-primary">/status</span></td><td>Información de la sesión</td></tr>
+        <tr><td><span class="font-mono text-os-primary">/doctor</span></td><td>Verificación de estado</td></tr>
+        <tr><td><span class="font-mono text-os-primary">/voice</span></td><td>Dictar en lugar de escribir</td></tr>
+      </tbody>
+    </table>
+    <p>Para salir: <span class="font-mono text-os-primary">/exit</span>, o presiona Ctrl+C dos veces (igual en Windows y Mac).</p>
+
+    <h3>Cómo hablarle a Claude de forma efectiva</h3>
+    <p>Nombra el qué y el dónde — nombra el archivo. Una tarea a la vez. Di cómo se ve "terminado" (formato, extensión, audiencia). Usa @nombredearchivo para señalar un documento específico. Si el resultado está mal, simplemente dilo con tus propias palabras.</p>
+
+    <table>
+      <thead><tr><th>Vago</th><th>Específico</th></tr></thead>
+      <tbody>
+        <tr><td>"Mejora esto"</td><td>"Acorta esto a 150 palabras, mantén el mismo llamado a la acción"</td></tr>
+        <tr><td>"Revisa estos contratos"</td><td>"Señala cualquier cláusula de indemnización que limite la responsabilidad por debajo de $1M"</td></tr>
+        <tr><td>"Arregla los currículums"</td><td>"Estandariza el formato de fecha de cada currículum a MM/AAAA"</td></tr>
+        <tr><td>"Resume esto"</td><td>"Resume en 3 viñetas, escrito para un vicepresidente no técnico"</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>Prompts de ejemplo por rol</strong> — el tipo de solicitudes de una línea que muestran cómo se ve "específico" en el trabajo real:</p>
+    <ul class="plain">
+      <li><strong>RR. HH.:</strong> "Lee la hoja de cálculo de currículums en esta carpeta y señala a cualquier candidato que lleve más de 10 días en 'Entrevista Programada'."</li>
+      <li><strong>Legal:</strong> "Compara la cláusula de indemnización en todos los contratos de esta carpeta y señala cualquiera que limite la responsabilidad por debajo de $1M."</li>
+      <li><strong>Marketing:</strong> "Lee el CSV de desempeño de campaña y dime qué canal tuvo la tasa de clics más alta."</li>
+      <li><strong>Ingeniería Industrial:</strong> "Lee la carpeta de reportes de turno y señala cualquier línea de producción con más de 30 minutos de tiempo de inactividad no planificado esta semana."</li>
+      <li><strong>Relaciones Internacionales:</strong> "Lee los cables de esta carpeta y señala cualquiera que mencione cooperación comercial, seguridad regional o intercambio cultural."</li>
+    </ul>
+
+    <h3>Límites de uso</h3>
+    <p>Claude Pro tiene límites de sesión continuos de ~5 horas, más límites semanales. Claude Code y el chat de claude.ai comparten el mismo total de uso. Usa <span class="font-mono">/clear</span> entre tareas no relacionadas, evita apuntar a carpetas innecesariamente grandes, y revisa tu uso en cualquier momento en Settings &rarr; Usage en claude.ai.</p>
+
+    <h3>Seguridad, confidencialidad y buenos hábitos</h3>
+    <div class="col-2">
+      <div>
+        <p class="!mb-2 text-os-primary font-semibold text-sm">Siempre</p>
+        <ul class="plain"><li>Lee el diff antes de aprobar</li><li>Empieza en Modo Plan para cualquier cosa real</li><li>Acota bien el alcance — abre la carpeta específica del proyecto, nunca la raíz de Documents o Desktop</li><li>Mantén un respaldo antes de cualquier operación masiva</li></ul>
+      </div>
+      <div>
+        <p class="!mb-2 text-os-primary font-semibold text-sm">Nunca</p>
+        <ul class="plain"><li>Pegar contraseñas, claves de API o datos bancarios</li><li>Procesar información personal de empleados, datos salariales, expedientes de investigación o material privilegiado de clientes en un plan Pro personal sin la aprobación de tu empleador</li><li>Aprobar cambios que no entiendes — en su lugar, pídele a Claude que te los explique</li></ul>
+      </div>
+    </div>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-purple/15 to-transparent border border-accent-purple/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-purple mb-2">Instalación Completa</p>
+      <p class="text-sm text-os-secondary">Pusiste Claude Code a funcionar por primera vez y lograste que produjera un archivo real y guardado — sin un solo copiar y pegar. Ese es el cambio completo. Úsalo en tu propio trabajo real (no confidencial) esta semana. A continuación: la otra mitad de Claude Code — configurar un Proyecto de claude.ai para que también recuerde tus instrucciones permanentes para el trabajo recurrente en el chat web.</p>
+    </div>
+
+  </div>
+</article>
+
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="index.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; Módulo 3</a>
+    <a href="lesson-2.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">Siguiente: 3.2 ¿Qué Es un Proyecto de Claude? &rarr;</a>
+  </div>
+</nav>
+
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">No te elevas al nivel de tus metas. Caes al nivel de tus sistemas.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Construido como un sistema, no como un eslogan.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 3: Claude Code — AI for Friends</title>
+<meta name="title" content="Módulo 3: Claude Code — La IA en tus Propios Archivos">
+<meta name="description" content="Instala Claude Code y ejecútalo en tus propios archivos desde la terminal, luego configura un Proyecto de Claude para que recuerde tus instrucciones permanentes y material de referencia también en la web. No se necesitan conocimientos técnicos.">
+<link rel="alternate" hreflang="en" href="https://effectiveatlife.com/ai-for-friends/module-3/index.html">
+<link rel="alternate" hreflang="es" href="https://effectiveatlife.com/es/ai-for-friends/module-3/index.html">
+<link rel="alternate" hreflang="x-default" href="https://effectiveatlife.com/ai-for-friends/module-3/index.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../../assets/css/custom.css">
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pilares</a>
+      <a href="../../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Curso</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menú
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="../module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Fundamentos de IA</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-1/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 Cómo Funcionan los Modelos de IA</a>
+              <a href="../module-1/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Ingeniería de Prompts vs. Ingeniería de Contexto</a>
+              <a href="../module-1/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Técnicas Prácticas de Prompting</a>
+              <a href="../module-1/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Cómo Elegir el Modelo de IA Correcto</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Configura tu Computadora</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPCIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Instalando la Terminal de Windows</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Instalando VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navegando en la Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Guía de Inicio de Claude Code</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 ¿Qué Es un Proyecto de Claude?</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creando tu Primer Proyecto</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Cómo Darle Material de Referencia a tu Proyecto</a>
+              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Cómo Mantener Actualizadas tus Instrucciones Permanentes</a>
+              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Usa tu Proyecto para Diseñar Más Proyectos</a>
+              <a href="lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Ejemplos Prácticos por Rol</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="../module-4/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">04</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Automatiza Flujos de Trabajo con Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-4/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Tus Hábitos Diarios con Claude Code</a>
+              <a href="../module-4/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Instalando Skills de Anthropic</a>
+              <a href="../module-4/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 Relaciones Internacionales: Automatiza el Flujo de Acuerdos</a>
+              <a href="../module-4/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 ¿Qué Es un Servidor MCP?</a>
+              <a href="../module-4/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Resumen Diario de Correo y Calendario</a>
+              <a href="../module-4/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Mantente Informado: un Resumen de Mercado</a>
+              <a href="../module-4/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.7 De Fuentes a Contenido</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Inicio del curso</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <a href="../../../ai-for-friends/module-3/index.html" class="hover:text-accent-cyan transition-colors">EN</a>
+        <span class="text-white/20">/</span>
+        <span class="text-accent-cyan font-semibold">ES</span>
+      </div>
+    </nav>
+    <a href="lesson-1.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Comenzar el Módulo</a>
+  </div>
+</header>
+
+<header class="relative pt-40 pb-16 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-3xl mx-auto fade-up">
+    <a href="../index.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; AI for Friends</a>
+    <div class="flex items-center gap-2 mt-6 mb-6">
+      <span class="font-display font-bold text-3xl text-accent-purple">03</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent-purple/40 text-accent-purple">OBLIGATORIO</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-4xl sm:text-5xl leading-[1.1] mb-6">Claude Code — Terminal, Archivos y Proyectos</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-8">
+      Instala Claude Code y apúntalo a una carpeta con tus documentos reales para que pueda redactarlos, editarlos y
+      organizarlos por ti. Luego configura un Proyecto de Claude en la web para que recuerde tus instrucciones
+      permanentes y tu material de referencia cada vez — dos superficies, el mismo asistente, sin copiar y pegar tu
+      contexto de vuelta en ninguna de las dos.
+    </p>
+    <div class="flex flex-wrap items-center gap-4 font-mono text-xs text-os-tertiary mb-10">
+      <span class="px-3 py-1.5 rounded-full border border-white/15">100–110 min</span>
+      <span class="px-3 py-1.5 rounded-full border border-white/15">7 lecciones</span>
+      <span class="px-3 py-1.5 rounded-full border border-white/15">Windows y Mac</span>
+      <span class="px-3 py-1.5 rounded-full border border-white/15">Se requiere Claude Pro</span>
+      <span class="px-3 py-1.5 rounded-full border border-white/15">RR. HH. · Ingeniería Industrial · Relaciones Internacionales · Legal · Marketing</span>
+    </div>
+
+    <div class="glossary rounded-2xl border border-white/10 overflow-hidden mb-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-teal px-6 pt-5 pb-1">Cómo Se Ve Esto en tu Rol</p>
+      <table>
+        <thead><tr><th>Rol</th><th>Qué Cambia</th></tr></thead>
+        <tbody>
+          <tr><td><strong>RR. HH.</strong></td><td>Filtra 40 currículums contra una descripción de puesto en una sola pasada, en lugar de subirlos uno por uno. Luego, un Proyecto de Reclutamiento guarda tu rúbrica y tono de forma permanente, así dejas de reexplicarlo en cada chat.</td></tr>
+          <tr><td><strong>Ingeniería Industrial</strong></td><td>Compara datos de tiempo de ciclo y tiempo de inactividad en muchos reportes de turno en una sola pasada, en lugar de exportar cada uno por separado. La terminología de proceso (takt time, cambio de formato, OEE) vive de forma permanente en CLAUDE.md o en las instrucciones de un Proyecto, en lugar de reexplicarse en cada sesión.</td></tr>
+          <tr><td><strong>Legal</strong></td><td>Compara una cláusula como el lenguaje de indemnización en muchos acuerdos en una sola pasada, con una única tabla comparativa. Los términos definidos y el formato de citas viven de forma permanente en CLAUDE.md, y un Proyecto de Revisión de Contratos maneja igual las preguntas rápidas en el chat web.</td></tr>
+          <tr><td><strong>Marketing</strong></td><td>Convierte una pieza de contenido en varias variantes por canal como archivos guardados por separado, a partir de una sola instrucción. Tu voz de marca y tu lista de palabras prohibidas viven en CLAUDE.md para el trabajo con archivos, y en las instrucciones personalizadas de un Proyecto para el chat del día a día.</td></tr>
+          <tr><td><strong>Relaciones Internacionales</strong></td><td>Revisa la página de acuerdos de un ministerio y mantiene automáticamente un registro continuo en Word. Un Proyecto de Asuntos Diplomáticos maneja las mismas reglas de protocolo y mapeo de departamentos para preguntas puntuales en el chat web.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6 mb-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-teal mb-3">Al terminar, podrás</p>
+      <ul class="space-y-2 text-sm text-os-secondary">
+        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Saber qué hace Claude Code que la versión web no puede, y cuándo la versión web sigue siendo mejor</li>
+        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Tener Claude Code instalado y conectado a tu cuenta de Claude Pro</li>
+        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Ejecutar una tarea real sobre una carpeta con tus propios documentos y obtener un archivo guardado como resultado</li>
+        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Conocer los hábitos de seguridad que mantienen la herramienta acotada: el Modo Plan, la revisión de diffs, y limitar bien el alcance de la carpeta</li>
+        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Crear un Proyecto de Claude con instrucciones personalizadas escritas para tu rol, y saber cuándo recurrir a él en lugar de Claude Code</li>
+        <li class="flex gap-2"><span class="text-accent-cyan">&rsaquo;</span> Subir documentos de referencia que un Proyecto pueda usar en cada conversación, y mantener actualizadas sus instrucciones permanentes</li>
+      </ul>
+    </div>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Confidencialidad — lee esto antes de empezar</span>
+      <p>Claude Pro es una suscripción personal sin acuerdo de datos corporativo, supervisión administrativa, registros de auditoría ni controles de retención. Practica con material no sensible. Antes de procesar archivos reales de clientes, expedientes de empleados o material privilegiado, consulta con el equipo de TI o Legal de tu empleador.</p>
+    </div>
+  </div>
+</header>
+
+<section class="px-6 pb-24">
+  <div class="max-w-3xl mx-auto">
+    <p class="font-mono text-xs uppercase tracking-widest text-accent-cyan mb-6 fade-up">Lecciones de este módulo</p>
+    <div class="space-y-4">
+
+      <a href="lesson-1.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]">
+        <span class="font-mono text-sm text-accent-cyan shrink-0">3.1</span>
+        <div class="flex-1">
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Guía de Inicio de Claude Code</h3>
+          <p class="text-os-secondary text-sm mt-1">Cuándo usar la versión web frente a Claude Code, instalación e inicio de sesión completos, fundamentos de la terminal, un tutorial práctico que termina en un archivo real guardado, CLAUDE.md, y comandos slash reutilizables.</p>
+        </div>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">35–45 min</span>
+      </a>
+
+      <a href="lesson-2.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.05s">
+        <span class="font-mono text-sm text-accent-cyan shrink-0">3.2</span>
+        <div class="flex-1">
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">¿Qué Es un Proyecto de Claude?</h3>
+          <p class="text-os-secondary text-sm mt-1">Las tres partes de un Proyecto, por qué supera a un chat en blanco, y cómo delimitar el alcance de tu primer Proyecto.</p>
+        </div>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">10 min</span>
+      </a>
+
+      <a href="lesson-3.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.1s">
+        <span class="font-mono text-sm text-accent-cyan shrink-0">3.3</span>
+        <div class="flex-1">
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Creando tu Primer Proyecto</h3>
+          <p class="text-os-secondary text-sm mt-1">El camino de clics para la configuración, las cuatro secciones de unas buenas instrucciones personalizadas, y plantillas listas para copiar para los cinco roles.</p>
+        </div>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">15 min</span>
+      </a>
+
+      <a href="lesson-4.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.15s">
+        <span class="font-mono text-sm text-accent-cyan shrink-0">3.4</span>
+        <div class="flex-1">
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Cómo Darle Material de Referencia a tu Proyecto</h3>
+          <p class="text-os-secondary text-sm mt-1">Cómo subir archivos de referencia, qué archivos subir según tu rol, y exactamente a qué puede y no puede acceder un Proyecto.</p>
+        </div>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">10 min</span>
+      </a>
+
+      <a href="lesson-5.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.2s">
+        <span class="font-mono text-sm text-accent-cyan shrink-0">3.5</span>
+        <div class="flex-1">
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Cómo Mantener Actualizadas tus Instrucciones Permanentes</h3>
+          <p class="text-os-secondary text-sm mt-1">Dónde vive realmente la memoria de un Proyecto y cómo actualizarla cuando cambia un dato permanente.</p>
+        </div>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">10 min</span>
+      </a>
+
+      <a href="lesson-6.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.25s">
+        <span class="font-mono text-sm text-accent-cyan shrink-0">3.6</span>
+        <div class="flex-1">
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Usa tu Proyecto para Diseñar Más Proyectos</h3>
+          <p class="text-os-secondary text-sm mt-1">Un prompt que hace que Claude redacte tu siguiente Proyecto de principio a fin, además de Proyectos que vale la pena construir en los cinco roles.</p>
+        </div>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">10 min</span>
+      </a>
+
+      <a href="lesson-7.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.3s">
+        <span class="font-mono text-sm text-accent-cyan shrink-0">3.7</span>
+        <div class="flex-1">
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Ejemplos Prácticos por Rol</h3>
+          <p class="text-os-secondary text-sm mt-1">Un Proyecto completo, de principio a fin — nombre, instrucciones, archivos y un chat de ejemplo — para los cinco roles.</p>
+        </div>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">10 min</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ KEY CONCEPTS ============ -->
+<section class="px-6 pb-16">
+  <div class="max-w-3xl mx-auto glossary">
+    <p class="font-mono text-xs uppercase tracking-widest text-accent-teal mb-2 fade-up">Conceptos clave</p>
+    <p class="text-os-secondary text-sm leading-relaxed mb-6 fade-up">Términos centrales presentados en este módulo. Se indica la lección donde se define cada término por primera vez, para que puedas volver a la explicación original.</p>
+    <div class="rounded-2xl border border-white/10 overflow-hidden fade-up">
+      <table>
+        <thead><tr><th>Término</th><th>Definido En</th><th>Significado en Lenguaje Sencillo</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Claude Code</strong></td><td>Lección 3.1</td><td>Un asistente de IA que lee, redacta y edita los archivos reales de una carpeta que abres en tu computadora.</td></tr>
+          <tr><td><strong>VS Code</strong></td><td>Lección 3.1</td><td>El programa gratuito de Microsoft dentro del cual funciona Claude Code. Como Word, pero diseñado para abrir una carpeta completa de archivos a la vez.</td></tr>
+          <tr><td><strong>Carpeta del Proyecto</strong></td><td>Lección 3.1</td><td>La única carpeta que abres. Claude solo puede ver y tocar los archivos que están dentro de ella, y nada más.</td></tr>
+          <tr><td><strong>Terminal</strong></td><td>Lección 3.1</td><td>Un cuadro de texto donde escribes instrucciones en lugar de hacer clic. En total necesitas unos seis comandos.</td></tr>
+          <tr><td><strong>Diff</strong></td><td>Lección 3.1</td><td>Una vista comparativa antes/después de un cambio que Claude propone, la cual apruebas o rechazas.</td></tr>
+          <tr><td><strong>CLAUDE.md</strong></td><td>Lección 3.1</td><td>Un archivo de texto plano con instrucciones permanentes que Claude lee automáticamente al inicio de cada sesión en esa carpeta.</td></tr>
+          <tr><td><strong>Comando Slash</strong></td><td>Lección 3.1</td><td>Un prompt guardado y reutilizable que activas con un /nombre corto en lugar de volver a escribir una instrucción larga.</td></tr>
+          <tr><td><strong>Proyecto de Claude</strong></td><td>Lección 3.2</td><td>Un espacio de trabajo reutilizable en claude.ai construido alrededor de un tipo de trabajo recurrente — la contraparte, en la web, de una carpeta de proyecto de Claude Code.</td></tr>
+          <tr><td><strong>Instrucciones Personalizadas</strong></td><td>Lección 3.2</td><td>Reglas permanentes en lenguaje sencillo que le dicen a Claude quién es, cómo comportarse y cómo dar formato a las respuestas — la versión de CLAUDE.md dentro de un Proyecto.</td></tr>
+          <tr><td><strong>Conocimiento del Proyecto</strong></td><td>Lección 3.2</td><td>Archivos de referencia que subes una vez para que Claude pueda usarlos en cualquier chat dentro del Proyecto.</td></tr>
+        </tbody>
+      </table>
+      <details>
+        <summary>Referencia completa de Conceptos clave</summary>
+        <div>
+          <table>
+            <tbody>
+              <tr><td><strong>Claude Cowork</strong></td><td>Lección 3.1</td><td>La opción diseñada para editar o crear un solo archivo de Word, Excel o PowerPoint, sin necesidad de terminal.</td></tr>
+              <tr><td><strong>Modo Plan</strong></td><td>Lección 3.1</td><td>Una configuración que limita a Claude a leer y pensar hasta que apruebes un plan escrito. Tu mejor salvaguarda.</td></tr>
+              <tr><td><strong>Solicitud de Permiso</strong></td><td>Lección 3.1</td><td>El aviso que aparece antes de que Claude escriba o edite. Las opciones son permitir una vez, permitir siempre, o denegar.</td></tr>
+              <tr><td><strong>Terminal Integrada</strong></td><td>Lección 3.1</td><td>El panel de terminal integrado en VS Code, que se abre con Ctrl y la tecla de acento grave (el mismo atajo en Mac). La única terminal que necesitas.</td></tr>
+              <tr><td><strong>PowerShell</strong></td><td>Lección 3.1</td><td>Un programa integrado de Windows para escribir instrucciones. Se usa una sola vez, solo para la instalación. (Mac usa Terminal con una instalación de una sola línea con curl.)</td></tr>
+              <tr><td><strong>PATH</strong></td><td>Lección 3.1</td><td>La lista de lugares donde tu computadora busca programas. Un comando debe estar en ella para poder ejecutarse desde cualquier carpeta — en Windows esto vive en las variables de entorno, en Mac en <span class="font-mono">~/.zshrc</span>.</td></tr>
+              <tr><td><strong>Extensión</strong></td><td>Lección 3.1</td><td>Un pequeño complemento para VS Code, como una app para tu teléfono, que agrega funciones como ver PDFs o revisar ortografía.</td></tr>
+              <tr><td><strong>Markdown (.md)</strong></td><td>Lección 3.1</td><td>Un estilo simple de formato en texto plano. El formato recomendado para trabajar, exportando a Word o PDF al final.</td></tr>
+              <tr><td><strong>Modelo</strong></td><td>Lección 3.1</td><td>La IA específica que realiza el trabajo, como Sonnet u Opus, que se muestra en el indicador de modelo del prompt.</td></tr>
+              <tr><td><strong>Token</strong></td><td>Lección 3.1</td><td>Una unidad de uso de texto que cuenta contra el límite de tu plan.</td></tr>
+              <tr><td><strong>Límites de Uso</strong></td><td>Lección 3.1</td><td>Los límites de sesión continuos de aproximadamente 5 horas de Claude Pro, más los límites semanales. El chat web y Claude Code comparten un mismo total.</td></tr>
+              <tr><td><strong>Git for Windows</strong></td><td>Lección 3.1</td><td>Una instalación gratuita recomendada que agrega Git Bash, una terminal alternativa, a tu computadora. (En Mac, Git viene incluido con Xcode Command Line Tools — no necesitas una descarga aparte.)</td></tr>
+              <tr><td><strong>Instrucción Permanente</strong></td><td>Lección 3.5</td><td>Un dato que siempre debería ser cierto, escrito en las instrucciones personalizadas para que todos los chats lo usen.</td></tr>
+              <tr><td><strong>Bloque Mi Contexto</strong></td><td>Lección 3.3</td><td>La sección de tus instrucciones que contiene los detalles sobre tu rol, tus sistemas y tus preferencias.</td></tr>
+              <tr><td><strong>Alcance del Proyecto</strong></td><td>Lección 3.2</td><td>El único tipo de trabajo recurrente que cubre un Proyecto. Un tipo de trabajo por Proyecto.</td></tr>
+              <tr><td><strong>Meta Prompt</strong></td><td>Lección 3.6</td><td>Un prompt que le pide a Claude que diseñe un Proyecto completamente nuevo para ti, listo para pegar.</td></tr>
+              <tr><td><strong>Chat Simple</strong></td><td>Lección 3.2</td><td>Una sola conversación que olvida todo en el momento en que termina.</td></tr>
+              <tr><td><strong>Asistente de Reclutamiento</strong></td><td>Lección 3.2</td><td>El Proyecto de ejemplo para RR. HH.: resúmenes de candidatos, mensajes de contacto, seguimiento del pipeline.</td></tr>
+              <tr><td><strong>Revisión de Contratos</strong></td><td>Lección 3.2</td><td>El Proyecto de ejemplo para Legal: revisión de cláusulas, señalización de riesgos, seguimiento de términos definidos.</td></tr>
+              <tr><td><strong>Asistente de Contenido</strong></td><td>Lección 3.2</td><td>El Proyecto de ejemplo para Marketing: reutilización de contenido, aplicación de la voz de marca, resúmenes de campañas.</td></tr>
+              <tr><td><strong>Asistente de Procesos y Órdenes de Trabajo</strong></td><td>Lección 3.2</td><td>El Proyecto de ejemplo para Ingeniería Industrial: resúmenes de no conformidades, redacción de trabajo estándar, seguimiento del estado de órdenes de trabajo.</td></tr>
+              <tr><td><strong>Asistente de Asuntos Diplomáticos</strong></td><td>Lección 3.2</td><td>El Proyecto de ejemplo para Relaciones Internacionales: memorandos informativos, verificaciones de protocolo, seguimiento de acuerdos y cables.</td></tr>
+              <tr><td><strong>Línea de Identidad</strong></td><td>Lección 3.3</td><td>La línea «Eres mi asistente de ___» que establece el rol de Claude en cada chat del Proyecto.</td></tr>
+              <tr><td><strong>Lista de Responsabilidades</strong></td><td>Lección 3.3</td><td>La lista numerada de tareas permanentes que maneja el Proyecto.</td></tr>
+              <tr><td><strong>Regla de Formato de Salida</strong></td><td>Lección 3.3</td><td>Tu formato de respuesta predeterminado (tabla, viñetas) y cualquier campo obligatorio.</td></tr>
+              <tr><td><strong>Campos Obligatorios</strong></td><td>Lección 3.3</td><td>Los elementos específicos que Claude debe extraer o incluir en cada respuesta.</td></tr>
+              <tr><td><strong>Estante de Referencia</strong></td><td>Lección 3.4</td><td>El conjunto de archivos subidos que usa un Proyecto, en lugar de que tú los pegues cada vez.</td></tr>
+              <tr><td><strong>Acceso a Sistemas en Vivo</strong></td><td>Lección 3.4</td><td>A qué accede un Proyecto por defecto: nada más allá de lo que subas. Los Conectores (Módulo 4, Lección 4.4) son la única forma de ampliar eso de manera deliberada.</td></tr>
+              <tr><td><strong>Memoria del Proyecto</strong></td><td>Lección 3.5</td><td>Las instrucciones personalizadas y los archivos subidos. No existe una función separada de preferencias aprendidas.</td></tr>
+              <tr><td><strong>Regla de la Corrección Repetida</strong></td><td>Lección 3.5</td><td>Si corriges a Claude de la misma manera en cada chat, esa corrección pertenece a las instrucciones.</td></tr>
+              <tr><td><strong>Plantilla de Proyecto</strong></td><td>Lección 3.6</td><td>La configuración de cuatro partes (nombre, descripción, instrucciones, lista de archivos) para un nuevo Proyecto.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Instrucciones Personalizadas y CLAUDE.md Son la Misma Idea, Dos Superficies</span>
+      <p>Las instrucciones personalizadas de un Proyecto (3.2–3.7) y el CLAUDE.md de Claude Code (3.1) cumplen la misma función: reglas permanentes que Claude lee automáticamente en lugar de que tú las repitas cada vez. La única diferencia es en qué superficie estás — la terminal o la web. Si terminas usando ambas a diario, esa similitud es intencional — la solución para «sigo repitiéndome» es la misma en ambos casos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUPPORT RESOURCES ============ -->
+<section class="px-6 pb-16">
+  <div class="max-w-3xl mx-auto glossary">
+    <p class="font-mono text-xs uppercase tracking-widest text-accent-cyan mb-4 fade-up">Recursos de soporte</p>
+    <div class="rounded-2xl border border-white/10 overflow-hidden fade-up">
+      <table>
+        <thead><tr><th>Recurso</th><th>Enlace</th><th>Propósito</th></tr></thead>
+        <tbody>
+          <tr><td>Claude</td><td><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a></td><td>Regístrate y usa Claude en tu navegador</td></tr>
+          <tr><td>Documentación de Claude</td><td><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">code.claude.com/docs</a></td><td>Documentación oficial</td></tr>
+          <tr><td>Soporte de Claude</td><td><a href="https://support.claude.com" class="text-accent-cyan hover:underline">support.claude.com</a></td><td>Centro de ayuda y soporte de cuenta</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEXT MODULE ============ -->
+<section class="px-6 pb-24">
+  <div class="max-w-3xl mx-auto rounded-2xl bg-gradient-to-br from-white/[0.06] to-transparent border border-white/10 p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div>
+      <p class="font-mono text-[11px] uppercase tracking-widest text-os-tertiary mb-2">A continuación</p>
+      <p class="font-display font-semibold">Módulo 4: Automatiza Flujos de Trabajo con Claude Code</p>
+    </div>
+    <a href="../module-4/index.html" class="px-5 py-3 rounded-lg border border-[#00F0FF]/50 text-[#00F0FF] font-display font-bold text-sm hover:bg-[#00F0FF]/10 hover:shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all whitespace-nowrap">
+      Ver el Módulo 4
+    </a>
+  </div>
+</section>
+
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">No te elevas al nivel de tus metas. Caes al nivel de tus sistemas.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Construido como un sistema, no como un eslogan.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
+
+</body>
+</html>

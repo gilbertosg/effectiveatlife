@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 1.2: Ingeniería de Prompts vs. Ingeniería de Contexto — AI for Friends</title>
+<meta name="title" content="Lección 1.2: Ingeniería de Prompts vs. Ingeniería de Contexto">
+<meta name="description" content="Domina las dos palancas que determinan la calidad de las respuestas de la IA — y aprende cuándo usar cada una.">
+<link rel="alternate" hreflang="en" href="https://effectiveatlife.com/ai-for-friends/module-1/lesson-2.html">
+<link rel="alternate" hreflang="es" href="https://effectiveatlife.com/es/ai-for-friends/module-1/lesson-2.html">
+<link rel="alternate" hreflang="x-default" href="https://effectiveatlife.com/ai-for-friends/module-1/lesson-2.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../../assets/css/custom.css">
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pilares</a>
+      <a href="../../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Curso</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menú
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+                <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Fundamentos de IA</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 Cómo Funcionan los Modelos de IA</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">1.2 Ingeniería de Prompts vs. Ingeniería de Contexto</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Técnicas Prácticas de Prompting</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Cómo Elegir el Modelo de IA Correcto</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Configura tu Computadora</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPCIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Instalando la Terminal de Windows</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Instalando VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navegando en la Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-3/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-3/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Guía de Inicio de Claude Code</a>
+              <a href="../module-3/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 ¿Qué Es un Proyecto de Claude?</a>
+              <a href="../module-3/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creando tu Primer Proyecto</a>
+              <a href="../module-3/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Cómo Darle Material de Referencia a tu Proyecto</a>
+              <a href="../module-3/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Cómo Mantener Actualizadas tus Instrucciones Permanentes</a>
+              <a href="../module-3/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Usa tu Proyecto para Diseñar Más Proyectos</a>
+              <a href="../module-3/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Ejemplos Prácticos por Rol</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="../module-4/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">04</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Automatiza Flujos de Trabajo con Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-4/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Tus Hábitos Diarios con Claude Code</a>
+              <a href="../module-4/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Instalando Skills de Anthropic</a>
+              <a href="../module-4/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 Relaciones Internacionales: Automatiza el Flujo de Acuerdos</a>
+              <a href="../module-4/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 ¿Qué Es un Servidor MCP?</a>
+              <a href="../module-4/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Resumen Diario de Correo y Calendario</a>
+              <a href="../module-4/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Mantente Informado: un Resumen de Mercado</a>
+              <a href="../module-4/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.7 De Fuentes a Contenido</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Inicio del curso</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <a href="../../../ai-for-friends/module-1/lesson-2.html" class="hover:text-accent-cyan transition-colors">EN</a>
+        <span class="text-white/20">/</span>
+        <span class="text-accent-cyan font-semibold">ES</span>
+      </div>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Módulo 1</a>
+  </div>
+</header>
+
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a><span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Módulo 1</a><span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lección 1.2</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Ingeniería de Prompts vs. Ingeniería de Contexto</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">Domina las dos palancas que determinan la calidad de las respuestas de la IA — y aprende cuándo usar cada una.</p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">20 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">PASO 2 DE 4</span>
+    </div>
+    <div class="flex flex-wrap gap-2 font-mono text-[10px]">
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Distinción Central</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Mejores Prompts</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Cinco Patrones</a>
+      <a href="#step-4" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">4. Contexto en la Práctica</a>
+      <a href="#step-5" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">5. Ventana de Contexto</a>
+      <a href="#step-6" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">6. Fórmula Completa</a>
+    </div>
+  </div>
+</header>
+
+<article class="px-6 pb-24">
+  <div class="lesson-body max-w-2xl mx-auto text-[16px]">
+
+    <h2 id="step-1"><span class="step-num">1</span>La Distinción Central</h2>
+    <p>Dos conceptos controlan la calidad de las respuestas de la IA. La <strong>ingeniería de prompts</strong> controla cómo preguntas. La <strong>ingeniería de contexto</strong> controla qué información le das a la IA para trabajar. La mayoría de la gente dedica todo su tiempo a lo primero e ignora lo segundo — pero lo segundo importa más.</p>
+
+    <table>
+      <thead><tr><th>Dimensión</th><th>Ingeniería de Prompts</th><th>Ingeniería de Contexto</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Enfoque</strong></td><td>Texto orientado al usuario (cómo preguntas)</td><td>Datos orientados al sistema (qué proporcionas)</td></tr>
+        <tr><td><strong>Naturaleza</strong></td><td>Transitoria, de un solo turno</td><td>Persistente, gestionada como memoria</td></tr>
+        <tr><td><strong>Método</strong></td><td>Iteración por prueba y error</td><td>Pipelines deterministas y estructurados</td></tr>
+        <tr><td><strong>Entrada</strong></td><td>Una sola instrucción de texto</td><td>Un paquete de información organizado</td></tr>
+        <tr><td><strong>Analogía</strong></td><td>Escribir un asunto de correo claro</td><td>Adjuntar los documentos correctos al correo</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>Tres reglas para aplicar ambas:</strong> antepón la información relevante en lugar de pedirle al modelo que adivine desde cero; delimita el alcance siendo explícito sobre qué fuentes son autoritativas; persiste y refina reutilizando una conversación con contexto acumulado para una sola línea de trabajo.</p>
+
+    <div class="callout callout-info"><span class="callout-label">El Principio Clave</span><p>Los buenos resultados dependen al menos tanto del contexto como de la redacción de un solo prompt. Deja de optimizar tu prompt. Empieza a optimizar tu contexto.</p></div>
+    <div class="callout callout-tip"><span class="callout-label">Diagnostica Antes de Corregir</span><p>Cuando la IA da una respuesta incorrecta o débil, pregúntate "¿Le di la información correcta?" antes de "¿Formulé mi pregunta correctamente?". Los problemas de contexto causan la mayoría de las fallas de IA.</p></div>
+
+    <h2 id="step-2"><span class="step-num">2</span>Mejores Prompts en la Práctica</h2>
+    <p>Un prompt vago obliga a la IA a adivinar, y cada suposición introduce error. La solución no es escribir mejor — es ser más específico.</p>
+
+    <div class="col-2">
+      <div>
+        <h3>RR. HH.</h3>
+        <pre>❌ Antes: "Resume esto."</pre>
+        <p class="!mb-2"><em>Vago. ¿Para quién? ¿Qué tan largo? ¿Qué formato?</em></p>
+        <pre>✅ Después: "Resume esta transcripción de entrevista en 5 viñetas para el gerente de contratación. Enfócate en las fortalezas del candidato y cualquier preocupación planteada."</pre>
+      </div>
+      <div>
+        <h3>Marketing</h3>
+        <pre>❌ Antes: "¿Qué está atrasado?"</pre>
+        <p class="!mb-2"><em>¿Atrasado respecto a qué? ¿Qué campaña?</em></p>
+        <pre>✅ Después: "¿Qué publicaciones de redes sociales de esta campaña de lanzamiento tienen más de 2 días de retraso respecto a su fecha programada? Muéstralo como tabla: plataforma, fecha programada, días de retraso. Ordena por días de retraso descendente."</pre>
+      </div>
+    </div>
+
+    <details>
+      <summary>Más ejemplos — RR. HH., Ingeniería Industrial y Legal</summary>
+      <div>
+        <h3>RR. HH.</h3>
+        <pre>✅ "Escribe una descripción de puesto para un Gerente de Cuentas Senior en el equipo de éxito del cliente. Requisitos: 5+ años en gestión de cuentas B2B, experiencia con CRM, historial de retención de clientes. Usa nuestro formato estándar: resumen, responsabilidades, requisitos, beneficios. Tono: profesional pero cálido."</pre>
+        <h3>Ingeniería Industrial</h3>
+        <pre>❌ Antes: "Revisa el reporte de tiempo muerto."</pre>
+        <p class="!mb-2"><em>¿Qué línea? ¿Qué turno? ¿Qué cuenta como tiempo muerto?</em></p>
+        <pre>✅ Después: "¿Qué líneas de producción en el reporte de tiempo muerto de esta semana superaron 30 minutos de tiempo muerto no planificado? Muéstralo como tabla: línea, fecha, duración, causa señalada. Ordena por duración descendente."</pre>
+        <h3>Legal</h3>
+        <pre>✅ "Revisa este NDA en busca de cláusulas estándar faltantes. Verifica: definición de información confidencial, duración del acuerdo, devolución de materiales, ley aplicable. Enumera cada cláusula faltante o débil con una nota de una línea sobre el riesgo que genera."</pre>
+      </div>
+    </details>
+
+    <div class="callout callout-info"><span class="callout-label">La Regla de la Especificidad</span><p>Cada palabra vaga en tu prompt obliga a una suposición. Un prompt con cinco elementos vagos tiene aproximadamente un 3% de probabilidad de producir exactamente lo que quieres. Cinco elementos específicos producen resultados precisos casi siempre.</p></div>
+
+    <h2 id="step-3"><span class="step-num">3</span>Cinco Patrones de Prompting Que Cubren el 90% de tu Trabajo</h2>
+    <p>No necesitas decenas de técnicas — cinco patrones cubren casi todo lo que harás en Claude.</p>
+
+    <table>
+      <thead><tr><th>Patrón</th><th>Qué Es</th><th>Cuándo Usarlo</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1. Zero-Shot</strong></td><td>Pregunta una vez con instrucciones claras, sin ejemplos</td><td>Tareas simples y bien definidas con un formato obvio</td></tr>
+        <tr><td><strong>2. Few-Shot</strong></td><td>Provee 1–3 ejemplos antes de pedirle al modelo que continúe el patrón</td><td>Transformar notas, clasificar elementos, formato consistente</td></tr>
+        <tr><td><strong>3. Role Prompting</strong></td><td>Asígnale explícitamente un rol a la IA para alinear tono y profundidad</td><td>Cuando necesitas un nivel de experiencia o estilo específico</td></tr>
+        <tr><td><strong>4. Chain-of-Thought</strong></td><td>Pídele al modelo que razone paso a paso antes de responder</td><td>Análisis, decisiones relevantes para la seguridad, tradeoffs complejos</td></tr>
+        <tr><td><strong>5. Estilo Entrevista</strong></td><td>Pídele al modelo que TE haga preguntas aclaratorias primero</td><td>Cuando no estás seguro de lo que necesitas, o la tarea es ambigua</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Ejemplo del Patrón 2 (Few-Shot)</h3>
+    <pre>Convierte estas notas sin procesar de nuestro retro de campaña en elementos de acción con formato:
+
+Entrada: "el tiempo de carga de la landing page afectó las conversiones, se necesita que desarrollo lo arregle antes del próximo lanzamiento"
+Salida: Elemento de Acción: Arreglar el tiempo de carga de la landing page antes del próximo lanzamiento. Responsable: [Tu Nombre]. Fuente: Retro de campaña. Fecha límite: Antes del próximo lanzamiento.
+
+Entrada: "las tasas de apertura de correo bajaron, los asuntos se sintieron genéricos"
+Salida: Elemento de Acción: Hacer pruebas A/B con asuntos de correo más específicos. Responsable: [Tu Nombre]. Fuente: Retro de campaña. Fecha límite: Próximo envío de correo.
+
+Ahora convierte esto:
+Entrada: "el gasto en redes pagadas se pasó del presupuesto, nadie estaba vigilando los topes diarios"</pre>
+
+    <details>
+      <summary>Ejemplo del Patrón 4 — Chain-of-Thought</summary>
+      <div><pre>Necesito decidir si escalar la renovación de un contrato con un proveedor que vence en 30 días. Guíame por la decisión paso a paso:
+(1) ¿Cuál es la fecha de vencimiento actual?
+(2) ¿Cuándo debe tomarse la decisión de renovar?
+(3) ¿Cuál es el costo de renovar frente a cambiar de proveedor?
+(4) ¿Cuál es el riesgo de dejar que se renueve automáticamente?
+(5) Con base en estos factores, recomienda escalar o esperar.</pre></div>
+    </details>
+    <details>
+      <summary>Ejemplo del Patrón 5 — Estilo Entrevista</summary>
+      <div><pre>Necesito escribir un caso de negocio para una nueva herramienta de onboarding de empleados.
+Antes de redactar nada, hazme 5 preguntas aclaratorias sobre el problema, la audiencia, el presupuesto y el cronograma.</pre></div>
+    </details>
+
+    <div class="callout callout-note"><span class="callout-label">Combina Patrones para Mejores Resultados</span><p>Empieza con Role Prompting ("Eres un reclutador senior..."), agrega ejemplos Few-Shot, y luego solicita razonamiento Chain-of-Thought. Combinar patrones produce los resultados de mayor calidad.</p></div>
+
+    <h2 id="step-4"><span class="step-num">4</span>Ingeniería de Contexto en la Práctica</h2>
+    <p>Un modelo es tan inteligente como su contexto. Sin él, los sistemas de IA alucinan — inventan hechos. El contexto bien diseñado corrige esto.</p>
+
+    <table>
+      <thead><tr><th>Rol</th><th>Contexto Deficiente</th><th>Buen Contexto</th></tr></thead>
+      <tbody>
+        <tr><td><strong>RR. HH.</strong></td><td>Pegar 40 currículums y preguntar "ayúdame a filtrarlos"</td><td>Pegar primero los requisitos del puesto, luego 3 currículums a la vez: "Califica cada uno del 1 al 5 en experiencia relevante, años, indicadores de liderazgo. Muéstralo como tabla."</td></tr>
+        <tr><td><strong>Ingeniería Industrial</strong></td><td>Pegar un mes completo de bitácoras de mantenimiento y preguntar "¿qué está mal con la línea?"</td><td>Extraer solo las entradas de esta semana: "¿Qué códigos de falla aparecen más de dos veces? Enumera código, frecuencia y línea afectada."</td></tr>
+        <tr><td><strong>Legal</strong></td><td>Pegar un acuerdo de fusión de 40 páginas y preguntar "¿hay riesgos?"</td><td>Extraer solo Indemnización y Terminación: "¿Qué cláusulas se desvían de nuestra plantilla estándar? Enumera número de cláusula, desviación, nivel de riesgo."</td></tr>
+        <tr><td><strong>Marketing</strong></td><td>Preguntar "¿cómo le fue a la campaña?" sin datos adjuntos</td><td>Pegar el CSV de la campaña filtrado a los últimos 30 días: "¿Qué canales tuvieron un desempeño inferior al CPA objetivo? Muestra canal, objetivo, real, diferencia."</td></tr>
+      </tbody>
+    </table>
+
+    <table>
+      <thead><tr><th>Calidad del Contexto</th><th>Qué Sucede</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Sin contexto</strong></td><td>La IA adivina. Alta tasa de alucinación. El resultado es inútil.</td></tr>
+        <tr><td><strong>Contexto parcial</strong></td><td>La IA acierta en algunas cosas e inventa otras — peligroso porque parece verosímil.</td></tr>
+        <tr><td><strong>Contexto completo y estructurado</strong></td><td>La IA entrega respuestas precisas y fundamentadas. Alucinación mínima.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-warning"><span class="callout-label">El Contexto Parcial Es el Estado Más Peligroso</span><p>Produce resultados que parecen correctos pero contienen detalles inventados. Siempre verifica la salida de la IA contra los datos fuente cuando sospeches que tu contexto estaba incompleto.</p></div>
+
+    <h2 id="step-5"><span class="step-num">5</span>Gestiona tu Ventana de Contexto</h2>
+    <p>Cada conversación tiene un límite. A medida que crece, la IA puede olvidar instrucciones anteriores o mezclar tareas viejas y nuevas. Saber cuándo continuar y cuándo empezar de cero es una habilidad diaria.</p>
+
+    <div class="col-2">
+      <div>
+        <h3>Reutiliza la misma conversación cuando</h3>
+        <ul class="list-disc pl-5 space-y-1.5 text-sm text-os-secondary marker:text-accent-cyan"><li>Es la misma línea de trabajo — el mismo documento, decisión o preparación de reunión</li><li>Los turnos anteriores siguen siendo relevantes ("acordamos que riesgo alto significa X")</li><li>La conversación aún no está saturada ni mezcla varios proyectos</li></ul>
+      </div>
+      <div>
+        <h3>Empieza de cero cuando</h3>
+        <ul class="list-disc pl-5 space-y-1.5 text-sm text-os-secondary marker:text-accent-cyan"><li>El tema realmente cambió</li><li>El hilo es largo, desordenado y lleno de callejones sin salida</li><li>La IA empieza a reutilizar suposiciones desactualizadas de hace 20 turnos</li></ul>
+      </div>
+    </div>
+
+    <h3>La técnica de resumir y reiniciar</h3>
+    <p>Pregunta: <em>"Resume las decisiones clave y las restricciones de esta conversación en 5 viñetas."</em> Copia ese resumen, inicia una nueva conversación, y pégalo en un bloque de CONTEXTO al inicio de tu primer prompt nuevo:</p>
+    <pre>CONTEXTO (de la conversación anterior):
+- Decisión 1: [viñeta generada por la IA]
+- Decisión 2: [viñeta generada por la IA]
+- Decisión 3: [viñeta generada por la IA]
+
+TAREA: [Tu nueva pregunta o solicitud]</pre>
+
+    <div class="callout callout-tip"><span class="callout-label">Cuidado con la Señal de Contaminación</span><p>Si la IA menciona algo de hace 20 turnos que ya no es relevante, tu ventana de contexto está contaminada. Empieza de cero y lleva contigo solo lo que importa.</p></div>
+
+    <h2 id="step-6"><span class="step-num">6</span>Uniendo Todo</h2>
+    <p><strong>Gran Resultado de IA = Prompt Claro + Contexto Correcto + Patrón Apropiado.</strong> Este es un prompt completo y listo para producción que combina contexto, rol, tarea, formato y restricciones:</p>
+
+    <pre>CONTEXTO:
+[Pega aquí los datos relevantes — p. ej. la actualización de esta semana del sistema de seguimiento de candidatos]
+
+ROL:
+Eres un coordinador senior de RR. HH. escribiendo una actualización semanal del pipeline de contratación.
+
+TAREA:
+Con base en los datos del pipeline de arriba, redacta una actualización de estatus semanal para el gerente de contratación.
+
+FORMATO:
+- Agrupa por: Ofertas Extendidas, En Entrevista, Nuevos Candidatos, Estancados
+- Incluye nombre del candidato, puesto, y estatus de una línea para cada elemento
+- Agrega una sección de "Decisiones Necesarias" al final
+- Mantén la longitud total bajo 1 página
+
+RESTRICCIONES:
+- Solo incluye candidatos con actividad en los últimos 7 días
+- Marca a cualquiera estancado en una etapa por más de 10 días
+- No incluyas candidatos ya rechazados</pre>
+
+    <table>
+      <thead><tr><th>Sección</th><th>Qué Controla</th><th>Sin Ella</th></tr></thead>
+      <tbody>
+        <tr><td><strong>CONTEXTO</strong></td><td>Los datos y la verdad base desde la cual razonar</td><td>La IA inventa hechos o da respuestas genéricas</td></tr>
+        <tr><td><strong>ROL</strong></td><td>Tono, profundidad, vocabulario, nivel de experiencia</td><td>La IA usa un estilo genérico por defecto</td></tr>
+        <tr><td><strong>TAREA</strong></td><td>La instrucción central y el entregable</td><td>La IA malinterpreta lo que quieres</td></tr>
+        <tr><td><strong>FORMATO</strong></td><td>Estructura, longitud, agrupación, diseño</td><td>La IA elige su propio formato — tienes que reformatear después</td></tr>
+        <tr><td><strong>RESTRICCIONES</strong></td><td>Qué excluir, marcar o seguir</td><td>La IA incluye contenido irrelevante, pasa por alto casos límite</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-note"><span class="callout-label">No Necesitas las Cinco Secciones Siempre</span><p>Las tareas simples solo necesitan TAREA y FORMATO. Usa CONTEXTO, ROL y RESTRICCIONES cuando la tarea sea compleja, cuando la precisión importe, o cuando el resultado se vaya a compartir con otros.</p></div>
+
+    <h2 class="!mt-16">Verificación</h2>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Puedes explicar la diferencia entre ingeniería de prompts e ingeniería de contexto en una sola oración</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Puedes nombrar al menos tres de los cinco patrones de prompting y cuándo usar cada uno</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Conoces los tres niveles de calidad de contexto y cuál produce alucinaciones convincentes</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Sabes cuándo reutilizar una conversación y cuándo empezar de cero</span></div>
+    </div>
+
+    <h2 class="!mt-10 !text-base">Recursos Relacionados</h2>
+    <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
+      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — Inicia una conversación y aplica estos patrones</li>
+      <li><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">Documentación de Claude</a> — Documentación oficial</li>
+      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">Soporte de Claude</a> — Artículos de ayuda y respuestas a preguntas frecuentes</li>
+    </ul>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lección completada</p>
+      <p class="text-sm text-os-secondary">Ahora conoces las dos palancas que controlan la calidad de las respuestas de la IA, cinco patrones que cubren el 90% de tu trabajo, y una fórmula para cualquier solicitud compleja.</p>
+    </div>
+
+  </div>
+</article>
+
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="lesson-1.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 1.1 Cómo Funcionan los Modelos de IA</a>
+    <a href="lesson-3.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">Siguiente: Técnicas Prácticas &rarr;</a>
+  </div>
+</nav>
+
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">No te elevas al nivel de tus metas. Caes al nivel de tus sistemas.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Construido como un sistema, no como un eslogan.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
+
+</body>
+</html>

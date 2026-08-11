@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 1.4: Cómo Elegir el Modelo de IA Correcto — AI for Friends</title>
+<meta name="title" content="Lección 1.4: Cómo Elegir el Modelo de IA Correcto">
+<meta name="description" content="Haiku, Sonnet y Opus — cuál usar, cuándo cambiar, y cómo obtener el mejor resultado sin gastar de más.">
+<link rel="alternate" hreflang="en" href="https://effectiveatlife.com/ai-for-friends/module-1/lesson-4.html">
+<link rel="alternate" hreflang="es" href="https://effectiveatlife.com/es/ai-for-friends/module-1/lesson-4.html">
+<link rel="alternate" hreflang="x-default" href="https://effectiveatlife.com/ai-for-friends/module-1/lesson-4.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../../assets/css/custom.css">
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pilares</a>
+      <a href="../../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Curso</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menú
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+                <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Fundamentos de IA</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 Cómo Funcionan los Modelos de IA</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Ingeniería de Prompts vs. Ingeniería de Contexto</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Técnicas Prácticas de Prompting</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">1.4 Cómo Elegir el Modelo de IA Correcto</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Configura tu Computadora</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPCIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Instalando la Terminal de Windows</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Instalando VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navegando en la Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-3/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-3/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Guía de Inicio de Claude Code</a>
+              <a href="../module-3/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 ¿Qué Es un Proyecto de Claude?</a>
+              <a href="../module-3/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creando tu Primer Proyecto</a>
+              <a href="../module-3/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Cómo Darle Material de Referencia a tu Proyecto</a>
+              <a href="../module-3/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Cómo Mantener Actualizadas tus Instrucciones Permanentes</a>
+              <a href="../module-3/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Usa tu Proyecto para Diseñar Más Proyectos</a>
+              <a href="../module-3/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Ejemplos Prácticos por Rol</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="../module-4/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">04</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Automatiza Flujos de Trabajo con Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-4/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Tus Hábitos Diarios con Claude Code</a>
+              <a href="../module-4/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Instalando Skills de Anthropic</a>
+              <a href="../module-4/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 Relaciones Internacionales: Automatiza el Flujo de Acuerdos</a>
+              <a href="../module-4/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 ¿Qué Es un Servidor MCP?</a>
+              <a href="../module-4/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Resumen Diario de Correo y Calendario</a>
+              <a href="../module-4/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Mantente Informado: un Resumen de Mercado</a>
+              <a href="../module-4/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.7 De Fuentes a Contenido</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Inicio del curso</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <a href="../../../ai-for-friends/module-1/lesson-4.html" class="hover:text-accent-cyan transition-colors">EN</a>
+        <span class="text-white/20">/</span>
+        <span class="text-accent-cyan font-semibold">ES</span>
+      </div>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Módulo 1</a>
+  </div>
+</header>
+
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a><span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Módulo 1</a><span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lección 1.4</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Cómo Elegir el Modelo de IA Correcto</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">Claude te da acceso a varios modelos. Aprende cuál usar, cuándo cambiar, y cómo obtener el mejor resultado sin gastar de más.</p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">10 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">PASO 4 DE 4</span>
+    </div>
+    <div class="flex flex-wrap gap-2 font-mono text-[10px]">
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Por Qué Difieren los Modelos</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. La Familia de Modelos</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Elegir Según la Tarea</a>
+      <a href="#step-4" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">4. Costo y Errores</a>
+    </div>
+  </div>
+</header>
+
+<article class="px-6 pb-24">
+  <div class="lesson-body max-w-2xl mx-auto text-[16px]">
+
+    <h2 id="step-1"><span class="step-num">1</span>Por Qué Existen Varios Modelos</h2>
+    <p>Piensa en los modelos de IA como contrataciones para distintos roles — no le asignarías a un director senior responder correos rutinarios, ni le pedirías a un becario que desarrolle tu estrategia de programa. Cada modelo está optimizado para un balance distinto de inteligencia, velocidad y costo, y esas dimensiones compiten entre sí.</p>
+
+    <div class="callout callout-info"><span class="callout-label">La Regla de Oro</span><p>Usa el modelo más pequeño y económico que pueda hacer bien el trabajo. Sube de nivel solo cuando la tarea lo exija — esta sola regla puede reducir tus costos de IA a la mitad.</p></div>
+
+    <h2 id="step-2"><span class="step-num">2</span>La Familia de Modelos</h2>
+    <p>Claude viene en tres modelos — Haiku, Sonnet y Opus. Comparten las mismas fortalezas (escritura, análisis, razonamiento, instrucciones de varias partes) y difieren solo en el balance de velocidad, inteligencia y costo.</p>
+
+    <table>
+      <thead><tr><th>Modelo</th><th>Ideal Para</th><th>Especificaciones Clave</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Claude Haiku 4.5</strong></td><td>Preguntas rápidas, formato de datos, clasificación simple, tareas repetitivas en volumen</td><td>El más rápido. El de menor costo.</td></tr>
+        <tr><td><strong>Claude Sonnet 4.5</strong></td><td>Reportes, análisis de datos, resúmenes de reunión, redacción de correos, la mayoría del trabajo diario</td><td>Velocidad y calidad balanceadas. Tu opción predeterminada.</td></tr>
+        <tr><td><strong>Claude Opus 4.7</strong></td><td>Estrategia compleja, análisis profundo de varios pasos, entregables importantes</td><td>El razonamiento más profundo. Más lento. Premium.</td></tr>
+      </tbody>
+    </table>
+
+    <p>Claude no procesa video ni audio de forma nativa, y no genera imágenes. Para esas tareas de nicho, una herramienta especializada de otro proveedor es la opción correcta — no necesitas aprenderlas a fondo, solo saber que existen.</p>
+
+    <table>
+      <thead><tr><th>Tarea</th><th>Herramienta a Usar</th></tr></thead>
+      <tbody>
+        <tr><td>Analizar una grabación de video o audio</td><td>Google Gemini (video/audio nativo)</td></tr>
+        <tr><td>Generar una imagen a partir de texto</td><td>Un modelo de imagen dedicado (p. ej. GPT Image 1 Mini)</td></tr>
+        <tr><td>Transcribir audio a texto solamente</td><td>Un modelo de transcripción dedicado (p. ej. Whisper)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-note"><span class="callout-label">Video y Audio Son la Excepción Principal</span><p>¿Necesitas resumir una sesión de capacitación o reunión grabada? Claude no puede procesar video o audio directamente. Google Gemini maneja ambos de forma nativa y es la mejor opción para esa tarea específica.</p></div>
+
+    <div class="callout callout-tip"><span class="callout-label">Ante la Duda, Empieza con Sonnet</span><p>Sonnet es tu opción predeterminada para el 80% de las tareas. Cambia a Haiku para tareas simples, a Opus para razonamiento de alto riesgo.</p></div>
+
+    <h2 id="step-3"><span class="step-num">3</span>Elegir Según la Tarea</h2>
+    <p>La forma más rápida de elegir un modelo es hacer coincidir tu tarea con una categoría.</p>
+
+    <table>
+      <thead><tr><th>Tu Tarea</th><th>Usa Este Modelo</th><th>Por Qué</th></tr></thead>
+      <tbody>
+        <tr><td>Consulta rápida o pregunta corta</td><td>Haiku 4.5</td><td>Rápido y económico, no requiere razonamiento</td></tr>
+        <tr><td>Reformatear datos en una tabla</td><td>Haiku 4.5</td><td>Coincidencia de patrones — Haiku lo maneja perfectamente</td></tr>
+        <tr><td>Resumir notas de reunión (1–2 páginas)</td><td>Sonnet 4.5</td><td>Calidad y velocidad equilibradas</td></tr>
+        <tr><td>Redactar un correo a tu director</td><td>Sonnet 4.5</td><td>Buen control de tono, sigue instrucciones complejas</td></tr>
+        <tr><td>Analizar una hoja de cálculo o reporte</td><td>Sonnet 4.5</td><td>Fuerte capacidad analítica a costo moderado</td></tr>
+        <tr><td>Análisis de decisión compleja con varios factores</td><td>Opus 4.7</td><td>Requiere razonamiento profundo, vale la pena el costo premium</td></tr>
+        <tr><td>Procesar un documento muy extenso (300+ páginas)</td><td>Sonnet 4.5</td><td>Su amplia ventana de contexto lo maneja en una sola pasada</td></tr>
+        <tr><td>Procesar una grabación de video o audio</td><td>Google Gemini</td><td>Claude no lee video ni audio</td></tr>
+      </tbody>
+    </table>
+
+    <details>
+      <summary>Tabla de referencia completa por tarea</summary>
+      <div>
+        <table>
+          <tbody>
+            <tr><td>Escribir una evaluación de desempeño</td><td>Sonnet 4.5</td><td>Escritura matizada con buena estructura</td></tr>
+            <tr><td>Escribir un caso de negocio o documento de estrategia</td><td>Opus 4.7</td><td>Necesita coherencia sostenida en resultados largos</td></tr>
+            <tr><td>Analizar imágenes, capturas de pantalla, diagramas</td><td>Sonnet 4.5</td><td>Maneja imágenes y texto en conjunto</td></tr>
+            <tr><td>Extraer datos de muchos documentos cortos</td><td>Haiku 4.5</td><td>Rápido y económico para extracción repetitiva</td></tr>
+            <tr><td>Transcribir audio a texto solamente</td><td>Una herramienta de transcripción dedicada</td><td>Diseñada específicamente para audio a texto</td></tr>
+            <tr><td>Generar una imagen a partir de texto</td><td>Una herramienta de imagen dedicada</td><td>Diseñada específicamente para generación de imágenes</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <h3>El flujo de decisión de cinco preguntas</h3>
+    <pre>1. ¿La tarea es simple y está bien definida? (formato, consulta, clasificación)
+   -> Usa Haiku 4.5
+
+2. ¿Es trabajo de conocimiento estándar? (escritura, resumen, redacción)
+   -> Usa Sonnet 4.5 — TU OPCIÓN PREDETERMINADA
+
+3. ¿La tarea requiere razonamiento profundo? (estrategia, decisiones complejas)
+   -> Usa Opus 4.7
+
+4. ¿La tarea involucra video o audio?
+   -> Análisis de video/audio: Google Gemini
+   -> Solo transcripción: una herramienta de transcripción dedicada
+
+5. ¿La tarea involucra generar imágenes?
+   -> Usa una herramienta de imagen dedicada</pre>
+
+    <div class="callout callout-tip"><span class="callout-label">El 80% de las Tareas Caen en Sonnet</span><p>Si no puedes responder claramente sí a la pregunta 1 o 3–5, usa Sonnet. Es la elección correcta para la gran mayoría del trabajo de conocimiento diario.</p></div>
+
+    <h2 id="step-4"><span class="step-num">4</span>Velocidad, Costo y Errores Comunes</h2>
+
+    <table>
+      <thead><tr><th>Modelo</th><th>Costo Relativo</th><th>Mejor Valor Para</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Haiku 4.5</strong></td><td>1x (referencia)</td><td>Tareas simples, repetitivas, de alto volumen</td></tr>
+        <tr><td><strong>Sonnet 4.5</strong></td><td>~3x Haiku</td><td>Trabajo de conocimiento diario estándar (tu opción predeterminada)</td></tr>
+        <tr><td><strong>Opus 4.7</strong></td><td>~5x Haiku</td><td>Solo razonamiento de alto riesgo</td></tr>
+      </tbody>
+    </table>
+
+    <pre>1 token = ¾ de palabra (unos 4 caracteres)
+1 página = 500 tokens
+10 páginas = 5,000 tokens
+Transcripción de 1 hora de reunión = 10,000–20,000 tokens
+1M tokens = 750,000 palabras = 1,500 páginas</pre>
+
+    <div class="col-2">
+      <div>
+        <h3>Haz esto</h3>
+        <ul class="list-disc pl-5 space-y-1.5 text-sm text-os-secondary marker:text-accent-cyan"><li>Empieza con Sonnet para todo; cambia solo con una razón específica</li><li>Baja a Haiku para tareas repetitivas — aproximadamente 3x más económico, igual de preciso</li><li>Recurre a Gemini solo cuando necesites video o audio</li><li>Revisa tu selector de modelo con regularidad — Anthropic lanza nuevos modelos periódicamente</li></ul>
+      </div>
+      <div>
+        <h3>Evita esto</h3>
+        <ul class="list-disc pl-5 space-y-1.5 text-sm text-os-secondary marker:text-accent-cyan"><li>Usar Opus para preguntas simples — 5x el costo, sin mejora notable de calidad</li><li>Pasar un documento muy largo por Haiku — su ventana de contexto más pequeña puede truncarlo</li><li>Asumir que el modelo más pesado siempre es el mejor</li><li>Ejecutar todo con un solo modelo por costumbre</li></ul>
+      </div>
+    </div>
+
+    <div class="callout callout-warning"><span class="callout-label">Haiku Tiene una Ventana de Contexto Más Pequeña</span><p>Para un documento muy largo (más de unas 30 páginas), usa Sonnet para evitar truncar tu contenido.</p></div>
+
+    <h2 class="!mt-16">Verificación</h2>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Puedes nombrar las tres dimensiones que diferencian a los modelos de IA: inteligencia, velocidad, costo</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Sabes qué modelo de Claude usar para tareas simples, trabajo estándar, y razonamiento complejo</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Sabes qué modelo usar para contenido de video y audio</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Puedes aplicar el flujo de decisión de cinco preguntas a cualquier tarea nueva en menos de 10 segundos</span></div>
+    </div>
+
+    <h2 class="!mt-10 !text-base">Recursos Relacionados</h2>
+    <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
+      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — Abre el selector de modelo para ver los modelos disponibles en tu plan</li>
+      <li><a href="https://docs.claude.com/docs" class="text-accent-cyan hover:underline">docs.claude.com/docs</a> — Documentación oficial</li>
+      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">support.claude.com</a> — Centro de ayuda y soporte de cuenta</li>
+    </ul>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Módulo 1 completado</p>
+      <p class="text-sm text-os-secondary">Ahora entiendes cómo funcionan los modelos de IA, cómo darles buenas instrucciones, y cómo elegir el correcto para cualquier tarea. Abre claude.ai, configura Sonnet como tu opción predeterminada, y ejecuta tu próxima tarea real a través del flujo de decisión.</p>
+    </div>
+
+  </div>
+</article>
+
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="lesson-3.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 1.3 Técnicas Prácticas</a>
+    <a href="../module-2/index.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">Siguiente: Módulo 2 &rarr;</a>
+  </div>
+</nav>
+
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">No te elevas al nivel de tus metas. Caes al nivel de tus sistemas.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Construido como un sistema, no como un eslogan.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
+
+</body>
+</html>

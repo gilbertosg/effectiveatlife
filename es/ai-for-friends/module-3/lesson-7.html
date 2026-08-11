@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 3.7: Ejemplos Prácticos por Rol — AI for Friends</title>
+<meta name="title" content="Lección 3.7: Ejemplos Prácticos por Rol">
+<meta name="description" content="Cinco Proyectos completos — nombre, instrucciones, archivos y un chat real — uno para cada rol de este curso.">
+<link rel="alternate" hreflang="en" href="https://effectiveatlife.com/ai-for-friends/module-3/lesson-7.html">
+<link rel="alternate" hreflang="es" href="https://effectiveatlife.com/es/ai-for-friends/module-3/lesson-7.html">
+<link rel="alternate" hreflang="x-default" href="https://effectiveatlife.com/ai-for-friends/module-3/lesson-7.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../../assets/css/custom.css">
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pilares</a>
+      <a href="../../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Curso</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menú
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="../module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Fundamentos de IA</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-1/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 Cómo Funcionan los Modelos de IA</a>
+              <a href="../module-1/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Ingeniería de Prompts vs. Ingeniería de Contexto</a>
+              <a href="../module-1/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Técnicas Prácticas de Prompting</a>
+              <a href="../module-1/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Cómo Elegir el Modelo de IA Correcto</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Configura tu Computadora</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPCIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Instalando la Terminal de Windows</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Instalando VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navegando en la Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Guía de Inicio de Claude Code</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 ¿Qué Es un Proyecto de Claude?</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creando tu Primer Proyecto</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Cómo Darle Material de Referencia a tu Proyecto</a>
+              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Cómo Mantener Actualizadas tus Instrucciones Permanentes</a>
+              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Usa tu Proyecto para Diseñar Más Proyectos</a>
+              <a href="lesson-7.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">3.7 Ejemplos Prácticos por Rol</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="../module-4/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">04</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Automatiza Flujos de Trabajo con Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-4/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Tus Hábitos Diarios con Claude Code</a>
+              <a href="../module-4/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Instalando Skills de Anthropic</a>
+              <a href="../module-4/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 Relaciones Internacionales: Automatiza el Flujo de Acuerdos</a>
+              <a href="../module-4/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 ¿Qué Es un Servidor MCP?</a>
+              <a href="../module-4/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Resumen Diario de Correo y Calendario</a>
+              <a href="../module-4/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.6 Mantente Informado: un Resumen de Mercado</a>
+              <a href="../module-4/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.7 De Fuentes a Contenido</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Inicio del curso</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <a href="../../../ai-for-friends/module-3/lesson-7.html" class="hover:text-accent-cyan transition-colors">EN</a>
+        <span class="text-white/20">/</span>
+        <span class="text-accent-cyan font-semibold">ES</span>
+      </div>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Módulo 3</a>
+  </div>
+</header>
+
+<!-- ============ LESSON HEADER ============ -->
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a>
+      <span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Módulo 3</a>
+      <span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lección 3.7</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Ejemplos Prácticos por Rol</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">
+      Cinco Proyectos completos — nombre, instrucciones, archivos y un chat real — uno para cada rol de este curso.
+    </p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">10 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-accent-teal/40 text-accent-teal">OBLIGATORIO</span>
+    </div>
+    <div class="flex flex-wrap gap-2 font-mono text-[10px]">
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Legal</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Marketing</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Ingeniería Industrial</a>
+      <a href="#step-4" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">4. Relaciones Internacionales</a>
+      <a href="#step-5" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">5. RR. HH.</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ LESSON BODY ============ -->
+<article class="px-6 pb-24">
+  <div class="lesson-body max-w-2xl mx-auto text-[16px]">
+
+    <p>Las Lecciones 3.2 a 3.6 te enseñaron la mecánica: partes, instrucciones, archivos, mantenimiento y diseño. Esta lección muestra esa mecánica terminada — cinco Proyectos completos, cada uno con una situación real, las instrucciones personalizadas exactas pegadas, los archivos subidos, y un chat de ejemplo que muestra qué regresa. Encuentra tu rol abajo y copia todo como tu punto de partida.</p>
+    <p>Una plantilla con corchetes es un punto de partida. Un ejemplo terminado es prueba de que funciona. Lee el que coincide de cerca con tu rol — luego lee al menos otro. Ver en qué se diferencia un Proyecto de Legal de uno de Ingeniería Industrial afina tu noción de qué significa realmente "un tipo de trabajo recurrente".</p>
+
+    <h2 id="step-1"><span class="step-num">1</span>Legal — Revisión de Contratos</h2>
+    <h3>La Situación</h3>
+    <p>Una abogada de contratos comerciales revisa entre 8 y 12 acuerdos de proveedores y NDA a la semana. Cada revisión empieza igual: pegar el contrato, repetir las cuatro cláusulas que importan, esperar una pasada en español sencillo. El Proyecto elimina la repetición.</p>
+
+    <h3>El Proyecto Completo</h3>
+    <p><strong>Nombre:</strong> Revisión de Contratos<br><strong>Descripción:</strong> Revisión cláusula por cláusula de acuerdos de proveedores y NDA contra nuestras posiciones estándar.</p>
+
+    <pre>Eres mi asistente de revisión de contratos. Tus responsabilidades:
+
+1. Revisar el lenguaje del contrato cláusula por cláusula y resumir cada una en español sencillo.
+2. Señalar el riesgo en estilo redline — cita el lenguaje exacto, nunca lo parafrasees.
+3. Dar seguimiento a los términos definidos y anotar cuando se usen de forma inconsistente.
+4. Categorizar cada hallazgo como riesgo Alto, Medio o Bajo.
+
+Mi contexto:
+- Reviso: acuerdos de proveedores, NDA, y acuerdos marco de servicios
+- Mi jurisdicción es: Delaware
+- Mis posiciones estándar son: el límite de responsabilidad debe ser al menos
+el valor del contrato; sin renovación automática más allá de un término sin
+una ventana de aviso de 60 días
+
+Siempre señala: lenguaje de indemnización, límites de responsabilidad, términos
+de renovación automática, y cláusulas de terminación por conveniencia. Presenta
+los hallazgos en una tabla con columnas: Referencia de Cláusula, Resumen en
+Español Sencillo, Nivel de Riesgo.</pre>
+
+    <p><strong>Archivos subidos al conocimiento del Proyecto:</strong></p>
+    <ul class="plain">
+      <li><strong>plantilla_msa_estandar.docx</strong> — nuestro propio lenguaje contractual de respaldo, para comparación</li>
+      <li><strong>glosario_terminos_definidos.docx</strong> — términos que deben usarse de forma consistente en un trato</li>
+      <li><strong>redlines_precedentes_2025.docx</strong> — tres redlines pasados que muestran nuestro estilo interno</li>
+    </ul>
+
+    <h3>Intercambio de Ejemplo</h3>
+    <pre>Tú:
+Revisa el NDA de proveedor adjunto contra nuestras posiciones estándar.
+[NDA pegado]
+
+Claude:
+| Referencia de Cláusula | Resumen en Español Sencillo | Nivel de Riesgo |
+|---|---|---|
+| § 4.2 | La responsabilidad está limitada a $50,000 — por debajo de nuestro
+valor de contrato de $210,000. | Alto |
+| § 7.1 | Se renueva automáticamente cada año con solo 30 días de aviso, no
+nuestros 60 estándar. | Medio |
+| § 2.3 | La definición de "Información Confidencial" coincide término por
+término con nuestro glosario. | Bajo |
+
+Dos hallazgos necesitan redlines antes de que esto regrese al proveedor:
+§ 4.2 (límite de responsabilidad) y § 7.1 (ventana de aviso). ¿Quieres que
+redacte el lenguaje de redline para ambos?</pre>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Qué Hizo Esto Rápido</span>
+      <p>La abogada nunca explicó qué es un límite de responsabilidad, nunca volvió a escribir la jurisdicción, y nunca repegó el glosario. Los tres ya estaban en el Proyecto.</p>
+    </div>
+
+    <h2 id="step-2"><span class="step-num">2</span>Marketing — Asistente de Contenido</h2>
+    <h3>La Situación</h3>
+    <p>Una gerente de marketing de marca reutiliza una entrada de blog en cinco variantes por canal cada semana y necesita que cada una se verifique contra una lista de 40 palabras prohibidas antes de publicarse.</p>
+
+    <h3>El Proyecto Completo</h3>
+    <p><strong>Nombre:</strong> Asistente de Contenido<br><strong>Descripción:</strong> Reutiliza una pieza de contenido entre canales manteniendo la voz de marca.</p>
+
+    <pre>Eres mi asistente de contenido. Tus responsabilidades:
+
+1. Reutilizar una pieza de contenido en variantes para cada uno de mis canales.
+2. Aplicar la voz de marca en todo lo que redactes.
+3. Resumir el desempeño de campañas y destacar qué impulsó los resultados.
+4. Producir una sección claramente etiquetada por canal al reutilizar contenido.
+
+Mi contexto:
+- Mi voz de marca es: segura, directa, nunca exagerada
+- Mis canales principales son: LinkedIn, boletín de correo, blog, X
+- Palabras que nunca usamos: sinergia, revolucionario, disruptivo, desbloquear,
+aprovechar (como verbo)
+
+Al reutilizar contenido, mantén el mensaje central idéntico entre canales pero
+adapta la extensión y el tono a cada uno. Respeta siempre la lista de palabras
+prohibidas.</pre>
+
+    <p><strong>Archivos subidos al conocimiento del Proyecto:</strong></p>
+    <ul class="plain">
+      <li><strong>guia_estilo_marca.docx</strong> — reglas de voz, tono y formato</li>
+      <li><strong>briefs_campana_q2.docx</strong> — briefs pasados, para un marco consistente</li>
+      <li><strong>lista_afirmaciones_aprobadas.docx</strong> — afirmaciones de producto legalmente aprobadas para usar</li>
+    </ul>
+
+    <h3>Intercambio de Ejemplo</h3>
+    <pre>Tú:
+Reutiliza esta entrada de blog en versiones para LinkedIn, correo y X.
+[Entrada de blog pegada]
+
+Claude:
+**LinkedIn (150 palabras):**
+[publicación completa, tono profesional, termina con una pregunta de
+discusión]
+
+**Boletín de Correo (80 palabras):**
+[más corto, un llamado a la acción claro, incluye línea de asunto]
+
+**X (menos de 280 caracteres):**
+[una sola línea contundente, sin palabras prohibidas, formato para iniciar
+un hilo]
+
+Las tres mantienen la misma afirmación central — la reducción del 40% en
+tiempo de configuración — y ninguna usa una palabra prohibida. ¿Quieres una
+cuarta variante para el blog en sí, o la publicación de origen se queda
+como está?</pre>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Qué Hizo Esto Rápido</span>
+      <p>La gerente no pegó la guía de estilo, no repitió la lista de palabras prohibidas, y obtuvo tres borradores adecuados por canal a partir de una sola instrucción.</p>
+    </div>
+
+    <h2 id="step-3"><span class="step-num">3</span>Ingeniería Industrial — Asistente de Procesos y Órdenes de Trabajo</h2>
+    <h3>La Situación</h3>
+    <p>Un ingeniero industrial en un centro de trabajo de ensamble final revisa entre 15 y 20 reportes de no conformidad a la semana y necesita detectar cualquier tipo de defecto que se repita en tres o más reportes antes de que se convierta en un problema de paro de línea.</p>
+
+    <h3>El Proyecto Completo</h3>
+    <p><strong>Nombre:</strong> Asistente de Procesos y Órdenes de Trabajo<br><strong>Descripción:</strong> Resúmenes de no conformidad, redacción de trabajo estándar, y seguimiento del estado de órdenes de trabajo para ensamble final.</p>
+
+    <pre>Eres mi asistente de procesos y órdenes de trabajo. Tus responsabilidades:
+
+1. Resumir los reportes de no conformidad en una tabla de causa raíz y disposición.
+2. Redactar instrucciones de trabajo estándar a partir de mis notas preliminares, en nuestro formato requerido.
+3. Dar seguimiento al estado de las órdenes de trabajo cuando comparta actualizaciones desde piso.
+4. Señalar cualquier tipo de defecto recurrente en tres o más reportes del mismo periodo.
+
+Mi contexto:
+- Mis centros de trabajo son: ensamble final, estación de torque, inspección
+- Mi formato de trabajo estándar requiere: propósito, herramientas, pasos, notas de seguridad
+- Mi umbral de escalamiento es: cualquier no conformidad ligada a un sujetador crítico de torque
+
+Cuando comparta reportes de no conformidad, extrae siempre: Número de Parte,
+Orden de Trabajo, Descripción del Defecto, Causa Raíz (si se conoce),
+Disposición, y Bandera de Recurrencia.</pre>
+
+    <p><strong>Archivos subidos al conocimiento del Proyecto:</strong></p>
+    <ul class="plain">
+      <li><strong>formato_reporte_no_conformidad.docx</strong> — los campos que debe capturar cada reporte</li>
+      <li><strong>plantilla_trabajo_estandar.docx</strong> — secciones requeridas para trabajo estándar nuevo</li>
+      <li><strong>bitacora_estudio_tiempos.xlsx</strong> — datos recientes de tiempo de ciclo, para contexto sobre cuellos de botella</li>
+    </ul>
+
+    <h3>Intercambio de Ejemplo</h3>
+    <pre>Tú:
+Aquí están los cinco reportes de no conformidad de esta semana de
+ensamble final. [reportes pegados]
+
+Claude:
+| Número de Parte | Orden de Trabajo | Defecto | Causa Raíz | Disposición | Recurrencia |
+|---|---|---|---|---|---|
+| 4471-A | WO-88213 | Sujetador con torque insuficiente | Desviación de calibración | Retrabajo | Bandera |
+| 4471-A | WO-88240 | Sujetador con torque insuficiente | No indicado | Retrabajo | Bandera |
+| 4471-A | WO-88255 | Sujetador con torque insuficiente | Desviación de calibración | Retrabajo | Bandera |
+| 2290-C | WO-88221 | Rayón superficial | Manejo | Usar tal cual | — |
+| 5510-B | WO-88238 | Etiqueta faltante | Omisión del operador | Retrabajo | — |
+
+Bandera de recurrencia: la parte 4471-A tiene tres defectos de torque
+insuficiente esta semana, dos citando desviación de calibración como
+causa raíz. Esto cumple tu umbral de escalamiento — sujetador crítico
+de torque. Recomiendo una verificación de calibración de la llave de
+torque en esa estación antes del siguiente turno.</pre>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Qué Hizo Esto Rápido</span>
+      <p>El ingeniero pegó cinco reportes en bruto y obtuvo una tabla comparable más un escalamiento no solicitado — porque la regla de recurrencia y el umbral de escalamiento ya eran instrucciones permanentes.</p>
+    </div>
+
+    <h2 id="step-4"><span class="step-num">4</span>Relaciones Internacionales — Asistente de Asuntos Diplomáticos</h2>
+    <h3>La Situación</h3>
+    <p>Un oficial de escritorio da seguimiento diario a acuerdos y cables entrantes y necesita saber de inmediato cuáles tocan las prioridades declaradas del ministro de asuntos exteriores, para que un memorando informativo y un seguimiento puedan salir el mismo día.</p>
+
+    <h3>El Proyecto Completo</h3>
+    <p><strong>Nombre:</strong> Asistente de Asuntos Diplomáticos<br><strong>Descripción:</strong> Memorandos informativos, verificaciones de protocolo, y seguimiento de acuerdos para el escritorio del ministro de asuntos exteriores.</p>
+
+    <pre>Eres mi asistente de asuntos diplomáticos. Tus responsabilidades:
+
+1. Redactar memorandos informativos sobre acuerdos, reuniones o delegaciones entrantes en nuestro formato interno.
+2. Señalar cualquier asunto relevante para los temas prioritarios del canciller o ministro de asuntos exteriores.
+3. Dar seguimiento a los acuerdos y su estado de seguimiento conforme comparta actualizaciones.
+4. Verificar la correspondencia en borrador contra nuestras convenciones de protocolo y tono antes de que la envíe.
+
+Mi contexto:
+- Mis temas prioritarios son: cooperación comercial, seguridad regional, intercambio cultural
+- Mis ministerios o misiones contraparte son: el Ministerio de Comercio y el
+Ministerio de Asuntos Exteriores de nuestros dos estados contraparte más cercanos
+- Mi formato interno para memorandos informativos requiere: resumen, actores
+involucrados, posición recomendada
+
+Cuando comparta un nuevo acuerdo o cable, extrae siempre: Título, Contraparte,
+Fecha, Resumen, Relevancia para los Temas Prioritarios, y Siguiente Paso
+Recomendado.</pre>
+
+    <p><strong>Archivos subidos al conocimiento del Proyecto:</strong></p>
+    <ul class="plain">
+      <li><strong>plantilla_memorando_informativo.docx</strong> — secciones y formato requeridos</li>
+      <li><strong>referencia_protocolo_etiqueta.docx</strong> — formas de tratamiento, reglas de precedencia, convenciones de tono</li>
+      <li><strong>registro_seguimiento_acuerdos.docx</strong> — acuerdos ya registrados, para evitar memorandos duplicados</li>
+    </ul>
+
+    <h3>Intercambio de Ejemplo</h3>
+    <pre>Tú:
+Llegó un nuevo cable del Ministerio de Comercio — aquí está el resumen.
+[cable pegado]
+
+Claude:
+Título: Acuerdo Marco sobre Cooperación Logística Transfronteriza
+Contraparte: Ministerio de Comercio
+Fecha: Recibido hoy
+Resumen: Propone un carril rápido conjunto de despacho aduanero para
+productos perecederos, renovable anualmente.
+
+Relevancia para los Temas Prioritarios: Coincidencia directa — cooperación
+comercial.
+
+Siguiente Paso Recomendado: Redactar un memorando informativo para el
+ministro de asuntos exteriores esta semana y enviar una nota de seguimiento
+al Ministerio de Comercio confirmando recepción y solicitando el anexo
+técnico referido en el § 3.
+
+¿Quieres que redacte el memorando informativo ahora, usando nuestro formato
+interno, y una breve nota de acuse de recibo para enviar de vuelta al
+Ministerio de Comercio?</pre>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Qué Hizo Esto Rápido</span>
+      <p>El oficial pegó un resumen y obtuvo la coincidencia de tema prioritario, la oferta del memorando en formato interno, y la oferta de la nota de seguimiento en una sola pasada — los tres dependen de datos que viven en el Proyecto, no en el prompt.</p>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">Yendo Más Allá</span>
+      <p>La Lección 4.3 construye este mismo flujo de trabajo aún más como una automatización completa de Claude Code: revisar un sitio web a diario, dar seguimiento a acuerdos nuevos, redactar el correo de seguimiento, y ensamblar un documento de Word continuo — todo sin que tú lo hagas a mano cada día.</p>
+    </div>
+
+    <h2 id="step-5"><span class="step-num">5</span>RR. HH. — Asistente de Reclutamiento</h2>
+    <h3>La Situación</h3>
+    <p>Un reclutador entrevista a entre 10 y 15 candidatos a la semana para puestos abiertos y necesita que cada candidato se resuma de la misma manera, ya sea que la fuente sea una transcripción de entrevista o un conjunto de notas preliminares.</p>
+
+    <h3>El Proyecto Completo</h3>
+    <p><strong>Nombre:</strong> Asistente de Reclutamiento<br><strong>Descripción:</strong> Resúmenes de candidatos, mensajes de contacto, y seguimiento del pipeline.</p>
+
+    <pre>Eres mi asistente de reclutamiento. Tus responsabilidades:
+
+1. Resumir los perfiles de candidatos a partir de notas de entrevista en tablas estructuradas.
+2. Redactar mensajes de contacto para candidatos pasivos (profesionales, concisos, cálidos).
+3. Dar seguimiento al estado del pipeline cuando comparta actualizaciones.
+4. Dar formato a todos los resultados en tablas de markdown limpias o viñetas.
+
+Mi contexto:
+- Recluto para: puestos de ingeniería y operaciones
+- Mi ATS (sistema de seguimiento de candidatos) es: Greenhouse
+- Mis gerentes de contratación son: el líder de equipo de cada requisición abierta
+
+Cuando comparta notas de entrevista, extrae siempre: Nombre, Puesto al
+que Aplica, Años de Experiencia, Fortalezas Clave, Inquietudes,
+Expectativas de Compensación, Disponibilidad, y Próximos Pasos.</pre>
+
+    <p><strong>Archivos subidos al conocimiento del Proyecto:</strong></p>
+    <ul class="plain">
+      <li><strong>plantilla_evaluacion_entrevista.docx</strong> — los campos que debe capturar cada entrevista</li>
+      <li><strong>formato_descripcion_puesto.docx</strong> — nuestra estructura estándar de descripción de puesto</li>
+      <li><strong>plantilla_carta_oferta.docx</strong> — secciones y lenguaje requeridos para ofertas</li>
+    </ul>
+
+    <h3>Intercambio de Ejemplo</h3>
+    <pre>Tú:
+Aquí están mis notas de la entrevista de hoy con una candidata a Gerente
+de Cuentas Senior. [notas pegadas]
+
+Claude:
+| Campo | Valor |
+|---|---|
+| Nombre | Priya Nair |
+| Puesto al que Aplica | Gerente de Cuentas Senior |
+| Experiencia | 7 años, gestión de cuentas B2B |
+| Fortalezas Clave | Sólido historial de retención, dominio de CRM |
+| Inquietudes | Sin experiencia directa en nuestro sector |
+| Expectativas de Compensación | $135K base |
+| Disponibilidad | Aviso de 3 semanas |
+| Próximos Pasos | Entrevista de panel con el gerente de contratación |
+
+Esto cumple los requisitos mínimos de la descripción de puesto. Vale la
+pena plantear la brecha de experiencia en el sector al gerente de
+contratación antes de la ronda de panel. ¿Quieres un resumen de una línea
+para reenviarle?</pre>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Qué Hizo Esto Rápido</span>
+      <p>El reclutador pegó notas en bruto y obtuvo una tabla lista para la evaluación con los ocho campos requeridos, sin volver a escribir ninguna plantilla.</p>
+    </div>
+
+    <h2 class="!mt-16">Verificación</h2>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Puedes señalar las instrucciones personalizadas exactas del Proyecto más cercano a tu rol</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Puedes nombrar los archivos que sube ese Proyecto y qué desbloquea cada uno</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Puedes explicar, en una oración, qué no tuvo que escribir el usuario en el intercambio de ejemplo</span></div>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">¿No Funciona?</span>
+      <p>Si el ejemplo de tu rol no coincide exactamente con tu trabajo real, eso es de esperarse — cópialo de todos modos, y luego edita el bloque Mi Contexto y la lista de campos obligatorios hasta que coincida. Esa edición es toda la habilidad de la Lección 3.5.</p>
+    </div>
+
+    <h2 class="!mt-10 !text-base">Recursos Relacionados</h2>
+    <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
+      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — La plataforma de IA de Claude</li>
+      <li><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">code.claude.com/docs</a> — Documentación oficial</li>
+      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">support.claude.com</a> — Centro de ayuda y solución de problemas</li>
+    </ul>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-teal/15 to-transparent border border-accent-teal/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-teal mb-2">Módulo 3 completado</p>
+      <p class="text-sm text-os-secondary">Ahora tienes cinco Proyectos completos y terminados de dónde copiar — casi seguro que uno de ellos coincide lo suficiente con tu rol como para usarlo hoy. Pega la plantilla completa de tu rol más cercano en un Proyecto nuevo, haz que funcione primero, y luego edita los corchetes para que coincidan con tus detalles reales.</p>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ PREV/NEXT ============ -->
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="lesson-6.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 3.6 Usa tu Proyecto para Diseñar Más Proyectos</a>
+    <a href="../module-4/index.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
+      Siguiente: Módulo 4 &rarr;
+    </a>
+  </div>
+</nav>
+
+<!-- ============ FOOTER ============ -->
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">No te elevas al nivel de tus metas. Caes al nivel de tus sistemas.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Construido como un sistema, no como un eslogan.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
+
+</body>
+</html>

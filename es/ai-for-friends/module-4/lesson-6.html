@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 4.6: Mantente Informado — un Resumen de Mercado — AI for Friends</title>
+<meta name="title" content="Lección 4.6: Mantente Informado — un Resumen de Mercado">
+<meta name="description" content="Monitorea varias fuentes, reporta solo lo que es nuevo, y recibe un correo que te mantiene al día sin revisar nada a mano.">
+<link rel="alternate" hreflang="en" href="https://effectiveatlife.com/ai-for-friends/module-4/lesson-6.html">
+<link rel="alternate" hreflang="es" href="https://effectiveatlife.com/es/ai-for-friends/module-4/lesson-6.html">
+<link rel="alternate" hreflang="x-default" href="https://effectiveatlife.com/ai-for-friends/module-4/lesson-6.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../../../assets/css/custom.css">
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pilares</a>
+      <a href="../../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Curso</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menú
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="../module-1/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">01</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Fundamentos de IA</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-1/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.1 Cómo Funcionan los Modelos de IA</a>
+              <a href="../module-1/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.2 Ingeniería de Prompts vs. Ingeniería de Contexto</a>
+              <a href="../module-1/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.3 Técnicas Prácticas de Prompting</a>
+              <a href="../module-1/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">1.4 Cómo Elegir el Modelo de IA Correcto</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-2/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-tertiary">02</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Configura tu Computadora</span>
+              <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPCIONAL</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-2/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Instalando la Terminal de Windows</a>
+              <a href="../module-2/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Instalando VS Code</a>
+              <a href="../module-2/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navegando en la Terminal</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div class="mb-1">
+            <a href="../module-3/index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-purple">03</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="../module-3/lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.1 Guía de Inicio de Claude Code</a>
+              <a href="../module-3/lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.2 ¿Qué Es un Proyecto de Claude?</a>
+              <a href="../module-3/lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.3 Creando tu Primer Proyecto</a>
+              <a href="../module-3/lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.4 Cómo Darle Material de Referencia a tu Proyecto</a>
+              <a href="../module-3/lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.5 Cómo Mantener Actualizadas tus Instrucciones Permanentes</a>
+              <a href="../module-3/lesson-6.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.6 Usa tu Proyecto para Diseñar Más Proyectos</a>
+              <a href="../module-3/lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">3.7 Ejemplos Prácticos por Rol</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-1"></div>
+          <div>
+            <a href="index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-os-primary">04</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Automatiza Flujos de Trabajo con Claude Code</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.1 Tus Hábitos Diarios con Claude Code</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.2 Instalando Skills de Anthropic</a>
+              <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.3 Relaciones Internacionales: Automatiza el Flujo de Acuerdos</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.4 ¿Qué Es un Servidor MCP?</a>
+              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.5 Resumen Diario de Correo y Calendario</a>
+              <a href="lesson-6.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">4.6 Mantente Informado: un Resumen de Mercado</a>
+              <a href="lesson-7.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">4.7 De Fuentes a Contenido</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Inicio del curso</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <a href="../../../ai-for-friends/module-4/lesson-6.html" class="hover:text-accent-cyan transition-colors">EN</a>
+        <span class="text-white/20">/</span>
+        <span class="text-accent-cyan font-semibold">ES</span>
+      </div>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">Módulo 4</a>
+  </div>
+</header>
+
+<!-- ============ LESSON HEADER ============ -->
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a>
+      <span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Módulo 4</a>
+      <span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lección 4.6</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Mantente Informado: un Resumen de Mercado</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">
+      Monitorea varias fuentes, reporta solo lo que es nuevo, y recibe un correo que te mantiene al día sin revisar nada a mano.
+    </p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">25–30 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/40 text-os-primary">OBLIGATORIO</span>
+    </div>
+    <div class="flex flex-wrap gap-2 font-mono text-[10px]">
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Elige tus Fuentes</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Dicta el Flujo de Trabajo</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Construye el Plugin</a>
+      <a href="#step-4" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">4. Programación Opcional</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ LESSON BODY ============ -->
+<article class="px-6 pb-24">
+  <div class="lesson-body max-w-2xl mx-auto text-[16px]">
+
+    <p>Esta lección construye un flujo de trabajo de conciencia de mercado: se revisa regularmente una lista corta de sitios web o feeds públicos, solo se resume lo que sea genuinamente nuevo — con contexto real sobre lo que ya se vio antes — y un correo con el resumen llega a tu bandeja de entrada. Esta es la misma forma de revisar-algo-nuevo de la Lección 4.3, ahora dirigida a mantenerse al día para la generación de contenido y la conciencia de mercado, que es exactamente por qué los equipos de Marketing recurren a este patrón con más frecuencia. Si Legal, RR. HH. o Ingeniería Industrial es tu rol, esta misma forma le queda igual de bien a revisar un expediente judicial, un barrido de un portal de cumplimiento, o un escaneo de no conformidades — las "fuentes" solo son distintas.</p>
+    <p>Mantenerse informado normalmente significa revisar una y otra vez el mismo puñado de sitios, la mayoría de las veces sin encontrar nada nuevo. Un resumen que solo reporta cambios genuinos — y recuerda lo que ya te dijo — convierte esa tarea diaria en una lectura de cinco minutos que aparece por su cuenta.</p>
+
+    <h2 id="step-1"><span class="step-num">1</span>Elige tus Fuentes</h2>
+    <p>Antes de construir nada, elige qué vas a vigilar en realidad.</p>
+
+    <ol>
+      <li>Lista de 3 a 6 fuentes que importen para tu trabajo: la página de prensa o de producto de un competidor, un sitio de noticias de la industria, la página de anuncios de un regulador, un feed público.</li>
+      <li>Prefiere páginas con una estructura estable y predecible (una lista de comunicados de prensa, un índice de blog) sobre las que cambian de diseño constantemente.</li>
+      <li>Lee la advertencia de abajo antes de asumir que esta lección cubre todas las plataformas sociales.</li>
+    </ol>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Sobre X/Twitter Específicamente</span>
+      <p>El ejemplo práctico de esta lección usa sitios web públicos y feeds, obtenidos con la herramienta integrada WebFetch de Claude Code — la misma herramienta probada en la Lección 4.3. El contenido en vivo de X/Twitter específicamente no es alcanzable de forma confiable así: requiere ya sea la API de pago de X o un conector MCP dedicado, algo que la mayoría de los lectores no tendrá configurado. Si tienes ese acceso, esta misma forma de dos skills de abajo aplica a X como fuente — solo cambia el paso de obtención por la herramienta de X que hayas conectado, usando el patrón de la Lección 4.4. Para todos los demás: la versión de sitios web y feeds de abajo te da el mismo resultado.</p>
+    </div>
+    <div class="callout callout-tip">
+      <span class="callout-label">Un Feed le Gana a una Página Cuando Existe</span>
+      <p>Si una fuente publica un feed RSS o Atom, obtenerlo es más confiable que obtener la página web de cara al humano — los feeds rara vez cambian de estructura como sí lo hace una página rediseñada.</p>
+    </div>
+
+    <h2 id="step-2"><span class="step-num">2</span>Dicta el Flujo de Trabajo</h2>
+    <p>Describe todo el resumen en un solo mensaje, el mismo patrón de dictado a configuración de la Lección 4.3.</p>
+
+    <ol>
+      <li>Crea una carpeta nueva, por ejemplo <span class="font-mono text-os-primary">market-digest</span>, y ábrela en Claude Code.</li>
+      <li>Adapta y envía el ejemplo de dictado de abajo.</li>
+      <li>Responde cualquier pregunta aclaratoria.</li>
+      <li>Revisa el CLAUDE.md propuesto antes de aprobarlo.</li>
+    </ol>
+
+    <pre>Quiero monitorear una lista corta de sitios web en busca de cualquier
+cosa nueva que le importe a nuestro equipo de marketing. Estas son las
+fuentes: [lista tus 3-6 URLs]. Me importan las menciones de estos
+temas: nuestros tres competidores principales por nombre, cambios de
+precio, y anuncios de producto nuevos en nuestra categoría. Ignora todo
+lo que no toque uno de esos temas. Cuando aparezca algo nuevo, quiero
+que se resuma con contexto — si esta es la segunda o tercera vez que un
+competidor hace algo parecido recientemente, dilo, no lo reportes
+aislado. Una vez que un lote de elementos nuevos esté listo, envíame un
+correo con el resumen con una breve descripción de cada elemento, por
+qué importa, y un enlace de vuelta a la fuente. Configura esto como un
+proyecto con un README y un CLAUDE.md que capture mis temas y fuentes,
+y pregúntame lo que necesites primero.</pre>
+
+    <p>Lo que Claude Code debería producir:</p>
+    <pre>market-digest/
+├── README.md              Explica el flujo de trabajo
+├── CLAUDE.md               Reglas permanentes: fuentes, temas,
+│                           tono y longitud del resumen
+├── data/
+│   └── knowledge-log.md   Todo lo ya visto y reportado
+└── drafts/
+    └── digest-drafts/     Resúmenes guardados, por si el correo no está configurado</pre>
+
+    <h2 id="step-3"><span class="step-num">3</span>Construye el Plugin de Dos Skills</h2>
+    <p>Dos skills: uno que vigila, uno que reporta. Esto reutiliza la misma estructura de archivos del plugin de la Lección 4.3 — .claude-plugin/marketplace.json, plugins/&lt;name&gt;/.claude-plugin/plugin.json, skills/&lt;name&gt;/SKILL.md — así que este paso se enfoca en lo que es distinto: los dos skills en sí.</p>
+
+    <ol>
+      <li>Pídele a Claude Code que construya primero /scan-sources, usando la descripción de abajo.</li>
+      <li>Revisa su SKILL.md, y luego pide /send-digest.</li>
+      <li>Corre /scan-sources, luego /send-digest, y revisa el correo o borrador resultante.</li>
+    </ol>
+
+    <p>Skill 1 — /scan-sources. Qué decirle a Claude Code que construya:</p>
+    <pre>Construye un skill llamado scan-sources. Su trabajo: obtener cada
+sitio web listado en CLAUDE.md, extraer todo lo publicado o
+actualizado desde la última ejecución, y compararlo contra
+data/knowledge-log.md. Quedarte solo con los elementos que coincidan
+con nuestros temas en CLAUDE.md. Para cada elemento nuevo y dentro del
+tema, agregarlo al registro con su fuente, fecha, tema con el que
+coincide, y un resumen de una línea, marcado como "new — not yet
+digested."</pre>
+
+    <p>Lo que esto produce (skills/scan-sources/SKILL.md, resumido):</p>
+    <pre>---
+name: scan-sources
+description: Fetch each monitored source, keep only new items matching
+our topics, and log them. Use when the user says "check my sources"
+or "/scan-sources."
+---
+
+# scan-sources
+
+1. Read the source list and topic list from CLAUDE.md.
+2. Fetch each source with WebFetch.
+3. Read data/knowledge-log.md — everything already logged, ever.
+4. Identify content on each source not already in the log.
+5. Keep only new items matching a topic from CLAUDE.md; discard the rest.
+6. Append each kept item to the log: source, date, topic, one-line
+   summary, status "new — not yet digested."
+7. Report how many new, on-topic items were found.</pre>
+
+    <p>Skill 2 — /send-digest. Qué decirle a Claude Code que construya:</p>
+    <pre>Construye un skill llamado send-digest. Su trabajo: encontrar cada
+elemento en data/knowledge-log.md todavía marcado como "new — not yet
+digested." Para cada uno, revisar el registro en busca de entradas
+anteriores sobre el mismo tema o competidor, y anotar el patrón si es
+una repetición — por ejemplo, "tercera mención de precio de este
+competidor en dos semanas." Redactar un solo correo con el resumen:
+cada elemento con su descripción, su nota de contexto si tiene una, y
+un enlace de vuelta a la fuente. Enviarlo usando el conector de correo
+si hay uno configurado, o guardarlo en drafts/digest-drafts/ si no.
+Marcar cada elemento incluido como "digested" en el registro.</pre>
+
+    <p>Lo que esto produce (skills/send-digest/SKILL.md, resumido):</p>
+    <pre>---
+name: send-digest
+description: Compile every undigested item into one contextual email
+digest and send it, or save a draft if no email connector exists.
+Use when the user says "send my digest" or "/send-digest."
+---
+
+# send-digest
+
+1. Read data/knowledge-log.md. Find every item marked "new — not yet
+   digested."
+2. For each item, scan the rest of the log for earlier entries on the
+   same topic or competitor. If found, note the pattern (e.g., "third
+   mention this month").
+3. Compose one digest: item summary, context note if any, and source
+   link, grouped by topic.
+4. Send the digest via the connected email tool. If none is connected,
+   save it to drafts/digest-drafts/&lt;date&gt;-digest.md instead.
+5. Mark every included item "digested" in the log.</pre>
+
+    <p>Resumen de muestra:</p>
+    <pre>Asunto: Resumen de Mercado — Martes
+
+Precios de la Competencia
+Aria Corp bajó el precio de su nivel de entrada un 15% (anunciado hoy).
+Este es el tercer movimiento de precio de Aria en las últimas dos
+semanas — vale la pena avisarle al equipo de precios. [fuente]
+
+Anuncios de Producto Nuevo
+Northwind Labs anunció una beta de una función parecida a la nuestra,
+que lanza el próximo mes. Sin menciones previas de Northwind sobre este
+tema. [fuente]</pre>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Qué Hizo Esto Rápido</span>
+      <p>El resumen no solo listó dos datos — señaló que el movimiento de Aria era el tercero en dos semanas. Ese contexto solo existe porque scan-sources llevó el registro de cada mención anterior, no solo la más nueva.</p>
+    </div>
+    <div class="callout callout-tip">
+      <span class="callout-label">Instálalo Igual que en 4.3</span>
+      <p>Los comandos de marketplace-add e install del plugin de la Lección 4.3, Paso 4 funcionan exactamente igual aquí — registra la carpeta del proyecto como un marketplace local, instala el plugin, reinicia Claude Code.</p>
+    </div>
+
+    <h2 id="step-4"><span class="step-num">4</span>Opcional — Ejecútalo en un Horario</h2>
+    <p>Una vez que los dos skills funcionan, correrlos sin ti es el mismo patrón de las Lecciones 4.3 y 4.5.</p>
+
+    <p class="!mb-2 text-os-primary font-semibold text-sm">Windows</p>
+    <ol>
+      <li>Antes de continuar, revisa de nuevo la <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lección 4.1, Paso 4</a> — confirma que confías en el resultado de ambos skills tras ejecuciones manuales primero.</li>
+      <li>Abre <strong>Windows Task Scheduler</strong> (Programador de tareas).</li>
+      <li>Crea una tarea que corra ambos comandos en secuencia, en la periodicidad que te sirva — diario para temas que se mueven rápido, semanal para los más lentos.</li>
+    </ol>
+
+    <pre>claude -p "/scan-sources" --cwd "C:\path\to\market-digest"
+claude -p "/send-digest" --cwd "C:\path\to\market-digest"</pre>
+
+    <p class="!mb-2 mt-6 text-os-primary font-semibold text-sm">Mac</p>
+    <ol>
+      <li>Antes de continuar, revisa de nuevo la <a href="lesson-1.html#step-4" class="text-accent-cyan hover:underline">Lección 4.1, Paso 4</a> — confirma que confías en el resultado de ambos skills tras ejecuciones manuales primero.</li>
+      <li>Abre <strong>Terminal</strong> y corre <span class="font-mono text-os-primary">crontab -e</span> (se abre en el editor <span class="font-mono">nano</span> por defecto).</li>
+      <li>Agrega ambas líneas de abajo en la periodicidad que te sirva, y guarda (<span class="font-mono">Ctrl+O</span>, Enter, <span class="font-mono">Ctrl+X</span> en nano).</li>
+    </ol>
+
+    <pre>0 8 * * * claude -p "/scan-sources" --cwd "$HOME/market-digest"
+5 8 * * * claude -p "/send-digest" --cwd "$HOME/market-digest"</pre>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Mac: Otorga Full Disk Access</span>
+      <p>Las tareas de cron en macOS suelen fallar en silencio a menos que la app de terminal que las corre tenga Full Disk Access (Acceso completo al disco). Ve a <strong>System Settings &rarr; Privacy &amp; Security &rarr; Full Disk Access</strong> y actívalo para Terminal (o tu app de terminal).</p>
+    </div>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Este Paso Es Opcional</span>
+      <p>Correr ambos comandos tú mismo, en la periodicidad que elijas, ya funciona. Solo automatiza esto si quieres que el resumen aparezca sin que tú lo inicies.</p>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">Cómo Apagarlo</span>
+      <p>En Windows: deshabilita o elimina la tarea programada en Windows Task Scheduler. En Mac: corre <span class="font-mono text-os-primary">crontab -e</span> y elimina o comenta ambas líneas. En cualquier caso, deshabilita también el plugin de la misma forma que se muestra en la Lección 4.3, Paso 6, si quieres detener todo por completo. data/knowledge-log.md se queda exactamente igual en cualquier caso.</p>
+    </div>
+
+    <h2 class="!mt-16">Verificación</h2>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">data/knowledge-log.md crece con cada ejecución de /scan-sources y no vuelve a registrar el mismo elemento dos veces</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">/send-digest produce un resumen que hace referencia a al menos una entrada anterior como contexto, no solo el elemento más nuevo de forma aislada</span></div>
+      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Entiendes por qué esta lección usa sitios web y feeds en lugar de contenido en vivo de X/Twitter, y qué tendría que cambiar para agregar esa fuente</span></div>
+    </div>
+    <div class="callout callout-note">
+      <span class="callout-label">¿No Funciona?</span>
+      <p>Si cada ejecución reporta todo como "nuevo," confirma que scan-sources realmente está leyendo y comparando contra data/knowledge-log.md antes de agregar, no solo agregando a ciegas.</p>
+    </div>
+
+    <h2 class="!mt-10 !text-base">Recursos Relacionados</h2>
+    <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
+      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — La plataforma de IA de Claude</li>
+      <li><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">code.claude.com/docs</a> — Documentación oficial</li>
+      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">support.claude.com</a> — Centro de ayuda y solución de problemas</li>
+    </ul>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lección completada</p>
+      <p class="text-sm text-os-secondary">Construiste un flujo de trabajo que no solo reporta datos — recuerda lo que ya te dijo y lo señala. Una vez que esto corra por unas semanas, data/knowledge-log.md se convierte en un historial buscable de todo lo que has seguido — útil por sí solo, incluso antes de que salga el próximo resumen.</p>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ PREV/NEXT ============ -->
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="lesson-5.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 4.5 Resumen Diario de Correo y Calendario</a>
+    <a href="lesson-7.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
+      Siguiente: De Fuentes a Contenido &rarr;
+    </a>
+  </div>
+</nav>
+
+<!-- ============ FOOTER ============ -->
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">No te elevas al nivel de tus metas. Caes al nivel de tus sistemas.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Construido como un sistema, no como un eslogan.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
+
+</body>
+</html>
