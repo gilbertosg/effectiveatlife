@@ -76,6 +76,8 @@
               <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Instalando la Terminal de Windows</a>
               <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Instalando VS Code</a>
               <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navegando en la Terminal</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.4 Creación de tu Cuenta AWS</a>
+              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.5 Despliegue en AWS S3</a>
             </div>
           </div>
           <div class="border-t border-white/10 my-1"></div>
@@ -138,11 +140,12 @@
     <h1 class="font-display font-bold tracking-tight text-4xl sm:text-5xl leading-[1.1] mb-6">Configura tu Computadora</h1>
     <p class="text-os-secondary text-lg leading-relaxed mb-8">
       Un espacio de práctica para cualquiera que nunca haya abierto una terminal o un editor de código. Nada aquí es un requisito
-      previo para el Módulo 3 — si una terminal y VS Code ya te resultan familiares, ve directamente ahí.
+      previo para el Módulo 3 — si una terminal y VS Code ya te resultan familiares, ve directamente ahí. Dos lecciones opcionales
+      más cubren cómo crear una cuenta de AWS y desplegar un sitio real, para quien quiera ir más allá.
     </p>
     <div class="flex flex-wrap items-center gap-4 font-mono text-xs text-os-tertiary mb-10">
-      <span class="px-3 py-1.5 rounded-full border border-white/15">25 min</span>
-      <span class="px-3 py-1.5 rounded-full border border-white/15">3 lecciones</span>
+      <span class="px-3 py-1.5 rounded-full border border-white/15">~85 min</span>
+      <span class="px-3 py-1.5 rounded-full border border-white/15">5 lecciones</span>
       <span class="px-3 py-1.5 rounded-full border border-white/15">Windows y Mac</span>
       <span class="px-3 py-1.5 rounded-full border border-white/15">RR. HH. · Ingeniería Industrial · Legal · Marketing</span>
     </div>
@@ -185,6 +188,24 @@
         <span class="font-mono text-[11px] text-os-tertiary shrink-0">15 min</span>
       </a>
 
+      <a href="lesson-4.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.15s">
+        <span class="font-mono text-sm text-accent-cyan shrink-0">2.4</span>
+        <div class="flex-1">
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Creación de tu Cuenta AWS</h3>
+          <p class="text-os-secondary text-sm mt-1">Regístrate en Amazon Web Services y mantente dentro de la capa gratuita — el paso previo para desplegar un sitio real.</p>
+        </div>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">15 min</span>
+      </a>
+
+      <a href="lesson-5.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.2s">
+        <span class="font-mono text-sm text-accent-cyan shrink-0">2.5</span>
+        <div class="flex-1">
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Despliegue en AWS S3</h3>
+          <p class="text-os-secondary text-sm mt-1">Sube un sitio real a Amazon S3 y obtén un enlace público — con pasos opcionales para dominio propio y HTTPS vía CloudFront.</p>
+        </div>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">45 min</span>
+      </a>
+
     </div>
   </div>
 </section>
@@ -193,7 +214,7 @@
 <section class="px-6 pb-16">
   <div class="max-w-3xl mx-auto glossary">
     <p class="font-mono text-xs uppercase tracking-widest text-accent-teal mb-2 fade-up">Conceptos Clave</p>
-    <p class="text-os-secondary text-sm leading-relaxed mb-6 fade-up">Términos centrales introducidos a lo largo de las tres lecciones de este módulo. Se indica la lección donde aparece cada término por primera vez para que puedas volver a la explicación original.</p>
+    <p class="text-os-secondary text-sm leading-relaxed mb-6 fade-up">Términos centrales introducidos a lo largo de las cinco lecciones de este módulo. Se indica la lección donde aparece cada término por primera vez para que puedas volver a la explicación original.</p>
     <div class="rounded-2xl border border-white/10 overflow-hidden fade-up">
       <table>
         <thead><tr><th>Término</th><th>Definido En</th><th>Significado en Lenguaje Sencillo</th></tr></thead>
@@ -205,6 +226,9 @@
           <tr><td><strong>Extensión</strong></td><td>Lección 2.2</td><td>Un complemento que le da a VS Code nuevas capacidades. El Módulo 3 te dice cuáles instalar.</td></tr>
           <tr><td><strong>pwd</strong></td><td>Lección 2.3</td><td>Print working directory. Muestra en qué carpeta estás actualmente.</td></tr>
           <tr><td><strong>cd</strong></td><td>Lección 2.3</td><td>Change directory. Te mueve dentro de una carpeta, o un nivel hacia arriba con <span class="font-mono">cd ..</span>.</td></tr>
+          <tr><td><strong>AWS</strong></td><td>Lección 2.4</td><td>Amazon Web Services — la plataforma en la nube que este módulo usa para alojar un sitio real, con una capa gratuita para sitios estáticos pequeños.</td></tr>
+          <tr><td><strong>S3 Bucket</strong></td><td>Lección 2.5</td><td>Un contenedor de almacenamiento en AWS. Este módulo sube los archivos de tu sitio a uno y lo configura para servirlos como sitio web.</td></tr>
+          <tr><td><strong>CloudFront</strong></td><td>Lección 2.5</td><td>La red de distribución de contenido de AWS — envuelve tu sitio de S3 con HTTPS y lo sirve rápido en todo el mundo. Opcional.</td></tr>
         </tbody>
       </table>
       <details>
@@ -220,6 +244,13 @@
               <tr><td><strong>ls</strong></td><td>Lección 2.3</td><td>List. Muestra todos los archivos y carpetas en tu ubicación actual. Idéntico en Windows (Git Bash/PowerShell) y en la Terminal de Mac.</td></tr>
               <tr><td><strong>mkdir</strong></td><td>Lección 2.3</td><td>Make directory. Crea una nueva carpeta donde estás actualmente. Idéntico en Windows y Mac.</td></tr>
               <tr><td><strong>Carpeta de Inicio</strong></td><td>Lección 2.3</td><td>Tu carpeta personal de nivel superior, a la que llegas con <span class="font-mono">cd ~</span> en ambas plataformas — <span class="font-mono">C:\Users\YourName</span> en Windows, <span class="font-mono">/Users/yourname</span> en Mac.</td></tr>
+              <tr><td><strong>Capa Gratuita (Free Tier)</strong></td><td>Lección 2.4</td><td>Los 12 meses de uso gratuito que AWS ofrece a cuentas nuevas — suficiente para alojar un sitio estático básico sin costo.</td></tr>
+              <tr><td><strong>Usuario Raíz (Root User)</strong></td><td>Lección 2.4</td><td>La identidad principal de la cuenta de AWS creada al registrarte, con control total sobre facturación y recursos. Guarda su contraseña de forma segura.</td></tr>
+              <tr><td><strong>Alojamiento Web Estático</strong></td><td>Lección 2.5</td><td>Una configuración de un bucket de S3 que sirve sus archivos directamente como sitio web en lugar de solo almacenarlos.</td></tr>
+              <tr><td><strong>Bucket Policy</strong></td><td>Lección 2.5</td><td>Un documento de permisos en JSON adjunto a un bucket de S3, que le dice a AWS quién puede leer o escribir sus archivos.</td></tr>
+              <tr><td><strong>Route 53</strong></td><td>Lección 2.5</td><td>El servicio de nombres de dominio (DNS) de AWS — conecta un dominio que ya tienes a tu sitio en S3. Opcional.</td></tr>
+              <tr><td><strong>ACM</strong></td><td>Lección 2.5</td><td>AWS Certificate Manager — emite el certificado HTTPS gratuito que CloudFront necesita para un dominio propio. Opcional.</td></tr>
+              <tr><td><strong>IAM</strong></td><td>Lección 2.5</td><td>Identity and Access Management — donde creas un usuario con permisos limitados para despliegues automatizados, en lugar de usar tu cuenta raíz.</td></tr>
             </tbody>
           </table>
         </div>

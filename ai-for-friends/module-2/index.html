@@ -76,6 +76,8 @@
               <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Installing Windows Terminal</a>
               <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Installing VS Code</a>
               <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navigating in the Terminal</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.4 Creating an AWS Account</a>
+              <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.5 Deploying to AWS S3</a>
             </div>
           </div>
           <div class="border-t border-white/10 my-1"></div>
@@ -138,11 +140,12 @@
     <h1 class="font-display font-bold tracking-tight text-4xl sm:text-5xl leading-[1.1] mb-6">Setting Up Your Computer</h1>
     <p class="text-os-secondary text-lg leading-relaxed mb-8">
       A practice room for anyone who's never opened a terminal or a code editor. Nothing here is a prerequisite
-      for Module 3 — if a terminal and VS Code already feel familiar, skip straight there.
+      for Module 3 — if a terminal and VS Code already feel familiar, skip straight there. Two further optional
+      lessons cover creating an AWS account and deploying a real site, for anyone who wants to go further.
     </p>
     <div class="flex flex-wrap items-center gap-4 font-mono text-xs text-os-tertiary mb-10">
-      <span class="px-3 py-1.5 rounded-full border border-white/15">25 min</span>
-      <span class="px-3 py-1.5 rounded-full border border-white/15">3 lessons</span>
+      <span class="px-3 py-1.5 rounded-full border border-white/15">~85 min</span>
+      <span class="px-3 py-1.5 rounded-full border border-white/15">5 lessons</span>
       <span class="px-3 py-1.5 rounded-full border border-white/15">Windows & Mac</span>
       <span class="px-3 py-1.5 rounded-full border border-white/15">HR · Industrial Engineering · Legal · Marketing</span>
     </div>
@@ -185,6 +188,24 @@
         <span class="font-mono text-[11px] text-os-tertiary shrink-0">15 min</span>
       </a>
 
+      <a href="lesson-4.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.15s">
+        <span class="font-mono text-sm text-accent-cyan shrink-0">2.4</span>
+        <div class="flex-1">
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Creating an AWS Account</h3>
+          <p class="text-os-secondary text-sm mt-1">Sign up for Amazon Web Services and stay safely inside the free tier — the prep step for deploying a real site.</p>
+        </div>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">15 min</span>
+      </a>
+
+      <a href="lesson-5.html" class="group fade-up flex items-center gap-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(0,240,255,0.1)]" style="animation-delay: 0.2s">
+        <span class="font-mono text-sm text-accent-cyan shrink-0">2.5</span>
+        <div class="flex-1">
+          <h3 class="font-display font-semibold group-hover:text-accent-cyan transition-colors">Deploying a Website to AWS S3</h3>
+          <p class="text-os-secondary text-sm mt-1">Upload a real site to Amazon S3 and get a public link — with optional steps for a custom domain and HTTPS via CloudFront.</p>
+        </div>
+        <span class="font-mono text-[11px] text-os-tertiary shrink-0">45 min</span>
+      </a>
+
     </div>
   </div>
 </section>
@@ -193,7 +214,7 @@
 <section class="px-6 pb-16">
   <div class="max-w-3xl mx-auto glossary">
     <p class="font-mono text-xs uppercase tracking-widest text-accent-teal mb-2 fade-up">Key Concepts</p>
-    <p class="text-os-secondary text-sm leading-relaxed mb-6 fade-up">Core terms introduced across this module's three lessons. The lesson where each term is first used is listed so you can return to the source explanation.</p>
+    <p class="text-os-secondary text-sm leading-relaxed mb-6 fade-up">Core terms introduced across this module's five lessons. The lesson where each term is first used is listed so you can return to the source explanation.</p>
     <div class="rounded-2xl border border-white/10 overflow-hidden fade-up">
       <table>
         <thead><tr><th>Term</th><th>Defined In</th><th>Plain English Meaning</th></tr></thead>
@@ -205,6 +226,9 @@
           <tr><td><strong>Extension</strong></td><td>Lesson 2.2</td><td>An add-on that gives VS Code new abilities. Module 3 tells you which ones to install.</td></tr>
           <tr><td><strong>pwd</strong></td><td>Lesson 2.3</td><td>Print working directory. Shows which folder you are currently in.</td></tr>
           <tr><td><strong>cd</strong></td><td>Lesson 2.3</td><td>Change directory. Moves you into a folder, or up one level with <span class="font-mono">cd ..</span>.</td></tr>
+          <tr><td><strong>AWS</strong></td><td>Lesson 2.4</td><td>Amazon Web Services — the cloud platform this module uses to host a real website, with a free tier for small static sites.</td></tr>
+          <tr><td><strong>S3 Bucket</strong></td><td>Lesson 2.5</td><td>A storage container in AWS. This module uploads your site's files into one and configures it to serve them as a website.</td></tr>
+          <tr><td><strong>CloudFront</strong></td><td>Lesson 2.5</td><td>AWS's content delivery network — wraps your S3 site with HTTPS and serves it fast worldwide. Optional.</td></tr>
         </tbody>
       </table>
       <details>
@@ -220,6 +244,13 @@
               <tr><td><strong>ls</strong></td><td>Lesson 2.3</td><td>List. Shows all files and folders in your current location. Identical on Windows (Git Bash/PowerShell) and Mac Terminal.</td></tr>
               <tr><td><strong>mkdir</strong></td><td>Lesson 2.3</td><td>Make directory. Creates a new folder where you currently are. Identical on Windows and Mac.</td></tr>
               <tr><td><strong>Home Folder</strong></td><td>Lesson 2.3</td><td>Your personal top-level folder, reached with <span class="font-mono">cd ~</span> on both platforms — <span class="font-mono">C:\Users\YourName</span> on Windows, <span class="font-mono">/Users/yourname</span> on Mac.</td></tr>
+              <tr><td><strong>Free Tier</strong></td><td>Lesson 2.4</td><td>AWS's 12-month allowance of free usage for new accounts — enough to host a basic static site at no cost.</td></tr>
+              <tr><td><strong>Root User</strong></td><td>Lesson 2.4</td><td>The main AWS account identity created at signup, with full control over billing and resources. Keep its password safe.</td></tr>
+              <tr><td><strong>Static Website Hosting</strong></td><td>Lesson 2.5</td><td>An S3 bucket setting that serves its files directly as a website instead of just storing them.</td></tr>
+              <tr><td><strong>Bucket Policy</strong></td><td>Lesson 2.5</td><td>A JSON permissions document attached to an S3 bucket, telling AWS who is allowed to read or write its files.</td></tr>
+              <tr><td><strong>Route 53</strong></td><td>Lesson 2.5</td><td>AWS's domain name system (DNS) service — connects a domain you already own to your S3 site. Optional.</td></tr>
+              <tr><td><strong>ACM</strong></td><td>Lesson 2.5</td><td>AWS Certificate Manager — issues the free HTTPS certificate CloudFront needs for a custom domain. Optional.</td></tr>
+              <tr><td><strong>IAM</strong></td><td>Lesson 2.5</td><td>Identity and Access Management — where you create a scoped-down user for automated deployments, instead of using your root account.</td></tr>
             </tbody>
           </table>
         </div>

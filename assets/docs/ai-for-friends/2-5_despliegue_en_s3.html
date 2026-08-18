@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 5.1: Desplegar un sitio web en AWS S3 — AI for Friends</title>
+<meta name="title" content="Lección 5.1: Desplegar un sitio web en AWS S3">
+<meta name="description" content="Aprende a alojar un sitio web estático de forma segura utilizando Amazon S3, Route 53 y CloudFront para tu propio dominio.">
+
+<link rel="alternate" hreflang="en" href="https://effectiveatlife.com/ai-for-friends/module-5/lesson-1.html">
+<link rel="alternate" hreflang="es" href="https://effectiveatlife.com/es/ai-for-friends/module-5/lesson-1.html">
+<link rel="alternate" hreflang="x-default" href="https://effectiveatlife.com/ai-for-friends/module-5/lesson-1.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #0A0F1C; color: #FFFFFF; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+  .font-display { font-family: 'Space Grotesk', sans-serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .bg-grid {
+    background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(18px); } 100% { opacity: 1; transform: translateY(0); } }
+  .fade-up { opacity: 0; animation: fadeInUp 0.7s ease-out forwards; }
+  ::selection { background: rgba(0,240,255,0.25); color: #FFFFFF; }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid #00F0FF; outline-offset: 3px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .fade-up { animation: none !important; opacity: 1 !important; } }
+
+  /* Lesson body typography */
+  .lesson-body h2 {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: -0.01em;
+    font-size: 1.5rem; margin-top: 3rem; margin-bottom: 0.75rem; scroll-margin-top: 6rem;
+  }
+  .lesson-body h2 .step-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2rem; height: 2rem; border-radius: 9999px; margin-right: 0.75rem;
+    background: rgba(0,240,255,0.1); border: 1px solid rgba(0,240,255,0.4);
+    color: #00F0FF; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 500;
+    vertical-align: middle;
+  }
+  .lesson-body p { line-height: 1.75; margin-bottom: 1.25em; color: #9CA3AF; }
+  .lesson-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+  .lesson-body th { text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: #6B7280; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .lesson-body td { padding: 0.85rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: #9CA3AF; vertical-align: top; }
+  .lesson-body tr:last-child td { border-bottom: none; }
+  .lesson-body strong { color: #FFFFFF; font-weight: 600; }
+  .lesson-body ul, .lesson-body ol { padding-left: 1.25rem; margin-bottom: 1.25em; color: #9CA3AF; line-height: 1.75; }
+  .lesson-body ul { list-style-type: disc; }
+  .lesson-body ol { list-style-type: decimal; }
+  .lesson-body li { margin-bottom: 0.5em; }
+
+  /* Callouts */
+  .callout { border-radius: 0.75rem; padding: 1.1rem 1.25rem; margin: 1.5rem 0; border: 1px solid; font-size: 0.9rem; line-height: 1.65; }
+  .callout-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.4rem; }
+  .callout-tip { background: rgba(0,240,255,0.06); border-color: rgba(0,240,255,0.25); }
+  .callout-tip .callout-label { color: #00F0FF; }
+  .callout-note { background: rgba(0,194,209,0.06); border-color: rgba(0,194,209,0.25); }
+  .callout-note .callout-label { color: #00C2D1; }
+  .callout-info { background: rgba(123,44,191,0.08); border-color: rgba(123,44,191,0.3); }
+  .callout-info .callout-label { color: #B18CE0; }
+  .callout-warning { background: rgba(251,191,36,0.07); border-color: rgba(251,191,36,0.3); }
+  .callout-warning .callout-label { color: #FBBF24; }
+  .callout p { color: #D1D5DB; margin-bottom: 0; }
+
+  /* Expand / details */
+  .lesson-body details { border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); margin: 1.5rem 0; overflow: hidden; }
+  .lesson-body summary { cursor: pointer; padding: 1rem 1.25rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.9rem; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .lesson-body summary::-webkit-details-marker { display: none; }
+  .lesson-body summary::after { content: '+'; font-family: 'JetBrains Mono', monospace; color: #00F0FF; font-size: 1.1rem; }
+  .lesson-body details[open] summary::after { content: '\2212'; }
+  .lesson-body details > div { padding: 0 1.25rem 1.25rem; }
+
+  /* Code / prompt blocks */
+  .lesson-body pre { background: #111827; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.6rem; padding: 1rem 1.15rem; overflow-x: auto; margin: 1rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.6; color: #D1D5DB; white-space: pre-wrap; }
+  .lesson-body code { font-family: 'JetBrains Mono', monospace; font-size: 0.85em; background: rgba(255,255,255,0.1); padding: 0.15em 0.3em; border-radius: 0.25em; color: #00F0FF; }
+  .lesson-body pre code { background: transparent; padding: 0; color: inherit; }
+
+  /* Verification checklist */
+  .checklist-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; }
+  .checklist-box { width: 1.1rem; height: 1.1rem; border-radius: 0.3rem; border: 1.5px solid rgba(0,240,255,0.5); flex-shrink: 0; margin-top: 0.15rem; }
+</style>
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pilares</a>
+      <a href="../../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Curso</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menú
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="../index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">05</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Infraestructura Web</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5 transition-colors">5.1 Despliegue en AWS S3</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Inicio del curso</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <a href="../../../ai-for-friends/module-5/lesson-1.html" class="hover:text-accent-cyan transition-colors">EN</a>
+        <span class="text-white/20">/</span>
+        <span class="text-accent-cyan font-semibold">ES</span>
+      </div>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">
+      Módulo 5
+    </a>
+  </div>
+</header>
+
+<!-- ============ LESSON HEADER ============ -->
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a>
+      <span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Módulo 5</a>
+      <span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Lección 5.1</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Desplegar un sitio web en AWS S3</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">
+      Aprende a alojar tu propio sitio web público desde cero subiendo tus archivos a Amazon S3 y configurando un dominio seguro y rápido usando Route 53 y CloudFront.
+    </p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">45 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">PASO 1 DE 1</span>
+    </div>
+    <div class="flex flex-wrap gap-2 font-mono text-[10px]">
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Prerrequisitos</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. S3 Bucket</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Subir Archivos</a>
+      <a href="#step-4" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">4. Tu Enlace Gratis</a>
+      <a href="#step-5" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">5. Route 53 (Opcional)</a>
+      <a href="#step-6" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">6. SSL (Opcional)</a>
+      <a href="#step-7" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">7. CloudFront (Opcional)</a>
+      <a href="#step-8" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">8. Dominio Final (Opcional)</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ LESSON BODY ============ -->
+<article class="px-6 pb-24">
+  <div class="lesson-body max-w-2xl mx-auto text-[16px]">
+
+    <div class="callout callout-note mb-8">
+      <span class="callout-label">Navegando en AWS</span>
+      <p>La consola de AWS puede parecer intimidante, pero tiene un truco simple: <strong>usa siempre la barra de búsqueda en la parte superior central de la pantalla.</strong> En lugar de buscar en menús complejos, simplemente escribe el nombre del servicio que necesitas (ej. "S3", "Route 53") y haz clic en el primer resultado bajo la categoría "Services".</p>
+    </div>
+
+    <h2 id="step-1"><span class="step-num">1</span>Requisitos previos</h2>
+    <p>Antes de comenzar, repasaremos qué intentamos lograr y qué recursos necesitarás tener listos. Asumiremos que ya tienes tu página web (archivos HTML, CSS y posiblemente carpetas de imágenes) guardada en tu computadora.</p>
+    
+    <table>
+      <thead><tr><th>Metas del proyecto</th><th>Qué necesitas</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <li>Subir tus archivos web (como el archivo <code>index.html</code>) a AWS S3.</li>
+              <li>Configurar S3 para que cualquier persona en internet pueda ver tu página.</li>
+              <li>Hacer que tu sitio sea seguro (que aparezca el candado de HTTPS) usando CloudFront.</li>
+              <li>Vincular tu propio nombre de dominio personalizado.</li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li>Una cuenta de <strong>AWS</strong> (Amazon Web Services) activa.</li>
+              <li>Los archivos de tu proyecto web listos en tu computadora.</li>
+              <li>Un dominio propio gestionado en un registrador (por ejemplo, haber comprado uno en GoDaddy o Namecheap).</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="step-2"><span class="step-num">2</span>Crear y configurar un S3 Bucket</h2>
+    
+    <p>El primer paso es crear el "contenedor" donde vivirán los archivos de tu página web. En el ecosistema de AWS, este contenedor para guardar archivos se llama <strong>S3 Bucket</strong>.</p>
+
+    <p><strong>1. Crear el bucket</strong><br>
+    Inicia sesión en la consola de AWS. En la barra de búsqueda superior, escribe <strong>S3</strong> y haz clic en el primer resultado. Una vez dentro de S3, busca un botón naranja grande que dice <strong>"Create bucket"</strong> y haz clic en él.</p>
+    
+    <p>En la siguiente pantalla, sigue estas reglas:</p>
+    <ul>
+      <li><strong>Bucket name:</strong> Dale un nombre. <em>Regla de oro:</em> El nombre debe ser único en todo el mundo (nadie más en AWS puede estar usándolo). Usa solo letras minúsculas, números y guiones, sin espacios (ej. <code>mi-pagina-web-2026</code>).</li>
+      <li><strong>AWS Region:</strong> Selecciona la región que esté más cerca geográficamente de ti o de tus usuarios (ej. <code>us-east-1</code> o <code>us-west-2</code>).</li>
+    </ul>
+
+    <p><strong>2. Permitir el acceso público</strong><br>
+    Por defecto, AWS bloquea todo acceso a tus archivos para que nadie en internet pueda verlos. Como queremos hacer una página web pública, debemos quitar este candado.</p>
+    <p>En esa misma pantalla, desplázate hacia abajo hasta encontrar la sección <strong>"Block Public Access settings for this bucket"</strong>:</p>
+    <ul>
+      <li>Desmarca la casilla principal que dice <em>"Block all public access"</em>.</li>
+      <li>Al desmarcarla, aparecerá un cuadro amarillo de advertencia. Marca la pequeña casilla en ese cuadro para confirmar que entiendes que tus archivos serán públicos.</li>
+      <li>Baja hasta el final de toda la página y haz clic en el botón naranja <strong>"Create bucket"</strong>.</li>
+    </ul>
+
+    <p><strong>3. Configurar como sitio web estático</strong><br>
+    Ahora verás una lista con tu bucket recién creado. Haz clic sobre su nombre (en texto azul) para entrar. En la parte superior verás varias pestañas (Objects, Properties, Permissions...). Haz clic en la pestaña <strong>"Properties"</strong>.</p>
+    
+    <ul>
+      <li>Desplázate hasta el fondo absoluto de la página, hasta encontrar la sección <strong>"Static website hosting"</strong>.</li>
+      <li>Haz clic en el botón <strong>"Edit"</strong>.</li>
+      <li>Selecciona <strong>"Enable"</strong> (Habilitar).</li>
+      <li>En el campo <em>"Index document"</em>, escribe exactamente <code>index.html</code> (este será el archivo principal de tu web).</li>
+      <li>Baja y haz clic en <strong>"Save changes"</strong>.</li>
+    </ul>
+
+    <p><strong>4. Añadir la Política de Permisos (Bucket Policy)</strong><br>
+    Aunque quitaste el candado general, necesitas decirle a S3 que específicamente permita a los navegadores web "leer" tus archivos. Ve a la pestaña superior llamada <strong>"Permissions"</strong>.</p>
+
+    <ul>
+      <li>Baja un poco hasta la sección <em>"Bucket policy"</em> y haz clic en el botón <strong>"Edit"</strong>.</li>
+      <li>Verás un cuadro de texto en blanco. Pega exactamente el siguiente código allí.</li>
+      <li><strong>¡Atención!</strong> Debes borrar donde dice <code>TU-NOMBRE-DE-BUCKET</code> y escribir el nombre exacto que le diste a tu bucket en el paso 1.</li>
+    </ul>
+
+<pre><code class="language-json">{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::TU-NOMBRE-DE-BUCKET/*"
+    }
+  ]
+}</code></pre>
+
+    <p>Haz clic en <strong>"Save changes"</strong>. Si todo salió bien, en la pestaña de Permisos verás una insignia roja que dice <em>"Publicly accessible"</em>.</p>
+
+    <h2 id="step-3"><span class="step-num">3</span>Subir tus archivos a S3</h2>
+    <p>Ahora que tu "contenedor" está listo para funcionar como un servidor web, vamos a subir los archivos de tu computadora.</p>
+
+    <ol>
+      <li>Dentro de tu bucket, haz clic en la primera pestaña llamada <strong>"Objects"</strong>.</li>
+      <li>Haz clic en el botón naranja <strong>"Upload"</strong>.</li>
+      <li>Aquí puedes arrastrar y soltar los archivos y carpetas de tu página web desde tu computadora directamente al cuadro en la pantalla. Alternativamente, puedes usar los botones <strong>"Add files"</strong> (para archivos sueltos como tu <code>index.html</code>) o <strong>"Add folder"</strong> (si tienes carpetas como <code>css</code> o <code>images</code>).</li>
+      <li>Una vez que veas todos tus archivos listados en la pantalla, baja y haz clic en el botón naranja <strong>"Upload"</strong> en la parte inferior.</li>
+      <li>Espera a que la barra de progreso termine y veas un mensaje verde de éxito (Success). Luego, haz clic en el botón <strong>"Close"</strong> arriba a la derecha.</li>
+    </ol>
+
+    <h2 id="step-4"><span class="step-num">4</span>Obtener y compartir tu enlace público gratuito</h2>
+    <p>¡Felicidades! En este punto, tu página web ya está viva en internet. <strong>No necesitas comprar un dominio ni configurar nada más si tu único objetivo es compartir tu página con amigos, profesores, clientes o para tu portafolio.</strong></p>
+    
+    <p>AWS te proporciona automáticamente una URL (dirección web) gratuita vinculada directamente a tu bucket. Así es como la encuentras para compartirla:</p>
+
+    <ol>
+      <li>Asegúrate de estar dentro de tu bucket en la consola de AWS.</li>
+      <li>Haz clic en la pestaña <strong>"Properties"</strong> (la segunda pestaña en la parte superior).</li>
+      <li>Usa la rueda de tu ratón para desplazarte hasta el <strong>fondo absoluto de esa página</strong>.</li>
+      <li>Busca la sección llamada <strong>"Static website hosting"</strong>.</li>
+      <li>Bajo el texto <em>"Bucket website endpoint"</em>, verás un enlace azul. Tendrá un formato parecido a este: <code>http://tu-nombre-de-bucket.s3-website-us-east-1.amazonaws.com</code>.</li>
+      <li>Haz clic en ese enlace. ¡Se abrirá una nueva pestaña en tu navegador mostrando tu página web! Copia esa dirección de la barra de tu navegador y mándasela a quien quieras.</li>
+    </ol>
+
+    <div class="callout callout-note">
+      <span class="callout-label">Nota sobre tu URL gratuita</span>
+      <p>Notarás dos cosas sobre este enlace: es un poco largo y comienza con <code>http://</code> en lugar de <code>https://</code> (por lo que el navegador puede decir "No seguro"). Esto es completamente normal y seguro para sitios estáticos que no piden contraseñas ni tarjetas de crédito. ¡Es la forma más rápida y sin costo de publicar en la web!</p>
+    </div>
+
+    <!-- Transition to Advanced/Optional content -->
+    <div class="mt-16 mb-8 rounded-2xl bg-os-surface-light border border-white/10 p-6 shadow-xl">
+      <h3 class="font-display font-bold text-xl text-white mb-2">🛑 ¡Alto aquí! Has terminado lo esencial.</h3>
+      <p class="text-os-secondary text-sm leading-relaxed mb-4">
+        Para fines prácticos de esta lección, con el enlace que obtuviste en el Paso 4 <strong>ya tienes tu página web lista para compartir</strong>. Si no quieres gastar dinero comprando un dominio personalizado (como <code>midominio.com</code>) ni realizar configuraciones técnicas complejas en AWS, puedes saltar directamente a la sección de "Verificación" al final de esta página.
+      </p>
+      <p class="text-os-secondary text-sm leading-relaxed">
+        Los <strong>Pasos del 5 al 8 son avanzados y completamente opcionales</strong>. Quedan como una guía de referencia por si en el futuro decides profesionalizar tu sitio web con un dominio propio pagado y encriptación de grado bancario (HTTPS) usando CloudFront y Route 53.
+      </p>
+    </div>
+
+    <h2 id="step-5"><span class="step-num">5</span>Preparar tu dominio con Route 53 (Opcional)</h2>
+    <p>Si deseas que tu sitio tenga una dirección como <code>midominio.com</code>, usaremos el servicio Route 53 de AWS para conectar un dominio que ya hayas comprado en un registrador externo (GoDaddy, Namecheap, etc.).</p>
+
+    <ol>
+      <li>Usa la barra de búsqueda superior de AWS, escribe <strong>Route 53</strong> y haz clic en el servicio.</li>
+      <li>En el menú de la izquierda (si está oculto, haz clic en el icono de tres líneas o hamburguesa), busca y haz clic en <strong>"Hosted zones"</strong>.</li>
+      <li>Haz clic en el botón naranja <strong>"Create hosted zone"</strong>.</li>
+      <li>En el campo <em>"Domain name"</em>, escribe tu nombre de dominio (sin www, solo <code>midominio.com</code>). Asegúrate de que el tipo debajo diga <em>"Public hosted zone"</em> y haz clic en <strong>"Create hosted zone"</strong> abajo.</li>
+      <li><strong>El paso vital:</strong> En la tabla que aparece en pantalla, busca la fila donde la columna "Type" dice <strong>NS</strong> (Name Servers). En la columna de la derecha ("Value"), verás 4 direcciones de internet que terminan en <code>.com</code>, <code>.net</code>, etc. Copia esas 4 direcciones.</li>
+      <li>Abre una nueva pestaña en tu navegador, ve a la página de la empresa donde compraste tu dominio (GoDaddy, Namecheap, etc.) y busca la configuración de <strong>DNS</strong> o <strong>Nameservers (Servidores de nombres)</strong>. Reemplaza los predeterminados de la empresa pegando los 4 que te dio AWS. (<em>Nota: AWS a veces pone un punto al final de cada dirección; bórralo si tu proveedor de dominio no te deja guardarlos con el punto final</em>).</li>
+    </ol>
+
+    <h2 id="step-6"><span class="step-num">6</span>Obtener un Certificado SSL (Opcional)</h2>
+    <p>Para que tu dominio muestre el candado de sitio seguro (HTTPS), conseguiremos un certificado gratuito con AWS Certificate Manager (ACM).</p>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Requisito Obligatorio: Región US-East-1</span>
+      <p>Para que este certificado funcione globalmente con CloudFront, <strong>DEBES</strong> solicitarlo en la región de Virginia. En la esquina superior derecha de la consola de AWS (justo al lado de tu nombre de usuario), verás el nombre de una ciudad o región. Haz clic ahí y selecciona <strong>US East (N. Virginia) us-east-1</strong> antes de continuar.</p>
+    </div>
+
+    <ol>
+      <li>Usa la barra de búsqueda superior, escribe <strong>Certificate Manager</strong> y entra al servicio.</li>
+      <li>Haz clic en el botón <strong>"Request a certificate"</strong> (Solicitar un certificado), elige <em>"Request a public certificate"</em> y presiona Next.</li>
+      <li>En "Fully qualified domain name", escribe tu nombre de dominio (ej. <code>midominio.com</code>).</li>
+      <li>Deja el método de validación en <em>"DNS validation"</em> y haz clic en <strong>"Request"</strong> abajo.</li>
+      <li>Verás una lista de certificados y el tuyo dirá <em>Pending validation</em> (Pendiente). Haz clic sobre el ID (los números/letras azules) de tu certificado para abrir sus detalles.</li>
+      <li>Busca la sección "Domains" a mitad de página. A la derecha verás un botón que dice <strong>"Create records in Route 53"</strong>. Haz clic en él y luego en el botón naranja "Create records". Esto crea automáticamente un registro especial que le prueba a AWS que tú eres el dueño del dominio.</li>
+    </ol>
+    <p>Ahora debes tener paciencia. Espera unos minutos (puede tomar entre 5 y 30 minutos) hasta que el estado del certificado cambie de azul a verde y diga <strong>"Issued"</strong> (Emitido).</p>
+
+    <h2 id="step-7"><span class="step-num">7</span>Hacer el sitio rápido y seguro con CloudFront (Opcional)</h2>
+    <p>S3 por sí solo no sabe cómo usar tu nuevo certificado de seguridad. Usaremos <strong>CloudFront</strong>, un servicio que hace copias de tu página y las pone en servidores por todo el mundo, envolviéndola con tu certificado seguro.</p>
+
+    <ol>
+      <li>Usa la barra de búsqueda superior, escribe <strong>CloudFront</strong> y entra al servicio. Haz clic en <strong>"Create a CloudFront distribution"</strong>.</li>
+      <li>En el campo <em>"Origin domain"</em>, haz clic en el cuadro en blanco. Aparecerá una lista desplegable; selecciona tu bucket de S3. (Ignora cualquier mensaje amarillo de advertencia recomendando "OAC", para este sitio estático público no lo necesitamos).</li>
+      <li>Baja hasta la sección <em>"Default cache behavior"</em>. Bajo <em>"Viewer protocol policy"</em>, selecciona <strong>"Redirect HTTP to HTTPS"</strong>.</li>
+      <li><strong>¡Muy Importante!</strong> Baja hasta encontrar la sección <em>"Web Application Firewall (WAF)"</em>. Asegúrate de seleccionar <strong>"Do not enable security protections"</strong>. Si habilitas el firewall sin saberlo, AWS podría cobrarte mensualidades inesperadas por un servicio avanzado de protección que no necesitas para un sitio estático simple.</li>
+      <li>Sigue bajando hasta la sección <strong>"Settings"</strong>.</li>
+      <li>En <em>"Alternate domain name (CNAME)"</em>, haz clic en "Add item" y escribe tu dominio (ej. <code>midominio.com</code>).</li>
+      <li>En <em>"Custom SSL certificate"</em>, haz clic en el cuadro y selecciona el certificado que creaste en el paso 6 (si no aparece, asegúrate de haber esperado a que diga "Issued" en Virginia).</li>
+      <li>En el campo final <em>"Default root object"</em>, escribe <code>index.html</code>.</li>
+      <li>Haz clic en <strong>"Create distribution"</strong> al fondo de la página.</li>
+    </ol>
+
+    <p>Verás una barra superior diciendo que la distribución se está desplegando ("Deploying"). Anota la URL que aparece bajo la sección "Distribution domain name" (es un enlace largo que termina en <code>.cloudfront.net</code>). Este proceso puede tardar unos 10 minutos.</p>
+
+    <h2 id="step-8"><span class="step-num">8</span>Conectar tu dominio final a CloudFront (Opcional)</h2>
+    <p>El último paso es decirle a tu dominio (que ya está gestionado por Route 53) que cuando alguien escriba tu dirección web, lo mande a la red rápida de CloudFront.</p>
+
+    <ol>
+      <li>Busca en la barra superior nuevamente <strong>Route 53</strong> y entra a <strong>"Hosted zones"</strong>.</li>
+      <li>Haz clic en el nombre de tu dominio.</li>
+      <li>Haz clic en el botón naranja <strong>"Create record"</strong>.</li>
+      <li>Asegúrate de que <em>"Record type"</em> esté en <strong>A - Routes traffic to an IPv4 address</strong>.</li>
+      <li>A la derecha del campo "Value", activa el pequeño interruptor (toggle) que dice <strong>"Alias"</strong>.</li>
+      <li>Aparecerá un campo llamado <em>"Route traffic to"</em>. Haz clic en la primera caja y elige <strong>"Alias to CloudFront distribution"</strong>.</li>
+      <li>En la caja de búsqueda que aparece justo debajo, pega la URL larga de CloudFront que copiaste en el paso anterior (la que termina en `.cloudfront.net`).</li>
+      <li>Haz clic en el botón <strong>"Create records"</strong>.</li>
+    </ol>
+
+    <p>¡Listo! Los sistemas de internet (DNS) pueden tardar desde 5 minutos hasta un par de horas en actualizarse en todo el mundo. Pronto, al escribir tu propio dominio en el navegador, verás tu página web cargar al instante, con su candado de seguridad activado.</p>
+
+    <details>
+      <summary>Opcional: Automatizar las subidas con GitHub Actions (Avanzado)</summary>
+      <div>
+        <p><em>Nota: Esta sección es únicamente para personas técnicas que ya utilizan control de versiones. Si no sabes qué es Git o GitHub, puedes ignorar esta sección por completo. Puedes seguir actualizando tu página siempre que quieras repitiendo el Paso 3 (botón "Upload").</em></p>
+        
+        <p>Si eres desarrollador, puedes hacer que GitHub suba los cambios a S3 de forma automática cada vez que haces un `git push`.</p>
+        
+        <p><strong>1. Credenciales IAM</strong><br>Ve a la consola IAM de AWS y crea un User con acceso programático ("Programmatic access"). Asígnale la política <code>AmazonS3FullAccess</code>. Al finalizar, copia su <em>Access Key ID</em> y su <em>Secret Access Key</em>. En tu repositorio de GitHub, ve a la pestaña Settings > Secrets and variables > Actions, y guárdalos creando dos nuevos "Repository secrets" llamados <code>AWS_ACCESS_KEY_ID</code> y <code>AWS_SECRET_ACCESS_KEY</code>.</p>
+        
+        <p><strong>2. Archivo de flujo de trabajo</strong><br>En tu computadora, en la raíz de tu proyecto, crea las carpetas ocultas <code>.github/workflows</code> y dentro crea un archivo llamado <code>main.yml</code>. Pega el siguiente código, asegurándote de cambiar la región y el nombre de tu bucket:</p>
+<pre><code class="language-yaml">name: Deploy to S3
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1 # Cambia esto a la región de tu bucket
+    - name: Deploy static site to S3
+      run: aws s3 sync ./ s3://TU-NOMBRE-DE-BUCKET --delete</code></pre>
+
+      <p>Haz commit y push. En la pestaña "Actions" de GitHub verás cómo se ejecuta el despliegue a S3 automáticamente.</p>
+      </div>
+    </details>
+
+    <h2 class="!mt-16">Verificación</h2>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6 space-y-2">
+      <div class="checklist-item">
+        <span class="checklist-box"></span>
+        <span class="text-sm text-os-secondary">Pudiste subir tus archivos usando el botón "Upload".</span>
+      </div>
+      <div class="checklist-item">
+        <span class="checklist-box"></span>
+        <span class="text-sm text-os-secondary">Encontraste el enlace "Bucket website endpoint" en la pestaña Properties, hiciste clic en él, y tu sitio cargó perfectamente en tu navegador. ¡Ya lo puedes compartir!</span>
+      </div>
+      <div class="checklist-item">
+        <span class="checklist-box"></span>
+        <span class="text-sm text-os-secondary">(Opcional) Si configuraste Route 53 y CloudFront, al visitar tu dominio personalizado aparece un candado cerrado (HTTPS) junto a la dirección.</span>
+      </div>
+    </div>
+
+    <h2 class="!mt-10 !text-base">Recursos relacionados</h2>
+    <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
+      <li><a href="https://aws.amazon.com/es/s3/" class="text-accent-cyan hover:underline">Amazon S3</a> — Portal del servicio</li>
+      <li><a href="https://docs.aws.amazon.com/es_es/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html" class="text-accent-cyan hover:underline">Documentación de AWS</a> — Alojamiento de sitios web estáticos</li>
+    </ul>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lección completada</p>
+      <p class="text-sm text-os-secondary">¡Felicidades! Has logrado crear infraestructura real en la nube. Tu página web ya no vive solo en tu computadora; ahora es rápida, segura y accesible para todo el mundo a través de tu propio dominio, funcionando como los sitios profesionales.</p>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ PREV/NEXT ============ -->
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="index.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; Resumen del Módulo</a>
+    <a href="../index.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
+      Siguiente: Inicio del Curso &rarr;
+    </a>
+  </div>
+</nav>
+
+<!-- ============ FOOTER ============ -->
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">No te elevas al nivel de tus metas. Caes al nivel de tus sistemas.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Construido como un sistema, no como un eslogan.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
+
+</body>
+</html>

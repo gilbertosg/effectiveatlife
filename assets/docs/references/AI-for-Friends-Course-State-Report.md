@@ -585,3 +585,32 @@ One lesson (`module-1/lesson-1.html`) was translated and browser-verified by han
 - **HR abbreviation**: "RR. HH." was used consistently across all 4 agents/modules (a good sign of convergence), but this wasn't a pre-set glossary entry — worth confirming this is the preferred convention before any further content is added.
 - **Coined terms not in the original glossary**, used consistently within Module 3 but worth reviewing: Diff→"Diff" (kept), Plan Mode→"Modo Plan", Slash Command→"Comando Slash", Project Folder→"Carpeta del Proyecto", Plain Chat→"Chat Simple".
 - **Code-block (`<pre>`) translation boundary**: natural-language content inside `<pre>` blocks (dictation scripts, sample digest output) was translated; literal artifacts (SKILL.md frontmatter, CLI confirmation strings, file paths) were left in English. This wasn't explicit in the style guide before this pass — now worth codifying there if it's the desired convention going forward.
+
+---
+
+## 14. Module 2 Lessons 2.4 & 2.5 — AWS Account + S3 Deployment (Completed)
+
+Two new lessons were added to Module 2 ("Setting Up Your Computer"): **2.4 Creating an AWS Account** and **2.5 Deploying a Website to AWS S3**. Module 2 is now 5 lessons (was 3); course totals are now **23 core lessons / ~7.5 hours** (was 21 / ~6.5).
+
+**Origin**: the user supplied two externally-authored, Spanish-only HTML files as reference content in `assets/docs/ai-for-friends/` (`2-4_creacion_de_cuenta_aws.html`, `2-5_despliegue_en_s3.html`), built by another tool against an imagined "Module 5." They were rebuilt from scratch as this course's `module-2/lesson-4.html` / `lesson-5.html`, in both locales, following this course's actual shell/component conventions rather than copied as-is.
+
+**Content QA fixes made during the rebuild** (not just a mechanical port):
+- Inline `<style>` blocks replaced with the shared `assets/css/custom.css` link, per §10's convention.
+- `assets/css/custom.css` gained two new rules — `.lesson-body code` and `.lesson-body pre code` — the first code blocks (`<pre><code class="language-json/yaml">`) anywhere in this course.
+- Invented meta badges (`PASO PREVIO`, `PASO 1 DE 1`) replaced with the established Module-2 pattern: `{N} MIN` + `OPTIONAL`/`OPCIONAL`.
+- A custom "🛑 stop here" section-break card (raw `<div>` + emoji + `<h3>`) was replaced with a standard `callout-warning` box — the site's existing component for exactly this "essential vs. optional, read carefully" intent, and keeps the no-decorative-emoji rule intact.
+- The optional GitHub-Actions-automation `<details>` block originally granted the deploy IAM user `AmazonS3FullAccess` (account-wide S3 access). Tightened to a bucket-scoped inline policy (`s3:PutObject`/`GetObject`/`ListBucket`/`DeleteObject` on the one bucket's ARN) — a real least-privilege fix, not just a style change.
+- Breadcrumbs and course-menu ordering normalized to the standard `Lesson 2.4` / `Lesson 2.5` pattern (the source files disagreed with each other and used a one-off "Prep Guide" breadcrumb).
+
+**English versions were written from scratch** — the source content was Spanish-only. AWS service/product names (S3, CloudFront, Route 53, IAM, ACM, "bucket," "hosted zone") stay as literal AWS terminology in both locales, consistent with the ES-Translation-Style-Guide's product-name convention.
+
+**Propagating the dropdown**: rather than 56 manual edits, a small script matched every file's existing (unique, per-locale) `2.3 Navigating in the Terminal` / `2.3 Navegando en la Terminal` dropdown link, captured that link's own `../`-depth prefix, and inserted the two new lesson links immediately after it using the same prefix — correct by construction regardless of which of the three path-depth variants (course index, Module 2's own pages, every other module) the file was. Confirmed via `grep -rL "2\.4 Cre"` across both trees that every file picked up the change.
+
+**prev/next chain**: `2.3 → 2.4 → 2.5 → Module 3 hub` in both locales; `lesson-3.html`'s closing card copy was updated from "Module 2 complete" (which no longer fit, since it wasn't the last lesson anymore) to "Terminal basics done," mentioning the two new optional lessons.
+
+### Verification performed
+
+- File counts: 28 HTML files in `ai-for-friends/` and 28 in `es/ai-for-friends/` (was 26/26).
+- Every file in both trees contains a `2.4 Cre...` dropdown entry (`grep -rL` returned nothing, i.e. no file was missed).
+- `git diff --stat` on the 52 pre-existing files confirmed the dropdown insertion was the only change to each.
+- Browser check (local `python3 -m http.server`, Claude in Chrome) confirmed: both new lessons render correctly, the code block and `.lesson-body code` styling display properly, the `callout-warning` replacement matches every other callout on the site, the course-menu dropdown correctly shows all 5 Module-2 lessons from both a Module-2 page and a distant page (`module-4/lesson-7.html`) with no corruption to other modules' entries, and the EN/ES pill round-trips correctly in both directions.

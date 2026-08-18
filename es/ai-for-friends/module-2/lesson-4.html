@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lección 2.2: Instalando Visual Studio Code — AI for Friends</title>
-<meta name="title" content="Lección 2.2: Instalando Visual Studio Code">
-<meta name="description" content="Un repaso más ligero y anticipado de la instalación del editor, para que la versión del Módulo 3 te resulte familiar.">
-<link rel="alternate" hreflang="en" href="https://effectiveatlife.com/ai-for-friends/module-2/lesson-2.html">
-<link rel="alternate" hreflang="es" href="https://effectiveatlife.com/es/ai-for-friends/module-2/lesson-2.html">
-<link rel="alternate" hreflang="x-default" href="https://effectiveatlife.com/ai-for-friends/module-2/lesson-2.html">
+<title>Lección 2.4: Creación de tu Cuenta AWS — AI for Friends</title>
+<meta name="title" content="Lección 2.4: Creación de tu Cuenta AWS">
+<meta name="description" content="Aprende a crear y configurar de forma segura una nueva cuenta de Amazon Web Services (AWS) aprovechando la capa gratuita.">
+<link rel="alternate" hreflang="en" href="https://effectiveatlife.com/ai-for-friends/module-2/lesson-4.html">
+<link rel="alternate" hreflang="es" href="https://effectiveatlife.com/es/ai-for-friends/module-2/lesson-4.html">
+<link rel="alternate" hreflang="x-default" href="https://effectiveatlife.com/ai-for-friends/module-2/lesson-4.html">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -74,9 +74,9 @@
             </a>
             <div class="ml-8 space-y-0.5 pb-2">
               <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Instalando la Terminal de Windows</a>
-              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">2.2 Instalando VS Code</a>
+              <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Instalando VS Code</a>
               <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navegando en la Terminal</a>
-              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.4 Creación de tu Cuenta AWS</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">2.4 Creación de tu Cuenta AWS</a>
               <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.5 Despliegue en AWS S3</a>
             </div>
           </div>
@@ -118,7 +118,7 @@
       </div>
 
       <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
-        <a href="../../../ai-for-friends/module-2/lesson-2.html" class="hover:text-accent-cyan transition-colors">EN</a>
+        <a href="../../../ai-for-friends/module-2/lesson-4.html" class="hover:text-accent-cyan transition-colors">EN</a>
         <span class="text-white/20">/</span>
         <span class="text-accent-cyan font-semibold">ES</span>
       </div>
@@ -133,21 +133,22 @@
     <div class="font-mono text-xs text-os-tertiary mb-6">
       <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a><span class="mx-1.5">/</span>
       <a href="index.html" class="hover:text-accent-cyan transition-colors">Módulo 2</a><span class="mx-1.5">/</span>
-      <span class="text-os-secondary">Lección 2.2</span>
+      <span class="text-os-secondary">Lección 2.4</span>
     </div>
-    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Instalando Visual Studio Code</h1>
-    <p class="text-os-secondary text-lg leading-relaxed mb-6">Un repaso más ligero y anticipado de una instalación que el Módulo 3 cubre a fondo — para que la guía real te resulte familiar cuando llegues ahí.</p>
-    <div class="flex flex-wrap items-center gap-2">
-      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">5 MIN</span>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Creación de tu Cuenta AWS</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">
+      Amazon Web Services (AWS) proporciona las herramientas profesionales para alojar sitios web. Esta guía explica cómo crear tu cuenta desde cero para poder publicar tus proyectos en internet.
+    </p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">15 MIN</span>
       <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">OPCIONAL</span>
     </div>
-    <div class="callout callout-note mt-6 mb-6">
-      <span class="callout-label">El Módulo 3 Cubre Esto a Fondo</span>
-      <p>El Módulo 3 recorre esta instalación con más detalle. Este es un vistazo más ligero y anticipado — sáltatelo si prefieres hacerlo una sola vez, bien hecho, en el Módulo 3.</p>
-    </div>
     <div class="flex flex-wrap gap-2 font-mono text-[10px]">
-      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Descargar e Instalar</a>
-      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Encontrar Extensions</a>
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Conceptos Clave</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Registro Inicial</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Facturación</a>
+      <a href="#step-4" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">4. Verificación</a>
+      <a href="#step-5" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">5. Plan de Soporte</a>
     </div>
   </div>
 </header>
@@ -155,80 +156,116 @@
 <article class="px-6 pb-24">
   <div class="lesson-body max-w-2xl mx-auto text-[16px]">
 
-    <h2 id="step-1"><span class="step-num">1</span>Descarga e Instala VS Code</h2>
-    <p>VS Code viene directamente del sitio oficial de Microsoft. Descargas un instalador, lo ejecutas, y aceptas las opciones predeterminadas — no hay nada que configurar en esta etapa.</p>
+    <h2 id="step-1"><span class="step-num">1</span>Conceptos Clave antes de empezar</h2>
+    <p>Antes de sumergirnos en el proceso de registro, es importante entender cómo funciona AWS y qué vas a necesitar.</p>
 
-    <h3>Windows</h3>
-    <ol>
-      <li>Ve a <span class="font-mono text-os-primary">code.visualstudio.com</span>.</li>
-      <li>Haz clic en el botón de descarga para Windows.</li>
-      <li>Ejecuta el instalador y acepta todas las opciones predeterminadas.</li>
-      <li>Abre Visual Studio Code una vez que termine.</li>
-    </ol>
+    <table>
+      <thead><tr><th>Concepto</th><th>Lo que significa para ti</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Capa Gratuita (Free Tier)</strong></td>
+          <td>AWS ofrece una generosa capa gratuita durante 12 meses para cuentas nuevas. Alojaremos tu página web dentro de estos límites gratuitos, por lo que, en condiciones normales, <strong>no deberías pagar nada</strong> por alojar un sitio estático básico.</td>
+        </tr>
+        <tr>
+          <td><strong>Pago por uso</strong></td>
+          <td>AWS cobra basándose en los recursos que consumes. Si tu sitio web se vuelve inmensamente popular de la noche a la mañana y supera los límites de la capa gratuita, AWS comenzará a cobrarte unos pocos centavos por cada giga de datos transferido.</td>
+        </tr>
+        <tr>
+          <td><strong>Requisito de Tarjeta</strong></td>
+          <td>Para crear la cuenta, <strong>AWS te pedirá obligatoriamente una tarjeta de crédito o débito</strong>. Esto es un estándar en la industria para verificar tu identidad y prevenir la creación de cuentas falsas, así como para tener un método de cobro en caso de que superes la capa gratuita.</td>
+        </tr>
+      </tbody>
+    </table>
 
-    <h3>Mac</h3>
-    <ol>
-      <li>Ve a <span class="font-mono text-os-primary">code.visualstudio.com</span>.</li>
-      <li>Haz clic en el botón de descarga para Mac.</li>
-      <li>Abre el archivo descargado y arrastra <strong>Visual Studio Code</strong> a tu carpeta <strong>Applications</strong>.</li>
-      <li>Ábrela desde Applications (o Spotlight — Cmd + Space, y luego escribe "Visual Studio Code"). La primera vez, macOS podría pedirte que confirmes que confías en ella — haz clic en <strong>Open</strong>.</li>
-    </ol>
-
-    <pre>+-----------------------------------------+
-| (icons) | Welcome                       |
-| []      |                               |
-| *       | Start                         |
-| v       | New File...                   |
-| |>      | Open Folder...                |
-| []      |                               |
-|         | (empty editor area)           |
-+-----------------------------------------+</pre>
-    <p>Una ventana con una pestaña Welcome, una fila de íconos en la barra lateral izquierda, y un área de editor vacía en el medio — idéntica en Windows y Mac.</p>
-
-    <div class="callout callout-tip">
-      <span class="callout-label">Solo el Sitio Oficial</span>
-      <p>Descarga únicamente desde code.visualstudio.com — no desde un sitio de descargas de terceros. El instalador oficial es seguro y gratuito.</p>
-    </div>
-    <div class="callout callout-note">
-      <span class="callout-label">Las Opciones Predeterminadas Están Bien Aquí</span>
-      <p>No necesitas cambiar ninguna opción del instalador. Avanza con las opciones predeterminadas. El Módulo 3 cubre más adelante cualquier configuración que importe.</p>
+    <div class="callout callout-warning">
+      <span class="callout-label">Cargos de Verificación Temporales</span>
+      <p>Al registrar tu tarjeta, AWS podría realizar un cargo temporal muy pequeño (generalmente $1 USD) para verificar que la tarjeta es válida. Este cargo no es real y desaparecerá o será reembolsado a tu cuenta en unos pocos días.</p>
     </div>
 
-    <h2 id="step-2"><span class="step-num">2</span>Encuentra el Panel de Extensions</h2>
-    <p>Las extensiones son complementos que le dan a VS Code nuevas capacidades. No instales ninguna todavía — el objetivo aquí es solo encontrar el panel para que te resulte familiar en el Módulo 3.</p>
+    <h2 id="step-2"><span class="step-num">2</span>Registro Inicial</h2>
+    <p>Comencemos creando tus credenciales de acceso para la cuenta raíz (Root User).</p>
+
     <ol>
-      <li>Busca en la barra lateral izquierda el ícono de <strong>Extensions</strong> (cuatro cuadrados).</li>
-      <li>Haz clic en él, o presiona <span class="font-mono text-os-primary">Ctrl + Shift + X</span> (Windows) / <span class="font-mono text-os-primary">Cmd + Shift + X</span> (Mac) para abrir el panel.</li>
-      <li>Escribe un nombre en el cuadro de búsqueda para ver cómo aparecen los resultados.</li>
-      <li>Explora la lista. No hagas clic en Install en nada todavía.</li>
+      <li>Ve a la página oficial de AWS: <a href="https://aws.amazon.com/es/" class="text-accent-cyan hover:underline" target="_blank">aws.amazon.com/es/</a>.</li>
+      <li>Haz clic en el botón naranja que dice <strong>"Crear una cuenta de AWS"</strong> (Create an AWS Account) situado en la esquina superior derecha.</li>
+      <li><strong>Dirección de correo electrónico:</strong> Ingresa un correo electrónico al que tengas acceso.</li>
+      <li><strong>Nombre de la cuenta de AWS:</strong> Ingresa un nombre para tu cuenta. Esto es solo para tu referencia interna (ej. "MiSitioWeb"). Puedes cambiar este nombre más tarde.</li>
+      <li>Haz clic en <strong>Verificar dirección de correo electrónico</strong>.</li>
+      <li>AWS te enviará un código numérico a tu correo. Cópialo y pégalo en la pantalla para confirmar que eres el dueño del correo.</li>
+      <li><strong>Contraseña:</strong> Crea una contraseña fuerte y segura. Esta cuenta (conocida como el Usuario Raíz o "Root User") tendrá control total sobre todos los recursos y la facturación, así que asegúrate de guardarla en un lugar seguro.</li>
     </ol>
 
-    <div class="callout callout-note">
-      <span class="callout-label">No Instales Nada Todavía</span>
-      <p>El Módulo 3 te dice exactamente qué extensiones agregar. Instalarlas ahora, fuera de orden, solo genera confusión — por ahora solo observa.</p>
+    <h2 id="step-3"><span class="step-num">3</span>Información de Contacto y Facturación</h2>
+    <p>Ahora AWS necesita saber quién eres y cómo manejar posibles futuros cobros.</p>
+
+    <ol>
+      <li><strong>Información de contacto:</strong> Selecciona el tipo de cuenta.
+        <ul>
+          <li>Elige <strong>"Empresa"</strong> (Business) si estás creando esto para tu trabajo o compañía.</li>
+          <li>Elige <strong>"Personal"</strong> si es para tus propios proyectos. <em>No hay diferencia en las características o precios entre ambas opciones.</em></li>
+        </ul>
+      </li>
+      <li>Llena el resto del formulario con tu nombre completo, número de teléfono, país y dirección física real. Marca la casilla para aceptar los términos y condiciones, y continúa.</li>
+      <li><strong>Información de facturación:</strong> Ingresa los datos de tu tarjeta de crédito o débito. Como se mencionó anteriormente, esto es obligatorio para verificar tu identidad y para tener un respaldo en caso de que excedas los límites gratuitos.</li>
+      <li>Ingresa la dirección de facturación asociada a esa tarjeta.</li>
+    </ol>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Seguridad de tus Datos</span>
+      <p>Amazon es una de las empresas de tecnología más grandes y seguras del mundo. Tus datos de facturación se procesan de forma segura y no se comparten. La tarjeta se utiliza como una medida antifraude esencial en la nube.</p>
     </div>
+
+    <h2 id="step-4"><span class="step-num">4</span>Verificación de Identidad</h2>
+    <p>AWS realizará un último paso para confirmar que eres una persona real y no un robot automatizado tratando de crear cuentas masivas.</p>
+
+    <ol>
+      <li>Se te pedirá que proporciones un número de teléfono válido.</li>
+      <li>Selecciona cómo prefieres recibir el código de verificación: por <strong>mensaje de texto (SMS)</strong> o mediante una <strong>llamada de voz</strong> automatizada.</li>
+      <li>Ingresa tu número (asegúrate de seleccionar el código de país correcto) y resuelve el código de seguridad (captcha) que aparece en pantalla.</li>
+      <li>Haz clic en "Enviar SMS" o "Llamarme ahora".</li>
+      <li>Una vez que recibas el código numérico de 4 dígitos en tu teléfono, ingrésalo en la pantalla de AWS y haz clic en continuar.</li>
+    </ol>
+
+    <h2 id="step-5"><span class="step-num">5</span>Seleccionar el Plan de Soporte (¡Paso Crítico!)</h2>
+    <p>Este es el paso final, y es donde debes tener cuidado para no suscribirte a un servicio de pago mensual sin quererlo.</p>
+
+    <p>AWS ofrece diferentes niveles de soporte técnico. Para nuestros propósitos, y para cualquier persona que esté empezando o alojando proyectos simples, el plan gratuito es más que suficiente.</p>
+
+    <ol>
+      <li>Verás una pantalla comparando tres planes de soporte: "Basic Support", "Developer Support" y "Business Support".</li>
+      <li><strong>Paso crítico:</strong> Asegúrate de seleccionar <strong>"Basic Support - Free"</strong> (Soporte básico - Gratuito).</li>
+      <li>Los planes Developer (desde $29/mes) y Business (desde $100/mes) ofrecen ayuda técnica prioritaria por parte de ingenieros de AWS, pero no los necesitas para seguir los tutoriales de este curso.</li>
+      <li>Haz clic en el botón naranja <strong>"Complete Sign Up"</strong> (Completar registro).</li>
+    </ol>
+
+    <p>¡Y eso es todo! Verás una pantalla de bienvenida felicitándote por crear tu cuenta de AWS. A veces, la activación completa de la cuenta puede tardar un par de minutos, o incluso unas horas en casos raros, mientras AWS procesa tu información.</p>
+
+    <p>Ahora puedes hacer clic en <strong>"Go to the AWS Management Console"</strong> e iniciar sesión con el correo y la contraseña que creaste en el Paso 2.</p>
 
     <h2 class="!mt-16">Verificación</h2>
-    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
-      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">VS Code abre sin problemas en la pestaña Welcome</span></div>
-      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Puedes abrir el panel de Extensions y buscar en él</span></div>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6 space-y-2">
+      <div class="checklist-item">
+        <span class="checklist-box"></span>
+        <span class="text-sm text-os-secondary">Pudiste iniciar sesión en la Consola de Administración de AWS.</span>
+      </div>
+      <div class="checklist-item">
+        <span class="checklist-box"></span>
+        <span class="text-sm text-os-secondary">Has guardado tu contraseña de usuario raíz en un lugar seguro.</span>
+      </div>
+      <div class="checklist-item">
+        <span class="checklist-box"></span>
+        <span class="text-sm text-os-secondary">Entiendes que tu cuenta está protegida por la Capa Gratuita (Free Tier), pero requiere una tarjeta válida por seguridad.</span>
+      </div>
     </div>
 
-    <div class="callout callout-tip">
-      <span class="callout-label">Déjalo Instalado</span>
-      <p>Mantén VS Code instalado después de esta lección. El Módulo 3 retoma justo donde lo dejaste e instala las extensiones que realmente necesitas.</p>
-    </div>
-
-    <h2 class="!mt-10 !text-base">Recursos Relacionados</h2>
+    <h2 class="!mt-10 !text-base">Recursos relacionados</h2>
     <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
-      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — La plataforma de IA de Claude</li>
-      <li><a href="https://code.claude.com/docs" class="text-accent-cyan hover:underline">Documentación de Claude</a> — Documentación oficial</li>
-      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">Soporte de Claude</a> — Centro de ayuda y solución de problemas</li>
+      <li><a href="https://aws.amazon.com/es/free/" class="text-accent-cyan hover:underline">AWS Free Tier</a> — Detalles sobre lo que incluye la capa gratuita de AWS.</li>
     </ul>
 
     <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
-      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lección completada</p>
-      <p class="text-sm text-os-secondary">Tienes VS Code instalado y sabes dónde vive el panel de Extensions — las dos cosas que hacen que la configuración del editor en el Módulo 3 te resulte familiar.</p>
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Preparación completada</p>
+      <p class="text-sm text-os-secondary">Tienes las llaves del castillo. Tu cuenta de AWS está lista y configurada para que puedas comenzar a construir y desplegar infraestructura real en la nube.</p>
     </div>
 
   </div>
@@ -236,8 +273,10 @@
 
 <nav class="px-6 pb-24">
   <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
-    <a href="lesson-1.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 2.1 Instalando la Terminal de Windows</a>
-    <a href="lesson-3.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">Siguiente: Navegando en la Terminal &rarr;</a>
+    <a href="lesson-3.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 2.3 Navegando en la Terminal</a>
+    <a href="lesson-5.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
+      Siguiente: Despliegue en S3 &rarr;
+    </a>
   </div>
 </nav>
 

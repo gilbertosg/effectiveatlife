@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lesson 2.1: Installing Windows Terminal — AI for Friends</title>
-<meta name="title" content="Lesson 2.1: Installing Windows Terminal">
-<meta name="description" content="Windows-only: install a standalone terminal from the Microsoft Store and set PowerShell as its default. Optional — Module 3 uses VS Code's built-in terminal instead. Mac readers can skip to Lesson 2.2.">
-<link rel="alternate" hreflang="en" href="https://effectiveatlife.com/ai-for-friends/module-2/lesson-1.html">
-<link rel="alternate" hreflang="es" href="https://effectiveatlife.com/es/ai-for-friends/module-2/lesson-1.html">
-<link rel="alternate" hreflang="x-default" href="https://effectiveatlife.com/ai-for-friends/module-2/lesson-1.html">
+<title>Lesson 2.4: Creating an AWS Account — AI for Friends</title>
+<meta name="title" content="Lesson 2.4: Creating an AWS Account">
+<meta name="description" content="Learn to safely create and configure a new Amazon Web Services (AWS) account, taking advantage of the free tier.">
+<link rel="alternate" hreflang="en" href="https://effectiveatlife.com/ai-for-friends/module-2/lesson-4.html">
+<link rel="alternate" hreflang="es" href="https://effectiveatlife.com/es/ai-for-friends/module-2/lesson-4.html">
+<link rel="alternate" hreflang="x-default" href="https://effectiveatlife.com/ai-for-friends/module-2/lesson-4.html">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -73,10 +73,10 @@
               <span class="font-mono text-[9px] text-os-tertiary ml-auto">OPTIONAL</span>
             </a>
             <div class="ml-8 space-y-0.5 pb-2">
-              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">2.1 Installing Windows Terminal</a>
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.1 Installing Windows Terminal</a>
               <a href="lesson-2.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.2 Installing VS Code</a>
               <a href="lesson-3.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.3 Navigating in the Terminal</a>
-              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.4 Creating an AWS Account</a>
+              <a href="lesson-4.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5">2.4 Creating an AWS Account</a>
               <a href="lesson-5.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">2.5 Deploying to AWS S3</a>
             </div>
           </div>
@@ -120,7 +120,7 @@
       <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
         <span class="text-accent-cyan font-semibold">EN</span>
         <span class="text-white/20">/</span>
-        <a href="../../es/ai-for-friends/module-2/lesson-1.html" class="hover:text-accent-cyan transition-colors">ES</a>
+        <a href="../../es/ai-for-friends/module-2/lesson-4.html" class="hover:text-accent-cyan transition-colors">ES</a>
       </div>
     </nav>
     <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg border border-white/20 text-os-secondary hover:border-accent-cyan/50 hover:text-accent-cyan transition-colors">Module 2</a>
@@ -133,26 +133,22 @@
     <div class="font-mono text-xs text-os-tertiary mb-6">
       <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a><span class="mx-1.5">/</span>
       <a href="index.html" class="hover:text-accent-cyan transition-colors">Module 2</a><span class="mx-1.5">/</span>
-      <span class="text-os-secondary">Lesson 2.1</span>
+      <span class="text-os-secondary">Lesson 2.4</span>
     </div>
-    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Installing Windows Terminal</h1>
-    <p class="text-os-secondary text-lg leading-relaxed mb-6">A standalone terminal app, installed from the Microsoft Store, with PowerShell set as its default.</p>
-    <div class="flex flex-wrap items-center gap-2">
-      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">5 MIN</span>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Creating an AWS Account</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">
+      Amazon Web Services (AWS) provides professional-grade tools for hosting websites. This guide walks through creating your account from scratch so you can publish your projects on the internet.
+    </p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">15 MIN</span>
       <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">OPTIONAL</span>
-      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">WINDOWS ONLY</span>
-    </div>
-    <div class="callout callout-info mt-6 mb-2">
-      <span class="callout-label">On Mac? Skip This Lesson</span>
-      <p>This lesson is Windows-only. Mac ships with Terminal.app already installed — there's nothing to install here. Head straight to <a href="lesson-2.html" class="text-accent-cyan hover:underline">Lesson 2.2</a>.</p>
-    </div>
-    <div class="callout callout-note mt-2 mb-6">
-      <span class="callout-label">Optional</span>
-      <p>Module 3 uses the terminal built into VS Code instead, so this install isn't required for anything later in the course. Do this only if you'd like a standalone terminal outside VS Code too.</p>
     </div>
     <div class="flex flex-wrap gap-2 font-mono text-[10px]">
-      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Install Terminal</a>
-      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Set PowerShell Default</a>
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Key Concepts</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Initial Signup</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Billing</a>
+      <a href="#step-4" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">4. Verification</a>
+      <a href="#step-5" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">5. Support Plan</a>
     </div>
   </div>
 </header>
@@ -160,45 +156,116 @@
 <article class="px-6 pb-24">
   <div class="lesson-body max-w-2xl mx-auto text-[16px]">
 
-    <h2 id="step-1"><span class="step-num">1</span>Install Windows Terminal</h2>
-    <p>Windows Terminal is Microsoft's own tabbed terminal app — a standalone window you open on its own, separate from any editor. It comes straight from the Microsoft Store, the safe, official place to install it.</p>
-    <ol>
-      <li>Open the <strong>Microsoft Store</strong> from the Start menu.</li>
-      <li>Search for <strong>"Windows Terminal."</strong></li>
-      <li>Click <strong>Install</strong>, then open it once the install finishes.</li>
-      <li>You'll see a tabbed window with a command <strong>prompt</strong> — the <span class="font-mono">PS C:\Users\YourName&gt;</span> text where you type. It waits until you press Enter.</li>
-    </ol>
+    <h2 id="step-1"><span class="step-num">1</span>Key Concepts Before You Start</h2>
+    <p>Before diving into the signup process, it's worth understanding how AWS works and what you'll need.</p>
 
-    <h2 id="step-2"><span class="step-num">2</span>Set PowerShell as the Default Profile</h2>
-    <p>Windows Terminal can open several different shells. This course uses PowerShell throughout, so set it as the <strong>default profile</strong> — the shell the terminal opens automatically.</p>
-    <ol>
-      <li>Click the small dropdown arrow next to the <strong>+</strong> (new tab) button.</li>
-      <li>Select <strong>Settings.</strong></li>
-      <li>Under <strong>Startup</strong>, set <strong>Default profile</strong> to <strong>Windows PowerShell.</strong></li>
-      <li>Close Settings and open a new tab to confirm — it should open directly into a PowerShell prompt.</li>
-    </ol>
+    <table>
+      <thead><tr><th>Concept</th><th>What it means for you</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Free Tier</strong></td>
+          <td>AWS offers a generous free tier for the first 12 months on new accounts. We'll host your website within these free limits, so under normal conditions <strong>you shouldn't pay anything</strong> to host a basic static site.</td>
+        </tr>
+        <tr>
+          <td><strong>Pay-as-you-go</strong></td>
+          <td>AWS charges based on the resources you consume. If your site suddenly goes massively popular overnight and exceeds the free-tier limits, AWS starts charging a few cents per gigabyte of data transferred.</td>
+        </tr>
+        <tr>
+          <td><strong>Card Requirement</strong></td>
+          <td>To create the account, <strong>AWS requires a credit or debit card</strong>. This is an industry standard to verify your identity and prevent fake-account creation, and to have a billing method on file in case you exceed the free tier.</td>
+        </tr>
+      </tbody>
+    </table>
 
-    <div class="callout callout-tip">
-      <span class="callout-label">The "PS" in the Prompt</span>
-      <p>Once PowerShell is your default, every new tab starts with <span class="font-mono">PS</span> in the prompt. That's your confirmation it's set correctly.</p>
+    <div class="callout callout-warning">
+      <span class="callout-label">Temporary Verification Charges</span>
+      <p>When registering your card, AWS may place a very small temporary charge (usually $1 USD) to confirm the card is valid. This charge isn't real and will disappear or be refunded within a few days.</p>
     </div>
 
+    <h2 id="step-2"><span class="step-num">2</span>Initial Signup</h2>
+    <p>Let's start by creating your login credentials for the root user account.</p>
+
+    <ol>
+      <li>Go to the official AWS page: <a href="https://aws.amazon.com/" class="text-accent-cyan hover:underline" target="_blank">aws.amazon.com</a>.</li>
+      <li>Click the orange button that says <strong>"Create an AWS Account"</strong> in the top-right corner.</li>
+      <li><strong>Email address:</strong> Enter an email address you have access to.</li>
+      <li><strong>AWS account name:</strong> Enter a name for your account. This is just for your own internal reference (e.g. "MyWebsite"). You can change it later.</li>
+      <li>Click <strong>Verify email address</strong>.</li>
+      <li>AWS will send a numeric code to your email. Copy it and paste it into the screen to confirm you own the email.</li>
+      <li><strong>Password:</strong> Create a strong, secure password. This account (known as the Root User) has full control over all resources and billing, so store it somewhere safe.</li>
+    </ol>
+
+    <h2 id="step-3"><span class="step-num">3</span>Contact and Billing Information</h2>
+    <p>Now AWS needs to know who you are and how to handle any future charges.</p>
+
+    <ol>
+      <li><strong>Contact information:</strong> Select the account type.
+        <ul>
+          <li>Choose <strong>"Business"</strong> if you're creating this for work or a company.</li>
+          <li>Choose <strong>"Personal"</strong> if it's for your own projects. <em>There's no difference in features or pricing between the two.</em></li>
+        </ul>
+      </li>
+      <li>Fill out the rest of the form with your full name, phone number, country, and a real physical address. Check the box to accept the terms and conditions, and continue.</li>
+      <li><strong>Billing information:</strong> Enter your credit or debit card details. As mentioned above, this is required to verify your identity and to have a backup method in case you exceed the free-tier limits.</li>
+      <li>Enter the billing address associated with that card.</li>
+    </ol>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Your Data Is Secure</span>
+      <p>Amazon is one of the largest and most secure technology companies in the world. Your billing data is processed securely and never shared. The card is used purely as an essential anti-fraud measure in the cloud.</p>
+    </div>
+
+    <h2 id="step-4"><span class="step-num">4</span>Identity Verification</h2>
+    <p>AWS runs one last step to confirm you're a real person and not an automated bot trying to mass-create accounts.</p>
+
+    <ol>
+      <li>You'll be asked to provide a valid phone number.</li>
+      <li>Select how you'd prefer to receive the verification code: by <strong>text message (SMS)</strong> or an automated <strong>voice call</strong>.</li>
+      <li>Enter your number (make sure you select the correct country code) and solve the security code (captcha) shown on screen.</li>
+      <li>Click "Send SMS" or "Call me now."</li>
+      <li>Once you receive the 4-digit numeric code on your phone, enter it on the AWS screen and click continue.</li>
+    </ol>
+
+    <h2 id="step-5"><span class="step-num">5</span>Choosing a Support Plan (Critical Step!)</h2>
+    <p>This is the final step, and it's where you need to be careful not to accidentally sign up for a paid monthly service.</p>
+
+    <p>AWS offers different tiers of technical support. For our purposes, and for anyone just getting started or hosting simple projects, the free plan is more than enough.</p>
+
+    <ol>
+      <li>You'll see a screen comparing three support plans: "Basic Support," "Developer Support," and "Business Support."</li>
+      <li><strong>Critical step:</strong> Make sure you select <strong>"Basic Support - Free."</strong></li>
+      <li>The Developer plan (from $29/month) and Business plan (from $100/month) offer priority technical help from AWS engineers, but you don't need them to follow this course's tutorials.</li>
+      <li>Click the orange <strong>"Complete Sign Up"</strong> button.</li>
+    </ol>
+
+    <p>And that's it! You'll see a welcome screen congratulating you on creating your AWS account. Full account activation can sometimes take a couple of minutes, or in rare cases a few hours, while AWS processes your information.</p>
+
+    <p>Now you can click <strong>"Go to the AWS Management Console"</strong> and sign in with the email and password you created in Step 2.</p>
+
     <h2 class="!mt-16">Verification</h2>
-    <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
-      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">Windows Terminal is installed and opens cleanly</span></div>
-      <div class="checklist-item"><span class="checklist-box"></span><span class="text-sm text-os-secondary">A new tab opens directly into a PowerShell prompt (starts with "PS")</span></div>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6 space-y-2">
+      <div class="checklist-item">
+        <span class="checklist-box"></span>
+        <span class="text-sm text-os-secondary">You were able to sign in to the AWS Management Console.</span>
+      </div>
+      <div class="checklist-item">
+        <span class="checklist-box"></span>
+        <span class="text-sm text-os-secondary">You've saved your root user password somewhere safe.</span>
+      </div>
+      <div class="checklist-item">
+        <span class="checklist-box"></span>
+        <span class="text-sm text-os-secondary">You understand your account is covered by the Free Tier, but requires a valid card for security.</span>
+      </div>
     </div>
 
     <h2 class="!mt-10 !text-base">Related Resources</h2>
     <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
-      <li><a href="https://claude.ai" class="text-accent-cyan hover:underline">claude.ai</a> — Sign up and use Claude in your browser</li>
-      <li><a href="https://docs.claude.com/docs" class="text-accent-cyan hover:underline">Claude documentation</a> — Official documentation</li>
-      <li><a href="https://support.claude.com" class="text-accent-cyan hover:underline">Claude support</a> — Help center and account support</li>
+      <li><a href="https://aws.amazon.com/free/" class="text-accent-cyan hover:underline">AWS Free Tier</a> — Details on what AWS's free tier includes.</li>
     </ul>
 
     <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
-      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Lesson complete</p>
-      <p class="text-sm text-os-secondary">You have a standalone terminal installed and set to PowerShell — one less unfamiliar thing when Module 3's install walkthrough gets there.</p>
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Prep complete</p>
+      <p class="text-sm text-os-secondary">You now hold the keys to the castle. Your AWS account is ready and configured so you can start building and deploying real cloud infrastructure.</p>
     </div>
 
   </div>
@@ -206,8 +273,10 @@
 
 <nav class="px-6 pb-24">
   <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
-    <a href="index.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; Module 2</a>
-    <a href="lesson-2.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">Next: Installing VS Code &rarr;</a>
+    <a href="lesson-3.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; 2.3 Navigating in the Terminal</a>
+    <a href="lesson-5.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
+      Next: Deploying to S3 &rarr;
+    </a>
   </div>
 </nav>
 

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía: Crear una cuenta en AWS — AI for Friends</title>
+<meta name="title" content="Guía: Crear una cuenta en AWS">
+<meta name="description" content="Aprende a crear y configurar de forma segura una nueva cuenta de Amazon Web Services (AWS) aprovechando la capa gratuita.">
+
+<link rel="alternate" hreflang="en" href="https://effectiveatlife.com/ai-for-friends/module-5/aws-account-setup.html">
+<link rel="alternate" hreflang="es" href="https://effectiveatlife.com/es/ai-for-friends/module-5/aws-account-setup.html">
+<link rel="alternate" hreflang="x-default" href="https://effectiveatlife.com/ai-for-friends/module-5/aws-account-setup.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'os-deep': '#0A0F1C', 'os-surface': '#111827', 'os-surface-light': '#1F2937',
+          'os-primary': '#FFFFFF', 'os-secondary': '#9CA3AF', 'os-tertiary': '#6B7280',
+          'accent-cyan': '#00F0FF', 'accent-teal': '#00C2D1', 'accent-purple': '#7B2CBF', 'accent-amber': '#FBBF24',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #0A0F1C; color: #FFFFFF; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+  .font-display { font-family: 'Space Grotesk', sans-serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .bg-grid {
+    background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(18px); } 100% { opacity: 1; transform: translateY(0); } }
+  .fade-up { opacity: 0; animation: fadeInUp 0.7s ease-out forwards; }
+  ::selection { background: rgba(0,240,255,0.25); color: #FFFFFF; }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid #00F0FF; outline-offset: 3px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .fade-up { animation: none !important; opacity: 1 !important; } }
+
+  /* Lesson body typography */
+  .lesson-body h2 {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: -0.01em;
+    font-size: 1.5rem; margin-top: 3rem; margin-bottom: 0.75rem; scroll-margin-top: 6rem;
+  }
+  .lesson-body h2 .step-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2rem; height: 2rem; border-radius: 9999px; margin-right: 0.75rem;
+    background: rgba(0,240,255,0.1); border: 1px solid rgba(0,240,255,0.4);
+    color: #00F0FF; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 500;
+    vertical-align: middle;
+  }
+  .lesson-body p { line-height: 1.75; margin-bottom: 1.25em; color: #9CA3AF; }
+  .lesson-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+  .lesson-body th { text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: #6B7280; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .lesson-body td { padding: 0.85rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: #9CA3AF; vertical-align: top; }
+  .lesson-body tr:last-child td { border-bottom: none; }
+  .lesson-body strong { color: #FFFFFF; font-weight: 600; }
+  .lesson-body ul, .lesson-body ol { padding-left: 1.25rem; margin-bottom: 1.25em; color: #9CA3AF; line-height: 1.75; }
+  .lesson-body ul { list-style-type: disc; }
+  .lesson-body ol { list-style-type: decimal; }
+  .lesson-body li { margin-bottom: 0.5em; }
+
+  /* Callouts */
+  .callout { border-radius: 0.75rem; padding: 1.1rem 1.25rem; margin: 1.5rem 0; border: 1px solid; font-size: 0.9rem; line-height: 1.65; }
+  .callout-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.4rem; }
+  .callout-tip { background: rgba(0,240,255,0.06); border-color: rgba(0,240,255,0.25); }
+  .callout-tip .callout-label { color: #00F0FF; }
+  .callout-note { background: rgba(0,194,209,0.06); border-color: rgba(0,194,209,0.25); }
+  .callout-note .callout-label { color: #00C2D1; }
+  .callout-info { background: rgba(123,44,191,0.08); border-color: rgba(123,44,191,0.3); }
+  .callout-info .callout-label { color: #B18CE0; }
+  .callout-warning { background: rgba(251,191,36,0.07); border-color: rgba(251,191,36,0.3); }
+  .callout-warning .callout-label { color: #FBBF24; }
+  .callout p { color: #D1D5DB; margin-bottom: 0; }
+
+  /* Expand / details */
+  .lesson-body details { border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); margin: 1.5rem 0; overflow: hidden; }
+  .lesson-body summary { cursor: pointer; padding: 1rem 1.25rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.9rem; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  .lesson-body summary::-webkit-details-marker { display: none; }
+  .lesson-body summary::after { content: '+'; font-family: 'JetBrains Mono', monospace; color: #00F0FF; font-size: 1.1rem; }
+  .lesson-body details[open] summary::after { content: '\2212'; }
+  .lesson-body details > div { padding: 0 1.25rem 1.25rem; }
+
+  /* Verification checklist */
+  .checklist-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; }
+  .checklist-box { width: 1.1rem; height: 1.1rem; border-radius: 0.3rem; border: 1.5px solid rgba(0,240,255,0.5); flex-shrink: 0; margin-top: 0.15rem; }
+</style>
+</head>
+<body class="bg-os-deep text-os-primary font-body antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/[0.08] bg-os-deep/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="../../../index.html" class="flex items-center gap-2.5 group">
+      <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-os-secondary uppercase tracking-wide">
+      <a href="../../../index.html#pillars" class="hover:text-accent-cyan transition-colors">Pilares</a>
+      <a href="../../../blog/index.html" class="hover:text-accent-cyan transition-colors">Blog</a>
+      <a href="../index.html" class="text-accent-cyan">Curso</a>
+
+      <div class="relative">
+        <button type="button" id="course-menu-btn" class="flex items-center gap-1.5 hover:text-accent-cyan transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="course-menu-panel">
+          Menú
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="mt-px"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="course-menu-panel" class="hidden absolute right-0 top-full mt-4 w-[19rem] rounded-2xl bg-os-surface border border-white/10 shadow-2xl shadow-black/40 p-3 normal-case">
+          <div class="mb-1">
+            <a href="../index.html" class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/5 transition-colors">
+              <span class="font-mono text-xs text-accent-cyan">05</span>
+              <span class="font-display font-semibold text-sm text-os-primary">Infraestructura Web</span>
+            </a>
+            <div class="ml-8 space-y-0.5 pb-2">
+              <a href="lesson-1.html" class="block px-2 py-1 rounded text-xs text-os-secondary hover:text-accent-cyan hover:bg-white/5 transition-colors">5.1 Despliegue en AWS S3</a>
+              <a href="aws-account-setup.html" class="block px-2 py-1 rounded text-xs text-accent-cyan bg-white/5 transition-colors">Guía: Cuenta AWS</a>
+            </div>
+          </div>
+          <div class="border-t border-white/10 my-2"></div>
+          <a href="../index.html" class="flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-xs font-mono text-accent-cyan hover:bg-white/5 transition-colors">Inicio del curso</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 text-[10px] text-os-tertiary normal-case">
+        <a href="../../../ai-for-friends/module-5/aws-account-setup.html" class="hover:text-accent-cyan transition-colors">EN</a>
+        <span class="text-white/20">/</span>
+        <span class="text-accent-cyan font-semibold">ES</span>
+      </div>
+    </nav>
+    <a href="index.html" class="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-lg bg-[#00F0FF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-shadow">
+      Módulo 5
+    </a>
+  </div>
+</header>
+
+<!-- ============ LESSON HEADER ============ -->
+<header class="relative pt-40 pb-14 px-6 overflow-hidden bg-grid">
+  <div class="absolute inset-0 bg-gradient-to-b from-os-deep via-os-deep/95 to-os-deep pointer-events-none"></div>
+  <div class="relative max-w-2xl mx-auto fade-up">
+    <div class="font-mono text-xs text-os-tertiary mb-6">
+      <a href="../index.html" class="hover:text-accent-cyan transition-colors">AI for Friends</a>
+      <span class="mx-1.5">/</span>
+      <a href="index.html" class="hover:text-accent-cyan transition-colors">Módulo 5</a>
+      <span class="mx-1.5">/</span>
+      <span class="text-os-secondary">Guía Preparatoria</span>
+    </div>
+    <h1 class="font-display font-bold tracking-tight text-3xl sm:text-4xl leading-[1.15] mb-4">Creación de tu Cuenta AWS</h1>
+    <p class="text-os-secondary text-lg leading-relaxed mb-6">
+      Amazon Web Services (AWS) proporciona las herramientas profesionales para alojar sitios web. Esta guía explica cómo crear tu cuenta desde cero para poder publicar tus proyectos en internet.
+    </p>
+    <div class="flex flex-wrap items-center gap-2 mb-8">
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">15 MIN</span>
+      <span class="font-mono text-[10px] px-2.5 py-1 rounded-full border border-white/15 text-os-tertiary">PASO PREVIO</span>
+    </div>
+    <div class="flex flex-wrap gap-2 font-mono text-[10px]">
+      <a href="#step-1" class="px-2.5 py-1 rounded-full bg-accent-cyan/15 border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/25 transition-colors">1. Conceptos Clave</a>
+      <a href="#step-2" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">2. Registro Inicial</a>
+      <a href="#step-3" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">3. Facturación</a>
+      <a href="#step-4" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">4. Verificación</a>
+      <a href="#step-5" class="px-2.5 py-1 rounded-full border border-white/10 text-os-tertiary hover:text-accent-cyan hover:border-accent-cyan/40 transition-colors">5. Plan de Soporte</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ LESSON BODY ============ -->
+<article class="px-6 pb-24">
+  <div class="lesson-body max-w-2xl mx-auto text-[16px]">
+
+    <h2 id="step-1"><span class="step-num">1</span>Conceptos Clave antes de empezar</h2>
+    <p>Antes de sumergirnos en el proceso de registro, es importante entender cómo funciona AWS y qué vas a necesitar.</p>
+
+    <table>
+      <thead><tr><th>Concepto</th><th>Lo que significa para ti</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Capa Gratuita (Free Tier)</strong></td>
+          <td>AWS ofrece una generosa capa gratuita durante 12 meses para cuentas nuevas. Alojaremos tu página web dentro de estos límites gratuitos, por lo que, en condiciones normales, <strong>no deberías pagar nada</strong> por alojar un sitio estático básico.</td>
+        </tr>
+        <tr>
+          <td><strong>Pago por uso</strong></td>
+          <td>AWS cobra basándose en los recursos que consumes. Si tu sitio web se vuelve inmensamente popular de la noche a la mañana y supera los límites de la capa gratuita, AWS comenzará a cobrarte unos pocos centavos por cada giga de datos transferido.</td>
+        </tr>
+        <tr>
+          <td><strong>Requisito de Tarjeta</strong></td>
+          <td>Para crear la cuenta, <strong>AWS te pedirá obligatoriamente una tarjeta de crédito o débito</strong>. Esto es un estándar en la industria para verificar tu identidad y prevenir la creación de cuentas falsas, así como para tener un método de cobro en caso de que superes la capa gratuita.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">Cargos de Verificación Temporales</span>
+      <p>Al registrar tu tarjeta, AWS podría realizar un cargo temporal muy pequeño (generalmente $1 USD) para verificar que la tarjeta es válida. Este cargo no es real y desaparecerá o será reembolsado a tu cuenta en unos pocos días.</p>
+    </div>
+
+    <h2 id="step-2"><span class="step-num">2</span>Registro Inicial</h2>
+    <p>Comencemos creando tus credenciales de acceso para la cuenta raíz (Root User).</p>
+
+    <ol>
+      <li>Ve a la página oficial de AWS: <a href="https://aws.amazon.com/es/" class="text-accent-cyan hover:underline" target="_blank">aws.amazon.com/es/</a>.</li>
+      <li>Haz clic en el botón naranja que dice <strong>"Crear una cuenta de AWS"</strong> (Create an AWS Account) situado en la esquina superior derecha.</li>
+      <li><strong>Dirección de correo electrónico:</strong> Ingresa un correo electrónico al que tengas acceso. Si estás creando esto para tu empresa (como Vandelier), usa tu correo corporativo.</li>
+      <li><strong>Nombre de la cuenta de AWS:</strong> Ingresa un nombre para tu cuenta. Esto es solo para tu referencia interna (ej. "MiSitioWeb" o "Vandelier-Produccion"). Puedes cambiar este nombre más tarde.</li>
+      <li>Haz clic en <strong>Verificar dirección de correo electrónico</strong>.</li>
+      <li>AWS te enviará un código numérico a tu correo. Cópialo y pégalo en la pantalla para confirmar que eres el dueño del correo.</li>
+      <li><strong>Contraseña:</strong> Crea una contraseña fuerte y segura. Esta cuenta (conocida como el Usuario Raíz o "Root User") tendrá control total sobre todos los recursos y la facturación, así que asegúrate de guardarla en un lugar seguro.</li>
+    </ol>
+
+    <h2 id="step-3"><span class="step-num">3</span>Información de Contacto y Facturación</h2>
+    <p>Ahora AWS necesita saber quién eres y cómo manejar posibles futuros cobros.</p>
+
+    <ol>
+      <li><strong>Información de contacto:</strong> Selecciona el tipo de cuenta.
+        <ul>
+          <li>Elige <strong>"Empresa"</strong> (Business) si estás creando esto para tu trabajo o compañía.</li>
+          <li>Elige <strong>"Personal"</strong> si es para tus propios proyectos. <em>No hay diferencia en las características o precios entre ambas opciones.</em></li>
+        </ul>
+      </li>
+      <li>Llena el resto del formulario con tu nombre completo, número de teléfono, país y dirección física real. Marca la casilla para aceptar los términos y condiciones, y continúa.</li>
+      <li><strong>Información de facturación:</strong> Ingresa los datos de tu tarjeta de crédito o débito. Como se mencionó anteriormente, esto es obligatorio para verificar tu identidad y para tener un respaldo en caso de que excedas los límites gratuitos.</li>
+      <li>Ingresa la dirección de facturación asociada a esa tarjeta.</li>
+    </ol>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Seguridad de tus Datos</span>
+      <p>Amazon es una de las empresas de tecnología más grandes y seguras del mundo. Tus datos de facturación se procesan de forma segura y no se comparten. La tarjeta se utiliza como una medida antifraude esencial en la nube.</p>
+    </div>
+
+    <h2 id="step-4"><span class="step-num">4</span>Verificación de Identidad</h2>
+    <p>AWS realizará un último paso para confirmar que eres una persona real y no un robot automatizado tratando de crear cuentas masivas.</p>
+
+    <ol>
+      <li>Se te pedirá que proporciones un número de teléfono válido.</li>
+      <li>Selecciona cómo prefieres recibir el código de verificación: por <strong>mensaje de texto (SMS)</strong> o mediante una <strong>llamada de voz</strong> automatizada.</li>
+      <li>Ingresa tu número (asegúrate de seleccionar el código de país correcto) y resuelve el código de seguridad (captcha) que aparece en pantalla.</li>
+      <li>Haz clic en "Enviar SMS" o "Llamarme ahora".</li>
+      <li>Una vez que recibas el código numérico de 4 dígitos en tu teléfono, ingrésalo en la pantalla de AWS y haz clic en continuar.</li>
+    </ol>
+
+    <h2 id="step-5"><span class="step-num">5</span>Seleccionar el Plan de Soporte (¡Paso Crítico!)</h2>
+    <p>Este es el paso final, y es donde debes tener cuidado para no suscribirte a un servicio de pago mensual sin quererlo.</p>
+
+    <p>AWS ofrece diferentes niveles de soporte técnico. Para nuestros propósitos, y para cualquier persona que esté empezando o alojando proyectos simples, el plan gratuito es más que suficiente.</p>
+
+    <ol>
+      <li>Verás una pantalla comparando tres planes de soporte: "Basic Support", "Developer Support" y "Business Support".</li>
+      <li><strong>Paso crítico:</strong> Asegúrate de seleccionar <strong>"Basic Support - Free"</strong> (Soporte básico - Gratuito).</li>
+      <li>Los planes Developer (desde $29/mes) y Business (desde $100/mes) ofrecen ayuda técnica prioritaria por parte de ingenieros de AWS, pero no los necesitas para seguir los tutoriales de este curso.</li>
+      <li>Haz clic en el botón naranja <strong>"Complete Sign Up"</strong> (Completar registro).</li>
+    </ol>
+
+    <p>¡Y eso es todo! Verás una pantalla de bienvenida felicitándote por crear tu cuenta de AWS. A veces, la activación completa de la cuenta puede tardar un par de minutos, o incluso unas horas en casos raros, mientras AWS procesa tu información.</p>
+    
+    <p>Ahora puedes hacer clic en <strong>"Go to the AWS Management Console"</strong> e iniciar sesión con el correo y la contraseña que creaste en el Paso 2.</p>
+
+    <h2 class="!mt-16">Verificación</h2>
+    <div class="rounded-2xl bg-white/5 border border-white/10 p-6 space-y-2">
+      <div class="checklist-item">
+        <span class="checklist-box"></span>
+        <span class="text-sm text-os-secondary">Pudiste iniciar sesión en la Consola de Administración de AWS.</span>
+      </div>
+      <div class="checklist-item">
+        <span class="checklist-box"></span>
+        <span class="text-sm text-os-secondary">Has guardado tu contraseña de usuario raíz en un lugar seguro.</span>
+      </div>
+      <div class="checklist-item">
+        <span class="checklist-box"></span>
+        <span class="text-sm text-os-secondary">Entiendes que tu cuenta está protegida por la Capa Gratuita (Free Tier), pero requiere una tarjeta válida por seguridad.</span>
+      </div>
+    </div>
+
+    <h2 class="!mt-10 !text-base">Recursos relacionados</h2>
+    <ul class="list-none pl-0 text-sm text-os-secondary space-y-1.5">
+      <li><a href="https://aws.amazon.com/es/free/" class="text-accent-cyan hover:underline">AWS Free Tier</a> — Detalles sobre lo que incluye la capa gratuita de AWS.</li>
+    </ul>
+
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-accent-cyan/10 to-transparent border border-accent-cyan/20 p-6">
+      <p class="font-mono text-[11px] uppercase tracking-widest text-accent-cyan mb-2">Preparación completada</p>
+      <p class="text-sm text-os-secondary">Tienes las llaves del castillo. Tu cuenta de AWS está lista y configurada para que puedas comenzar a construir y desplegar infraestructura real en la nube.</p>
+    </div>
+
+  </div>
+</article>
+
+<!-- ============ PREV/NEXT ============ -->
+<nav class="px-6 pb-24">
+  <div class="max-w-2xl mx-auto flex items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
+    <a href="index.html" class="font-mono text-xs text-os-tertiary hover:text-accent-cyan transition-colors">&larr; Resumen del Módulo</a>
+    <a href="lesson-1.html" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#00F0FF] text-black font-display font-bold text-sm hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-shadow">
+      Siguiente: Despliegue en S3 &rarr;
+    </a>
+  </div>
+</nav>
+
+<!-- ============ FOOTER ============ -->
+<footer class="px-6 py-16 border-t border-white/[0.08]">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div>
+      <div class="flex items-center gap-2.5 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
+        <span class="font-display font-semibold tracking-tight text-sm">EFFECTIVE<span class="text-accent-cyan">/</span>AT LIFE</span>
+      </div>
+      <p class="font-mono text-xs text-os-tertiary max-w-sm">No te elevas al nivel de tus metas. Caes al nivel de tus sistemas.</p>
+    </div>
+    <p class="font-mono text-xs text-os-tertiary">© 2026 Effective at Life. Construido como un sistema, no como un eslogan.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const btn = document.getElementById('course-menu-btn');
+    const panel = document.getElementById('course-menu-panel');
+    if (!btn || !panel) return;
+    function closeMenu() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+    function openMenu() { panel.classList.remove('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
+
+</body>
+</html>

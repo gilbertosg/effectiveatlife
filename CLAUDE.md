@@ -9,7 +9,7 @@ This is the static source for **effectiveatlife.com** — a public site that tra
 What's live today:
 - `index.html` — the landing page.
 - `blog/` — a hub plus one long-form article, with the pattern established for more.
-- `ai-for-friends/` — a complete 4-module course (course hub → 4 module hubs → 21 lesson pages, 26 files total), built for HR / Legal / Marketing / Industrial Engineering / International Relations professionals.
+- `ai-for-friends/` — a complete 4-module course (course hub → 4 module hubs → 23 lesson pages, 28 files total), built for HR / Legal / Marketing / Industrial Engineering / International Relations professionals.
 
 The two documents that govern this project's content and visuals:
 - `assets/docs/Effective-at-Life-Implementation-Guide-V1.md` — the original phased build plan (folder structure, what each page contains).
